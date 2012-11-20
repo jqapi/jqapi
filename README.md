@@ -20,7 +20,7 @@ If you don't have already, install Bundler:
 
 Then install all the other Gems:
 
-    bundler install
+    bundle install
 
 ### Start it
 
