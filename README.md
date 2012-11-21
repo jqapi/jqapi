@@ -25,3 +25,21 @@ Then install all the other Gems:
 ### Start it
 
     thor dev:start
+
+## Generate the documentation
+
+### Download it
+
+    thor docs:download
+
+The GitHub repo of the official docs site will be cloned/updated.
+
+### Generate it
+
+    thor docs:generate
+
+The .json files will be located in /docs/entries.
+
+## Todo
+  - check if method is deprecated <entry type="method" name="live" return="jQuery" deprecated="1.7">
+  - whats wrong with jQuery.xml long_desc stripping?

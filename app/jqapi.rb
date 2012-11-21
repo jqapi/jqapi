@@ -23,9 +23,10 @@ class Jqapi < Sinatra::Base
     end
   end
   
-  get '/docs/*.json' do
+  get '/docs/entries/*.json' do
     content_type :json
-    filepath = File.join(settings.root, 'docs', "#{params[:splat][0]}.json")
+    
+    filepath = File.join(settings.root, 'docs/entries', "#{params[:splat][0]}.json")
 
     if File.exists?(filepath)
       File.open(filepath).read
