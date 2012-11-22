@@ -30,6 +30,13 @@ class Jqapi < Sinatra::Base
     File.open(filepath).read
   end
 
+  get '/docs/index.json' do
+    content_type :json
+    filepath = File.join(settings.root, 'docs/index.json')
+
+    File.open(filepath).read
+  end
+
   get '/docs/entries/*.json' do
     content_type :json
     

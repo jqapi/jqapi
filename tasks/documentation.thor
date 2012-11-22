@@ -45,8 +45,9 @@ class Docs < Thor
     entries    = parse_xml_entries                  # parse xml files, write files, returns a array of objects
     categories = parse_xml_categories               # parse categories.xml, write json file, return cats object
 
-    # todo: build index json with categories and entries
-  end
+    build_index(categories, entries)                # build the index json
+    puts "Done."                                    # phew, everything hopefully set up.
+  end                                               # please go on, nothing to see here
 
 
   private
@@ -185,5 +186,68 @@ class Docs < Thor
 
     puts 'Parsed catergories.xml'                   # just sayin'
     retArr                                          # return array with cats objects
+  end
+
+  def build_category_index(categories)
+    indexArr = []
+
+    categories.each do |category|
+      catObj = {
+        :name    => category[:name],
+        :slug    => category[:slug],
+        :entries => []
+      }
+
+      subcats      = category[:subcats]
+      subcatsStrip = []
+
+      if subcats
+        subcats.each do |cat|
+          subcatsStrip.push({
+            :name => cat['name'],
+            :slug => cat['slug'],
+            :entries => []
+          })
+        end
+
+        catObj[:subcats] = subcatsStrip
+      end
+
+      indexArr.push catObj
+    end
+
+    indexArr
+  end
+
+  def build_index(categories, entries)
+    categories = build_category_index(categories)   # build the simplified category object
+
+    entries.each do |entry|
+      entry[:categories].each do |entry_cat|
+        parts = entry_cat.split('/')
+
+        if parts.length == 2                        # included in sub category
+          # tbd
+        else                                        # included in parent category
+          categories.each do |cat|                  # check every category
+            if cat[:slug] == entry_cat              # if the entry matches
+              entryObj = {                          # build a new stripped entry obj
+                :title => entry[:title],
+                :desc => entry[:desc].gsub(%r{</?[^>]+?>}, ''), #remove html from descriptions
+                :slug => entry[:slug] || entry[:name] # use slug if exist
+              }
+
+              cat[:entries].push entryObj           # store in entries array
+            end
+          end
+        end
+      end
+    end
+
+    File.open("#{ROOT_DIR}/docs/index.json", 'w') do |file|
+      file.write categories.to_json                 # write json to file
+    end
+
+    puts 'Generated index.json'                     # entry point data for the web app
   end
 end

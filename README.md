@@ -39,6 +39,9 @@ The GitHub repo of the official docs site will be cloned/updated.
     thor docs:generate
 
 The .json files will be located in /docs/entries.
+Also generated:
+  - /docs/categories.json (category names, slugs and full descriptions)
+  - /docs/index.json (stripped down category structure with links to entries with stripped down desc)
 
 ## Todo
   - check if method is deprecated <entry type="method" name="live" return="jQuery" deprecated="1.7">
