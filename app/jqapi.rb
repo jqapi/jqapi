@@ -23,6 +23,13 @@ class Jqapi < Sinatra::Base
     end
   end
   
+  get '/docs/categories.json' do
+    content_type :json
+    filepath = File.join(settings.root, 'docs/categories.json')
+
+    File.open(filepath).read
+  end
+
   get '/docs/entries/*.json' do
     content_type :json
     

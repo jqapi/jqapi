@@ -42,6 +42,19 @@ class Docs < Thor
       Dir.mkdir(jsonPath)                           # and entries dir
     end
 
+    entries    = parse_xml_entries                  # parse xml files, write files, returns a array of objects
+    categories = parse_xml_categories               # parse categories.xml, write json file, return cats object
+
+    # todo: build index json with categories and entries
+  end
+
+
+  private
+  def parse_xml_entries
+    retArr   = []                                   # returns a array of processed entries
+    xmlPath  = "#{ROOT_DIR}/tmp/api.jquery.com/entries"
+    jsonPath = "#{ROOT_DIR}/docs/entries"
+
     Dir.glob("#{xmlPath}/*.xml").each do |filepath| # each .xml file in directory
       contentXml = File.open(filepath).read         # read the xml content of the file
       contentObj = Crack::XML.parse(contentXml)     # parse xml to a object
@@ -75,17 +88,19 @@ class Docs < Thor
         file.write entryObj.to_json                 # write json to file
       end
 
+      retArr.push entryObj                          # store entry in the array that returns
       puts "Parsed #{filename}"                     # happy to report
     end
+
+    retArr                                          # return array of processed entries
   end
 
-  private
   def compose_wrapper(entry, filename)
     content    = {
       :name    => entry['name'],                 
       :type    => entry['type'],
       :title   => entry['title'],
-      :desc    => entry['desc'], #from first entry or use default
+      :desc    => entry['desc'],                    # from first entry or from wrapper
       :categories => [],                            # normalize categories as array
       :entries => []                                # all variatons of the method
     }
@@ -113,7 +128,6 @@ class Docs < Thor
     end
 
     content[:longdesc] = strip_long_desc(entry, entry_raw) # try to strip out long description, or empty string
-
     content                                         # return raw object
   end
 
@@ -143,5 +157,33 @@ class Docs < Thor
     end
 
     long_desc                                       # return the html description
+  end
+
+  def parse_xml_categories
+    retArr     = []                                 # will hold all categories
+    contentXml = File.open("#{ROOT_DIR}/tmp/api.jquery.com/categories.xml").read
+    contentObj = Crack::XML.parse(contentXml)       # parse xml to a object
+
+    contentObj['categories']['category'].each do |category| # go through the category array
+      categoryObj = {                               # parent category object
+        :name => category['name'],
+        :slug => category['slug'],
+        :desc => category['desc']
+      }
+      subCats = category['category']                # some categories have sub categories
+      
+      if subCats                                    # if so...
+        categoryObj[:subcats] = subCats             # store them to the object, already crackyfied
+      end
+
+      retArr.push categoryObj                       # add object to return array
+    end
+
+    File.open("#{ROOT_DIR}/docs/categories.json", 'w') do |file|
+      file.write retArr.to_json                     # write json to file
+    end
+
+    puts 'Parsed catergories.xml'                   # just sayin'
+    retArr                                          # return array with cats objects
   end
 end
