@@ -1,10 +1,15 @@
 !!! 5
 %html
   %head
-    %title jQAPI
+    %title jQAPI - Alternative jQuery Documentation Browser
     
-    %link{:href => '/assets/bundle.css', :type => 'text/css', :rel => 'stylesheet'}
-    %script{:src  => '/assets/bundle.js'}
+    %link{:href  => '/assets/bundle.css', :type => 'text/css', :rel => 'stylesheet'}
+    %script{:src => '/assets/bundle.js',  :type => 'text/javascript'}
   
   %body
-    scary skeleton
+    #sidebar
+      #search
+        %input#search-field{:type => 'search', :placeholder => 'Search', :autocomplete => 'off', :autosave => 'searchdoc',  :results => '0', :autofocus => 'autofocus'}
+    
+      %ul#navigation
+        %li.loader Loading...

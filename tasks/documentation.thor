@@ -21,7 +21,7 @@ class Docs < Thor
       else                                                # docs repo not cloned yet
         puts "Clone from #{cloneUrl}"
         puts %x[git clone #{cloneUrl} #{clonePath}]       # git clone from the github repo
-      end
+      end                                                 # no git command found
     else                                                  # no git found
       puts "Please install Git."
     end

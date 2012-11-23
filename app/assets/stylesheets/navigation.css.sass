@@ -1,0 +1,63 @@
+#navigation
+  font-size: 1.3em
+  height: 600px
+  overflow-y: scroll
+  overflow-x: hidden
+  border-right: 1px solid #aaa
+
+  .top-cat
+    .top-cat-name
+      display: block
+      background: url('/assets/arrow.png') no-repeat #ddd
+      border-bottom: 1px solid #ccc
+      padding: 7px 0 7px 25px
+      cursor: pointer
+      
+      &:hover
+        background: url('/assets/arrow.png') 0 -27px no-repeat #cecece
+  
+  .sub-cat
+    display: none
+    
+    .sub-cat-name
+      font-size: 0.9em
+      display: block
+      background: #eee
+      border-bottom: 1px dotted #ddd
+      padding: 7px 0 7px 25px
+      cursor: pointer
+      
+      &:hover
+        background: #dedede
+        border-bottom: 1px solid #d3d3d3
+  
+  .entries
+    //display: none
+    
+    .entry
+      background: white
+      padding: 5px 0 6px 25px
+      cursor: pointer
+    
+      .title
+        display: block
+    
+      .desc
+        display: block
+        width: 1000px
+        font-size: 0.8em
+        color: #888
+        padding-top: 2px
+      
+      &:hover
+        background: #6ea8ff
+        
+        .title
+          color: #111
+          
+        .desc
+          color: white
+          text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2)
+    
+    .odd
+      background: #edf3fe
