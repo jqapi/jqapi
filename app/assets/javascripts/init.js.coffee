@@ -3,6 +3,7 @@ jqapi.events = $ {}                                       # use application even
 
 jQuery ->                                                 # wait for dom ready
   new jqapi.Sidebar                                       # responsible for the sidebar dimensions
+  new jqapi.Navigation                                    # loads the index and builds the list
   
   $(window)
     .resize ->                                            # on window resize

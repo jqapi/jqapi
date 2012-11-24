@@ -2,3 +2,4 @@
 
 #= require init
 #= require sidebar
+#= require navigation
