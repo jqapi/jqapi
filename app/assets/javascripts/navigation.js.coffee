@@ -1,4 +1,4 @@
-class jqapi.Navigation
+class jqapi.Navigation  
   constructor: ->
     @el = $ '#navigation'                                 # parent ul element
     
@@ -11,57 +11,64 @@ class jqapi.Navigation
     @el.children('.loader').remove()                      # simply remove the loader for now
 
   buildNavigation: (categories) ->                        # build the navigation from the categories array
-    for topCat in categories
-      topLi        = $ "<li class='top-cat'>
-                          <span class='top-cat-name'>#{topCat.name}</span>      
-                        </li>"
+    for topCat in categories                              # for each parent category
+      topCatEl        = $ @templateCategory('top', topCat.name) # build the template
+      topCatEntriesEl = @buildEntriesList(topCat.entries) # some parent categories have entries
+      subCatsEl       = @buildSubcatList(topCat.subcats)  # some have sub categories
 
-      topLi.appendTo @el
+      topCatEl.append subCatsEl       if subCatsEl        # add sub categories if any
+      topCatEl.append topCatEntriesEl if topCatEntriesEl  # add entries if any
+      topCatEl.appendTo @el                               # append parent category object to list
 
-    jqapi.events.trigger 'navigation:done'
-  
-  ###
-  appendEntries: (catEl, entries) ->
-    entriesIndex = @sortHashKeys entries
-    entriesEl    = $ '<ul class="entries" />'
+    jqapi.events.trigger 'navigation:done'                # everything done. let anybody know.
 
-    entriesEl.appendTo catEl
-    
-    for entryName in entriesIndex
-      entry = entries[entryName]
-      liEl  = $ "<li class='entry'>
-                   <span class='title'>#{entry['title']}</span>
-                   <span class='desc'>#{entry['desc']}</span>
-                 </li>"
-      
-      liEl.appendTo entriesEl
-      liEl.data 'filename', entryName
-      
-      entriesEl.children('li:odd').addClass 'odd'
+  buildEntriesList: (entries) ->                          # build entries list elements for top/sub categories
+    el = $ @templateEntriesList()                         # get template
 
-  buildNavigation: (topCats) ->
-    topCatsIndex = @sortHashKeys topCats
-    
-    for topCat in topCatsIndex
-      subCats      = topCats[topCat]['subs']
-      subCatsIndex = @sortHashKeys subCats
-      subCatsEl    = $ '<ul class="sub-cats"/>'
-      topLi        = $ "<li class='top-cat'>
-                          <span class='top-cat-name'>#{topCat}</span>      
-                        </li>"
-      
-      topLi.appendTo @el
-      topLi.append subCatsEl
-      @appendEntries topLi, topCats[topCat]['entries']
-      
-      for subCat in subCatsIndex
-        subLi = $ "<li class='sub-cat'>
-                    <span class='sub-cat-name'>#{subCat}</span>      
-                  </li>"
-        
-        subCatsEl.append subLi
-        @appendEntries subLi, subCats[subCat]
-    
-    jqapi.events.trigger 'navigation:build'
-  
-  ###
+    if entries.length                                     # there are entries
+      for entry in entries                                # go through each entry
+        entryEl = $ @templateEntriesItem(entry)           # generate the template
+
+        el.append entryEl                                 # append it to the parent list
+
+      el.children('li:odd').addClass 'odd'                # set a odd class to children
+      el                                                  # return the generated list element
+    else                                                  # no entries found
+      false                                               # return false, no need to return a empty list
+
+  buildSubcatList: (subcats) ->                           # building the sub categories list
+    el = $ @templateSubcatsList()                         # get template
+
+    if subcats and subcats.length                         # are there any sub categories?
+      for subcat in subcats                               # for each sub category
+        listEl = $ @templateCategory('sub', subcat.name)  # get template for category
+
+        if subcat.entries.length                          # if the sub category has entries
+          listEl.append @buildEntriesList(subcat.entries) # build and append the entries
+
+        listEl.appendTo el                                # append entries list to category
+
+      el                                                  # return list of sub categories with entries
+    else                                                  # parent category has no subs
+      false                                               # return false
+
+  templateCategory: (pos, name) ->
+    """
+    <li class='#{pos}-cat'>
+      <span class='#{pos}-cat-name'>#{name}</span>
+    </li>
+    """
+
+  templateEntriesList: ->
+    '<ul class="entries" />'
+
+  templateEntriesItem: (entry) ->
+    """
+    <li class='entry' data-slug='#{entry.slug}'>
+      <span class='title'>#{entry.title}</span>
+      <span class='desc'>#{entry.desc}</span>
+    </li>
+    """
+
+  templateSubcatsList: ->
+    '<ul class="sub-cats" />'
