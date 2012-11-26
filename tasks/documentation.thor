@@ -98,12 +98,12 @@ class Docs < Thor
 
   def compose_wrapper(entry, filename)
     content    = {
-      :name    => entry['name'],                 
-      :type    => entry['type'],
-      :title   => entry['title'],
-      :desc    => entry['desc'],                          # from first entry or from wrapper
+      :name       => entry['name'],                 
+      :type       => entry['type'],
+      :title      => entry['title'],
+      :desc       => entry['desc'],                       # from first entry or from wrapper
       :categories => [],                                  # normalize categories as array
-      :entries => []                                      # all variatons of the method
+      :entries    => []                                   # all variatons of the method
     }
 
     if entry['name'] != filename
@@ -255,10 +255,20 @@ class Docs < Thor
       end
     end
 
+    if categories.last[:slug] == 'version'                # check if last category is version
+      versions = categories.pop()                         # remove from categories array
+
+      File.open("#{ROOT_DIR}/docs/versions.json", 'w') do |file|
+        file.write versions.to_json                       # write json to file
+      end
+
+      puts 'Generated versions.json'
+    end
+
     File.open("#{ROOT_DIR}/docs/index.json", 'w') do |file|
       file.write categories.to_json                       # write json to file
     end
 
-    puts 'Generated index.json'                           # entry point data for the web app
+    puts 'Generated index.json'
   end
 end

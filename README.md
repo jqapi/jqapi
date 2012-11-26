@@ -190,10 +190,10 @@ Also generated:
           ],
           "examples": [
             {
-            "desc": "...",
-            "code": "...",
-            "css": "...",
-            "html": "..."
+              "desc": "...",
+              "code": "...",
+              "css": "...",
+              "html": "..."
             },
             ...
           ],
@@ -207,4 +207,3 @@ Also generated:
   - whats wrong with jQuery.xml long_desc stripping?
   - there is nothing in the 'Uncategorized' categegory. check if there are entries and/or subcats.
   - strip descriptions in index.json
-  - maybe have a extra version.json

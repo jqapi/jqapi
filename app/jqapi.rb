@@ -25,31 +25,36 @@ class Jqapi < Sinatra::Base
   
   get '/docs/categories.json' do
     content_type :json
-    filepath = File.join(settings.root, 'docs/categories.json')
-
-    File.open(filepath).read
+    serve_file('docs', 'categories.json')
   end
 
   get '/docs/index.json' do
     content_type :json
-    filepath = File.join(settings.root, 'docs/index.json')
+    serve_file('docs', 'index.json')
+  end
 
-    File.open(filepath).read
+  get '/docs/versions.json' do
+    content_type :json
+    serve_file('docs', 'versions.json')
   end
 
   get '/docs/entries/*.json' do
     content_type :json
-    
-    filepath = File.join(settings.root, 'docs/entries', "#{params[:splat][0]}.json")
+    serve_file('docs/entries', "#{params[:splat][0]}.json")
+  end
+  
+  get '/' do
+    haml :index
+  end
+
+  private
+  def serve_file(path, filename)
+    filepath = File.join(settings.root, path, filename)
 
     if File.exists?(filepath)
       File.open(filepath).read
     else
       404
     end
-  end
-  
-  get '/' do
-    haml :index
   end
 end
