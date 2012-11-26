@@ -234,7 +234,11 @@ class Docs < Thor
         categories.each do |cat|                          # check every category
           if cat[:slug] == entry_cat                      # if the entry matches
             desc     = entry[:desc].gsub(%r{</?[^>]+?>}, '') # remove html from description
-                                                             # todo: excerpt of desc... its only for the navigation for now
+                                                          
+            if desc.length > 70                           # if the desc is greater that 70 characters
+              desc = "#{desc[0..70]}..."                  # cut it down to 70 characters
+            end
+
             entryObj = {                                  # build a new stripped entry obj
               :title => entry[:title],
               :desc  => desc,
