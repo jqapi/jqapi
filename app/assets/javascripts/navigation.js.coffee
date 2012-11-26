@@ -7,6 +7,10 @@ class jqapi.Navigation
     $.getJSON '/docs/index.json', (data) =>               # load the index json data with all categories and entries
       @buildNavigation data                               # and build from the object when loaded
 
+    @el.on 'click', '.top-cat-name, .sub-cat-name', ->    # on clicking a category header
+      $(@).parent().toggleClass 'open'                    # toggle class open on li
+      false
+
   hideLoader: ->                                          # is called when loaded and generated
     @el.children('.loader').remove()                      # simply remove the loader for now
 
