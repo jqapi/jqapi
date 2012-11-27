@@ -22,28 +22,29 @@ class Jqapi < Sinatra::Base
       sprockets.append_path(File.join(root, path))
     end
   end
+
+  before do
+    content_type :json
+  end
   
   get '/docs/categories.json' do
-    content_type :json
     serve_file('docs', 'categories.json')
   end
 
   get '/docs/index.json' do
-    content_type :json
     serve_file('docs', 'index.json')
   end
 
   get '/docs/versions.json' do
-    content_type :json
     serve_file('docs', 'versions.json')
   end
 
   get '/docs/entries/*.json' do
-    content_type :json
     serve_file('docs/entries', "#{params[:splat][0]}.json")
   end
   
   get '/' do
+    content_type :html
     haml :index
   end
 

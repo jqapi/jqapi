@@ -18,7 +18,7 @@ class jqapi.Navigation
       unless el.is(activeEl)                              # unless it is the same elent thats already active
         activeEl.removeClass 'active'                     # remove active class from recent el
         el.addClass 'active'                              # add it to the clicked entry
-        jqapi.events.on 'content:load', el.data('slug')   # let jqapi.Content know to load some content, pass slug
+        jqapi.events.trigger 'content:load', el.data('slug') # let jqapi.Content know to load some content, pass slug
 
   hideLoader: ->                                          # is called when loaded and generated
     @el.children('.loader').remove()                      # simply remove the loader for now
