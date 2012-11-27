@@ -5,6 +5,7 @@ jQuery ->                                                 # wait for dom ready
   new jqapi.Sidebar                                       # responsible for the sidebar dimensions
   new jqapi.Navigation                                    # loads the index and builds the list
   new jqapi.Content                                       # loads and inserts content
+  new jqapi.Search                                        # search and build the results
   
   $(window)
     .resize ->                                            # on window resize
