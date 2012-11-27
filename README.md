@@ -206,3 +206,4 @@ Also generated:
   - check if method is deprecated <entry type="method" name="live" return="jQuery" deprecated="1.7">
   - whats wrong with jQuery.xml long_desc stripping?
   - there is nothing in the 'Uncategorized' categegory. check if there are entries and/or subcats.
+  - cross browser css3
