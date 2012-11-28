@@ -6,10 +6,10 @@ class jqapi.Navigation
     
     $.getJSON '/docs/index.json', (data) =>               # load the index json data with all categories and entries
       @buildNavigation data                               # and build from the object when loaded
+      jqapi.events.trigger 'index:done', [data]           # let the app know that the index is loaded
 
     @el.on 'click', '.top-cat-name, .sub-cat-name', ->    # on clicking a category header
       $(@).parent().toggleClass 'open'                    # toggle class open on li
-      false
 
     @el.on 'click', '.entry', ->                          # on clicking a single entry
       el       = $ @                                      # caching
