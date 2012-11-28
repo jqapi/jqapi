@@ -1,4 +1,5 @@
 #= require jquery
+#= require jquery.ba-dotimeout
 
 #= require init
 #= require sidebar
