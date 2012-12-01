@@ -25,7 +25,7 @@ class jqapi.Navigation
 
   buildNavigation: (categories) ->                        # build the navigation from the categories array
     for topCat in categories                              # for each parent category
-      topCatEl        = $ @templateCategory('top', topCat.name) # build the template
+      topCatEl        = $ templates.categoryItem('top', topCat.name) # build the template
       topCatEntriesEl = @buildEntriesList(topCat.entries) # some parent categories have entries
       subCatsEl       = @buildSubcatList(topCat.subcats)  # some have sub categories
 
@@ -36,11 +36,11 @@ class jqapi.Navigation
     jqapi.events.trigger 'navigation:done'                # everything done. let anybody know.
 
   buildEntriesList: (entries) ->                          # build entries list elements for top/sub categories
-    el = $ @templateEntriesList()                         # get template
+    el = $ templates.entriesList()                        # get template
 
     if entries.length                                     # there are entries
       for entry in entries                                # go through each entry
-        entryEl = $ @templateEntriesItem(entry)           # generate the template
+        entryEl = $ templates.entriesItem(entry)          # generate the template
 
         el.append entryEl                                 # append it to the parent list
 
@@ -50,11 +50,11 @@ class jqapi.Navigation
       false                                               # return false, no need to return a empty list
 
   buildSubcatList: (subcats) ->                           # building the sub categories list
-    el = $ @templateSubcatsList()                         # get template
+    el = $ templates.subcatsList()                        # get template
 
     if subcats and subcats.length                         # are there any sub categories?
       for subcat in subcats                               # for each sub category
-        listEl = $ @templateCategory('sub', subcat.name)  # get template for category
+        listEl = $ templates.categoryItem('sub', subcat.name) # get template for category
 
         if subcat.entries.length                          # if the sub category has entries
           listEl.append @buildEntriesList(subcat.entries) # build and append the entries
@@ -64,24 +64,3 @@ class jqapi.Navigation
       el                                                  # return list of sub categories with entries
     else                                                  # parent category has no subs
       false                                               # return false
-
-  templateCategory: (pos, name) ->
-    """
-    <li class='#{pos}-cat'>
-      <span class='#{pos}-cat-name'>#{name}</span>
-    </li>
-    """
-
-  templateEntriesList: ->
-    '<ul class="entries" />'
-
-  templateEntriesItem: (entry) ->
-    """
-    <li class='entry' data-slug='#{entry.slug}'>
-      <span class='title'>#{entry.title}</span>
-      <span class='desc'>#{entry.desc}</span>
-    </li>
-    """
-
-  templateSubcatsList: ->
-    '<ul class="sub-cats" />'

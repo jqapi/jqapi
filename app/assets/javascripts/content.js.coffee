@@ -10,11 +10,4 @@ class jqapi.Content
       @parseContent data                                  # parse what was received
 
   parseContent: (entry) ->
-    @el.html @templateContent(entry)
-
-  templateContent: (entry) ->
-    """
-    <h1>#{entry.title}</h1>
-    <p>#{entry.desc}</p>
-    <p>#{entry.entries.length} entries</p>
-    """
+    @el.html templates.content(entry)

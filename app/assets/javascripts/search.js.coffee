@@ -1,7 +1,7 @@
 class jqapi.Search
   constructor: ->
     @el         = $ '#search-field'                       # search text input
-    @resultEl   = $ '<ul id="results" class="entries" />' # seperate list to show search results
+    @resultEl   = $ templates.resultsList()               # seperate list to show search results
     @categories = []                                      # loaded categories from json will be stored here
 
     @resultEl.hide().appendTo '#sidebar'                  # append the empty list to the sidebar, hide it initially
@@ -44,7 +44,7 @@ class jqapi.Search
     @resultEl.empty()
 
     for r in results
-      @resultEl.append "<li>#{r.title}</li>"
+      @resultEl.append templates.entriesItem(r)
     
     @resultEl.show()
     $('#navigation').hide()

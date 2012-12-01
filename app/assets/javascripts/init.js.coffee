@@ -2,6 +2,8 @@ window.jqapi = {}                                         # global object
 jqapi.events = $ {}                                       # use application events on a empty jquery object
 
 jQuery ->                                                 # wait for dom ready
+  window.templates = new jqapi.Templates                  # shared templates between scripts
+  
   new jqapi.Sidebar                                       # responsible for the sidebar dimensions
   new jqapi.Navigation                                    # loads the index and builds the list
   new jqapi.Content                                       # loads and inserts content
