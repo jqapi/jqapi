@@ -13,9 +13,13 @@
     #sidebar
       #search
         %input#search-field{:type => 'search', :placeholder => 'Search', :autocomplete => 'off', :autosave => 'searchdoc',  :results => '0', :autofocus => 'autofocus'}
-    
-      %ul#navigation
-        %li.loader Loading...
+
+      #sidebar-content
+        %ul#categories
+          %li.loader Loading...
+
+        %ul#results.entries
+          %li.loader Loading...
 
     #content
       %h1

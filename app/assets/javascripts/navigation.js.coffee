@@ -1,6 +1,6 @@
 class jqapi.Navigation  
   constructor: ->
-    @el = $ '#navigation'                                 # parent ul element
+    @el = $ '#categories'                                 # parent ul element
     
     jqapi.events.on 'navigation:done', => @hideLoader()   # call when everything is loaded and generated
     
@@ -10,15 +10,6 @@ class jqapi.Navigation
 
     @el.on 'click', '.top-cat-name, .sub-cat-name', ->    # on clicking a category header
       $(@).parent().toggleClass 'open'                    # toggle class open on li
-
-    @el.on 'click', '.entry', ->                          # on clicking a single entry
-      el       = $ @                                      # caching
-      activeEl = $('.active', @el)                        # last clicked element
-
-      unless el.is(activeEl)                              # unless it is the same elent thats already active
-        activeEl.removeClass 'active'                     # remove active class from recent el
-        el.addClass 'active'                              # add it to the clicked entry
-        jqapi.events.trigger 'content:load', el.data('slug') # let jqapi.Content know to load some content, pass slug
 
   hideLoader: ->                                          # is called when loaded and generated
     @el.children('.loader').remove()                      # simply remove the loader for now

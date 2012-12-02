@@ -5,5 +5,6 @@
 #= require templates
 #= require sidebar
 #= require navigation
+#= require entries
 #= require content
 #= require search

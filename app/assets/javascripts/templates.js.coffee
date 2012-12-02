@@ -26,6 +26,3 @@ class jqapi.Templates
     <p>#{entry.desc}</p>
     <p>#{entry.entries.length} entries</p>
     """
-
-  resultsList: ->
-    '<ul id="results" class="entries" />'
