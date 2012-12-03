@@ -42,6 +42,8 @@ class jqapi.Search
             result     = @searchInEntries(term, subCat.entries) # search in there as well
             allResults = allResults.concat(result)        # concat array with results found in subcat
 
+    allResults = @removeDuplicates(allResults)            # remove all duplicates
+
     @buildResultList allResults                           # build the dom list of results
 
   searchInEntries: (term, entries) ->
@@ -54,6 +56,17 @@ class jqapi.Search
         results.push entry                                # if so push entry to array
 
     results                                               # return result array
+
+  removeDuplicates: (results) ->
+    retArr   = []                                         # stripped down array
+    checkArr = []                                         # save processed slugs
+
+    for result in results                                 # go through search results with possible duplicates
+      if $.inArray(result.slug, checkArr) is -1           # if it isnt already in the check array
+        checkArr.push result.slug                         # mark result as processed
+        retArr.push result                                # and save the whole object in return array
+
+    retArr                                                # return stripped down array
 
   buildResultList: (results) -> #ey, work in progress
     @resultEl.empty()
