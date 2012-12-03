@@ -8,3 +8,4 @@
 #= require entries
 #= require content
 #= require search
+#= require keyboard

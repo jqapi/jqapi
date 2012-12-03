@@ -55,11 +55,13 @@ class jqapi.Search
 
     results                                               # return result array
 
-  buildResultList: (results) ->
+  buildResultList: (results) -> #ey, work in progress
     @resultEl.empty()
 
     for r in results
       @resultEl.append templates.entriesItem(r)
+
+    @resultEl.children(':odd').addClass 'odd'
     
     @resultEl.show()
     $('#categories').hide()
