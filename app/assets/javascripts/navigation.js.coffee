@@ -7,6 +7,9 @@ class jqapi.Navigation
 
     jqapi.events.on 'search:empty', =>                    # on empty search input
       @el.show()                                          # show the general categories list
+
+    jqapi.events.on 'search:done', =>                     # if a search was performed
+      @el.hide()                                          # hide the categories list
     
     $.getJSON '/docs/index.json', (data) =>               # load the index json data with all categories and entries
       @buildNavigation data                               # and build from the object when loaded

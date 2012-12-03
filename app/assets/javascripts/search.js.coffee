@@ -11,6 +11,9 @@ class jqapi.Search
     jqapi.events.on 'search:empty', =>                    # on empty search input
       @resultEl.hide()                                    # hide the results list
 
+    jqapi.events.on 'search:done', =>                     # search is complete
+      @resultEl.show()                                    # show the result dom list
+
     jqapi.events.on 'index:done', (e, categories) =>      # wait for the categories to be loaded
       @categories = categories                            # store the cats array
 
@@ -25,7 +28,7 @@ class jqapi.Search
     else if term isnt @lastTerm                           # only trigger search if term changed
       @lastTerm = term                                    # save changed search term
 
-      $.doTimeout 'search', 250, =>                       # alaways wait 250ms between searches
+      $.doTimeout 'search', 200, =>                       # alaways wait between searches
         @search term                                      # and trigger search with current term
 
   search: (term) ->
@@ -68,13 +71,20 @@ class jqapi.Search
 
     retArr                                                # return stripped down array
 
-  buildResultList: (results) -> #ey, work in progress
-    @resultEl.empty()
+  buildResultList: (results) ->
+    notFoundClass = '.not-found'                          # a seperate li inside the results list
+    notFoundEl    = $(notFoundClass, @resultEl)           # cache el
 
-    for r in results
-      @resultEl.append templates.entriesItem(r)
+    @resultEl.children(":not(#{notFoundClass})").remove() # remove everything except the not found message
 
-    @resultEl.children(':odd').addClass 'odd'
-    
-    @resultEl.show()
-    $('#categories').hide()
+    if results.length is 0                                # nothing was found for the search term
+      notFoundEl.show()                                   # show not found message
+    else                                                  # there are search results
+      notFoundEl.hide()                                   # hide not found message
+
+      for result in results                               # for every result
+        @resultEl.append templates.entriesItem(result)    # build the template and append it
+
+      @resultEl.children(':odd').addClass 'odd'           # zebra the results
+
+    jqapi.events.trigger 'search:done'                    # let the app know that the search is complete
