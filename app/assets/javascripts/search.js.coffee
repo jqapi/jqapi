@@ -4,6 +4,9 @@ class jqapi.Search
     @resultEl   = $ '#results'                            # seperate list to show search results
     @categories = []                                      # loaded categories from json will be stored here
 
+    jqapi.events.on 'search:focus', =>                    # receive event when to set focus
+      @el.focus()                                         # and do it
+
     jqapi.events.on 'index:done', (e, categories) =>      # wait for the categories to be loaded
       @categories = categories                            # store the cats array
 

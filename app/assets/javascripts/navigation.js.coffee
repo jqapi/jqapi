@@ -10,6 +10,7 @@ class jqapi.Navigation
 
     @el.on 'click', '.top-cat-name, .sub-cat-name', ->    # on clicking a category header
       $(@).parent().toggleClass 'open'                    # toggle class open on li
+      jqapi.events.trigger 'search:focus'                 # set the lost focus on the search field
 
   hideLoader: ->                                          # is called when loaded and generated
     @el.children('.loader').remove()                      # simply remove the loader for now

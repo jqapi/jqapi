@@ -207,5 +207,4 @@ Also generated:
   - whats wrong with jQuery.xml long_desc stripping?
   - there is nothing in the 'Uncategorized' categegory. check if there are entries and/or subcats.
   - cross browser css3
-  - unify category and search results navigation, style via parent
   - check sandbox for demos: https://github.com/versal/sandbox-js
