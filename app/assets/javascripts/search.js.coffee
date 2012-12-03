@@ -3,6 +3,7 @@ class jqapi.Search
     @el         = $ '#search-field'                       # search text input
     @resultEl   = $ '#results'                            # seperate list to show search results
     @categories = []                                      # loaded categories from json will be stored here
+    @lastTerm   = ''                                      # keep track of the last search term
 
     jqapi.events.on 'search:focus', =>                    # receive event when to set focus
       @el.focus()                                         # and do it
@@ -11,8 +12,13 @@ class jqapi.Search
       @categories = categories                            # store the cats array
 
       @el.on 'keyup', (e) =>                              # watch key up on the search field
-        $.doTimeout 'search', 250, =>                     # alaways wait 250ms between searches
-          @search @el.val()                               # and trigger search with current term
+        term = @el.val()                                  # cache the current search term
+
+        if term isnt @lastTerm                            # only trigger search if term changed
+          @lastTerm = term                                # save changed search term
+
+          $.doTimeout 'search', 250, =>                   # alaways wait 250ms between searches
+            @search term                                  # and trigger search with current term
 
   search: (term) ->
     allResults = []                                       # store matching objects in here
