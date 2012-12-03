@@ -2,7 +2,11 @@ class jqapi.Navigation
   constructor: ->
     @el = $ '#categories'                                 # parent ul element
     
-    jqapi.events.on 'navigation:done', => @hideLoader()   # call when everything is loaded and generated
+    jqapi.events.on 'navigation:done', =>                 # call when everything is loaded and generated
+      @hideLoader()                                       # hide the loader
+
+    jqapi.events.on 'search:empty', =>                    # on empty search input
+      @el.show()                                          # show the general categories list
     
     $.getJSON '/docs/index.json', (data) =>               # load the index json data with all categories and entries
       @buildNavigation data                               # and build from the object when loaded

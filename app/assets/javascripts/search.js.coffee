@@ -8,17 +8,25 @@ class jqapi.Search
     jqapi.events.on 'search:focus', =>                    # receive event when to set focus
       @el.focus()                                         # and do it
 
+    jqapi.events.on 'search:empty', =>                    # on empty search input
+      @resultEl.hide()                                    # hide the results list
+
     jqapi.events.on 'index:done', (e, categories) =>      # wait for the categories to be loaded
       @categories = categories                            # store the cats array
 
       @el.on 'keyup', (e) =>                              # watch key up on the search field
-        term = @el.val()                                  # cache the current search term
+        @triggerSearch()                                  # and kick it off
 
-        if term isnt @lastTerm                            # only trigger search if term changed
-          @lastTerm = term                                # save changed search term
+  triggerSearch: ->
+    term = @el.val()                                      # cache the current search term
 
-          $.doTimeout 'search', 250, =>                   # alaways wait 250ms between searches
-            @search term                                  # and trigger search with current term
+    if term.length is 0                                   # search input is empty
+      jqapi.events.trigger 'search:empty'                 # let the app know
+    else if term isnt @lastTerm                           # only trigger search if term changed
+      @lastTerm = term                                    # save changed search term
+
+      $.doTimeout 'search', 250, =>                       # alaways wait 250ms between searches
+        @search term                                      # and trigger search with current term
 
   search: (term) ->
     allResults = []                                       # store matching objects in here
