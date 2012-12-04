@@ -14,6 +14,10 @@ class jqapi.Search
     jqapi.events.on 'search:done', =>                     # search is complete
       @resultEl.show()                                    # show the result dom list
 
+    jqapi.events.on 'search:clear', =>                    # its requested to clear the field
+      @el.val ''                                          # obey
+      jqapi.events.trigger 'search:empty'                 # and let anybody know
+
     jqapi.events.on 'index:done', (e, categories) =>      # wait for the categories to be loaded
       @categories = categories                            # store the cats array
 
