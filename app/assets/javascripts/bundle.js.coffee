@@ -4,7 +4,7 @@
 #= require init
 #= require templates
 #= require sidebar
-#= require navigation
+#= require categories
 #= require entries
 #= require content
 #= require search

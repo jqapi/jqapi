@@ -1,4 +1,4 @@
-class jqapi.Navigation  
+class jqapi.Categories
   constructor: ->
     @el = $ '#categories'                                 # parent ul element
     
