@@ -28,9 +28,10 @@ class jqapi.Categories
       topCatEntriesEl = @buildEntriesList(topCat.entries) # some parent categories have entries
       subCatsEl       = @buildSubcatList(topCat.subcats)  # some have sub categories
 
-      topCatEl.append subCatsEl       if subCatsEl        # add sub categories if any
-      topCatEl.append topCatEntriesEl if topCatEntriesEl  # add entries if any
-      topCatEl.appendTo @el                               # append parent category object to list
+      if subCatsEl or topCatEntriesEl                     # only append if there are either sub categories or entries
+        topCatEl.append subCatsEl                         # add sub categories
+        topCatEl.append topCatEntriesEl                   # add entries
+        topCatEl.appendTo @el                             # append parent category object to list
 
     jqapi.events.trigger 'navigation:done'                # everything done. let anybody know.
 
@@ -54,11 +55,10 @@ class jqapi.Categories
     if subcats and subcats.length                         # are there any sub categories?
       for subcat in subcats                               # for each sub category
         listEl = $ templates.categoryItem('sub', subcat.name) # get template for category
-
+        
         if subcat.entries.length                          # if the sub category has entries
           listEl.append @buildEntriesList(subcat.entries) # build and append the entries
-
-        listEl.appendTo el                                # append entries list to category
+          listEl.appendTo el                              # append entries list to category
 
       el                                                  # return list of sub categories with entries
     else                                                  # parent category has no subs
