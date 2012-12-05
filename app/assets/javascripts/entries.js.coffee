@@ -7,12 +7,16 @@ class jqapi.Entries
     @el.on 'click', '.entry', ->                          # on clicking a single entry
       self.loadEntry $(@)                                 # load the clicked entry
 
+    jqapi.events.on 'entries:load', (e, entry) =>         # requested from outside to load entry
+      @loadEntry entry                                    # do so
+
   loadEntry: (el) ->
     activeClass = 'active'
 
     unless el.is(@currentEl)                              # dont load the same entry twice
       @currentEl.removeClass activeClass                  # remove active class from recent el
       el.addClass activeClass                             # add it to the clicked entry
+      el.removeClass 'hover'                              # remove any selection via keyboard
 
       @currentEl = el                                     # cache current entry
 

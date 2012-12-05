@@ -12,5 +12,5 @@ class jqapi.Keyboard
           jqapi.events.trigger 'navigate:up'              # let the app know the user want to navigate up
         when 40 # DOWN
           jqapi.events.trigger 'navigate:down'            # or down
-        when 17 # ENTER
+        when 13 # ENTER
           jqapi.events.trigger 'navigate:enter'           # user wants to open category or see entry
