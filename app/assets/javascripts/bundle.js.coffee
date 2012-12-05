@@ -9,3 +9,4 @@
 #= require content
 #= require search
 #= require keyboard
+#= require navigate

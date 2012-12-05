@@ -10,6 +10,7 @@ jQuery ->                                                 # wait for dom ready
   new jqapi.Content                                       # loads and inserts content
   new jqapi.Search                                        # search and build the results
   new jqapi.Keyboard                                      # handle special keys
+  new jqapi.Navigate                                      # navigates through the categories or search results
   
   $(window)
     .resize ->                                            # on window resize
