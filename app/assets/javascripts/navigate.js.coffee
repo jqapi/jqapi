@@ -8,7 +8,9 @@ class jqapi.Navigate
     @getActiveList()                                      # initially cache current list
 
     jqapi.events.on 'search:empty', => @getActiveList()   # if the search is empty switch to categories list
-    jqapi.events.on 'search:done',  => @getActiveList()   # if searched switch to search results list
+    jqapi.events.on 'search:done',  =>
+      @getActiveList()                                    # if searched switch to search results list
+      @selectFirstItem()                                  # and also select the first item since its a new list
 
     jqapi.events.on 'navigate:up',    => @prevItem()      # on navigation down request select next item
     jqapi.events.on 'navigate:down',  => @nextItem()      # on navigation down request select next item
