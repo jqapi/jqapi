@@ -11,3 +11,8 @@ class jqapi.Content
 
   parseContent: (entry) ->
     @el.html templates.content(entry)
+
+
+    codeEl = $ "<pre class='code'>#{entry.entries[0].examples.code}</pre>"
+    @el.append codeEl
+    codeEl.snippet 'javascript', { showNum: true, menu: false }
