@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery.ba-dotimeout
+#= require jquery.snippet
 
 #= require init
 #= require templates

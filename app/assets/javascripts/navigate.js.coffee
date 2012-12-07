@@ -35,7 +35,13 @@ class jqapi.Navigate
       return                                              # nothing more to do
 
     @currentItemEl.removeClass @hoverClass                # remove class from current item
-    @currentItemEl = @currentItemEl[direction]()          # navigate to prev/next item
+
+    if @currentItemEl.hasClass('open')                    # its a category and it is open
+      # work in progress
+      @currentItemEl = @currentItemEl.children('.entries').children(':first')
+    else                                                  # its either a closed category or entry
+      @currentItemEl = @currentItemEl[direction]()        # navigate to prev/next item
+
     @currentItemEl.addClass @hoverClass                   # and set class to new item
 
   enterItem: ->
