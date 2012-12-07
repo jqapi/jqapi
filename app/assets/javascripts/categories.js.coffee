@@ -1,6 +1,7 @@
 class jqapi.Categories
   constructor: ->
-    @el = $ '#categories'                                 # parent ul element
+    @el  = $ '#categories'                                # parent ul element
+    self = @
     
     jqapi.events.on 'navigation:done', =>                 # call when everything is loaded and generated
       @hideLoader()                                       # hide the loader
@@ -10,13 +11,16 @@ class jqapi.Categories
 
     jqapi.events.on 'search:done', =>                     # if a search was performed
       @el.hide()                                          # hide the categories list
+
+    jqapi.events.on 'categories:toggle', (e, catEl) =>    # on request to toggle a category
+      @toggleCategory catEl                               # toggle the category content
     
     $.getJSON '/docs/index.json', (data) =>               # load the index json data with all categories and entries
       @buildNavigation data                               # and build from the object when loaded
       jqapi.events.trigger 'index:done', [data]           # let the app know that the index is loaded
 
     @el.on 'click', '.top-cat-name, .sub-cat-name', ->    # on clicking a category header
-      $(@).parent().toggleClass 'open'                    # toggle class open on li
+      self.toggleCategory $(@).parent()                   # toggle the category
       jqapi.events.trigger 'search:focus'                 # set the lost focus on the search field
 
   hideLoader: ->                                          # is called when loaded and generated
@@ -63,3 +67,6 @@ class jqapi.Categories
       el                                                  # return list of sub categories with entries
     else                                                  # parent category has no subs
       false                                               # return false
+
+  toggleCategory: (catEl) ->
+    catEl.toggleClass 'open'                              # toggle class open on li

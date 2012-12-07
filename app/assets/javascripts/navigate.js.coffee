@@ -17,8 +17,7 @@ class jqapi.Navigate
     jqapi.events.on 'navigate:enter', => @enterItem()     # on enter open/load the item
 
   getActiveList: ->
-    @listEl        = @sidebarEl.children('ul:visible')    # determine if we are in categories or search results
-    @currentItemEl = []                                   # clear the currently selected item on list switch
+    @listEl = @sidebarEl.children('ul:visible')           # determine if we are in categories or search results
 
   prevItem: ->
     @navigateToItem 'prev'                                # navigate to previous item
@@ -31,7 +30,7 @@ class jqapi.Navigate
     @currentItemEl.addClass @hoverClass                   # add the style class
 
   navigateToItem: (direction) ->
-    unless @currentItemEl.length                          # if nothing is selected yet
+    if @currentItemEl.length is 0                         # if nothing is selected yet
       @selectFirstItem()                                  # select the first item
       return                                              # nothing more to do
 
@@ -40,4 +39,7 @@ class jqapi.Navigate
     @currentItemEl.addClass @hoverClass                   # and set class to new item
 
   enterItem: ->
-    jqapi.events.trigger 'entries:load', [@currentItemEl] # trigger event and let entries handl the loading
+    if @currentItemEl.hasClass 'entry'                    # if the selected item is a entry
+      jqapi.events.trigger 'entries:load', [@currentItemEl] # trigger event and let entries handl the loading
+    else                                                  # selected item is a top or sub category
+      jqapi.events.trigger 'categories:toggle', [@currentItemEl] # tell categories handling to toggle it
