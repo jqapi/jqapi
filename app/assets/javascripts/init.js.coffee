@@ -7,6 +7,7 @@ jQuery ->                                                 # wait for dom ready
   parts = [
     'Sidebar'                                             # responsible for the sidebar dimensions
     'Categories'                                          # loads the index and builds the list
+    'Header'                                              # header navigation for different signatures
     'Entries'                                             # handling entries from categories or search results
     'Entry'                                               # loads and inserts a single entry
     'Search'                                              # search and build the results

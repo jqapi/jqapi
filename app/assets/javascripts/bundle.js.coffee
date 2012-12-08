@@ -6,6 +6,7 @@
 #= require templates
 #= require sidebar
 #= require categories
+#= require header
 #= require entries
 #= require entry
 #= require search
