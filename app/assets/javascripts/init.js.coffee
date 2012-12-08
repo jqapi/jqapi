@@ -3,14 +3,19 @@ jqapi.events = $ {}                                       # use application even
 
 jQuery ->                                                 # wait for dom ready
   window.templates = new jqapi.Templates                  # shared templates between scripts
-  
-  new jqapi.Sidebar                                       # responsible for the sidebar dimensions
-  new jqapi.Categories                                    # loads the index and builds the list
-  new jqapi.Entries                                       # handling entries from categories or search results
-  new jqapi.Entry                                         # loads and inserts a single entry
-  new jqapi.Search                                        # search and build the results
-  new jqapi.Keyboard                                      # handle special keys
-  new jqapi.Navigate                                      # navigates through the categories or search results
+
+  parts = [
+    'Sidebar'                                             # responsible for the sidebar dimensions
+    'Categories'                                          # loads the index and builds the list
+    'Entries'                                             # handling entries from categories or search results
+    'Entry'                                               # loads and inserts a single entry
+    'Search'                                              # search and build the results
+    'Keyboard'                                            # handle special keys
+    'Navigate'                                            # navigates through the categories or search results
+  ]
+
+  for part in parts                                       # load the whole application parts
+    new jqapi[part]                                       # initialize the part
   
   $(window)
     .resize ->                                            # on window resize
