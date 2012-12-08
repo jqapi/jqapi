@@ -1,6 +1,6 @@
 class jqapi.Content
   constructor: ->
-    @el = $ '#content'                                    # parent element
+    @el = $ '#entry'                                      # parent element
 
     jqapi.events.on 'content:load', (e, slug) =>          # content must be loaded on this even
       @loadContent slug                                   # find content via the slug

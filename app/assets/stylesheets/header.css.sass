@@ -1,0 +1,51 @@
+#header
+  background: #ecf3fe
+  position: relative
+  min-height: 31px
+  border-bottom: 1px solid #d4e4fc
+  
+  ul
+    position: absolute
+    height: 31px
+    
+    li
+      float: left
+      height: 100%
+      
+      a
+        display: block
+        height: 100%
+        border-right: 1px solid #d4e4fc
+        font-size: 1.1em
+        color: #333
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5)
+        text-decoration: none
+        
+        span
+          display: block
+          padding: 10px 12px 0 12px
+        
+        &:hover
+          background: #d4e4fc
+          color: #111
+    
+  ul#signatures-nav
+    li:first-child
+      a
+        border-left: none
+      
+  ul#navigation
+    right: 0
+    
+    li:first-child
+      a
+        border-left: 1px solid #d4e4fc
+    
+    li:last-child
+      a
+        border-right: none
+
+#entry
+  overflow-y: scroll
+  overflow-x: auto
+  height: 400px
