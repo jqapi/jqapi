@@ -51,7 +51,7 @@ class jqapi.Search
 
     allResults = @removeDuplicates(allResults)            # remove all duplicates
 
-    @buildResultList allResults                           # build the dom list of results
+    @buildResultList allResults, term                     # build the dom list of results
 
   searchInEntries: (term, entries) ->
     results = []                                          # store results found in entries
@@ -75,7 +75,7 @@ class jqapi.Search
 
     retArr                                                # return stripped down array
 
-  buildResultList: (results) ->
+  buildResultList: (results, term) ->
     notFoundClass = '.not-found'                          # a seperate li inside the results list
     notFoundEl    = $(notFoundClass, @resultEl)           # cache el
 
@@ -87,7 +87,11 @@ class jqapi.Search
       notFoundEl.hide()                                   # hide not found message
 
       for result in results                               # for every result
-        @resultEl.append templates.entriesItem(result)    # build the template and append it
+        entryEl = $ templates.entriesItem(result)         # build the template
+
+        
+        @resultEl.append entryEl                          # and append it
+        $('.title', entryEl).highlight term               # highlight the matching text parts
 
       @resultEl.children(':odd').addClass 'odd'           # zebra the results
 
