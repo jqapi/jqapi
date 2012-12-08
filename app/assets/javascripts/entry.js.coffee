@@ -14,11 +14,13 @@ class jqapi.Entry
   loadContent: (slug) ->
     $.getJSON "/docs/entries/#{slug}.json", (data) =>     # fetch from json file
       @parseEntry data                                    # parse what was received
+      jqapi.events.trigger 'entry:done', [data]           # let the app know that a new entry is loaded
 
   parseEntry: (entry) ->
     @el.html templates.entry(entry)
 
-
+    ###
     codeEl = $ "<pre class='code'>#{entry.entries[0].examples.code}</pre>"
     @el.append codeEl
     codeEl.snippet 'javascript', { showNum: true, menu: false }
+    ###
