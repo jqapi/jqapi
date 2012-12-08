@@ -7,7 +7,7 @@
 #= require sidebar
 #= require categories
 #= require entries
-#= require content
+#= require entry
 #= require search
 #= require keyboard
 #= require navigate

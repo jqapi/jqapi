@@ -20,7 +20,7 @@ class jqapi.Templates
     </li>
     """
 
-  content: (entry) ->
+  entry: (entry) ->
     """
     <h1>#{entry.title}</h1>
     <p>#{entry.desc}</p>

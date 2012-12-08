@@ -20,5 +20,5 @@ class jqapi.Entries
 
       @currentEl = el                                     # cache current entry
 
-      jqapi.events.trigger 'content:load', el.data('slug') # let jqapi.Content know to load some content, pass slug
+      jqapi.events.trigger 'entry:load', el.data('slug')  # let jqapi.Content know to load some content, pass slug
       jqapi.events.trigger 'search:focus'                 # set the lost focus on the search field

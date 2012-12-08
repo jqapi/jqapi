@@ -1,16 +1,16 @@
-class jqapi.Content
+class jqapi.Entry
   constructor: ->
     @el = $ '#entry'                                      # parent element
 
-    jqapi.events.on 'content:load', (e, slug) =>          # content must be loaded on this even
+    jqapi.events.on 'entry:load', (e, slug) =>            # entry content must be loaded on this event
       @loadContent slug                                   # find content via the slug
 
   loadContent: (slug) ->
     $.getJSON "/docs/entries/#{slug}.json", (data) =>     # fetch from json file
-      @parseContent data                                  # parse what was received
+      @parseEntry data                                    # parse what was received
 
-  parseContent: (entry) ->
-    @el.html templates.content(entry)
+  parseEntry: (entry) ->
+    @el.html templates.entry(entry)
 
 
     codeEl = $ "<pre class='code'>#{entry.entries[0].examples.code}</pre>"

@@ -7,7 +7,7 @@ jQuery ->                                                 # wait for dom ready
   new jqapi.Sidebar                                       # responsible for the sidebar dimensions
   new jqapi.Categories                                    # loads the index and builds the list
   new jqapi.Entries                                       # handling entries from categories or search results
-  new jqapi.Content                                       # loads and inserts content
+  new jqapi.Entry                                         # loads and inserts a single entry
   new jqapi.Search                                        # search and build the results
   new jqapi.Keyboard                                      # handle special keys
   new jqapi.Navigate                                      # navigates through the categories or search results
