@@ -22,9 +22,14 @@ class jqapi.Templates
 
   entry: (entry) ->
     """
-    <h1>#{entry.title}</h1>
-    <p>#{entry.desc}</p>
-    <p>#{entry.entries.length} entries</p>
+    <div id='entry-header'>
+      <h1>#{entry.title}</h1>
+      <p>#{entry.desc}</p>
+      <ul class='categories'>
+        <li>manipulation</li>
+        <li>love</li>
+      </ul>
+    </div>
     """
 
   signatureNavItem: (title, signature) ->

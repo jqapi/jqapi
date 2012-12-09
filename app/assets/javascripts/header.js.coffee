@@ -1,7 +1,7 @@
 class jqapi.Header
   constructor: ->
-    @el = $ '#header'                                     # parent element
-    @signaturesEl = $('#signatures-nav', @el)
+    @el           = $ '#header'                           # parent element
+    @signaturesEl = $('#signatures-nav', @el)             # signatures navigation list
 
     jqapi.events.on 'entry:done', (e, entry) =>           # when there is a new entry loaded
       @updateSignatureNav entry                           # update the header signatures navigation
