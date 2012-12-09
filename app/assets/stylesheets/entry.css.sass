@@ -6,6 +6,7 @@
 
   #entry-header
     position: relative
+    margin-bottom: 30px
 
     h1
       font-size: 3.2em
@@ -27,3 +28,28 @@
       font-size: 1.2em
       line-height: 18px
       display: none //introduce it when linking cats is working
+
+  #entries
+    > li
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
+      margin-bottom: 16px
+
+      ul.signatures
+        li
+          h2
+            background: #d4e4fc
+            font-size: 1.6em
+            padding: 10px 15px
+            position: relative
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6)
+            border-bottom: 1px solid #91baf7
+
+            span.return
+              color: #888
+
+            span.version
+              position: absolute
+              top: 13px
+              right: 15px
+              font-size: 0.7em
+              color: #777

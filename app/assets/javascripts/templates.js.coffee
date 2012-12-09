@@ -27,6 +27,44 @@ class jqapi.Templates
       <p>#{entry.desc}</p>
       <ul id='categories'></ul>
     </div>
+    <ul id='entries'>
+      <li>
+        <ul class='signatures'>
+          <li>
+            <h2>
+              .css(propertyName)
+              <span class='return'>&rarr; String</span>
+              <span class='version'>1.0</span>
+            </h2>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul class='signatures'>
+          <li>
+            <h2>
+              .css(propertyName, value)
+              <span class='return'>&rarr; jQuery</span>
+              <span class='version'>1.0</span>
+            </h2>
+          </li>
+          <li>
+            <h2>
+              .css(propertyName, function(index, value))
+              <span class='return'>&rarr; jQuery</span>
+              <span class='version'>1.4</span>
+            </h2>
+          </li>
+          <li>
+            <h2>
+              .css(properties)
+              <span class='return'>&rarr; jQuery</span>
+              <span class='version'>1.4</span>
+            </h2>
+          </li>
+        </ul>
+      </li>
+    </ul>
     """
 
   signatureNavItem: (title, signature) ->
