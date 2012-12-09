@@ -17,7 +17,14 @@ class jqapi.Entry
       jqapi.events.trigger 'entry:done', [data]           # let the app know that a new entry is loaded
 
   parseEntry: (entry) ->
-    @el.html templates.entry(entry)
+    entryEl = $ templates.entry(entry)                    # generate element from template
+    catsEl  = $('#categories', entryEl)
+
+    for cat in entry.categories                           # go through the category array
+      continue if cat.substr(0, 7) is 'version'           # skip the version categories
+      catsEl.append "<li>#{cat}</li>"
+
+    @el.html entryEl
 
     ###
     codeEl = $ "<pre class='code'>#{entry.entries[0].examples.code}</pre>"

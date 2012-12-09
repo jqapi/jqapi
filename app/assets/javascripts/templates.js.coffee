@@ -25,10 +25,7 @@ class jqapi.Templates
     <div id='entry-header'>
       <h1>#{entry.title}</h1>
       <p>#{entry.desc}</p>
-      <ul class='categories'>
-        <li>manipulation</li>
-        <li>love</li>
-      </ul>
+      <ul id='categories'></ul>
     </div>
     """
 
