@@ -28,11 +28,11 @@ class jqapi.Header
       for sig in sigArr
         argsArr = sig.argument
         argsArr = [sig.argument] unless $.isArray(argsArr)
-        argsStr = ''
+        joinArr = []
 
         for arg in argsArr
-          argsStr += "#{arg.name}, " if arg and arg.name
+          joinArr.push arg.name if arg and arg.name
 
-        retArr.push argsStr.substr(0, argsStr.length - 2)
+        retArr.push joinArr.join(', ')
 
     retArr

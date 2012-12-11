@@ -22,49 +22,32 @@ class jqapi.Templates
 
   entry: (entry) ->
     """
-    <div id='entry-header'>
-      <h1>#{entry.title}</h1>
-      <p>#{entry.desc}</p>
-      <ul id='categories'></ul>
+    <div id='entry-wrapper'>
+      <div id='entry-header'>
+        <h1>#{entry.title}</h1>
+        <p>#{entry.desc}</p>
+        <ul id='categories'></ul>
+      </div>
+      <ul id='entries'></ul>
     </div>
-    <ul id='entries'>
-      <li>
-        <ul class='signatures'>
-          <li>
-            <h2>
-              .css(propertyName)
-              <span class='return'>&rarr; String</span>
-              <span class='version'>1.0</span>
-            </h2>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <ul class='signatures'>
-          <li>
-            <h2>
-              .css(propertyName, value)
-              <span class='return'>&rarr; jQuery</span>
-              <span class='version'>1.0</span>
-            </h2>
-          </li>
-          <li>
-            <h2>
-              .css(propertyName, function(index, value))
-              <span class='return'>&rarr; jQuery</span>
-              <span class='version'>1.4</span>
-            </h2>
-          </li>
-          <li>
-            <h2>
-              .css(properties)
-              <span class='return'>&rarr; jQuery</span>
-              <span class='version'>1.4</span>
-            </h2>
-          </li>
-        </ul>
-      </li>
-    </ul>
+    """
+
+  entryEntriesItem: (entry) ->
+    """
+    <li class='entry'>
+      <ul class='signatures'></ul>
+    </li>
+    """
+
+  signaturesItem: (title, ret, version) ->
+    """
+    <li class='signature'>
+      <h2>
+        <span class='title'>#{title}</span>
+        <span class='return'>&rarr; #{ret}</span>
+        <span class='version'>#{version}</span>
+      </h2>
+    </li>
     """
 
   signatureNavItem: (title, signature) ->

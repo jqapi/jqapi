@@ -51,17 +51,36 @@
           %p The faster way to browse the jQuery documentation.
 
         %ul#entries
-          %li
+          %li.entry
             %ul.signatures
-              %li
+              %li.signature
                 %h2
                   What is this?
                   %span.return &rarr; jQAPI
-              %li
+
+                %table.arguments
+                  %tbody
+                    %tr
+                      %td.name propertyName
+                      %td.type String
+                      %td.desc This is a desc
+                    %tr.odd
+                      %td.name obj
+                      %td.type Object
+                      %td.desc This just is a desc
+              %li.signature
                 %h2
-                  Why another docs browser?
-                  %span.return &rarr; Cut some development time
-              %li
-                %h2
-                  Usage
-                  %span.return &rarr; There are shortcuts
+                  \.css(propertyName. obj)
+                  %span.return &rarr; jQAPI
+
+                %table.arguments
+                  %tbody
+                    %tr
+                      %td.name propertyName
+                      %td.type String
+                      %td.desc This is a desc
+                    %tr.odd
+                      %td.name obj
+                      %td.type Object
+                      %td.desc This just is a desc
+                    

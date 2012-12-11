@@ -30,18 +30,19 @@
       display: none //introduce it when linking cats is working
 
   #entries
-    > li
+    li.entry
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
       margin-bottom: 16px
 
       ul.signatures
-        li
+        li.signature
           h2
             background: #d4e4fc
             font-size: 1.6em
             padding: 10px 15px
             position: relative
             text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6)
+            border-top: 1px solid #91baf7
             border-bottom: 1px solid #91baf7
 
             span.return
@@ -53,3 +54,26 @@
               right: 15px
               font-size: 0.7em
               color: #777
+
+          &:first-child
+            h2
+              border-top: none
+
+          table.arguments
+            width: 100%
+
+            tr
+              td
+                font-size: 1.36em
+                padding: 10px 15px
+                border-bottom: 1px solid #eee
+
+                &.name
+                  width: 200px
+
+                &.type
+                  width: 100px
+                  color: #888
+
+            tr:nth-child(even)
+              background: #edf3fe

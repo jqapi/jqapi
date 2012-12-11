@@ -22,3 +22,7 @@ jQuery ->                                                 # wait for dom ready
     .resize ->                                            # on window resize
       jqapi.events.trigger 'window:resize', [$(@)]        # trigger a event on the app
     .trigger 'resize'                                     # initially trigger the resize event
+
+  setTimeout ->
+    jqapi.events.trigger 'entry:load', ['css']
+  , 1000
