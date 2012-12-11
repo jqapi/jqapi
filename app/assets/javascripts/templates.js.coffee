@@ -47,6 +47,7 @@ class jqapi.Templates
         <span class='return'>&rarr; #{ret}</span>
         <span class='version'>#{version}</span>
       </h2>
+      <table class='arguments'><tbody></tbody></table>
     </li>
     """
 
@@ -61,4 +62,13 @@ class jqapi.Templates
     <li>
       <a href="#"><span>#{sigText}</span></a>
     </li>
+    """
+
+  argumentsItem: (arg) ->
+    """
+    <tr>
+      <td class='name'>#{arg.name}</td>
+      <td class='type'>#{arg.type}</td>
+      <td class='desc'>#{arg.desc}</td>
+    </tr>
     """

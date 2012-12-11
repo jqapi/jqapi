@@ -47,9 +47,11 @@ class jqapi.Entry
 
     for sig in signatures
       sigTitle = @getSignatureTitle(parentEntry.title, sig) # generate the title with arguments if any
-      tmpl     = $ templates.signaturesItem(sigTitle, entry.return, sig.added) # build el from template
+      sigEl    = $ templates.signaturesItem(sigTitle, entry.return, sig.added) # build el from template
 
-      sigsEl.append tmpl                                  # append to parent list element
+      @insertArguments sig, sigEl                         # insert arguments list
+
+      sigsEl.append sigEl                                 # append to parent list element
 
   getSignatureTitle: (title, signature) ->
     sigTitle = title                                      # selector titles must not be altered
@@ -66,3 +68,12 @@ class jqapi.Entry
       sigTitle   = "#{methodName}(#{joinArr.join(', ')})" # and fill it with arguments
 
     sigTitle                                              # return full title
+
+  insertArguments: (signature, el) ->
+    argsEl = $('.arguments', el)                          # cache args list element
+    args   = signature.argument                           # should be in a array
+    args   = [args] unless $.isArray(args)                # but single arguments are in objects, make array
+
+    for arg in args                                       # for every argument
+      if arg and arg.name
+        argsEl.append $(templates.argumentsItem(arg))     # build and append element from template
