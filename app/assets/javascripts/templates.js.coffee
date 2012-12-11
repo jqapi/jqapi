@@ -36,6 +36,7 @@ class jqapi.Templates
     """
     <li class='entry'>
       <ul class='signatures'></ul>
+      <div class='longdesc'>#{entry.longdesc}</div>
     </li>
     """
 
