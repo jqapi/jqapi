@@ -90,3 +90,10 @@ class jqapi.Entry
 
         $('.html pre', exEl).text(example.html)
         exEl.appendTo examplesEl
+
+        $('.html', exEl).hide() unless example.html
+        $('.css', exEl).hide() unless example.css
+
+        unless example.code
+          $('.js', exEl).hide()
+          $('.sandbox', exEl).hide()
