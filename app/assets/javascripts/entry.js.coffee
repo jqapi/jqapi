@@ -6,6 +6,7 @@ class jqapi.Entry
     jqapi.events.on 'entry:load', (e, slug) =>            # entry content must be loaded on this event
       @el.scrollTop 0                                     # scroll the element back to top
       @loadContent slug                                   # find content via the slug
+      $.bbq.pushState { p: slug }                         # set the new hash state with old #p= format
 
     jqapi.events.on 'window:resize', (e, winEl) =>        # on window resize event
       newHeight = winEl.height() - @headerHeight          # calculate new height

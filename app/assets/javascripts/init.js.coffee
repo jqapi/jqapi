@@ -18,10 +18,18 @@ jQuery ->                                                 # wait for dom ready
   for part in parts                                       # load the whole application parts
     new jqapi[part]                                       # initialize the part
   
-  $(window)
+  winEl = $(window)
+
+  winEl
     .resize ->                                            # on window resize
       jqapi.events.trigger 'window:resize', [$(@)]        # trigger a event on the app
     .trigger 'resize'                                     # initially trigger the resize event
+
+  winEl
+    .on 'hashchange', ->                                  # on hash change, happens in entry load
+      slug = $.bbq.getState('p')                          # slug of requested entry
+      jqapi.events.trigger 'entry:load', [slug] if slug   # if the slug is set load the entry
+    .trigger 'hashchange'                                 # initially kick it off
 
   setTimeout ->
     jqapi.events.trigger 'entry:load', ['css']
