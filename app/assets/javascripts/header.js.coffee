@@ -2,9 +2,21 @@ class jqapi.Header
   constructor: ->
     @el           = $ '#header'                           # parent element
     @signaturesEl = $('#signatures-nav', @el)             # signatures navigation list
+    self          = @
 
     jqapi.events.on 'entry:done', (e, entry) =>           # when there is a new entry loaded
       @updateSignatureNav entry                           # update the header signatures navigation
+
+    @el.on 'click', '#signatures-nav a', ->               # it's the o again
+      sigText  = $(@).text()                               # hacked together, use events instead
+      entryEl  = $('#entry')
+      targetEl = $(".signature .title:contains(#{sigText})", entryEl)
+
+      if targetEl.length
+        entryEl.scrollTop 0
+        entryEl.scrollTop targetEl.parent().offset().top - self.el.height()
+
+      false
 
     @el.height $('#search').height()                      # set the same height as the search box has
 
