@@ -37,6 +37,7 @@ class jqapi.Templates
     <li class='entry'>
       <ul class='signatures'></ul>
       <div class='longdesc'>#{entry.longdesc}</div>
+      <ul class='examples clearfix'></ul>
     </li>
     """
 
@@ -72,4 +73,15 @@ class jqapi.Templates
       <td class='type'>#{arg.type}</td>
       <td class='desc'>#{arg.desc}</td>
     </tr>
+    """
+
+  examplesItem: (example) ->
+    """
+    <li class='example clearfix'>
+      <p class='desc'>#{example.desc}</p>
+      <div class='code html'><pre data-lang='html'/></div>
+      <div class='code css'><pre data-lang='css'>#{example.css}</pre></div>
+      <div class='code js'><pre data-lang='javascript'>#{example.code}</pre></div>
+      <div class='sandbox'>execute me</div>
+    </li>
     """

@@ -1,7 +1,7 @@
 class jqapi.Entry
   constructor: ->
     @el           = $ '#entry'                            # parent element
-    @headerHeight = $('#header').height()                 # cache the height of the header navigation
+    @headerHeight = $('#header').outerHeight()            # cache the height of the header navigation
 
     jqapi.events.on 'entry:load', (e, slug) =>            # entry content must be loaded on this event
       @el.scrollTop 0                                     # scroll the element back to top
@@ -39,6 +39,7 @@ class jqapi.Entry
       entryEl = $ templates.entryEntriesItem(ent)         # build element from template
 
       @insertSignatures entry, ent, entryEl               # insert all signatures for a entry
+      @insertExamples ent.examples, entryEl               # insert the demos
       entriesEl.append entryEl                            # append entry to the parent list
 
   insertSignatures: (parentEntry, entry, el) ->
@@ -78,3 +79,13 @@ class jqapi.Entry
     for arg in args                                       # for every argument
       if arg and arg.name
         argsEl.append $(templates.argumentsItem(arg))     # build and append element from template
+
+  insertExamples: (examples, el) ->
+    examples = [examples] unless $.isArray(examples)
+    examplesEl = $('.examples', el)
+
+    for example in examples
+      exEl = $ templates.examplesItem(example)
+
+      $('.html pre', exEl).text(example.html)
+      exEl.appendTo examplesEl
