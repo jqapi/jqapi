@@ -85,7 +85,8 @@ class jqapi.Entry
     examplesEl = $('.examples', el)
 
     for example in examples
-      exEl = $ templates.examplesItem(example)
+      if example
+        exEl = $ templates.examplesItem(example)
 
-      $('.html pre', exEl).text(example.html)
-      exEl.appendTo examplesEl
+        $('.html pre', exEl).text(example.html)
+        exEl.appendTo examplesEl

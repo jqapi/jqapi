@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery.ba-dotimeout
+#= require jquery.ba-bbq
 #= require jquery.highlight
 #= require jquery.snippet
 
