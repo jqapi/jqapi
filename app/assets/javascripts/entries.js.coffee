@@ -5,7 +5,7 @@ class jqapi.Entries
     @currentEl = $ {}                                     # keep track of the current entry
 
     @el.on 'click', '.entry', ->                          # on clicking a single entry
-      self.loadEntry $(@)                                 # load the clicked entry
+      $.bbq.pushState { p: $(@).data('slug') }            # update the hash to trigger entry loading
 
     jqapi.events.on 'entries:load', (e, entry) =>         # requested from outside to load entry
       @loadEntry entry                                    # do so

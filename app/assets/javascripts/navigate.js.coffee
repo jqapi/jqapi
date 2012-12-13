@@ -3,7 +3,7 @@ class jqapi.Navigate
     @sidebarEl     = $ '#sidebar-content'                 # caching the sidebar content el
     @listEl        = $ {}                                 # either categories list or results list
     @hoverClass    = 'hover'                              # deterimine selected item (entry or cat)
-    @currentItemEl = []                                   # hold the currently selected item
+    @currentItemEl = $ {}                                 # hold the currently selected item
 
     @getActiveList()                                      # initially cache current list
 

@@ -25,6 +25,7 @@ class jqapi.Entry
     @insertEntries    entry, el                           # generate entries and insert
 
     @el.html el                                           # set the new html content
+    @highlightCode()
 
   insertCategories: (entry, el) ->
     catsEl  = $('#categories', el)                        # cache categories list
@@ -82,7 +83,7 @@ class jqapi.Entry
         argsEl.append $(templates.argumentsItem(arg))     # build and append element from template
 
   insertExamples: (examples, el) ->
-    examples = [examples] unless $.isArray(examples)
+    examples   = [examples] unless $.isArray(examples)
     examplesEl = $('.examples', el)
 
     for example in examples
@@ -98,3 +99,6 @@ class jqapi.Entry
         unless example.code
           $('.js', exEl).hide()
           $('.sandbox', exEl).hide()
+
+  highlightCode: ->
+    console.log 'highlight'

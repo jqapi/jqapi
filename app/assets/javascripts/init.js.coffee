@@ -30,7 +30,3 @@ jQuery ->                                                 # wait for dom ready
       slug = $.bbq.getState('p')                          # slug of requested entry
       jqapi.events.trigger 'entry:load', [slug] if slug   # if the slug is set load the entry
     .trigger 'hashchange'                                 # initially kick it off
-
-  setTimeout ->
-    jqapi.events.trigger 'entry:load', ['css']
-  , 1000
