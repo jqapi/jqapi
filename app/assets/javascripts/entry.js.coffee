@@ -93,12 +93,36 @@ class jqapi.Entry
         $('.html pre', exEl).text(example.html)
         exEl.appendTo examplesEl
 
-        $('.html', exEl).hide() unless example.html
-        $('.css', exEl).hide() unless example.css
+        $('.html', exEl).remove() unless example.html
+        $('.css', exEl).remove() unless example.css
 
         unless example.code
-          $('.js', exEl).hide()
-          $('.sandbox', exEl).hide()
+          $('.js', exEl).remove()
+          $('.sandbox', exEl).remove()
 
   highlightCode: ->
-    console.log 'highlight'
+    for el in $('pre', @el)
+      el   = $(el)
+      lang = el.data('lang') || 'javascript'
+
+      el.snippet lang, { showNum: true, menu: false }
+
+    @adjustCodeHeight()
+
+  adjustCodeHeight: ->
+    for el in $('.examples .example', @el)
+      el        = $(el)
+      maxHeight = 0
+      codeEls   = $('.code', el)
+      sandboxEl = $('.sandbox', el)
+
+      for codeEl in codeEls
+        height    = $(codeEl).height()
+        maxHeight = height if height > maxHeight
+      
+      codeEls.height maxHeight
+      $('pre', codeEls).height maxHeight
+      sandboxEl.height maxHeight
+
+      if codeEls.length <= 2
+        sandboxEl.width '100%'        
