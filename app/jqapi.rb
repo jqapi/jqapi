@@ -42,11 +42,27 @@ class Jqapi < Sinatra::Base
   get '/docs/entries/*.json' do
     serve_file('docs/entries', "#{params[:splat][0]}.json")
   end
-  
+
+  get '/resources/*.png' do
+    content_type 'image/png'
+    serve_file('docs/resources', "#{params[:splat][0]}.png")
+  end
+
+  get '/resources/*.jpg' do
+    content_type 'image/jpeg'
+    serve_file('docs/resources', "#{params[:splat][0]}.jpg")
+  end
+
+  get '/resources/*.gif' do
+    content_type 'image/gif'
+    serve_file('docs/resources', "#{params[:splat][0]}.gif")
+  end
+
   get '/' do
     content_type :html
     haml :index
   end
+
 
   private
   def serve_file(path, filename)

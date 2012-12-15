@@ -46,6 +46,10 @@ class Docs < Thor
     categories = parse_xml_categories                     # parse categories.xml, write json file, return cats object
 
     build_index(categories, entries)                      # build the index json
+
+    FileUtils.cp_r "#{xmlPath}/../resources/.", "#{jsonPath}/../resources" # copy resources folder with images
+    puts 'Copy resources folder.'
+
     puts "Done."                                          # phew, everything hopefully set up.
   end                                                     # please go on, nothing to see here
 
