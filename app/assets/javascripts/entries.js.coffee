@@ -5,7 +5,7 @@ class jqapi.Entries
     @currentEl = $ {}                                     # keep track of the current entry
 
     @el.on 'click', '.entry', ->                          # on clicking a single entry
-      $.bbq.pushState { p: $(@).data('slug') }            # update the hash to trigger entry loading
+      self.loadEntry $(@)
 
     jqapi.events.on 'entries:load', (e, entry) =>         # requested from outside to load entry
       @loadEntry entry                                    # do so
@@ -20,5 +20,5 @@ class jqapi.Entries
 
       @currentEl = el                                     # cache current entry
 
-      jqapi.events.trigger 'entry:load', el.data('slug')  # let jqapi.Content know to load some content, pass slug
+      $.bbq.pushState { p: el.data('slug') }              # update the hash to trigger entry loading
       jqapi.events.trigger 'search:focus'                 # set the lost focus on the search field
