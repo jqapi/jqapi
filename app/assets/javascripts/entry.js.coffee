@@ -124,11 +124,15 @@ class jqapi.Entry
         maxHeight = height if height > maxHeight
       
       codeEls.height maxHeight
-      $('pre', codeEls).height maxHeight
+      #$('pre', codeEls).height maxHeight
       sandboxEl.height maxHeight
 
       if codeEls.length <= 2
         sandboxEl.css({ width: '100%', height: '80px' })
+
+      if codeEls.length is 1
+        codeEls.width '100%'
+        sandboxEl.remove()
 
   fixLinks: ->
     for el in $('a', @el)

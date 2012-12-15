@@ -78,10 +78,10 @@ class jqapi.Templates
   examplesItem: (example) ->
     """
     <li class='example clearfix'>
-      <p class='desc'>#{example.desc}</p>
+      <div class='desc'><p>#{example.desc}</p></div>
       <div class='code html'><pre data-lang='html'/></div>
       <div class='code css'><pre data-lang='css'>#{example.css}</pre></div>
       <div class='code js'><pre data-lang='javascript'>#{example.code}</pre></div>
-      <div class='sandbox'>execute me</div>
+      <div class='sandbox'><div class='play'>execute me</div></div>
     </li>
     """
