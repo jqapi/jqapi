@@ -102,14 +102,16 @@ class jqapi.Entry
 
   highlightCode: ->
     for el in $('pre', @el)
-      el   = $(el)
-      lang = el.data('lang') || 'javascript'
+      el   = $(el)                                        # turn back element to jQuery object
+      lang = el.data('lang') || 'javascript'              # set language to highlight, defaults to javascript
 
-      el.snippet lang, { showNum: true, menu: false }
+      el.text $.trim(el.text())                           # trim leading and trailing \n AND remove <!CDATA
+      el.snippet lang, { showNum: true, menu: false }     # highlight the code for specific language
 
-    @adjustCodeHeight()
+    @adjustCodeHeight()                                   # set equal heights for the code boxes
 
   adjustCodeHeight: ->
+    # todo: only equal height for neighbors
     for el in $('.examples .example', @el)
       el        = $(el)
       maxHeight = 0
@@ -125,4 +127,4 @@ class jqapi.Entry
       sandboxEl.height maxHeight
 
       if codeEls.length <= 2
-        sandboxEl.width '100%'        
+        sandboxEl.css({ width: '100%', height: '80px' })
