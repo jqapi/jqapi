@@ -26,6 +26,7 @@ class jqapi.Entry
 
     @el.html el                                           # set the new html content
     @highlightCode()
+    @fixLinks()
 
   insertCategories: (entry, el) ->
     catsEl  = $('#categories', el)                        # cache categories list
@@ -128,3 +129,18 @@ class jqapi.Entry
 
       if codeEls.length <= 2
         sandboxEl.css({ width: '100%', height: '80px' })
+
+  fixLinks: ->
+    for el in $('a', @el)
+      el   = $(el)
+      href = el.attr('href')
+      
+      if href.substr(href.length - 1, 1) is '/'
+        href = href.substr(0, href.length - 1)
+
+      if href.substr(0, 1) is '/'
+        href = href.substr(1, href.length)
+      else if href.substr(0, 12) is 'http://api.j'
+        href = href.substr(22, href.length)
+
+        el.attr 'href', "#p=#{href}"
