@@ -29,7 +29,6 @@ Then install all the other Gems:
 ## Generate the documentation
 
 ### Download it
-
     thor docs:download
 
 The GitHub repo of the official docs site will be cloned/updated.

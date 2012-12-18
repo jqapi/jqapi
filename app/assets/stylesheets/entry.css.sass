@@ -51,10 +51,36 @@
         p:last-child
           margin-bottom: 0
 
+        strong
+          font-weight: bold
+
+        a
+          color: red
+          text-decoration: none
+
+        a:visited
+          text-decoration: underline
+
+        a:hover
+          text-decoration: none
+          border-bottom: 2px solid red
+
         code
           font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace
           padding: 1px 2px
           font-size: 0.92em
+
+        > ol, > ul
+          margin: 0 0 18px 30px
+          list-style: disc
+
+          li
+            line-height: 21px
+            font-size: 1.38em
+            margin: 5px 0
+
+        > ol
+          list-style: decimal
 
         pre
           background: #444
@@ -63,11 +89,11 @@
       .examples
         li.example
           position: relative
-          margin-top: 50px
+          margin-top: 60px
 
           .desc
             position: absolute
-            top: -10px
+            top: -20px
             width: 100%
 
             p
@@ -82,6 +108,7 @@
               font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace
               font-weight: bold
               text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1)
+              line-height: 14px
 
           .code
             width: 50%
