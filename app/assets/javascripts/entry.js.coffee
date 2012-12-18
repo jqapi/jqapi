@@ -113,11 +113,8 @@ class jqapi.Entry
       el.snippet lang, { showNum: true, menu: false }     # highlight the code for specific language
 
   adjustCodeHeight: ->
-    # todo: only equal height for neighbors
-    #       which is only when three code examples
     for el in $('.examples .example', @el)
       el        = $(el)
-      #maxHeight = 0
       codeEls   = $('.code', el)
       sandboxEl = $('.sandbox', el)
 
@@ -131,7 +128,7 @@ class jqapi.Entry
       if cssEl.length
         playH -= cssEl.height()
 
-      sandboxEl.children().height playH
+      sandboxEl.children('.play').height playH
 
   fixLinks: ->
     for el in $('a', @el)

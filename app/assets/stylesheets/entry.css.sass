@@ -124,16 +124,35 @@
             width: 100%
             float: left
             background: #2B2B2B
+            position: relative
 
             pre
               margin: 10px
               border: 2px dashed #232323
               border-radius: 4px
 
+            .lang
+              position: absolute
+              top: 10px
+              right: 10px
+              background: #232323
+              color: #ddd
+              text-shadow: 1px 1px 0 black
+              padding: 4px 10px
+
           .sandbox
             width: 100%
             float: left
             background: #2B2B2B
+            position: relative
+
+            .lang
+              position: absolute
+              top: 22px
+              right: 10px
+              background: #e0c962
+              padding: 4px 10px
+              color: #444
 
             .play
               background: #fff0aa
@@ -141,10 +160,6 @@
               border-left: 2px solid #232323
               border-top: 2px solid #232323
               padding: 10px
-
-            &.fullwidth
-              .play
-                border-top: none
 
       ul.signatures
         li.signature
