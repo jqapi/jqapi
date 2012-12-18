@@ -26,6 +26,7 @@ class jqapi.Entry
 
     @el.html el                                           # set the new html content
     @highlightCode()
+    @adjustCodeHeight()                                   # set equal heights for the code boxes
     @fixLinks()
 
   insertCategories: (entry, el) ->
@@ -101,6 +102,8 @@ class jqapi.Entry
           $('.js', exEl).remove()
           $('.sandbox', exEl).remove()
 
+        @buildLiveExample example, exEl
+
   highlightCode: ->
     for el in $('pre', @el)
       el   = $(el)                                        # turn back element to jQuery object
@@ -109,10 +112,9 @@ class jqapi.Entry
       el.text $.trim(el.text())                           # trim leading and trailing \n AND remove <!CDATA
       el.snippet lang, { showNum: true, menu: false }     # highlight the code for specific language
 
-    @adjustCodeHeight()                                   # set equal heights for the code boxes
-
   adjustCodeHeight: ->
     # todo: only equal height for neighbors
+    #       which is only when three code examples
     for el in $('.examples .example', @el)
       el        = $(el)
       maxHeight = 0
@@ -148,3 +150,19 @@ class jqapi.Entry
         href = href.substr(22, href.length)
 
         el.attr 'href', "#p=#{href}"
+
+  buildLiveExample: (example, el) ->
+    sandboxEl = $('.sandbox .play', el)
+
+    if sandboxEl.length 
+      iframe = sandbox
+                html: example.html || ''
+                js: example.code || ''
+                css: example.css || ''
+                external:
+                  js: ['http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js']
+                #el: sandboxEl #not in dom yet...
+
+      #console.log iframe #appends currently to body
+      #sandboxEl.html iframe
+      #does not work if parent element is not in dom yet

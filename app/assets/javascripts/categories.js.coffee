@@ -48,7 +48,6 @@ class jqapi.Categories
 
         el.append entryEl                                 # append it to the parent list
 
-      #el.children('li:odd').addClass 'odd'                # set a odd class to children
       el                                                  # return the generated list element
     else                                                  # no entries found
       false                                               # return false, no need to return a empty list

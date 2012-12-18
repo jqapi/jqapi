@@ -3,6 +3,7 @@
 #= require jquery.ba-bbq
 #= require jquery.highlight
 #= require jquery.snippet
+#= require sandbox
 
 #= require init
 #= require templates
