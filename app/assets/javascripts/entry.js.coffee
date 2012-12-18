@@ -154,7 +154,7 @@ class jqapi.Entry
   buildLiveExample: (example, el) ->
     sandboxEl = $('.sandbox .play', el)
 
-    if sandboxEl.length 
+    if example.code and example.html
       iframe = sandbox
                  html: example.html || ''
                  js: example.code || ''
