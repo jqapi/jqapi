@@ -117,24 +117,21 @@ class jqapi.Entry
     #       which is only when three code examples
     for el in $('.examples .example', @el)
       el        = $(el)
-      maxHeight = 0
+      #maxHeight = 0
       codeEls   = $('.code', el)
       sandboxEl = $('.sandbox', el)
 
-      for codeEl in codeEls
-        height    = $(codeEl).height()
-        maxHeight = height if height > maxHeight
-      
-      #codeEls.height maxHeight
-      #$('pre', codeEls).height maxHeight
-      #$('.play', sandboxEl).height maxHeight - 22
-
-      if codeEls.length <= 2
-        sandboxEl.addClass('fullwidth').width '100%'
-
       if codeEls.length is 1
-        codeEls.width '100%'
+        codeEls.parent().width '100%'
         sandboxEl.remove()
+
+      playH = el.find('.row .left').height() - 32
+      cssEl = el.find('.row .right .code')
+
+      if cssEl.length
+        playH -= cssEl.height()
+
+      sandboxEl.children().height playH
 
   fixLinks: ->
     for el in $('a', @el)
