@@ -85,20 +85,3 @@ class jqapi.Templates
       <div class='sandbox'><div class='play'>execute me</div></div>
     </li>
     """
-
-  liveExample: (code, html, css = '') ->
-    """
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8" />
-        <style type="text/css">
-          body { background: red; }
-          #{css}
-        </style>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>      
-        <script type="text/javascript">#{code}</script>
-      </head>
-      <body>#{html}</body>
-    </html>
-    """
