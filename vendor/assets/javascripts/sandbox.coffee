@@ -1,3 +1,5 @@
+# https://github.com/versal/sandbox-js
+
 window.sandbox = (options = {}) ->
   options = $.extend true, {}, {
     html: '', css: '', js: ''

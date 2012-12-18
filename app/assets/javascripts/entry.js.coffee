@@ -156,12 +156,12 @@ class jqapi.Entry
 
     if sandboxEl.length 
       iframe = sandbox
-                html: example.html || ''
-                js: example.code || ''
-                css: example.css || ''
-                external:
+                 html: example.html || ''
+                 js: example.code || ''
+                 css: example.css || ''
+                 external:
                   js: ['http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js']
-                #el: sandboxEl #not in dom yet...
+                 #el: sandboxEl #not in dom yet...
 
       #console.log iframe #appends currently to body
       #sandboxEl.html iframe

@@ -25,40 +25,77 @@
       #header
         %ul#signatures-nav
           %li
-            %a{:href => '#u8'}
-              %span What is this?
+            %a{:href => '#why'}
+              %span Why another documentation browser?
           %li
-            %a{:href => '#u8'}
-              %span Why another docs browser?
+            %a{:href => '#donors'}
+              %span Donors
           %li
-            %a{:href => '#u8'}
+            %a{:href => '#usage'}
               %span Usage
           %li
-            %a{:href => '#u8'}
+            %a{:href => '#download'}
               %span Download
           %li
-            %a{:href => '#u8'}
-              %span Donors
+            %a{:href => '#license'}
+              %span License
         
         %ul#navigation
           %li
-            %a{:href => '#u8'}
+            %a{:href => '/'}
               %span Home
 
       #entry
-        #entry-header
-          %h1 jQAPI - Alternative jQuery Documentation Browser
-          %p The faster way to browse the jQuery documentation.
+        #entry-wrapper
+          #entry-header
+            %h1 jQAPI - Alternative jQuery Documentation Browser
+            %p The faster way to browse the jQuery documentation.
 
-        %ul#entries
-          %li.entry
-            %ul.signatures
-              %li.signature
-                %h2
-                  What is this?
-                  %span.return &rarr; jQAPI
+          %ul#entries
+            %li.entry
+              %ul.signatures
+                %li.signature
+                  %h2 Why another documentation browser?
 
-              %li.signature
-                %h2
-                  Usage
-                  %span.return &rarr; jQAPI
+                  .row.clearfix
+                    .left
+                      %p This is a browser for the official documentation
+                    .right
+                      %p Because it needs to get out of the way.
+
+                %li.signature
+                  %h2 Donors
+
+            %li.entry
+              %ul.signatures
+                %li.signature
+                  %h2
+                    Usage
+                  
+                  .row.clearfix
+                    .third
+                      %p Keyboard
+                    .third
+                      %p Navigation
+                    .third
+                      %p etc.
+
+            %li.entry
+              %ul.signatures
+                %li.signature
+                  %h2
+                    Download
+                  
+                  .longdesc
+                    %p
+                      git clone, zip
+
+            %li.entry
+              %ul.signatures
+                %li.signature
+                  %h2
+                    License
+                  
+                  .longdesc
+                    %p
+                      Same as jQuery
