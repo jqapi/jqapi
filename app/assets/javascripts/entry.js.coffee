@@ -128,7 +128,7 @@ class jqapi.Entry
       sandboxEl.height maxHeight
 
       if codeEls.length <= 2
-        sandboxEl.css({ width: '100%', height: '80px' })
+        sandboxEl.addClass('fullwidth').width '100%'
 
       if codeEls.length is 1
         codeEls.width '100%'
