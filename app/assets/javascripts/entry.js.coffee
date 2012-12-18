@@ -125,9 +125,9 @@ class jqapi.Entry
         height    = $(codeEl).height()
         maxHeight = height if height > maxHeight
       
-      codeEls.height maxHeight
+      #codeEls.height maxHeight
       #$('pre', codeEls).height maxHeight
-      $('.play', sandboxEl).height maxHeight - 22
+      #$('.play', sandboxEl).height maxHeight - 22
 
       if codeEls.length <= 2
         sandboxEl.addClass('fullwidth').width '100%'

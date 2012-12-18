@@ -79,9 +79,15 @@ class jqapi.Templates
     """
     <li class='example clearfix'>
       <div class='desc'><p>#{example.desc}</p></div>
-      <div class='code html'><pre data-lang='html'/></div>
-      <div class='code css'><pre data-lang='css'>#{example.css}</pre></div>
-      <div class='code js'><pre data-lang='javascript'>#{example.code}</pre></div>
-      <div class='sandbox'><div class='play'>execute me</div></div>
+      <div class='row clearfix'>
+        <div class='left'>
+          <div class='code html'><pre data-lang='html'/></div>
+          <div class='code js'><pre data-lang='javascript'>#{example.code}</pre></div>
+        </div>
+        <div class='right'>
+          <div class='code css'><pre data-lang='css'>#{example.css}</pre></div>
+          <div class='sandbox'><div class='play'>execute me</div></div>
+        </div>
+      </div>
     </li>
     """
