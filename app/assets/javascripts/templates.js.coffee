@@ -96,7 +96,7 @@ class jqapi.Templates
             <span class='lang'>CSS</span>
           </div>
           <div class='sandbox'>
-            <div class='play'>execute me</div>
+            <div class='play'>loading demo...</div>
             <span class='lang'>DEMO</span>
           </div>
         </div>

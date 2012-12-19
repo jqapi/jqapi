@@ -25,9 +25,11 @@ class jqapi.Entry
     @insertEntries    entry, el                           # generate entries and insert
 
     @el.html el                                           # set the new html content
+    @buildLiveExamples()
     @highlightCode()
     @adjustCodeHeight()                                   # set equal heights for the code boxes
     @fixLinks()
+    
 
   insertCategories: (entry, el) ->
     catsEl  = $('#categories', el)                        # cache categories list
@@ -102,8 +104,6 @@ class jqapi.Entry
           $('.js', exEl).remove()
           $('.sandbox', exEl).remove()
 
-        @buildLiveExample example, exEl
-
   highlightCode: ->
     for el in $('pre', @el)
       el   = $(el)                                        # turn back element to jQuery object
@@ -145,18 +145,17 @@ class jqapi.Entry
 
         el.attr 'href', "#p=#{href}"
 
-  buildLiveExample: (example, el) ->
-    sandboxEl = $('.sandbox .play', el)
+  buildLiveExamples: ->
+    sandboxEls = $('.sandbox', @el)
 
-    if example.code and example.html
-      iframe = sandbox
-                 html: example.html || ''
-                 js: example.code || ''
-                 css: example.css || ''
-                 external:
-                  js: ['http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js']
-                 #el: sandboxEl #not in dom yet...
+    for el in sandboxEls
+      sandboxEl = $(el)
+      el        = sandboxEl.parent().parent()
 
-      #console.log iframe #appends currently to body
-      #sandboxEl.html iframe
-      #does not work if parent element is not in dom yet
+      sandbox
+        html    : el.find('.html pre').text()
+        js      : el.find('.js pre').text()
+        css     : el.find('.css pre').text()
+        external:
+          js    : ['http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js']
+        el      : $('.play', sandboxEl).text('')
