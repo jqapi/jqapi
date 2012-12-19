@@ -157,5 +157,5 @@ class jqapi.Entry
         js      : el.find('.js pre').text()
         css     : el.find('.css pre').text()
         external:
-          js    : ['http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js']
+          js    : ['/assets/jquery.js']
         el      : $('.play', sandboxEl).text('')
