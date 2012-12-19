@@ -63,11 +63,6 @@ class Jqapi < Sinatra::Base
     haml :index
   end
 
-  get '/blank.html' do
-    content_type :html
-    'loading example...'
-  end
-
 
   private
   def serve_file(path, filename)
