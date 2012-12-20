@@ -30,7 +30,6 @@ class jqapi.Entry
     @adjustCodeHeight()                                   # set equal heights for the code boxes
     @fixLinks()
     
-
   insertCategories: (entry, el) ->
     catsEl  = $('#categories', el)                        # cache categories list
 
@@ -127,6 +126,9 @@ class jqapi.Entry
 
       if cssEl.length
         playH -= cssEl.height()
+
+      if playH < 100
+        playH += 100
 
       sandboxEl.children('.play').height playH
 
