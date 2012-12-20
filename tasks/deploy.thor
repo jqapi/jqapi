@@ -45,7 +45,9 @@ class Deploy < Thor
     FileUtils.mv "#{deploy_path}/docs/resources", "#{deploy_path}/resources"
     puts 'Copied resources directory' # you like to juggle?
 
-    # todo: copy images from app/assets/images and vendor/assets/images
+    %x[cp -r app/assets/images/** #{assets_path}/]
+    #%x[cp -r vendor/assets/images/** #{assets_path}/]
+    puts 'Copied images'
 
     index_haml   = File.read("app/views/index.haml")
     index_markup = Haml::Engine.new(index_haml).render
