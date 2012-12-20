@@ -23,6 +23,11 @@ class jqapi.Search
 
       @el.on 'keyup', (e) =>                              # watch key up on the search field
         @triggerSearch()                                  # and kick it off
+        true
+
+    @el.on 'click', => # make that little x on the search input work
+      if @el.val().length is 0
+        jqapi.events.trigger 'search:clear'
 
   triggerSearch: ->
     term = @el.val()                                      # cache the current search term
