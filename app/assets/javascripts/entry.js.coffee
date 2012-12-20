@@ -108,7 +108,10 @@ class jqapi.Entry
       el   = $(el)                                        # turn back element to jQuery object
       lang = el.data('lang') || 'javascript'              # set language to highlight, defaults to javascript
 
-      el.text $.trim(el.text())                           # trim leading and trailing \n AND remove <!CDATA
+      if el.text().substr(0, 1) is '<' and !el.data('lang') # detect html code snippets in longdescs
+        lang = 'html'
+
+      el.text $.trim(el.text())                           # trim leading and trailing \n AND remove <!CDATA ??
       el.snippet lang, { showNum: true, menu: false }     # highlight the code for specific language
 
   adjustCodeHeight: ->
