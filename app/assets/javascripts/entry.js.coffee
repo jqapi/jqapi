@@ -141,8 +141,6 @@ class jqapi.Entry
       href = el.attr('href')
       hrefArr = href.split '/'
 
-      console.log hrefArr
-
       if hrefArr.length <= 2
         if hrefArr[0].length is 0
           href = hrefArr[1]
@@ -155,18 +153,6 @@ class jqapi.Entry
         
         el.attr 'href', "#p=#{href}"
       
-      ###
-      if href.substr(href.length - 1, 1) is '/'
-        href = href.substr(0, href.length - 1)
-
-      if href.substr(0, 1) is '/'
-        href = href.substr(1, href.length)
-      else if href.substr(0, 12) is 'http://api.j'
-        href = href.substr(22, href.length)
-      ###
-      
-      
-
   buildLiveExamples: ->
     sandboxEls = $('.sandbox', @el)
 

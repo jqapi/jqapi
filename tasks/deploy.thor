@@ -55,4 +55,11 @@ class Deploy < Thor
     File.open("#{deploy_path}/index.html", 'w').write(index_markup)
     puts "Generated index.html"
   end
+
+  desc 'pack', 'creates a .zip of the standalone version, saved to public/'
+  def pack
+    %x[cd public/ && zip -r jqapi.zip .]
+    FileUtils.mv 'public/jqapi.zip', 'jqapi.zip'
+    puts "Created public/jqapi.zip"
+  end
 end
