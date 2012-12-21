@@ -58,8 +58,8 @@ class Deploy < Thor
 
   desc 'pack', 'creates a .zip of the standalone version, saved to public/'
   def pack
+    FileUtils.rm_f 'public/jqapi.zip'
     %x[cd public/ && zip -r jqapi.zip .]
-    FileUtils.mv 'public/jqapi.zip', 'jqapi.zip'
     puts "Created public/jqapi.zip"
   end
 end
