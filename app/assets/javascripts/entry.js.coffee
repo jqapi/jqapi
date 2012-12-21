@@ -139,7 +139,23 @@ class jqapi.Entry
     for el in $('a', @el)
       el   = $(el)
       href = el.attr('href')
+      hrefArr = href.split '/'
+
+      console.log hrefArr
+
+      if hrefArr.length <= 2
+        if hrefArr[0].length is 0
+          href = hrefArr[1]
+
+        el.attr 'href', "#p=#{href}"
+
+      if hrefArr[2] is 'api.jquery.com'
+        href = hrefArr[hrefArr.length - 1]
+        href = hrefArr[hrefArr.length - 2] if href.length is 0
+        
+        el.attr 'href', "#p=#{href}"
       
+      ###
       if href.substr(href.length - 1, 1) is '/'
         href = href.substr(0, href.length - 1)
 
@@ -147,8 +163,9 @@ class jqapi.Entry
         href = href.substr(1, href.length)
       else if href.substr(0, 12) is 'http://api.j'
         href = href.substr(22, href.length)
-
-        el.attr 'href', "#p=#{href}"
+      ###
+      
+      
 
   buildLiveExamples: ->
     sandboxEls = $('.sandbox', @el)
