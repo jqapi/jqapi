@@ -5,6 +5,8 @@ class jqapi.Entry
 
     jqapi.events.on 'entry:load', (e, slug) =>            # entry content must be loaded on this event
       @el.scrollTop 0                                     # scroll the element back to top
+      $('#entry-wrapper', @el).hide()
+      @el.addClass 'loading'
       @loadContent slug                                   # find content via the slug
       $.bbq.pushState { p: slug }                         # set the new hash state with old #p= format
 
@@ -17,6 +19,7 @@ class jqapi.Entry
     $.getJSON "/docs/entries/#{slug}.json", (data) =>     # fetch from json file
       @parseEntry data                                    # parse what was received
       jqapi.events.trigger 'entry:done', [data]           # let the app know that a new entry is loaded
+      @el.removeClass 'loading'
 
   parseEntry: (entry) ->
     el = $ templates.entry(entry)                         # generate element from template
@@ -159,6 +162,8 @@ class jqapi.Entry
     for el in sandboxEls
       sandboxEl = $(el)
       el        = sandboxEl.parent().parent()
+
+      continue if el.find('.html').length is 0 # no html, no example
 
       sandbox
         html    : el.find('.html pre').text()
