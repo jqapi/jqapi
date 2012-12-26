@@ -150,7 +150,7 @@ class jqapi.Entry
       href = el.attr('href')
       hrefArr = href.split '/'
 
-      if hrefArr.length <= 2
+      if hrefArr.length <= 3
         if hrefArr[0].length is 0
           href = hrefArr[1]
 
