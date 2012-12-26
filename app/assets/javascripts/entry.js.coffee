@@ -15,6 +15,9 @@ class jqapi.Entry
 
       @el.height newHeight                                # set new height
 
+    jqapi.events.on 'entry:done', (e, entry) =>
+      document.title = "#{entry.title} - jQAPI"           # set a new title
+
   loadContent: (slug) ->
     $.getJSON "/docs/entries/#{slug}.json", (data) =>     # fetch from json file
       @parseEntry data                                    # parse what was received
