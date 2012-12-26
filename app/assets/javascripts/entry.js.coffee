@@ -44,11 +44,17 @@ class jqapi.Entry
     entriesEl = $('#entries', el)                         # cache entries list
 
     for ent in entry.entries                              # go through every entry
+      ent.longdesc = @fixLongdescCdata(ent) # quick workaround to fix cdata tags in code in longdesc
       entryEl = $ templates.entryEntriesItem(ent)         # build element from template
 
       @insertSignatures entry, ent, entryEl               # insert all signatures for a entry
       @insertExamples ent.examples, entryEl               # insert the demos
       entriesEl.append entryEl                            # append entry to the parent list
+
+  fixLongdescCdata: (entry) ->
+    entry.longdesc
+      .replace('<![CDATA[', '')
+      .replace(']]>', '')
 
   insertSignatures: (parentEntry, entry, el) ->
     signatures = entry.signatures                         # can be a single object
