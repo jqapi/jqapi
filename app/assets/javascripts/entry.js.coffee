@@ -139,12 +139,10 @@ class jqapi.Entry
       playH = el.find('.row .left').height() - 32
       cssEl = el.find('.row .right .code')
 
-      if cssEl.length
-        playH -= cssEl.height()
-
-      if playH < 100
-        playH += 100
-
+      playH -= cssEl.height() if cssEl.length
+      playH += 100 if playH < 100
+      playH  = 130 if playH < 0
+      
       sandboxEl.children('.play').height playH
 
   fixLinks: ->
