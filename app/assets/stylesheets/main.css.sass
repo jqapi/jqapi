@@ -15,3 +15,29 @@ body
   content: " "
   clear: both
   height: 0
+
+#donors
+  ul
+    list-style: none
+    margin: 0 15px 15px 15px
+    font-size: 1.28em
+    line-height: 18px
+
+    li
+      display: inline
+
+      &.donor
+        display: none
+
+      a
+        color: black
+        text-decoration: underline
+
+        &:hover
+          color: red
+
+      &:after
+        content: ", "
+
+      &:last-child:after
+        content: ""
