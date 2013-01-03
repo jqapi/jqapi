@@ -13,6 +13,7 @@ jQuery ->                                                 # wait for dom ready
     'Search'                                              # search and build the results
     'Keyboard'                                            # handle special keys
     'Navigate'                                            # navigates through the categories or search results
+    'Homepage'                                            # some snippets for the homepage
   ]
 
   for part in parts                                       # load the whole application parts

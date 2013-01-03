@@ -15,3 +15,4 @@
 #= require search
 #= require keyboard
 #= require navigate
+#= require homepage
