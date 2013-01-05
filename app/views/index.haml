@@ -28,17 +28,20 @@
             %a{:href => '#about'}
               %span What is this about?
           %li
-            %a{:href => '#donors'}
-              %span Donors
-          %li
             %a{:href => '#usage'}
               %span Usage
           %li
             %a{:href => '#download'}
               %span Download
           %li
+            %a{:href => '#credits'}
+              %span Credits
+          %li
             %a{:href => '#license'}
               %span License
+          %li
+            %a{:href => '#changelog'}
+              %span Changelog
         
         %ul#navigation
           %li
@@ -127,8 +130,7 @@
             %li.entry
               %ul.signatures
                 %li.signature
-                  %h2.title
-                    Usage
+                  %h2.title Usage
                   
                   .row.clearfix
                     .third
@@ -141,23 +143,44 @@
             %li.entry
               %ul.signatures
                 %li.signature
-                  %h2
-                    Download
+                  %h2.title Download
                   
-                  .longdesc
-                    %p
-                      git clone, zip
+                  .row.clearfix
+                    .third
+                      %p .ZIP
+                    .third
+                      %p AIR
+                    .third
+                      %p GIT
 
             %li.entry
               %ul.signatures
                 %li.signature
-                  %h2
-                    License
+                  %h2.title License
                   
                   .longdesc
                     %p
-                      Same as jQuery
+                      %a{:href => 'http://jquery.com'} jQuery
+                      and its documentation is licensed under the
+                      %a{:href => 'http://jquery.org/license/'} MIT &amp; GPL licenses
+                      \. jQAPI is
+                      %a{:href => 'https://github.com/jqapi/jqapi'}Open-Source
+                      and running under the same
+                      %a{:href => '/LICENSE'} licenses
+                      \.
+                    %p
+                      jQAPI is coded by
+                      %a{:href => 'http://mustardamus.com'} Sebastian Senf
+                      \. Follow me
+                      %a{:href => 'http://twitter.com/mustardamus'} @mustardamus
+                      \.
 
+            %li.entry
+              %ul.signatures
+                %li.signature
+                  %h2.title Changelog
+
+                  .longdesc
                     %pre.changelog
                       = preserve do
                         [2012-xx-xx] Complete rewrite for the masses. Again.
