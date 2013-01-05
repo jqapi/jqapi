@@ -20,6 +20,7 @@ class jqapi.Entry
 
   loadContent: (slug) ->
     $.getJSON "/docs/entries/#{slug}.json", (data) =>     # fetch from json file
+      data.slug = slug
       @parseEntry data                                    # parse what was received
       jqapi.events.trigger 'entry:done', [data]           # let the app know that a new entry is loaded
       @el.removeClass 'loading'
@@ -146,7 +147,7 @@ class jqapi.Entry
       sandboxEl.children('.play').height playH
 
   fixLinks: ->
-    for el in $('a', @el)
+    for el in @el.find('.longdesc a')
       el   = $(el)
       href = el.attr('href')
       hrefArr = href.split '/'

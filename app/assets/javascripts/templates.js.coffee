@@ -27,6 +27,7 @@ class jqapi.Templates
         <h1>#{entry.title}</h1>
         <p>#{entry.desc}</p>
         <ul id='categories'></ul>
+        <a href='http://api.jquery.com/#{entry.slug}'>Original: api.jquery.com/#{entry.slug}</a>
       </div>
       <ul id='entries'></ul>
     </div>
