@@ -25,13 +25,13 @@
       #header
         %ul#signatures-nav
           %li
-            %a{:href => '#why'}
-              %span Why another documentation browser?
+            %a{:href => '#about'}
+              %span What is this about?
           %li
             %a{:href => '#donors'}
               %span Donors
           %li
-            %a{:href => '#Usage'}
+            %a{:href => '#usage'}
               %span Usage
           %li
             %a{:href => '#download'}
@@ -55,11 +55,34 @@
             %li.entry
               %ul.signatures
                 %li.signature
-                  %h2 Why another documentation browser?
+                  %h2.title What is this about?
 
                   .row.clearfix
                     .left
-                      %p This is a browser for the official documentation
+                      %p
+                        This is a alternative interface to browse the
+                        %a{:href => 'http://api.jquery.com'} Official jQuery Documentation
+                        that can be found on
+                        %a{:href => 'https://github.com/jquery/api.jquery.com'} GitHub
+                        \.
+
+                      %p
+                        The aim of this project is to get out of the way of your development work. 
+                        Quickly switch to this docs and find what you are looking for.
+
+                      %p
+                        Furthermore you can download this documentation and browse it offline.
+                        In the future you don't even need to download it to have it available
+                        offline.
+
+                      %p
+                        This
+                        %a{:href => 'https://github.com/jqapi/jqapi'} Open-Source
+                        project is still in development. If you are having trouble with it
+                        you can still visit the
+                        %a{:href => 'http://old.jqapi.com'} old jQAPI
+                        \.
+
                     .right#donors
                       #sponsor
                         %span Sponsored by
