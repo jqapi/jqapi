@@ -58,6 +58,11 @@ class Jqapi < Sinatra::Base
     serve_file('docs/resources', "#{params[:splat][0]}.gif")
   end
 
+  get '/LICENSE' do
+    content_type 'text'
+    serve_file('', 'LICENSE')
+  end
+
   get '/' do
     content_type :html
     haml :index
