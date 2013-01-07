@@ -227,15 +227,24 @@
 
             %li.entry
               %ul.signatures
-                %li.signature
+                %li.signature#changelog
                   %h2.title Changelog
 
-                  .longdesc
-                    %pre.changelog
-                      = preserve do
-                        [2012-xx-xx] Complete rewrite for the masses. Again.
-                        [2012-xx-xx] Crowfunding campaign successfully.
-                        [2011-xx-xx] Documentation updating and some bug fixing.
-                        [2010-03-10] Major code refactoring.
-                        [2010-01-31] Complete rewrite for the masses.
-                        [2010-01-29] Released very first verion. A quick hack.
+                  %ul
+                    %li
+                      %span [2010-01-29]
+                      Released very first verion.
+                    %li
+                      %span [2010-01-31]
+                      Complete rewrite for the masses.
+                    %li
+                      %span [2010-03-10]
+                      Major code refactoring.
+                    %li
+                      %span [2011-xx-xx]
+                      Documentation updating and some bug fixing.
+                    %li
+                      %span [2013-xx-xx]
+                      Released the revamped and best jQAPI.
+
+                  %a{:href => 'http://twitter.com/jqapi'} Follow @jqapi for updates
