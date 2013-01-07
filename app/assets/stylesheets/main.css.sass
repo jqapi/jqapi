@@ -80,3 +80,25 @@ body
     height: 61px
     background: url('/assets/hashrocket.png') no-repeat
     text-indent: -30000px
+
+#credits
+  list-style: none
+  padding: 15px
+  font-size: 1.28em
+  line-height: 18px
+
+  li
+    display: inline
+
+    a
+      color: black
+      text-decoration: underline
+
+      &:hover
+        color: red
+
+    &:after
+      content: ", "
+
+    &:last-child:after
+      content: ""
