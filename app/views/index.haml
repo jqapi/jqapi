@@ -85,7 +85,7 @@
                         This
                         %a{:href => 'https://github.com/jqapi/jqapi'} Open-Source
                         project is still under development. If you are having trouble with it
-                        you can still visit the
+                        you can still use the
                         %a{:href => 'http://old.jqapi.com'} old jQAPI
                         \.
 
@@ -136,12 +136,33 @@
                   %h2.title Usage
                   
                   .row.clearfix
-                    .third
-                      %p Keyboard
-                    .third
-                      %p Navigation
-                    .third
-                      %p etc.
+                    .left
+                      %p
+                        Keyboard shortcuts are available when the search box has focus. ESC key is global.
+
+                      %ul#keys
+                        %li
+                          %span ESC
+                          Set search box focus / Clear search box
+                        %li
+                          %span UP
+                          Previous category / Previous entry
+                        %li
+                          %span DOWN
+                          Next category / Next entry
+                        %li
+                          %span ENTER
+                          Open category / Load selected entry
+
+                    .right
+                      %p
+                        Please note that the keyboard navigation is
+                        still buggy when in category mode.
+                        But you should have no problem
+                        to search for entries and navigate to them
+                        in a fast manner.
+                      %p
+                        I am working on it.
 
             %li.entry
               %ul.signatures
