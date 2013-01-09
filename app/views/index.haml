@@ -145,16 +145,16 @@
 
             %li.entry
               %ul.signatures
-                %li.signature
+                %li.signature#download
                   %h2.title Download
                   
                   .row.clearfix
-                    .third
-                      %p .ZIP
-                    .third
-                      %p AIR
-                    .third
-                      %p GIT
+                    .third#zip
+                      %a{:href => '/jqapi.zip'} Download as Zip Archive
+                    .third#air
+                      %a{:href => '#'} Download as AIR App (coming soon)
+                    .third#git
+                      %a{:href => 'https://github.com/jqapi/jqapi#download-it'} Git Clone &amp; generate it yourself
 
             %li.entry
               %ul.signatures
