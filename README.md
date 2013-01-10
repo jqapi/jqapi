@@ -1,4 +1,4 @@
-## The next version of jQAPI
+## jQAPI - Alternative jQuery Documentation Browser
 
 This is a revamp of https://github.com/mustardamus/jqapi and still under development.
 
@@ -22,13 +22,10 @@ Then install all the other Gems:
 
     bundle install
 
-### Start it
-
-    thor dev:start
-
 ## Generate the documentation
 
 ### Download it
+
     thor docs:download
 
 The GitHub repo of the official docs site will be cloned/updated.
@@ -37,13 +34,19 @@ The GitHub repo of the official docs site will be cloned/updated.
 
     thor docs:generate
 
-The .json files will be located in /docs/entries.
-Also generated:
-  - /docs/categories.json (category names, slugs and full descriptions)
-  - /docs/index.json (stripped down category structure with links to entries with stripped down desc)
+### Start it
 
-## Todo
-  - check if method is deprecated <entry type="method" name="live" return="jQuery" deprecated="1.7">
-  - whats wrong with jQuery.xml long_desc stripping?
-  - cross browser css3
-  - check sandbox for demos: https://github.com/versal/sandbox-js
+    thor dev:start
+
+Point your browser to localhost:9292 and there you have the latest jQuery documentation with jQAPI
+wrapped around.
+
+## Known Issues - Work in progress
+  - check if method is deprecated, if so indicate it
+  - jQuery() documentation is broken
+  - buggy keyboard navigation when in category mode
+  - https://github.com/jqapi/jqapi/issues
+
+## License
+
+Released under MIT & GPL. Coded by Sebastian Senf. http://twitter.com/mustardamus
