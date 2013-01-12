@@ -6,12 +6,12 @@
     %meta{:name => "content-type", :content => "text/html; charset=utf-8"}
     %meta{:name => "description", :content => "Alternative jQuery Documentation Browser"}
 
-    %link{:rel => "shortcut icon", :href => "/assets/favicon.ico", :type => "image/x-icon"}
+    %link{:rel => "shortcut icon", :href => "assets/favicon.ico", :type => "image/x-icon"}
     %link{:rel => "icon", :href => "/favicon.ico", :type => "image/x-icon"}
-    
-    %link{:href  => '/assets/bundle.css', :type => 'text/css', :rel => 'stylesheet'}
-    %script{:src => '/assets/bundle.js',  :type => 'text/javascript'}
-  
+
+    %link{:href  => 'assets/bundle.css', :type => 'text/css', :rel => 'stylesheet'}
+    %script{:src => 'assets/bundle.js',  :type => 'text/javascript'}
+
   %body
     #sidebar
       #search
@@ -45,7 +45,7 @@
           %li
             %a{:href => '#changelog'}
               %span Changelog
-        
+
         %ul#navigation
           %li
             %a{:href => '/'}
@@ -73,7 +73,7 @@
                         \.
 
                       %p
-                        The aim of this project is to get out of the way of your development work. 
+                        The aim of this project is to get out of the way of your development work.
                         Quickly switch to this docs and find what you are looking for.
 
                       %p
@@ -134,7 +134,7 @@
               %ul.signatures
                 %li.signature
                   %h2.title Usage
-                  
+
                   .row.clearfix
                     .left
                       %p
@@ -168,7 +168,7 @@
               %ul.signatures
                 %li.signature#download
                   %h2.title Download
-                  
+
                   .row.clearfix
                     .third#zip
                       %a{:href => '/jqapi.zip'} Download as Zip Archive
@@ -230,7 +230,7 @@
               %ul.signatures
                 %li.signature
                   %h2.title License
-                  
+
                   #license
                     %div
                       %a{:href => 'http://jquery.com'} jQuery
@@ -239,7 +239,7 @@
                       \. jQAPI is
                       %a{:href => 'https://github.com/jqapi/jqapi'}Open-Source
                       and running under the same
-                      %a{:href => '/LICENSE'} licenses
+                      %a{:href => 'LICENSE'} licenses
                       \.
                     %div
                       jQAPI is coded by
@@ -271,7 +271,7 @@
                       Released very first version.
 
                   %a{:href => 'http://twitter.com/jqapi'} Follow @jqapi for updates
-  
+
   :javascript
     if(window.location.hostname === 'jqapi.com') {
       var _gaq = _gaq || [];
