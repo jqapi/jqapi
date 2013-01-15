@@ -9,3 +9,6 @@ gem 'coffee-script'
 gem 'haml'
 gem 'sinatra'
 gem 'crack'
+
+gem 'execjs'
+gem 'therubyracer'

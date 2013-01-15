@@ -19,7 +19,7 @@ class jqapi.Entry
       document.title = "#{entry.title} - jQAPI"           # set a new title
 
   loadContent: (slug) ->
-    $.getJSON "/docs/entries/#{slug}.json", (data) =>     # fetch from json file
+    $.getJSON "docs/entries/#{slug}.json", (data) =>     # fetch from json file
       data.slug = slug
       @parseEntry data                                    # parse what was received
       jqapi.events.trigger 'entry:done', [data]           # let the app know that a new entry is loaded
@@ -27,7 +27,7 @@ class jqapi.Entry
 
   parseEntry: (entry) ->
     el = $ templates.entry(entry)                         # generate element from template
-    
+
     #@insertCategories entry, el                           # generate and insert categories
     @insertEntries    entry, el                           # generate entries and insert
 
@@ -36,7 +36,7 @@ class jqapi.Entry
     @highlightCode()
     @adjustCodeHeight()                                   # set equal heights for the code boxes
     @fixLinks()
-    
+
   insertCategories: (entry, el) ->
     catsEl  = $('#categories', el)                        # cache categories list
 
@@ -143,7 +143,7 @@ class jqapi.Entry
       playH -= cssEl.height() if cssEl.length
       playH += 100 if playH < 100
       playH  = 130 if playH < 0
-      
+
       sandboxEl.children('.play').height playH
 
   fixLinks: ->
@@ -161,9 +161,9 @@ class jqapi.Entry
       if hrefArr[2] is 'api.jquery.com'
         href = hrefArr[hrefArr.length - 1]
         href = hrefArr[hrefArr.length - 2] if href.length is 0
-        
+
         el.attr 'href', "#p=#{href}"
-      
+
   buildLiveExamples: ->
     sandboxEls = $('.sandbox', @el)
 
@@ -178,5 +178,5 @@ class jqapi.Entry
         js      : el.find('.js pre').text()
         css     : el.find('.css pre').text()
         external:
-          js    : ['/assets/jquery.js']
+          js    : ['assets/jquery.js']
         el      : $('.play', sandboxEl).text('')

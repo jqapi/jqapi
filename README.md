@@ -41,6 +41,13 @@ The GitHub repo of the official docs site will be cloned/updated.
 Point your browser to localhost:9292 and there you have the latest jQuery documentation with jQAPI
 wrapped around.
 
+### Generate static files
+
+    thor deploy:generate
+
+Generates index.html, bundle.js, bundle.css, etc., so that the documentation can be
+viewed from a set of static files.
+
 ## License
 
 Released under MIT & GPL. Coded by Sebastian Senf. http://twitter.com/mustardamus
