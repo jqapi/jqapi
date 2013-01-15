@@ -2,7 +2,7 @@ class jqapi.Categories
   constructor: ->
     @el  = $ '#categories'                                # parent ul element
     self = @
-    
+
     jqapi.events.on 'navigation:done', =>                 # call when everything is loaded and generated
       @hideLoader()                                       # hide the loader
 
@@ -14,8 +14,8 @@ class jqapi.Categories
 
     jqapi.events.on 'categories:toggle', (e, catEl) =>    # on request to toggle a category
       @toggleCategory catEl                               # toggle the category content
-    
-    $.getJSON '/docs/index.json', (data) =>               # load the index json data with all categories and entries
+
+    $.getJSON 'docs/index.json', (data) =>               # load the index json data with all categories and entries
       @buildNavigation data                               # and build from the object when loaded
       jqapi.events.trigger 'index:done', [data]           # let the app know that the index is loaded
 
@@ -58,7 +58,7 @@ class jqapi.Categories
     if subcats and subcats.length                         # are there any sub categories?
       for subcat in subcats                               # for each sub category
         listEl = $ templates.categoryItem('sub', subcat.name) # get template for category
-        
+
         if subcat.entries.length                          # if the sub category has entries
           listEl.append @buildEntriesList(subcat.entries) # build and append the entries
           listEl.appendTo el                              # append entries list to category
