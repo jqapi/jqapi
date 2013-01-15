@@ -41,12 +41,6 @@ The GitHub repo of the official docs site will be cloned/updated.
 Point your browser to localhost:9292 and there you have the latest jQuery documentation with jQAPI
 wrapped around.
 
-## Known Issues - Work in progress
-  - check if method is deprecated, if so indicate it
-  - jQuery() documentation is broken
-  - buggy keyboard navigation when in category mode
-  - https://github.com/jqapi/jqapi/issues
-
 ## License
 
 Released under MIT & GPL. Coded by Sebastian Senf. http://twitter.com/mustardamus
