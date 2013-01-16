@@ -64,7 +64,7 @@ class jqapi.Search
     for entry in entries                                  # go through array
       titleLow = entry.title.toLowerCase()                # search in lower case
 
-      if titleLow.indexOf(term) isnt -1                   # search term in title?
+      if titleLow.indexOf(term.toLowerCase()) isnt -1     # search term in title?
         results.push entry                                # if so push entry to array
 
     results                                               # return result array
