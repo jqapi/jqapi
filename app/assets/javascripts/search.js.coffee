@@ -55,6 +55,7 @@ class jqapi.Search
             allResults = allResults.concat(result)        # concat array with results found in subcat
 
     allResults = @removeDuplicates(allResults)            # remove all duplicates
+    allResults = @bestMatchingFirst(term, allResults)     # best match on first place
 
     @buildResultList allResults, term                     # build the dom list of results
 
@@ -79,6 +80,34 @@ class jqapi.Search
         retArr.push result                                # and save the whole object in return array
 
     retArr                                                # return stripped down array
+
+  bestMatchingFirst: (term, results) ->
+    retArr          = []
+    bestMatchIndex  = 99
+    bestMatchLength = 99
+    bestMatchEntry  = {}
+
+    for result in results
+      title = result.title
+      
+      if title.substr(0, 6) is 'jQuery'                   # threat global methods like element methods
+        title = title.substr(6, title.length)             # strip out 'jQuery'
+
+      titleIndex  = title.indexOf(term)
+      titleLength = title.length
+
+      if titleIndex <= bestMatchIndex and titleLength < bestMatchLength # better match than before?
+        bestMatchIndex  = titleIndex
+        bestMatchLength = titleLength
+        bestMatchEntry  = result                          # if so store it as the best match yet
+
+    for result in results
+      if result.title is bestMatchEntry.title             # if the entry was the best match
+        retArr.unshift bestMatchEntry                     # unshift it to the first position of the array
+      else
+        retArr.push result                                # else just push it to the end
+
+    retArr
 
   buildResultList: (results, term) ->
     notFoundClass = '.not-found'                          # a seperate li inside the results list
