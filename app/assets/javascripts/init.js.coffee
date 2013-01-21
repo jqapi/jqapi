@@ -3,6 +3,7 @@ jqapi.events = $ {}                                       # use application even
 
 jQuery ->                                                 # wait for dom ready
   window.templates = new jqapi.Templates                  # shared templates between scripts
+  window.helper    = new jqapi.Helper
 
   parts = [
     'Sidebar'                                             # responsible for the sidebar dimensions

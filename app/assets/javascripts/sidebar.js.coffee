@@ -10,4 +10,5 @@ class jqapi.Sidebar
       @contentEl.height newHeight                         # set new height of sidebar content
 
     @el.on 'mouseenter', =>                               # if the mouse enters the sidebar area
-      jqapi.events.trigger 'search:focus'                 # set focus to search input
+      unless helper.isMobile()                            # don't set focus on mobile devices
+        jqapi.events.trigger 'search:focus'               # set focus to search input

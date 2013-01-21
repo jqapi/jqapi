@@ -7,6 +7,7 @@
 
 #= require init
 #= require templates
+#= require helper
 #= require sidebar
 #= require categories
 #= require header
