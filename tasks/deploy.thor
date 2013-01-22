@@ -68,4 +68,12 @@ class Deploy < Thor
     %x[cd public/ && zip -r jqapi.zip .]
     puts "Created public/jqapi.zip"
   end
+
+  desc 'air', 'builds a AIR application wrapper, saved to public/'
+  def air
+    puts "Build AIR wrapper..."
+    puts "Cert password: "
+    %x[adt -package -storetype pkcs12 -keystore air/jqapi.cert -target air public/jqapi.air air/application.xml -C ./ public/assets public/docs public/resources public/index.html public/LICENSE app/assets/images air/loader.html]
+    puts "Done."
+  end
 end
