@@ -68,12 +68,33 @@ class jqapi.Templates
     """
 
   argumentsItem: (arg) ->
+    argn = arg.name
+    if arg and arg.optional 
+      argn = "[#{arg.name}]"
+      
     """
     <tr>
-      <td class='name'>#{arg.name}</td>
+      <td class='name'>#{argn}</td>
       <td class='type'>#{arg.type}</td>
       <td class='desc'>#{arg.desc}</td>
     </tr>
+    """
+
+  propertyItem: (prop) ->
+    if prop.default?
+      prop.def = "(default: <em>#{prop.default}</em>)"
+    else
+      prop.def = ""
+
+    """
+    <tr class="property"><td colspan=3>
+      #{prop.name}
+      #{prop.def}
+      <br>
+      Type: 
+      <a href="//api.jquery.com/Types##{prop.type}">#{prop.type}</a>
+      <p>#{prop.desc}</p>
+    </td></tr>   
     """
 
   examplesItem: (example) ->
