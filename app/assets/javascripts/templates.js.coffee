@@ -82,18 +82,21 @@ class jqapi.Templates
 
   propertyItem: (prop) ->
     if prop.default?
-      prop.def = "(default: <em>#{prop.default}</em>)"
+      prop.def = "(default: <code>#{prop.default}</code>)"
     else
       prop.def = ""
 
     """
     <tr class="property"><td colspan=3>
-      <strong>#{prop.name}</strong>
-      #{prop.def}
-      <br>
-      Type: 
-      <a href="//api.jquery.com/Types##{prop.type}">#{prop.type}</a>
-      <p>#{prop.desc}</p>
+      <div>
+        <strong>#{prop.name}</strong>
+        #{prop.def}
+      </div>
+      <div>
+        Type:
+        <a href="//api.jquery.com/Types##{prop.type}">#{prop.type}</a>
+      </div>
+      <div>#{prop.desc}</div>      
     </td></tr>   
     """
 
