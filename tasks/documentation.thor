@@ -62,6 +62,15 @@ class Docs < Thor
 
     Dir.glob("#{xmlPath}/*.xml").each do |filepath|       # each .xml file in directory
       contentXml = File.open(filepath).read               # read the xml content of the file
+
+      regex = /<xi:include href="(.+?)".+>/               # including xml xi:include tags
+      contentXml = contentXml.gsub regex do            
+          icontentXml = File.open("#{xmlPath}/#{$1}").read 
+          reg = /<\?xml.*\?>/
+          icontentXml = icontentXml.gsub reg , ''      
+          icontentXml
+        end
+
       contentObj = Crack::XML.parse(contentXml)           # parse xml to a object
       filename   = filepath.split('/').last.gsub('.xml', '') # get the filename (-selector variation for example)
       entryObj   = {}                                     # will hold entry details, written to file as json
