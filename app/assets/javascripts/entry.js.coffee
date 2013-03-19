@@ -82,10 +82,15 @@ class jqapi.Entry
       joinArr = []                                        # generate the comma seperated string with join
 
       for arg in argsArr
-        joinArr.push arg.name if arg and arg.name         # push argument name to join array
+        comma = ""
+        comma = ", " unless joinArr.length is 0
+        if arg and arg.optional
+          joinArr.push "[#{comma}#{arg.name}]" if arg and arg.name
+        else
+          joinArr.push "#{comma}#{arg.name}" if arg and arg.name
 
       methodName = title.substr(0, title.length - 2)      # cut out the empty ()
-      sigTitle   = "#{methodName}(#{joinArr.join(', ')})" # and fill it with arguments
+      sigTitle   = "#{methodName}(#{joinArr.join(' ')})"  # and fill it with arguments
 
     sigTitle                                              # return full title
 

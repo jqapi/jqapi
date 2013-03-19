@@ -43,8 +43,14 @@ class jqapi.Header
         joinArr = []
 
         for arg in argsArr
-          joinArr.push arg.name if arg and arg.name
+          comma = ""
+          comma = ", " unless joinArr.length is 0
+          if arg and arg.optional
+            joinArr.push "[#{comma}#{arg.name}]" if arg and arg.name
+          else
+            joinArr.push "#{comma}#{arg.name}" if arg and arg.name
 
-        retArr.push joinArr.join(', ')
+        retArr.push joinArr.join(' ')
+
 
     retArr
