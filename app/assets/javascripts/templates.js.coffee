@@ -21,13 +21,26 @@ class jqapi.Templates
     """
 
   entry: (entry) ->
+
+    dep = []
+
+    if entry and entry.deprecated
+      dep.push "version deprecated: <a href='//api.jquery.com/category/version/#{entry.deprecated}/'>#{entry.deprecated}</a>"
+
+    if entry and entry.removed
+      dep.push "removed: <a href='//api.jquery.com/category/version/#{entry.removed}/'>#{entry.removed}</a>"
+
+    unless dep is []
+      dep = "<p>#{dep.join ' | '}</p>"
+
     """
     <div id='entry-wrapper'>
       <div id='entry-header'>
         <h1>#{entry.title}</h1>
         <p>#{entry.desc}</p>
+        #{dep}
         <ul id='categories'></ul>
-        <a href='http://api.jquery.com/#{entry.slug}'>Original: api.jquery.com/#{entry.slug}</a>
+        <a class="origin" href='http://api.jquery.com/#{entry.slug}'>Original: api.jquery.com/#{entry.slug}</a>
       </div>
       <ul id='entries'></ul>
     </div>

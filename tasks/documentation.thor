@@ -114,6 +114,8 @@ class Docs < Thor
       :name       => entry['name'],                 
       :type       => entry['type'],
       :title      => entry['title'],
+      :deprecated => entry['deprecated'],
+      :removed    => entry['removed'],
       :desc       => entry['desc'],                       # from first entry or from wrapper
       :categories => [],                                  # normalize categories as array
       :entries    => []                                   # all variatons of the method
@@ -255,8 +257,10 @@ class Docs < Thor
             entryObj = {                                  # build a new stripped entry obj
               :title => entry[:title],
               :desc  => desc,
-              :slug  => entry[:slug] || entry[:name]      # use slug if exist
-            }
+              :slug  => entry[:slug] || entry[:name],     # use slug if exist
+              :deprecated => entry[:deprecated],
+              :removed    => entry[:removed]
+            }           
 
             if sub_cat                                    # entry is stored in a sub category
               cat[:subcats].each do |subcat|              # find the slug in the subcats
