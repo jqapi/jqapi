@@ -21,13 +21,26 @@ class jqapi.Templates
     """
 
   entry: (entry) ->
+
+    dep = []
+
+    if entry and entry.deprecated
+      dep.push "version deprecated: <a href='//api.jquery.com/category/version/#{entry.deprecated}/'>#{entry.deprecated}</a>"
+
+    if entry and entry.removed
+      dep.push "removed: <a href='//api.jquery.com/category/version/#{entry.removed}/'>#{entry.removed}</a>"
+
+    unless dep is []
+      dep = "<p>#{dep.join ' | '}</p>"
+
     """
     <div id='entry-wrapper'>
       <div id='entry-header'>
         <h1>#{entry.title}</h1>
         <p>#{entry.desc}</p>
+        #{dep}
         <ul id='categories'></ul>
-        <a href='http://api.jquery.com/#{entry.slug}'>Original: api.jquery.com/#{entry.slug}</a>
+        <a class="origin" href='http://api.jquery.com/#{entry.slug}'>Original: api.jquery.com/#{entry.slug}</a>
       </div>
       <ul id='entries'></ul>
     </div>
@@ -68,12 +81,79 @@ class jqapi.Templates
     """
 
   argumentsItem: (arg) ->
+    def = ""
+    argt = []
+
+    if arg.default?
+      def = "( default: <code>#{arg.default}</code> )"
+
+    if $.isArray arg.type
+      for a in arg.type        
+        argt.push a.name
+    else
+      argt = [arg.type]
+
+    argt = argt.join ", "
+
     """
     <tr>
-      <td class='name'>#{arg.name}</td>
-      <td class='type'>#{arg.type}</td>
+      <td class='name'>#{arg.name} #{def}</td>
+      <td class='type'>#{argt}</td>
       <td class='desc'>#{arg.desc}</td>
     </tr>
+    """
+
+  propertyItem: (prop) ->
+    def = ""
+    added = "" 
+    types = []
+    args = []
+    ret = ""
+
+    if prop.default? 
+      def = "(default: <code>#{prop.default}</code>)"
+
+    if prop.added? 
+      added = """
+        <strong>
+         ( version added: 
+          <a href="//api.jquery.com/category/version/#{prop.added}/">#{prop.added}</a> )
+        </strong>
+      """
+
+    if $.isArray prop.type
+      for t in prop.type        
+        types.push t.name
+    else
+      types = [prop.type]
+
+    types = $.map types , (t) ->
+      "<a href='//api.jquery.com/Types##{t}'>#{t}</a>"
+
+    types = types.join ', '
+
+    if prop.argument?
+      for a in prop.argument                
+        args.push "<a href='//api.jquery.com/Types##{a.type}'>#{a.type}</a> #{a.name}"
+      args = "( #{args.join ', '} )"
+    else 
+      args = ""
+
+    if prop.return?
+      ret = " => <a href='//api.jquery.com/Types##{prop.return.type}'>#{prop.return.type}</a>"
+      
+    """
+    <tr class="property"><td colspan=3>
+      <div>
+        <strong>#{prop.name}</strong>
+        #{def}
+      </div>
+      <div>
+        Type: #{types} #{args}#{ret}
+      </div>
+      <div class="desc">#{prop.desc} #{added}</div>      
+
+    </td></tr>   
     """
 
   examplesItem: (example) ->
