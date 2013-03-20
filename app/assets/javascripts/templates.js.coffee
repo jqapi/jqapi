@@ -68,35 +68,78 @@ class jqapi.Templates
     """
 
   argumentsItem: (arg) ->
-    argn = arg.name
-    if arg and arg.optional 
-      argn = "[#{arg.name}]"
+    def = ""
+    argt = []
+
+    if arg.default?
+      def = "( default: <code>#{arg.default}</code> )"
+
+    if $.isArray arg.type
+      for a in arg.type        
+        argt.push a.name
+    else
+      argt = [arg.type]
+
+    argt = argt.join ", "
 
     """
     <tr>
-      <td class='name'>#{argn}</td>
-      <td class='type'>#{arg.type}</td>
+      <td class='name'>#{arg.name} #{def}</td>
+      <td class='type'>#{argt}</td>
       <td class='desc'>#{arg.desc}</td>
     </tr>
     """
 
   propertyItem: (prop) ->
-    if prop.default?
-      prop.def = "(default: <code>#{prop.default}</code>)"
-    else
-      prop.def = ""
+    def = ""
+    added = "" 
+    types = []
+    args = []
+    ret = ""
 
+    if prop.default? 
+      def = "(default: <code>#{prop.default}</code>)"
+
+    if prop.added? 
+      added = """
+        <strong>
+         ( version added: 
+          <a href="//api.jquery.com/category/version/#{prop.added}/">#{prop.added}</a> )
+        </strong>
+      """
+
+    if $.isArray prop.type
+      for t in prop.type        
+        types.push t.name
+    else
+      types = [prop.type]
+
+    types = $.map types , (t) ->
+      "<a href='//api.jquery.com/Types##{t}'>#{t}</a>"
+
+    types = types.join ', '
+
+    if prop.argument?
+      for a in prop.argument                
+        args.push "<a href='//api.jquery.com/Types##{a.type}'>#{a.type}</a> #{a.name}"
+      args = "( #{args.join ', '} )"
+    else 
+      args = ""
+
+    if prop.return?
+      ret = " => <a href='//api.jquery.com/Types##{prop.return.type}'>#{prop.return.type}</a>"
+      
     """
     <tr class="property"><td colspan=3>
       <div>
         <strong>#{prop.name}</strong>
-        #{prop.def}
+        #{def}
       </div>
       <div>
-        Type:
-        <a href="//api.jquery.com/Types##{prop.type}">#{prop.type}</a>
+        Type: #{types} #{args}#{ret}
       </div>
-      <div>#{prop.desc}</div>      
+      <div class="desc">#{prop.desc} #{added}</div>      
+
     </td></tr>   
     """
 
