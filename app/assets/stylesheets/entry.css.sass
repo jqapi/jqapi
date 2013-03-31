@@ -24,8 +24,11 @@
       color: #777
       padding-right: 50px
       line-height: 20px
-
     a
+      text-decoration: none
+      color: red
+
+    a.origin
       position: absolute
       top: -10px
       right: 0
@@ -241,7 +244,7 @@
 
           table.arguments
             width: 100%
-
+          
             tr
               background: #edf3fe
 
@@ -254,9 +257,58 @@
                 &.name
                   width: 200px
 
+                  code
+                    font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace
+                    padding: 1px 2px
+                    font-weight: normal
+
                 &.type
                   width: 100px
                   color: #888
 
             tr:nth-child(even)
               background: #e5edf9
+
+            tr.property
+              
+              font-size: 0.8em 
+
+              a
+                color: red
+                text-decoration: none
+
+                &:hover
+                  text-decoration: underline
+                  color: #555
+
+              strong
+                font-weight: bold
+                
+              code
+                font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace
+                padding: 1px 2px
+                font-weight: normal
+
+              pre
+                background: rgb(43,43,43)
+              em
+                font-style: italic
+
+              td          
+                padding-left: 30px
+                background: rgb(214, 214, 214)
+
+                .desc
+                  box-shadow: 1px 1px 5px black
+                  padding: 2px
+
+                ul
+                  padding: 5px
+
+                  li
+                    padding: 5px
+                    &:nth-child(odd)
+                      background: rgb(194, 194, 194)
+                    &:nth-child(even)
+                      background: rgb(174, 174, 174)
+

@@ -102,6 +102,10 @@ class jqapi.Entry
     for arg in args                                       # for every argument
       if arg and arg.name
         argsEl.append $(templates.argumentsItem(arg))     # build and append element from template
+        if arg.property
+          for prop in arg.property
+            argsEl.append $(templates.propertyItem(prop))
+
 
   insertExamples: (examples, el) ->
     examples   = [examples] unless $.isArray(examples)
