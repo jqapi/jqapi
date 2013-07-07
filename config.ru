@@ -1,9 +1,9 @@
 require "#{File.dirname(__FILE__)}/app/jqapi.rb"
 
 map '/assets' do
-  run Jqapi.sprockets
+  run Jqapi::Server.sprockets
 end
 
 map '/' do
-  run Jqapi
+  run Jqapi::Server
 end

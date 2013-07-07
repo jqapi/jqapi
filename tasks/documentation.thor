@@ -1,8 +1,3 @@
-require 'bundler'
-Bundler.require
-
-ROOT_DIR = File.join(File.dirname(__FILE__), '..')
-
 class Docs < Thor
   desc 'download', 'pull the official documentation from github'
   def download
