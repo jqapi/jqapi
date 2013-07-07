@@ -17,10 +17,8 @@ class Deploy < Thor
       'vendor/assets/images'
     ]
     
-    configure do
-      asset_paths.each do |path|
-        sprockets.append_path(path)
-      end
+    asset_paths.each do |path|
+      sprockets.append_path(path)
     end
 
     unless File.directory?(deploy_path)
