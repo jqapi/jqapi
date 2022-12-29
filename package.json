@@ -1,0 +1,23 @@
+{
+  "name": "jqapi",
+  "version": "2.0.0",
+  "author": "Sebastian Senf <contact@mustardamus.com>",
+  "description": "Alternative jQuery Documentation Browser",
+  "keywords": [
+    "jquery",
+    "documentation",
+    "browser"
+  ],
+  "license": "MIT",
+  "homepage": "https://jqapi.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jqapi/jqapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jqapi/jqapi/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
