@@ -1,0 +1,29 @@
+---
+import "bulma";
+import getEntries from "../lib/get-entries.mjs";
+import Navigation from "../components/Navigation.astro";
+
+const entries = await getEntries();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQAPI</title>
+  </head>
+
+  <body>
+    <div class="columns is-mobile">
+      <div class="column is-3">
+        <Navigation {entries} />
+      </div>
+
+      <div id="content" class="column">
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>

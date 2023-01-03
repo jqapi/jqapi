@@ -18,10 +18,21 @@
     "url": "https://github.com/jqapi/jqapi/issues"
   },
   "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:generate": "git submodule update --remote"
   },
   "dependencies": {
-    "simple-xml-to-json": "^1.0.9"
+    "astro": "^1.8.0",
+    "bulma": "^0.9.4",
+    "jquery": "^3.6.3",
+    "jsdom": "^20.0.3"
+  },
+  "devDependencies": {
+    "sass": "^1.57.1"
   }
 }

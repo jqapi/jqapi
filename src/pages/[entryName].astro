@@ -1,0 +1,38 @@
+---
+import LayoutMain from "../layouts/Main.astro";
+import getEntries from "../lib/get-entries.mjs";
+import getFullPath from "../lib/get-full-path.mjs";
+import parseXML from "../lib/parse-xml.mjs";
+
+const { entryName } = Astro.params;
+const xmlPath = getFullPath(`api.jquery.com/entries/${entryName}.xml`);
+const $xml = await parseXML(xmlPath);
+
+export async function getStaticPaths() {
+  const entries = await getEntries();
+
+  return entries.map((entry) => {
+    return { params: { entryName: entry.name } };
+  });
+}
+---
+
+<LayoutMain>
+  <h1 class="title">{entryName}</h1>
+
+  <div>
+    {$xml.find("entry").attr("type")}
+  </div>
+
+  <div>
+    <Fragment set:html={$xml.find("longdesc").html()} />
+  </div>
+
+  <script>
+    import $ from "jquery";
+
+    $(() => {
+      console.log("loaded");
+    });
+  </script>
+</LayoutMain>

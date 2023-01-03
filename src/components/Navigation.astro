@@ -1,0 +1,36 @@
+---
+const { entries } = await Astro.props;
+---
+
+<nav id="navigation">
+  {
+    entries.map((entry) => (
+      <div>
+        <a href={`/${entry.name}`}>{entry.name}</a>
+      </div>
+    ))
+  }
+</nav>
+
+<script>
+  import $ from "jquery";
+
+  $(() => {
+    window.onpopstate = (event) => {
+      // on back button
+      console.log(event);
+    };
+
+    $("#navigation a").click((event) => {
+      const $a = $(event.target);
+      const href = $a.attr("href");
+
+      $("#content").load(`${href} #content`, () => {
+        window.history.pushState({}, "", href);
+        window.scrollTo(0, 0);
+      });
+
+      return false;
+    });
+  });
+</script>
