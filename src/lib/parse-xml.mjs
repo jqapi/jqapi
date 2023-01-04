@@ -10,3 +10,4 @@ export default async function parseXML(xmlPath) {
 
   return $(xmlDoc);
 }
+// leute in docus diedinge zwar beschreiben aber nicht so dolle rübergeben, enriched with ai

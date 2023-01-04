@@ -2,12 +2,12 @@
 const { entries } = await Astro.props;
 ---
 
-<nav id="navigation">
+<nav id="entriesAll">
   {
     entries.map((entry) => (
-      <div>
-        <a href={`/${entry.name}`}>{entry.name}</a>
-      </div>
+      <a href={`/${entry.name}`} class="entry">
+        {entry.name}
+      </a>
     ))
   }
 </nav>
@@ -21,7 +21,7 @@ const { entries } = await Astro.props;
       console.log(event);
     };
 
-    $("#navigation a").click((event) => {
+    $("#entriesAll a").click((event) => {
       const $a = $(event.target);
       const href = $a.attr("href");
 
@@ -34,3 +34,9 @@ const { entries } = await Astro.props;
     });
   });
 </script>
+
+<style>
+  .entry {
+    display: block;
+  }
+</style>

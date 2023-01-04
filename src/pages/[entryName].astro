@@ -24,7 +24,7 @@ export async function getStaticPaths() {
     {$xml.find("entry").attr("type")}
   </div>
 
-  <div>
+  <div class="content">
     <Fragment set:html={$xml.find("longdesc").html()} />
   </div>
 
