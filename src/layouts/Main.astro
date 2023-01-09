@@ -14,10 +14,9 @@ import categories from "../../categories-generated.json";
   </head>
 
   <body>
-    {JSON.stringify(categories, null, 2)}
     <div class="columns is-mobile">
       <div class="column is-4">
-        <!-- <Navigation {entries} /> -->
+        <Navigation {categories} />
       </div>
 
       <div id="content" class="column">

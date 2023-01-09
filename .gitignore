@@ -19,3 +19,4 @@ pnpm-debug.log*
 .DS_Store
 
 categories-generated.json
+coverage/

@@ -1,13 +1,23 @@
 ---
-const { entries } = await Astro.props;
+const { categories } = await Astro.props;
 ---
 
-<nav id="entriesAll">
+<nav id="categories">
   {
-    entries.map((entry) => (
-      <a href={`/${entry.name}`} class="entry">
-        {entry.name}
-      </a>
+    categories.map((category) => (
+      <>
+        <div class="category">{category.name}</div>
+        <div>
+          {category.categories.map((category) => (
+            <div class="category sub-category">{category.name}</div>
+            <div class="entries">
+              {category.entries && category.entries.map(entry => {
+                <div class="entry">{entry.name}</div>
+              })}
+              </div>
+          ))}
+        </div>
+      </>
     ))
   }
 </nav>
