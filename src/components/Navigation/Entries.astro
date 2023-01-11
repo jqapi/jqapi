@@ -1,0 +1,16 @@
+---
+const { entries } = await Astro.props;
+---
+
+<ul class="entries">
+  {
+    entries.map((entry) => (
+      <li>
+        <a href={`/${entry.name}`}>
+          <span>{entry.name}</span>
+          <span>{entry.desc.substr(0, 100)}...</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

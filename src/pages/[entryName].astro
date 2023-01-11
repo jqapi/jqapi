@@ -1,25 +1,25 @@
 ---
+import { readdir } from "node:fs/promises";
 import LayoutMain from "../layouts/Main.astro";
-// import getEntries from "../lib/get-entries.mjs";
-// import getFullPath from "../lib/get-full-path.mjs";
-// import parseXML from "../lib/parse-xml.mjs";
+import getFullPath from "../lib/get-full-path.mjs";
+import parseXML from "../lib/parse-xml.mjs";
 
-// const { entryName } = Astro.params;
-// const xmlPath = getFullPath(`api.jquery.com/entries/${entryName}.xml`);
-// const $xml = await parseXML(xmlPath);
+const { entryName } = Astro.params;
+const xmlPath = getFullPath(`api.jquery.com/entries/${entryName}.xml`);
+const $xml = await parseXML(xmlPath);
 
 export async function getStaticPaths() {
-  return [{ params: { entryName: "wrap" } }];
-  //   const entries = await getEntries();
+  const entriesPath = getFullPath("api.jquery.com/entries");
+  const entriesFiles = await readdir(entriesPath);
 
-  //   return entries.map((entry) => {
-  //     return { params: { entryName: entry.name } };
-  //   });
+  return entriesFiles.map((entryFile) => {
+    return { params: { entryName: entryFile.replace(".xml", "") } };
+  });
 }
 ---
 
 <LayoutMain>
-  <!-- <h1 class="title">{entryName}</h1>
+  <h1 class="title">{entryName}</h1>
 
   <div>
     {$xml.find("entry").attr("type")}
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 
   <div class="content">
     <Fragment set:html={$xml.find("longdesc").html()} />
-  </div> -->
+  </div>
 
   <script>
     import $ from "jquery";

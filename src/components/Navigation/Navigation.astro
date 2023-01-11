@@ -1,0 +1,58 @@
+---
+import Entries from "./Entries.astro";
+
+const { categories } = await Astro.props;
+---
+
+<nav id="categories">
+  {
+    categories.map((category) => (
+      <>
+        <div class="category">{category.name}</div>
+
+        {category.categories && (
+          <div class="subcategory">
+            {category.categories.map((subCategory) => (
+              <>
+                <div class="category">{subCategory.name}</div>
+                {subCategory.entries && (
+                  <Entries entries={subCategory.entries} />
+                )}
+              </>
+            ))}
+          </div>
+        )}
+
+        {category.entries && <Entries entries={category.entries} />}
+      </>
+    ))
+  }
+</nav>
+
+<script>
+  import $ from "jquery";
+
+  $(() => {
+    window.onpopstate = (event) => {
+      // on back button
+      console.log(event);
+    };
+
+    $(".entries a").click(function () {
+      const href = $(this).attr("href");
+
+      $("#content").load(`${href} #content`, () => {
+        window.history.pushState({}, "", href);
+        window.scrollTo(0, 0);
+      });
+
+      return false;
+    });
+  });
+</script>
+
+<style>
+  .entries a {
+    display: block;
+  }
+</style>
