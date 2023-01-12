@@ -1,7 +1,8 @@
 ---
-import "bulma";
 import Navigation from "../components/Navigation/Navigation.astro";
 import categories from "../../categories-generated.json";
+import "bulma";
+import "./layout.css";
 ---
 
 <!DOCTYPE html>
@@ -10,16 +11,17 @@ import categories from "../../categories-generated.json";
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>jQAPI</title>
   </head>
 
   <body>
-    <div class="columns is-mobile">
-      <div class="column is-4">
+    <div id="container">
+      <div id="sidebar">
         <Navigation {categories} />
       </div>
 
-      <div id="content" class="column">
+      <div id="content">
         <slot />
       </div>
     </div>

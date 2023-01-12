@@ -1,0 +1,26 @@
+html,
+body,
+#container,
+#sidebar,
+#content {
+  height: 100%;
+  margin: 0;
+}
+
+#container {
+  position: relative;
+}
+
+#sidebar {
+  width: 20%;
+  overflow: auto;
+}
+
+#content {
+  vertical-align: top;
+  width: 80%;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 20%;
+}

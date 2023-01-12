@@ -15,12 +15,83 @@ const { entries } = await Astro.props;
   }
 </ul>
 
-<style>
+<script>
+  import $ from "jquery";
+
+  $(() => {
+    $(".entries a").click(function () {
+      const $a = $(this);
+      const href = $a.attr("href");
+
+      $(".entries li.active").removeClass("active");
+      $a.parent().addClass("active");
+
+      $content.load(`${href} #content > *`, () => {
+        window.history.pushState({}, "", href);
+        window.scrollTo(0, 0);
+      });
+
+      return false;
+    });
+  });
+</script>
+
+<style is:global>
   .entries {
     display: none;
   }
 
-  .entries a {
+  .entries li {
+    background: white;
+    padding: 5px 0 6px 25px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+
+  .entries li:nth-child(even) {
+    background: #edf3fe;
+  }
+
+  .entries li a span {
     display: block;
+  }
+
+  .entries li a span:first-child {
+    color: #222;
+    transition: all 0.1s ease;
+  }
+
+  .entries li a span:last-child {
+    width: 1000px;
+    font-size: 0.8em;
+    color: #888;
+  }
+
+  .entries li:hover {
+    background: #6ea8ff;
+  }
+
+  .entries li:hover a span:first-child {
+    color: #111;
+  }
+
+  .entries li:hover a span:last-child {
+    color: #eee;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .entries li.active {
+    background: #3385f7;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #247ef4;
+  }
+
+  .entries li.active a span:first-child {
+    color: white;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  }
+
+  .entries li.active a span:last-child {
+    color: #eee;
   }
 </style>

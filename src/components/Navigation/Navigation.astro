@@ -10,7 +10,7 @@ const { categories } = await Astro.props;
       <>
         <div class="category">{category.name}</div>
 
-        <!-- Note: here we need the !== check, otherwise the length number will be rendered -->
+        <!-- Note: here we need the !== check, otherwise the length number will be rendered (?) -->
         {category.categories?.length !== 0 && (
           <div class="subcategory">
             {category.categories.map((subCategory) => (
@@ -33,16 +33,10 @@ const { categories } = await Astro.props;
   }
 </nav>
 
-<style>
-  .category, .subcategory {
-    cursor: pointer;
-  }
-
-  .subcategory {
-    display: none
-  }
+<style is:global>
+  @import "./categories.css";
 </style>
 
 <script>
-  import "./navigation.js";
+  import "./categories.js";
 </script>
