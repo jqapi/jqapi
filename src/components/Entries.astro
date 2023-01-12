@@ -19,6 +19,8 @@ const { entries } = await Astro.props;
   import $ from "jquery";
 
   $(() => {
+    const $content = $("#content");
+
     $(".entries a").click(function () {
       const $a = $(this);
       const href = $a.attr("href");

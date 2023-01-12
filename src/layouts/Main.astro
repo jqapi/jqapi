@@ -1,5 +1,5 @@
 ---
-import Navigation from "../components/Navigation/Navigation.astro";
+import Categories from "../components/Categories.astro";
 import categories from "../../categories-generated.json";
 import "bulma";
 import "./layout.css";
@@ -18,7 +18,7 @@ import "./layout.css";
   <body>
     <div id="container">
       <div id="sidebar">
-        <Navigation {categories} />
+        <Categories {categories} />
       </div>
 
       <div id="content">

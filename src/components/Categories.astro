@@ -1,0 +1,107 @@
+---
+import Entries from "./Entries.astro";
+
+const { categories } = await Astro.props;
+---
+
+<nav id="categories">
+  {
+    categories.map((category) => (
+      <>
+        <div class="category">{category.name}</div>
+
+        <!-- Note: here we need the !== check, otherwise the length number will be rendered (?) -->
+        {category.categories?.length !== 0 && (
+          <div class="subcategory">
+            {category.categories.map((subCategory) => (
+              <>
+                <div class="category">{subCategory.name}</div>
+
+                {subCategory.entries && (
+                  <Entries entries={subCategory.entries} />
+                )}
+              </>
+            ))}
+          </div>
+        )}
+
+        {category.entries && (
+          <Entries entries={category.entries} />
+        )}
+      </>
+    ))
+  }
+</nav>
+
+<script>
+  import $ from "jquery";
+
+  $(() => {
+    window.onpopstate = (event) => {
+      // on back button
+      console.log(event);
+    };
+
+    $(".category").click(function () {
+      $(this).toggleClass("active").next().toggle();
+    });
+  });
+</script>
+
+<style is:global>
+  .category {
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    background-color: #ddd;
+    color: #222;
+    padding: 7px 0 7px 10px;
+    position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .category:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 6px 8px 6px 0;
+    border-color: transparent #666 transparent transparent;
+    transition: all 0.1s ease;
+    display: inline-block;
+    vertical-align: middle;
+    margin: -2px 8px 0 0;
+    transform: rotate(180deg);
+  }
+
+  .category:hover {
+    background-color: #cecece;
+  }
+
+  .category:hover::before {
+    border-color: transparent #333 transparent transparent;
+  }
+
+  .category.active::before {
+    transform: rotate(270deg);
+    border-color: transparent #333 transparent transparent;
+  }
+
+  .subcategory {
+    display: none;
+  }
+
+  .subcategory .category {
+    padding: 5px 0 5px 12px;
+    font-size: 0.9em;
+  }
+
+  .subcategory .category::before {
+    border-width: 4px 6px 4px 0;
+    margin: -1px 8px 0 0;
+  }
+</style>
