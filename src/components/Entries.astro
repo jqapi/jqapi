@@ -48,6 +48,7 @@ const { entries } = await Astro.props;
     padding: 5px 0 6px 25px;
     cursor: pointer;
     border-bottom: 1px solid #eee;
+    line-height: 1;
   }
 
   .entries li:nth-child(even) {
@@ -65,8 +66,9 @@ const { entries } = await Astro.props;
 
   .entries li a span:last-child {
     width: 1000px;
-    font-size: 0.8em;
+    font-size: 0.78em;
     color: #888;
+    padding-top: 2px;
   }
 
   .entries li:hover {
