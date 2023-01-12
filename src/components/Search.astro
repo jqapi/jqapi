@@ -32,6 +32,11 @@
           break;
       }
     });
+
+    window.$events.on("search:focus", () => {
+      console.log("focus");
+      $input.focus();
+    });
   });
 </script>
 
