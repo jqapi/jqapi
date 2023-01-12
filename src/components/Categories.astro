@@ -102,6 +102,12 @@ const { categories } = await Astro.props;
   .subcategory .category {
     padding: 2px 0 2px 12px;
     font-size: 0.9em;
+    background-color: #eee;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .subcategory .category:hover {
+    background-color: #ddd;
   }
 
   .subcategory .category::before {
