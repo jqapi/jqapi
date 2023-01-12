@@ -14,6 +14,19 @@ body,
 #sidebar {
   width: 20%;
   overflow: auto;
+  position: relative;
+}
+
+#sidebar #search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  z-index: 2;
+}
+
+#sidebar #categories {
+  margin-top: 36px;
 }
 
 #content {

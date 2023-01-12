@@ -1,4 +1,5 @@
 ---
+import Search from "../components/Search.astro";
 import Categories from "../components/Categories.astro";
 import categories from "../../categories-generated.json";
 import "bulma";
@@ -18,6 +19,7 @@ import "./layout.css";
   <body>
     <div id="container">
       <div id="sidebar">
+        <Search />
         <Categories {categories} />
       </div>
 
