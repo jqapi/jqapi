@@ -27,5 +27,10 @@ import "./layout.css";
         <slot />
       </div>
     </div>
+
+    <script>
+      import $ from "jquery";
+      window.$events = $({}); // this is our global event bus
+    </script>
   </body>
 </html>

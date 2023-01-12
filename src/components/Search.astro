@@ -8,6 +8,33 @@
   <input type="text" placeholder="Search" />
 </div>
 
+<script>
+  import $ from "jquery";
+
+  $(() => {
+    const $input = $("#search input");
+
+    $input.on("keyup", (event) => {
+      switch (event.keyCode) {
+        case 27: // ESC
+          window.$events.trigger("seach:clear");
+          $input.val("");
+          break;
+
+        case 38: // UP
+          break;
+
+        case 40: // DOWN
+          break;
+
+        case 13: // ENTER
+          window.$events.trigger("search:submit", { value: $input.val() });
+          break;
+      }
+    });
+  });
+</script>
+
 <style>
   #search {
     position: relative;

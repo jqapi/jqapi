@@ -35,6 +35,10 @@ const { entries } = await Astro.props;
 
       return false;
     });
+
+    window.$events.on("search:submit", (event, data) => {
+      console.log(event, data);
+    });
   });
 </script>
 
