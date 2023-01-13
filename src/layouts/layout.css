@@ -25,7 +25,8 @@ body,
   z-index: 2;
 }
 
-#sidebar #categories {
+#categories,
+#results {
   margin-top: 36px;
 }
 

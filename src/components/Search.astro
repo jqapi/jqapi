@@ -5,20 +5,79 @@
     >
     </path>
   </svg>
+
   <input type="text" placeholder="Search" />
 </div>
 
 <script>
   import $ from "jquery";
 
+  function doSearch(searchTerm, $categories, $search) {
+    const foundTitles = [];
+    const $entries = $(".entries li", $categories)
+      .filter(function () {
+        const $entry = $(this);
+        const title = $entry.find("span:first-child").text().toLowerCase();
+
+        if (foundTitles.includes(title)) {
+          return false;
+        }
+
+        if (title.indexOf(searchTerm) !== -1) {
+          foundTitles.push(title);
+          return true;
+        }
+
+        return false;
+      })
+      .clone();
+
+    const sorted = $entries.sort((a, b) => {
+      const titleA = $(a).find("span:first-child").text().toLowerCase();
+      const titleB = $(b).find("span:first-child").text().toLowerCase();
+
+      return titleA.indexOf(searchTerm) - titleB.indexOf(searchTerm);
+    });
+
+    const highlighted = $(sorted).map(function () {
+      const $title = $(this).find("span:first-child");
+      const title = $title.text();
+      const index = title.toLowerCase().indexOf(searchTerm);
+      const newTitle = `${title.substr(0, index)}<strong>${title.substr(
+        index,
+        searchTerm.length
+      )}</strong>${title.substr(index + searchTerm.length, title.length)}`;
+
+      $title.html(newTitle);
+
+      return this;
+    });
+
+    const $list = $(`<ul id="results" class="entries"></ul>`);
+    const $notFound = $(`<li class="notfound">Nothing found</li>`);
+
+    if (highlighted.length !== 0) {
+      $list.prepend(highlighted);
+    } else {
+      $list.prepend($notFound);
+    }
+
+    $search.after($list);
+    $list.show();
+  }
+
   $(() => {
-    const $input = $("#search input");
+    const $search = $("#search");
+    const $input = $("input", $search);
+    const $categories = $("#categories");
 
     $input.on("keyup", (event) => {
       switch (event.keyCode) {
         case 27: // ESC
-          window.$events.trigger("seach:clear");
+          // window.$events.trigger("seach:clear");
           $input.val("");
+          $("#results").remove();
+          $categories.show();
           break;
 
         case 38: // UP
@@ -30,12 +89,25 @@
         case 13: // ENTER
           window.$events.trigger("search:submit", { value: $input.val() });
           break;
+
+        default:
+          const searchTerm = $input.val();
+
+          if (searchTerm.length === 0) {
+            $("#results").remove();
+            $categories.show();
+          } else {
+            $("#results").remove();
+            $categories.hide();
+            doSearch(searchTerm, $categories, $search);
+          }
       }
     });
 
-    window.$events.on("search:focus", () => {
-      console.log("focus");
-      $input.focus();
+    $(window).on("keyup", (event) => {
+      if (event.keyCode === 27) {
+        $input.focus();
+      }
     });
   });
 </script>
@@ -73,6 +145,19 @@
   }
 
   input:focus {
-    outline: 1px solid #888;
+    outline: 2px solid #3385f7;
+  }
+</style>
+
+<style is:global>
+  #results .notfound {
+    text-align: center;
+    border-bottom: none;
+    cursor: default;
+    padding-top: 30px;
+  }
+
+  #results .notfound:hover {
+    background: none;
   }
 </style>

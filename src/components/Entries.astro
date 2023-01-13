@@ -49,14 +49,23 @@ const { entries } = await Astro.props;
 
   .entries li {
     background: white;
-    padding: 5px 0 6px 25px;
-    cursor: pointer;
     border-bottom: 1px solid #eee;
     line-height: 1;
   }
 
   .entries li:nth-child(even) {
     background: #edf3fe;
+  }
+
+  .entries li a {
+    display: block;
+    padding: 5px 0 6px 25px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   .entries li a span {

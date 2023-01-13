@@ -31,12 +31,6 @@ import "./layout.css";
     <script>
       import $ from "jquery";
       window.$events = $({}); // this is our global event bus
-
-      $(window).on("keyup", (event) => {
-        if (event.keyCode === 27) {
-          window.$events.trigger("search:focus");
-        }
-      });
     </script>
   </body>
 </html>
