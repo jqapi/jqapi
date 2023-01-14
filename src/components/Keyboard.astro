@@ -79,34 +79,35 @@ ENTER = Navigate to page if entry selected`;
 
         if ($next.is(".subcategory:visible")) {
           $next = $next.children(".category:first-child");
+        } else if ($next.is(".entries:visible")) {
+          $next = $next.children("li:first-child");
         } else {
           $next = $next.next(); // next .category because .subcategory is closed
         }
-
-        if ($next.length === 0) {
-          $next = $selected.parent().next(); // reached the end of the .subcategory, select next .category
-        }
-
-        $selected.removeClass("selected");
-        $next.addClass("selected");
-
-        return;
       }
 
-      if ($selected.is("li")) {
-        console.log("entry");
+      if ($selected.parent().is(".entries")) {
+        $next = $selected.next();
       }
+
+      if ($next.length === 0) {
+        $next = $selected.parent().next(); // reached the end of the .subcategory or .entries, select next .category
+      }
+
+      $selected.removeClass("selected");
+      $next.addClass("selected");
     }
   }
 
   function navigateEnter($categories) {
     if ($categories.is(":visible")) {
-      const $selected = $(".selected", $categories);
+      let $selected = $(".selected", $categories);
+
+      if ($selected.parent().is(".entries")) {
+        $selected = $("a", $selected);
+      }
 
       $selected.click();
-
-      if ($selected.is(".category")) {
-      }
     }
   }
 

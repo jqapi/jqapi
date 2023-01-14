@@ -26,7 +26,8 @@ const { entries } = await Astro.props;
       const href = $a.attr("href");
 
       $(".entries li.active").removeClass("active");
-      $a.parent().addClass("active");
+      $("#sidebar .selected").removeClass("selected");
+      $a.parent().addClass("active selected");
 
       $content.load(`${href} #content > *`, () => {
         window.history.pushState({}, "", href);
@@ -80,15 +81,18 @@ const { entries } = await Astro.props;
     padding-top: 2px;
   }
 
-  .entries li:hover {
+  .entries li:hover,
+  .entries li.selected {
     background: #6ea8ff;
   }
 
-  .entries li:hover a span:first-child {
+  .entries li:hover a span:first-child,
+  .entries li.selected a span:first-child {
     color: #111;
   }
 
-  .entries li:hover a span:last-child {
+  .entries li:hover a span:last-child,
+  .entries li.selected a span:last-child {
     color: #eee;
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   }
