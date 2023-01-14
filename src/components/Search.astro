@@ -1,3 +1,7 @@
+---
+import Keyboard from "./Keyboard.astro";
+---
+
 <div id="search">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path
@@ -7,6 +11,10 @@
   </svg>
 
   <input type="text" placeholder="Search" />
+
+  <div id="keyboard">
+    <Keyboard />
+  </div>
 </div>
 
 <script>
@@ -72,39 +80,28 @@
     const $categories = $("#categories");
 
     $input.on("keyup", (event) => {
-      switch (event.keyCode) {
-        case 27: // ESC
-          // window.$events.trigger("seach:clear");
-          $input.val("");
-          $("#results").remove();
-          $categories.show();
-          break;
+      // local ESC key
+      if (event.keyCode === 27) {
+        $input.val("");
+        $("#results").remove();
+        $categories.show();
+        return;
+      }
 
-        case 38: // UP
-          break;
+      const searchTerm = $input.val();
 
-        case 40: // DOWN
-          break;
-
-        case 13: // ENTER
-          window.$events.trigger("search:submit", { value: $input.val() });
-          break;
-
-        default:
-          const searchTerm = $input.val();
-
-          if (searchTerm.length === 0) {
-            $("#results").remove();
-            $categories.show();
-          } else {
-            $("#results").remove();
-            $categories.hide();
-            doSearch(searchTerm, $categories, $search);
-          }
+      if (searchTerm.length === 0) {
+        $("#results").remove();
+        $categories.show();
+      } else {
+        $("#results").remove();
+        $categories.hide();
+        doSearch(searchTerm, $categories, $search);
       }
     });
 
     $(window).on("keyup", (event) => {
+      // global ESC key
       if (event.keyCode === 27) {
         $input.focus();
       }
@@ -146,6 +143,12 @@
 
   input:focus {
     outline: 2px solid #3385f7;
+  }
+
+  #keyboard {
+    position: absolute;
+    top: 2px;
+    right: 10px;
   }
 </style>
 

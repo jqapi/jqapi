@@ -10,10 +10,9 @@ const { categories } = await Astro.props;
       <>
         <div class="category">{category.name}</div>
 
-        <!-- Note: here we need the !== check, otherwise the length number will be rendered (?) -->
-        {category.categories?.length !== 0 && (
+        {category.categories && (
           <div class="subcategory">
-            {category.categories.map((subCategory) => (
+            {category.categories?.map((subCategory) => (
               <>
                 <div class="category">{subCategory.name}</div>
 
@@ -25,9 +24,7 @@ const { categories } = await Astro.props;
           </div>
         )}
 
-        {category.entries && (
-          <Entries entries={category.entries} />
-        )}
+        {category.entries && <Entries entries={category.entries} />}
       </>
     ))
   }
@@ -82,11 +79,13 @@ const { categories } = await Astro.props;
     transform: rotate(180deg);
   }
 
-  .category:hover {
+  .category:hover,
+  .category.selected {
     background-color: #cecece;
   }
 
-  .category:hover::before {
+  .category:hover::before,
+  .category.selected::before {
     border-color: transparent #333 transparent transparent;
   }
 
