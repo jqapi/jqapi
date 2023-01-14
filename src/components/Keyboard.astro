@@ -62,41 +62,49 @@ ENTER = Navigate to page if entry selected`;
 <script>
   import $ from "jquery";
 
-  function navigateUp($categories) {}
+  function navigate(prevNext, $categories) {
+    const firstLast = prevNext === "next" ? "first" : "last";
 
-  function navigateDown($categories) {
     if ($categories.is(":visible")) {
       const $selected = $(".selected", $categories);
       let $next;
 
       if ($selected.length === 0) {
-        $("> .category:first-child", $categories).addClass("selected");
+        $(`> .category:${firstLast}-child`, $categories).addClass("selected");
         return;
       }
 
       if ($selected.is(".category")) {
-        $next = $selected.next();
+        $next = $selected[prevNext]();
 
         if ($next.is(".subcategory:visible")) {
-          $next = $next.children(".category:first-child");
+          $next = $next.children(`.category:${firstLast}-child`);
         } else if ($next.is(".entries:visible")) {
-          $next = $next.children("li:first-child");
+          $next = $next.children(`li:${firstLast}-child`);
         } else {
-          $next = $next.next(); // next .category because .subcategory is closed
+          $next = $next[prevNext](); // prev/next .category because .subcategory is closed
         }
       }
 
       if ($selected.parent().is(".entries")) {
-        $next = $selected.next();
+        $next = $selected[prevNext]();
       }
 
       if ($next.length === 0) {
-        $next = $selected.parent().next(); // reached the end of the .subcategory or .entries, select next .category
+        $next = $selected.parent()[prevNext](); // reached the end of the .subcategory or .entries, select prev/next .category
       }
 
       $selected.removeClass("selected");
       $next.addClass("selected");
     }
+  }
+
+  function navigateUp($categories) {
+    navigate("prev", $categories);
+  }
+
+  function navigateDown($categories) {
+    navigate("next", $categories);
   }
 
   function navigateEnter($categories) {
