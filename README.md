@@ -21,4 +21,4 @@ Run `docs:update` and `docs:generate` in series.
 
 ## Todo
 
-- two versions of pages: with rendered categories, and without. dynamically load the pages without the categories, saves a lot of bandwidth.
+- remove subcategory DOM Insertion as the sub categories of that are also there

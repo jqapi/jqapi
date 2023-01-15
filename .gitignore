@@ -20,3 +20,4 @@ pnpm-debug.log*
 
 categories-generated.json
 coverage/
+public/resources

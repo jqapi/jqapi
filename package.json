@@ -28,6 +28,7 @@
     "test": "vitest",
     "docs:update": "git submodule update --remote",
     "docs:generate": "node lib/categories-xml-to-json.mjs",
+    "docs:copy": "cp -RT api.jquery.com/resources public/resources",
     "docs": "run-s docs:*"
   },
   "dependencies": {
