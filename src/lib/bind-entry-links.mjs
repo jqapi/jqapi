@@ -9,7 +9,7 @@ export default function ($parent) {
     $(".selected", $parent).removeClass("selected");
     $a.parent().addClass("active selected");
 
-    $("#content").load(`${href} #content > *`, () => {
+    $("#content").load(`${href}[ajax] #content > *`, () => {
       window.history.pushState({}, "", href);
       window.scrollTo(0, 0);
     });

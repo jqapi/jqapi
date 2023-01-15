@@ -3,37 +3,40 @@ import { readdir } from "node:fs/promises";
 import LayoutMain from "../layouts/Main.astro";
 import getFullPath from "../lib/get-full-path.mjs";
 import parseXML from "../lib/parse-xml.mjs";
+import Entry from "../components/Entry.astro";
 
-const { entryName } = Astro.params;
+const entryName = Astro.params.entryName.replace("[ajax]", "");
 const xmlPath = getFullPath(`api.jquery.com/entries/${entryName}.xml`);
-const $xml = await parseXML(xmlPath);
+const $entry = await parseXML(xmlPath);
+const isAjaxPage = Astro.url.pathname.includes("[ajax]");
 
 export async function getStaticPaths() {
   const entriesPath = getFullPath("api.jquery.com/entries");
   const entriesFiles = await readdir(entriesPath);
 
   return entriesFiles.map((entryFile) => {
-    return { params: { entryName: entryFile.replace(".xml", "") } };
+    const entryName = entryFile.replace(".xml", "");
+
+    // we generate two pages, one to render the full layout for landing on /entryName
+    // another for successive ajax requests without the categories navigation
+    // this saves precious bytes on the ajax request
+
+    return [
+      { params: { entryName } },
+      { params: { entryName: `${entryName}[ajax]` } },
+    ];
   });
 }
 ---
 
-<LayoutMain>
-  <h1 class="title">{entryName}</h1>
-
-  <div>
-    {$xml.find("entry").attr("type")}
-  </div>
-
-  <div class="content">
-    <Fragment set:html={$xml.find("longdesc").html()} />
-  </div>
-
-  <script>
-    import $ from "jquery";
-
-    $(() => {
-      console.log("loaded");
-    });
-  </script>
-</LayoutMain>
+{
+  isAjaxPage ? (
+    <div id="content">
+      <Entry entry={$entry} />
+    </div>
+  ) : (
+    <LayoutMain>
+      <Entry entry={$entry} />
+    </LayoutMain>
+  )
+}

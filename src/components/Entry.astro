@@ -1,0 +1,29 @@
+---
+const { entry } = Astro.props;
+---
+
+<section class="section">
+  <div class="content">
+    <Fragment set:html={entry.find("longdesc").html()} />
+  </div>
+</section>
+
+<!-- <h1 class="title">{entryName}</h1>
+
+  {JSON.stringify(Astro.url.pathname)}
+
+  <div>
+    {$xml.find("entry").attr("type")}
+  </div>
+
+  <div class="content">
+    <Fragment set:html={$xml.find("longdesc").html()} />
+  </div>
+
+  <script>
+    import $ from "jquery";
+
+    $(() => {
+      console.log("loaded");
+    });
+  </script> -->
