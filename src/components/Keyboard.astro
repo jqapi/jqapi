@@ -7,7 +7,7 @@ ENTER = Toggle if category selected
 ENTER = Navigate to page if entry selected`;
 ---
 
-<div title={title}>
+<div id="keyboard">
   <svg viewBox="0 0 512 512">
     <g>
       <g>
@@ -57,6 +57,8 @@ ENTER = Navigate to page if entry selected`;
       </g>
     </g>
   </svg>
+
+  <div class="desc">...</div>
 </div>
 
 <script>
@@ -122,6 +124,7 @@ ENTER = Navigate to page if entry selected`;
   $(() => {
     const $input = $("#search input");
     const $categories = $("#categories");
+    const $desc = $("#keyboard .desc");
 
     $input.on("keydown", (event) => {
       switch (event.keyCode) {
@@ -141,20 +144,45 @@ ENTER = Navigate to page if entry selected`;
           break;
       }
     });
+
+    $("#keyboard svg").hover(
+      () => {
+        $desc.fadeIn(160);
+      },
+      () => {
+        $desc.fadeOut(160);
+      }
+    );
   });
 </script>
 
 <style>
   div {
-    cursor: help;
+    position: relative;
   }
 
   svg {
     width: 25px;
     height: 25px;
+    cursor: help;
   }
 
   svg path {
     fill: #888;
+  }
+
+  .desc {
+    position: absolute;
+    top: -2px;
+    left: 36px;
+    width: 300px;
+    background: #e8e8e8;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    border-bottom-right-radius: 3px;
+    padding: 8px;
+    font-size: 0.9em;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+    display: none;
   }
 </style>
