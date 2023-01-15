@@ -64,7 +64,7 @@ ENTER = Navigate to page if entry selected`;
 <script>
   import $ from "jquery";
 
-  function navigate(prevNext, $categories) {
+  function navigate(prevNext, $categories, $sidebar) {
     const firstLast = prevNext === "next" ? "first" : "last";
     let $selected;
     let $next;
@@ -109,14 +109,21 @@ ENTER = Navigate to page if entry selected`;
 
     $selected.removeClass("selected");
     $next.addClass("selected");
+    $sidebar.scrollTop(0);
+
+    const offset = 81; // search box and spacing, TODO make dynamic
+    const scrollTop =
+      $next.length === 0 ? 0 : Math.floor($next.offset().top) - offset;
+
+    $sidebar.scrollTop(scrollTop);
   }
 
-  function navigateUp($categories) {
-    navigate("prev", $categories);
+  function navigateUp($categories, $sidebar) {
+    navigate("prev", $categories, $sidebar);
   }
 
-  function navigateDown($categories) {
-    navigate("next", $categories);
+  function navigateDown($categories, $sidebar) {
+    navigate("next", $categories, $sidebar);
   }
 
   function navigateEnter($categories) {
@@ -139,16 +146,17 @@ ENTER = Navigate to page if entry selected`;
     const $input = $("#search input");
     const $categories = $("#categories");
     const $desc = $("#keyboard .desc");
+    const $sidebar = $("#sidebar");
 
     $input.on("keydown", (event) => {
       switch (event.keyCode) {
         case 38: // UP
-          navigateUp($categories);
+          navigateUp($categories, $sidebar);
           event.preventDefault();
           break;
 
         case 40: // DOWN
-          navigateDown($categories);
+          navigateDown($categories, $sidebar);
           event.preventDefault();
           break;
 

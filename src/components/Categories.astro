@@ -105,7 +105,8 @@ const { categories } = await Astro.props;
     border-bottom: 1px solid #ddd;
   }
 
-  .subcategory .category:hover {
+  .subcategory .category:hover,
+  .subcategory .category.selected {
     background-color: #ddd;
   }
 
