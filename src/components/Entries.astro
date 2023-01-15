@@ -1,5 +1,16 @@
 ---
 const { entries } = await Astro.props;
+
+function cleanDesc(desc) {
+  const length = 50;
+  let text = desc.replace(/<\/?[^>]+(>|$)/g, "");
+
+  if (text.length > length) {
+    text = `${text.substr(0, length)}...`;
+  }
+
+  return text;
+}
 ---
 
 <ul class="entries">
@@ -8,7 +19,7 @@ const { entries } = await Astro.props;
       <li>
         <a href={`/${entry.path}`}>
           <span>{entry.name}</span>
-          <span>{entry.desc.substr(0, 100)}...</span>
+          <span>{cleanDesc(entry.desc)}</span>
         </a>
       </li>
     ))
