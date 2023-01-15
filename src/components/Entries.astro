@@ -6,7 +6,7 @@ const { entries } = await Astro.props;
   {
     entries.map((entry) => (
       <li>
-        <a href={`/${entry.name}`}>
+        <a href={`/${entry.path}`}>
           <span>{entry.name}</span>
           <span>{entry.desc.substr(0, 100)}...</span>
         </a>

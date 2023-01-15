@@ -21,4 +21,4 @@ Run `docs:update` and `docs:generate` in series.
 
 ## Todo
 
-- pages like 'attributeContainsPrefix' return a 404
+- two versions of pages: with rendered categories, and without. dynamically load the pages without the categories, saves a lot of bandwidth.
