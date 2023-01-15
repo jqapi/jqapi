@@ -67,6 +67,7 @@ import Keyboard from "./Keyboard.astro";
 
     if (highlighted.length !== 0) {
       $list.prepend(highlighted);
+      $("li:first-child", $list).addClass("selected");
     } else {
       $list.prepend($notFound);
     }
