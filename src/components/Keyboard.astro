@@ -66,13 +66,14 @@ ENTER = Navigate to page if entry selected`;
 
   function navigate(prevNext, $categories) {
     const firstLast = prevNext === "next" ? "first" : "last";
+    let $selected;
+    let $next;
 
     if ($categories.is(":visible")) {
-      const $selected = $(".selected", $categories);
-      let $next;
+      $selected = $(".selected", $categories);
 
       if ($selected.length === 0) {
-        $(`> .category:${firstLast}-child`, $categories).addClass("selected");
+        $("> .category", $categories)[firstLast]().addClass("selected");
         return;
       }
 
@@ -95,10 +96,19 @@ ENTER = Navigate to page if entry selected`;
       if ($next.length === 0) {
         $next = $selected.parent()[prevNext](); // reached the end of the .subcategory or .entries, select prev/next .category
       }
+    } else {
+      const $results = $("#results");
+      $selected = $(".selected", $results);
+      $next = $selected[prevNext]();
 
-      $selected.removeClass("selected");
-      $next.addClass("selected");
+      if ($selected.length === 0) {
+        $(`li:${firstLast}-child`, $results).addClass("selected");
+        return;
+      }
     }
+
+    $selected.removeClass("selected");
+    $next.addClass("selected");
   }
 
   function navigateUp($categories) {
@@ -110,15 +120,19 @@ ENTER = Navigate to page if entry selected`;
   }
 
   function navigateEnter($categories) {
+    let $selected;
+
     if ($categories.is(":visible")) {
-      let $selected = $(".selected", $categories);
+      $selected = $(".selected", $categories);
 
       if ($selected.parent().is(".entries")) {
         $selected = $("a", $selected);
       }
-
-      $selected.click();
+    } else {
+      $selected = $("#results .selected a");
     }
+
+    $selected.click();
   }
 
   $(() => {

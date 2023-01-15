@@ -17,25 +17,12 @@ const { entries } = await Astro.props;
 
 <script>
   import $ from "jquery";
+  import bindEntryLinks from "../lib/bind-entry-links.mjs";
 
   $(() => {
-    const $content = $("#content");
+    const $categories = $("#categories");
 
-    $(".entries a").click(function () {
-      const $a = $(this);
-      const href = $a.attr("href");
-
-      $(".entries li.active").removeClass("active");
-      $("#sidebar .selected").removeClass("selected");
-      $a.parent().addClass("active selected");
-
-      $content.load(`${href} #content > *`, () => {
-        window.history.pushState({}, "", href);
-        window.scrollTo(0, 0);
-      });
-
-      return false;
-    });
+    bindEntryLinks($categories);
   });
 </script>
 

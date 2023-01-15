@@ -19,6 +19,7 @@ import Keyboard from "./Keyboard.astro";
 
 <script>
   import $ from "jquery";
+  import bindEntryLinks from "../lib/bind-entry-links.mjs";
 
   function doSearch(searchTerm, $categories, $search) {
     const foundTitles = [];
@@ -78,6 +79,7 @@ import Keyboard from "./Keyboard.astro";
     const $search = $("#search");
     const $input = $("input", $search);
     const $categories = $("#categories");
+    let lastSearchTerm = "";
 
     $input.on("keyup", (event) => {
       // local ESC key
@@ -90,13 +92,24 @@ import Keyboard from "./Keyboard.astro";
 
       const searchTerm = $input.val();
 
+      if (searchTerm === lastSearchTerm) {
+        return;
+      }
+
+      lastSearchTerm = searchTerm;
+
       if (searchTerm.length === 0) {
         $("#results").remove();
         $categories.show();
       } else {
         $("#results").remove();
+
         $categories.hide();
         doSearch(searchTerm, $categories, $search);
+
+        const $results = $("#results");
+
+        bindEntryLinks($results);
       }
     });
 
