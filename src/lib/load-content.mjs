@@ -1,9 +1,8 @@
 import $ from "jquery";
+import cleanHref from "./clean-href.mjs";
 
 export default function (href, pushState = true) {
-  if (href.charAt(href.length - 1) === "/") {
-    href = href.substr(0, href.length - 1);
-  }
+  href = cleanHref(href);
 
   $("#content").load(`${href}[ajax] #content > *`, () => {
     if (pushState) {
