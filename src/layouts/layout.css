@@ -13,21 +13,18 @@ body,
 
 #sidebar {
   width: 20%;
-  overflow: auto;
+  overflow: hidden;
   position: relative;
 }
 
-#sidebar #search {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20%;
-  z-index: 2;
+#search {
+  max-height: 36px;
 }
 
 #categories,
 #results {
-  margin-top: 36px;
+  height: calc(100% - 36px);
+  overflow: scroll;
 }
 
 #content {

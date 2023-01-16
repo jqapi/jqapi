@@ -64,10 +64,11 @@ ENTER = Navigate to page if entry selected`;
 <script>
   import $ from "jquery";
 
-  function navigate(prevNext, $categories, $sidebar) {
+  function navigate(prevNext, $categories) {
     const firstLast = prevNext === "next" ? "first" : "last";
     let $selected;
     let $next;
+    let $toScroll = $categories;
 
     if ($categories.is(":visible")) {
       $selected = $(".selected", $categories);
@@ -97,33 +98,33 @@ ENTER = Navigate to page if entry selected`;
         $next = $selected.parent()[prevNext](); // reached the end of the .subcategory or .entries, select prev/next .category
       }
     } else {
-      const $results = $("#results");
-      $selected = $(".selected", $results);
+      $toScroll = $("#results");
+      $selected = $(".selected", $toScroll);
       $next = $selected[prevNext]();
 
       if ($selected.length === 0) {
-        $(`li:${firstLast}-child`, $results).addClass("selected");
+        $(`li:${firstLast}-child`, $toScroll).addClass("selected");
         return;
       }
     }
 
     $selected.removeClass("selected");
     $next.addClass("selected");
-    $sidebar.scrollTop(0);
+    $toScroll.scrollTop(0);
 
-    const offset = 81; // search box and spacing, TODO make dynamic
+    const offset = 81; // search box height and spacing to see previous entry
     const scrollTop =
       $next.length === 0 ? 0 : Math.floor($next.offset().top) - offset;
 
-    $sidebar.scrollTop(scrollTop);
+    $toScroll.scrollTop(scrollTop);
   }
 
-  function navigateUp($categories, $sidebar) {
-    navigate("prev", $categories, $sidebar);
+  function navigateUp($categories) {
+    navigate("prev", $categories);
   }
 
-  function navigateDown($categories, $sidebar) {
-    navigate("next", $categories, $sidebar);
+  function navigateDown($categories) {
+    navigate("next", $categories);
   }
 
   function navigateEnter($categories) {
@@ -146,17 +147,16 @@ ENTER = Navigate to page if entry selected`;
     const $input = $("#search input");
     const $categories = $("#categories");
     const $desc = $("#keyboard .desc");
-    const $sidebar = $("#sidebar");
 
     $input.on("keydown", (event) => {
       switch (event.keyCode) {
         case 38: // UP
-          navigateUp($categories, $sidebar);
+          navigateUp($categories);
           event.preventDefault();
           break;
 
         case 40: // DOWN
-          navigateDown($categories, $sidebar);
+          navigateDown($categories);
           event.preventDefault();
           break;
 
