@@ -38,13 +38,18 @@ function cleanDesc(desc) {
 
     window.onpopstate = (event) => {
       let $toScroll = $categories;
-      const href = location.pathname;
+      let href = location.pathname;
 
       loadContent(href, false);
       $(".active", $sidebar).removeClass("active");
       $(".selected", $sidebar).removeClass("selected");
 
-      const $next = $(`a[href="${href}"]`, $sidebar).first().parent();
+      const $next = $(`a[href="${href}"]`, $sidebar)
+        .filter(function () {
+          return $(this).parent().parent().is(":visible");
+        })
+        .first()
+        .parent();
 
       if (!$categories.is(":visible")) {
         $toScroll = $("#results");
