@@ -2798,7 +2798,7 @@ exports[`Categories XML to JSON convertion > should find and expand all categori
         "path": "jQuery.makeArray",
       },
       {
-        "desc": "The Array to translate.",
+        "desc": "The Array or an Array-like object to translate.",
         "name": "jQuery.map",
         "path": "jQuery.map",
       },
@@ -2868,7 +2868,7 @@ exports[`Categories XML to JSON convertion > should find and expand all categori
         "path": "jQuery.unique",
       },
       {
-        "desc": "The Array of DOM elements.",
+        "desc": "The Array or an Array-like object of DOM elements.",
         "name": "jQuery.uniqueSort",
         "path": "jQuery.uniqueSort",
       },
@@ -3301,7 +3301,7 @@ exports[`Categories XML to JSON convertion > should find and expand all categori
             "path": "jQuery.grep",
           },
           {
-            "desc": "The Array to translate.",
+            "desc": "The Array or an Array-like object to translate.",
             "name": "jQuery.map",
             "path": "jQuery.map",
           },
@@ -4768,7 +4768,7 @@ exports[`Categories XML to JSON convertion > should find and expand all categori
             "path": "jQuery.holdReady",
           },
           {
-            "desc": "The Array to translate.",
+            "desc": "The Array or an Array-like object to translate.",
             "name": "jQuery.map",
             "path": "jQuery.map",
           },
@@ -5082,7 +5082,7 @@ exports[`Categories XML to JSON convertion > should find and expand all categori
             "path": "jQuery.post",
           },
           {
-            "desc": "The Array of DOM elements.",
+            "desc": "The Array or an Array-like object of DOM elements.",
             "name": "jQuery.uniqueSort",
             "path": "jQuery.uniqueSort",
           },
@@ -7812,7 +7812,7 @@ exports[`Categories XML to JSON convertion > should find and expand all entries 
         "path": "jQuery.makeArray",
       },
       {
-        "desc": "The Array to translate.",
+        "desc": "The Array or an Array-like object to translate.",
         "name": "jQuery.map",
         "path": "jQuery.map",
       },
@@ -7882,7 +7882,7 @@ exports[`Categories XML to JSON convertion > should find and expand all entries 
         "path": "jQuery.unique",
       },
       {
-        "desc": "The Array of DOM elements.",
+        "desc": "The Array or an Array-like object of DOM elements.",
         "name": "jQuery.uniqueSort",
         "path": "jQuery.uniqueSort",
       },
@@ -8311,7 +8311,7 @@ exports[`Categories XML to JSON convertion > should find and expand all entries 
         "path": "jQuery.grep",
       },
       {
-        "desc": "The Array to translate.",
+        "desc": "The Array or an Array-like object to translate.",
         "name": "jQuery.map",
         "path": "jQuery.map",
       },
@@ -8775,7 +8775,7 @@ exports[`Categories XML to JSON convertion > should find and expand all entries 
         "path": "jQuery.post",
       },
       {
-        "desc": "The Array of DOM elements.",
+        "desc": "The Array or an Array-like object of DOM elements.",
         "name": "jQuery.uniqueSort",
         "path": "jQuery.uniqueSort",
       },
@@ -9778,7 +9778,7 @@ exports[`Categories XML to JSON convertion > should find and expand all entries 
         "path": "jQuery.holdReady",
       },
       {
-        "desc": "The Array to translate.",
+        "desc": "The Array or an Array-like object to translate.",
         "name": "jQuery.map",
         "path": "jQuery.map",
       },
