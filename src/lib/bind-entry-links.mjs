@@ -1,4 +1,5 @@
 import $ from "jquery";
+import loadContent from "./load-content.mjs";
 
 export default function ($parent) {
   $("a", $parent).click(function () {
@@ -8,11 +9,7 @@ export default function ($parent) {
     $(".entries li.active").removeClass("active");
     $(".selected", $parent).removeClass("selected");
     $a.parent().addClass("active selected");
-
-    $("#content").load(`${href}[ajax] #content > *`, () => {
-      window.history.pushState({}, "", href);
-      window.scrollTo(0, 0);
-    });
+    loadContent(href);
 
     return false;
   });

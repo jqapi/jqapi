@@ -63,6 +63,7 @@ ENTER = Navigate to page if entry selected`;
 
 <script>
   import $ from "jquery";
+  import scrollToSelectedEntry from "../lib/scroll-to-selected-entry.mjs";
 
   function navigate(prevNext, $categories) {
     const firstLast = prevNext === "next" ? "first" : "last";
@@ -110,13 +111,7 @@ ENTER = Navigate to page if entry selected`;
 
     $selected.removeClass("selected");
     $next.addClass("selected");
-    $toScroll.scrollTop(0);
-
-    const offset = 81; // search box height and spacing to see previous entry
-    const scrollTop =
-      $next.length === 0 ? 0 : Math.floor($next.offset().top) - offset;
-
-    $toScroll.scrollTop(scrollTop);
+    scrollToSelectedEntry($toScroll, $next);
   }
 
   function navigateUp($categories) {

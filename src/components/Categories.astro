@@ -34,11 +34,6 @@ const { categories } = await Astro.props;
   import $ from "jquery";
 
   $(() => {
-    window.onpopstate = (event) => {
-      // on back button
-      console.log(event);
-    };
-
     $(".category").click(function () {
       $(this).toggleClass("active").next().toggle();
     });

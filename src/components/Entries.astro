@@ -29,9 +29,30 @@ function cleanDesc(desc) {
 <script>
   import $ from "jquery";
   import bindEntryLinks from "../lib/bind-entry-links.mjs";
+  import loadContent from "../lib/load-content.mjs";
+  import scrollToSelectedEntry from "../lib/scroll-to-selected-entry.mjs";
 
   $(() => {
     const $categories = $("#categories");
+    const $sidebar = $("#sidebar");
+
+    window.onpopstate = (event) => {
+      let $toScroll = $categories;
+      const href = location.pathname;
+
+      loadContent(href, false);
+      $(".active", $sidebar).removeClass("active");
+      $(".selected", $sidebar).removeClass("selected");
+
+      const $next = $(`a[href="${href}"]`, $sidebar).first().parent();
+
+      if (!$categories.is(":visible")) {
+        $toScroll = $("#results");
+      }
+
+      $next.addClass("active selected");
+      scrollToSelectedEntry($toScroll, $next);
+    };
 
     bindEntryLinks($categories);
   });
