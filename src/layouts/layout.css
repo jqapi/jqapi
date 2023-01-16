@@ -13,8 +13,8 @@ body,
 
 #sidebar {
   width: 20%;
-  overflow: hidden;
   position: relative;
+  z-index: 1;
 }
 
 #search {

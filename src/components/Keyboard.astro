@@ -58,7 +58,32 @@ ENTER = Navigate to page if entry selected`;
     </g>
   </svg>
 
-  <div class="desc">...</div>
+  <div class="desc">
+    <h6>Keyboard Shortcuts</h6>
+
+    <ul>
+      <li>
+        <span class="text">ESC</span>
+        Focus search input if not focused <br />
+        Clear search input if focused
+      </li>
+      <li>
+        <span>&#129129;</span>
+        Select previous category <br />
+        Select previous entry
+      </li>
+      <li>
+        <span>&#129123;</span>
+        Select next category <br />
+        Select next entry
+      </li>
+      <li>
+        <span>&#8629;</span>
+        Expand category if selected <br />
+        Load entry if selected
+      </li>
+    </ul>
+  </div>
 </div>
 
 <script>
@@ -141,7 +166,8 @@ ENTER = Navigate to page if entry selected`;
   $(() => {
     const $input = $("#search input");
     const $categories = $("#categories");
-    const $desc = $("#keyboard .desc");
+    const $keyboard = $("#keyboard");
+    const $desc = $(".desc", $keyboard);
 
     $input.on("keydown", (event) => {
       switch (event.keyCode) {
@@ -162,19 +188,19 @@ ENTER = Navigate to page if entry selected`;
       }
     });
 
-    $("#keyboard svg").hover(
+    $("svg", $keyboard).hover(
       () => {
-        $desc.fadeIn(160);
+        $desc.fadeIn(100);
       },
       () => {
-        $desc.fadeOut(160);
+        $desc.fadeOut(100);
       }
     );
   });
 </script>
 
 <style>
-  div {
+  #keyboard {
     position: relative;
   }
 
@@ -182,6 +208,8 @@ ENTER = Navigate to page if entry selected`;
     width: 25px;
     height: 25px;
     cursor: help;
+    z-index: 2;
+    position: relative;
   }
 
   svg path {
@@ -189,17 +217,58 @@ ENTER = Navigate to page if entry selected`;
   }
 
   .desc {
+    /* display: none; */
     position: absolute;
     top: -2px;
-    left: 36px;
-    width: 300px;
-    background: #e8e8e8;
-    border-right: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
-    border-bottom-right-radius: 3px;
-    padding: 8px;
+    left: -8px;
+    width: 280px;
+    background: #eee;
     font-size: 0.9em;
-    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-    display: none;
+    box-shadow: -2px 2px 7px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .desc h6 {
+    font-weight: bold;
+    padding: 5px 0 0 42px;
+    font-size: 1.1em;
+    background: #ddd;
+    min-height: 35px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 8px;
+  }
+
+  .desc li {
+    padding: 0 6px 8px 42px;
+    margin-bottom: 8px;
+    position: relative;
+    line-height: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .desc li:last-child {
+    padding-bottom: 2px;
+    border-bottom: none;
+  }
+
+  .desc ul li span {
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    display: inline-block;
+    background: #ddd;
+    border: 1px solid #aaa;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+    text-align: center;
+    min-width: 30px;
+    padding: 4px 0;
+  }
+
+  .desc ul li span.text {
+    font-size: 0.7em;
   }
 </style>
