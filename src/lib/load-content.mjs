@@ -1,5 +1,6 @@
 import $ from "jquery";
 import cleanHref from "./clean-href.mjs";
+import enrichContent from "./enrich-content.mjs";
 
 export default function (href, pushState = true) {
   href = cleanHref(href);
@@ -10,5 +11,6 @@ export default function (href, pushState = true) {
     }
 
     window.scrollTo(0, 0);
+    enrichContent(false);
   });
 }

@@ -1,6 +1,4 @@
 ---
-import $ from "../lib/jquery.mjs";
-
 const { entry } = Astro.props;
 const title = entry.find("entry > title").text();
 const desc = entry.find("entry > desc").text();
@@ -24,18 +22,10 @@ const content = entry.find("longdesc").html();
 
 <script>
   import $ from "jquery";
-  import highlightCode from "../lib/highlight-code.mjs";
+  import enrichContent from "../lib/enrich-content.mjs";
 
   $(() => {
-    const $content = $("#entry-content");
-    const $codes = $("pre code", $content);
-
-    $codes.each(function () {
-      const $code = $(this);
-
-      highlightCode($code);
-      $code.parent().slideDown(200);
-    });
+    enrichContent();
   });
 </script>
 
