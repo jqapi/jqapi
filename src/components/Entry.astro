@@ -63,7 +63,7 @@ const signatures = entry
 function getSignatureTitle(signature) {
   const fullName = name.includes("jQuery.") ? name : `.${name}`;
   const args = signature.arguments.map((arg) => arg.name).join(", ");
-  const fullReturns = signature.return.length
+  const fullReturns = signature.return?.length
     ? `<span class="return">&#129122; ${signature.return}</span>`
     : "";
 
@@ -174,11 +174,15 @@ function getSignatureTitle(signature) {
     content: ":";
   }
 
+  /* somehow purgecss removes these styles, even with safelist, so restore them here */
   #entry-content pre {
     border-radius: 3px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
     border: 1px soild #222;
     display: none;
+    background: hsl(220, 13%, 18%);
+    color: hsl(220, 14%, 71%);
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   }
 
   /* the following styles fix glitches caused by Bulma's .content */

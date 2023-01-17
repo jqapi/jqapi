@@ -5,7 +5,19 @@ import purgecss from "astro-purgecss";
 export default defineConfig({
   integrations: [
     purgecss({
-      safelist: ["html", "body", "selected", "active", "notfound"],
+      safelist: [
+        "html",
+        "body",
+        "selected",
+        "active",
+        "notfound",
+        "type",
+        "return",
+        /^token/,
+        /^language-/,
+        /^pre/,
+        /^code/,
+      ],
     }),
   ],
 });
