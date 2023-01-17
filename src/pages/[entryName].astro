@@ -9,6 +9,7 @@ const entryName = Astro.params.entryName.replace("[ajax]", "");
 const xmlPath = getFullPath(`api.jquery.com/entries/${entryName}.xml`);
 const $entry = await parseXML(xmlPath);
 const isAjaxPage = Astro.url.pathname.includes("[ajax]");
+const title = `${$entry.find("title").text()} - jQAPI`;
 
 export async function getStaticPaths() {
   const entriesPath = getFullPath("api.jquery.com/entries");
@@ -35,7 +36,7 @@ export async function getStaticPaths() {
       <Entry entry={$entry} />
     </div>
   ) : (
-    <LayoutMain>
+    <LayoutMain title={title}>
       <Entry entry={$entry} />
     </LayoutMain>
   )

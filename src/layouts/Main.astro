@@ -4,6 +4,8 @@ import Categories from "../components/Categories.astro";
 import categories from "../../categories-generated.json";
 import "bulma";
 import "./layout.css";
+
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ import "./layout.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
 
-    <title>jQAPI</title>
+    <title>{title}</title>
   </head>
 
   <body>
