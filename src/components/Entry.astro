@@ -1,8 +1,74 @@
 ---
+import $ from "../lib/jquery.mjs";
+
 const { entry } = Astro.props;
+const name = entry.find("entry").attr("name");
+const returns = entry.find("entry").attr("return");
 const title = entry.find("entry > title").text();
 const desc = entry.find("entry > desc").text();
 const content = entry.find("longdesc").html();
+const signatures = entry
+  .find("signature")
+  .map(function () {
+    const $sig = $(this);
+    let ret = returns;
+    const $callback = $sig.find("> argument").first();
+    const $cbReturns = $callback.find("return");
+
+    if ($callback.attr("type") === "Function" && $cbReturns.length !== 0) {
+      ret = $cbReturns
+        .map(function () {
+          return $(this).attr("type");
+        })
+        .get()
+        .join(", ");
+    }
+
+    return {
+      added: $sig.find("added").text(),
+      return: ret,
+      arguments: $sig
+        .find("> argument")
+        .map(function () {
+          const $arg = $(this);
+          let name = $arg.attr("name");
+
+          if (name === "function") {
+            const funcArgs = $arg
+              .find("> argument")
+              .map(function () {
+                const $cbArg = $(this);
+
+                return `${$cbArg.attr(
+                  "name"
+                )}<span class="type">${$cbArg.attr("type")}</span>`;
+              })
+              .get()
+              .join(", ");
+
+            name = `${name}(${funcArgs})`;
+          }
+
+          return {
+            name,
+            type: $arg.attr("type"),
+            desc: $arg.find("desc").html(),
+          };
+        })
+        .get(),
+    };
+  })
+  .get();
+
+function getSignatureTitle(signature) {
+  const fullName = name.includes("jQuery.") ? name : `.${name}`;
+  const args = signature.arguments.map((arg) => arg.name).join(", ");
+  const fullReturns = signature.return.length
+    ? `<span class="return">&#129122; ${signature.return}</span>`
+    : "";
+
+  return `${fullName}(${args})${fullReturns}`;
+}
 ---
 
 <div id="entry">
@@ -12,6 +78,36 @@ const content = entry.find("longdesc").html();
     <section class="section">
       <h1 class="title is-2">{title}</h1>
       <h2 class="subtitle is-5">{desc}</h2>
+
+      <div id="signatures">
+        {
+          signatures.map((signature) => (
+            <>
+              <h4 class="title is-4">
+                <Fragment set:html={getSignatureTitle(signature)} />
+              </h4>
+
+              <table class="table is-striped is-bordered is-fullwidth">
+                <tbody>
+                  {signature.arguments.map((argument) => (
+                    <tr>
+                      <td>
+                        <code>
+                          <Fragment set:html={argument.name} />
+                        </code>
+                      </td>
+                      <td>{argument.type}</td>
+                      <td>
+                        <Fragment set:html={argument.desc} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
+          ))
+        }
+      </div>
 
       <div class="content">
         <Fragment set:html={content} />
@@ -48,9 +144,36 @@ const content = entry.find("longdesc").html();
   .section {
     padding-top: 24px;
   }
+
+  table tr td:first-child {
+    width: 200px;
+  }
 </style>
 
 <style is:global>
+  #signatures {
+    margin-bottom: 48px;
+  }
+
+  #signatures .title .type {
+    display: none;
+  }
+
+  #signatures .title .return {
+    color: #888;
+    display: inline-block;
+    padding-left: 6px;
+    font-size: 0.8em;
+  }
+
+  #signatures code .type {
+    color: #888;
+  }
+
+  #signatures code .type::before {
+    content: ":";
+  }
+
   #entry-content pre {
     border-radius: 3px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);

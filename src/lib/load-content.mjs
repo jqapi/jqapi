@@ -10,7 +10,7 @@ export default function (href, pushState = true) {
       window.history.pushState({}, "", href);
     }
 
-    window.scrollTo(0, 0);
+    $("#entry-content").scrollTo(0, 0);
     enrichContent(false);
   });
 }
