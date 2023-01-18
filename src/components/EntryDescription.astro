@@ -1,0 +1,29 @@
+---
+import $ from "../lib/jquery.mjs";
+import formatHighlightCode from "../lib/format-highlight-code.mjs";
+
+const { entry } = Astro.props;
+const content = entry.find("longdesc").html();
+const $content = $(`<div>${content}</div>`);
+
+$content.find("pre code").each(function () {
+  const $code = $(this);
+  const code = $code.html().split("&lt;").join("<").split("&gt;").join(">");
+  let lang = "css";
+
+  if (code.includes("$(") || code.includes("jQuery")) {
+    lang = "javascript";
+  } else if (code.includes("</")) {
+    lang = "html";
+  }
+
+  const formatted = formatHighlightCode(code, lang);
+
+  $code.html(formatted);
+  $code.parent().addClass(`language-${lang}`);
+});
+---
+
+<div class="content">
+  <Fragment set:html={$content.html()} />
+</div>

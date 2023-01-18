@@ -1,13 +1,11 @@
 ---
 import Signatures from "./EntrySignatures.astro";
+import Description from "./EntryDescription.astro";
 import Examples from "./EntryExamples.astro";
-import "prism-themes/themes/prism-one-dark.css";
 
 const { entry } = Astro.props;
-const name = entry.find("entry").attr("name");
 const title = entry.find("entry > title").text();
 const desc = entry.find("entry > desc").text();
-const content = entry.find("longdesc").html();
 ---
 
 <div id="entry">
@@ -18,12 +16,8 @@ const content = entry.find("longdesc").html();
       <h1 class="title is-2">{title}</h1>
       <h2 class="subtitle is-5">{desc}</h2>
 
-      <!-- <Signatures entry={entry} />
-
-      <div class="content">
-        <Fragment set:html={content} />
-      </div> -->
-
+      <Signatures entry={entry} />
+      <Description entry={entry} />
       <Examples entry={entry} />
     </section>
   </div>
@@ -60,23 +54,5 @@ const content = entry.find("longdesc").html();
 
   table tr td:first-child {
     width: 200px;
-  }
-</style>
-
-<style is:global>
-  /* the following styles fix glitches caused by Bulma's .content */
-  #entry-content pre .tag,
-  #entry-content pre .number {
-    background: none;
-    font-size: 1em;
-    padding: 0;
-    margin: 0;
-    height: 1em;
-    min-width: auto;
-    vertical-align: baseline;
-  }
-
-  #entry-content pre .attr-name {
-    padding-left: 0.6em;
   }
 </style>
