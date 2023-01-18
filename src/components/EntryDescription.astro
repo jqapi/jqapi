@@ -11,7 +11,12 @@ $content.find("pre code").each(function () {
   const code = $code.html().split("&lt;").join("<").split("&gt;").join(">");
   let lang = "css";
 
-  if (code.includes("$(") || code.includes("jQuery")) {
+  if (
+    code.includes("$(") ||
+    code.includes("$.") ||
+    code.includes("jQuery") ||
+    code.includes("[")
+  ) {
     lang = "javascript";
   } else if (code.includes("</")) {
     lang = "html";
