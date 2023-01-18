@@ -1,0 +1,23 @@
+---
+const { html, css, js } = Astro.props;
+const code = `
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <style>${css}</style>
+    </head>
+    <body>
+      ${html}
+      <script src="/jquery-3.6.3.min.js"></script>
+      <script>${js}</script>
+    </body>
+  </html>
+`
+  .split("\n")
+  .map((line) => line.trim())
+  .join("");
+
+const src = `javascript:document.write(\`${code}\`);document.close();`;
+---
+
+<iframe src={src} width="100%" height="100%"></iframe>

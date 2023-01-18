@@ -37,6 +37,7 @@
     "bulma": "^0.9.4",
     "jquery": "^3.6.3",
     "jsdom": "^20.0.3",
+    "prettier": "^2.8.3",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0"
   },

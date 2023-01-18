@@ -1,0 +1,55 @@
+---
+import Sandbox from "./Sandbox.astro";
+import $ from "../lib/jquery.mjs";
+import formatHighlightCode from "../lib/format-highlight-code.mjs";
+import stripCdata from "../lib/strip-cdata.mjs";
+
+const { entry } = Astro.props;
+const examples = entry
+  .find("example")
+  .map(function () {
+    const $example = $(this);
+    const js = $example.find("> code").html();
+    const css = $example.find("> css").html();
+    const html = $example.find("> html").html();
+
+    return {
+      plain: {
+        js: stripCdata(js),
+        css: stripCdata(css),
+        html: stripCdata(html),
+      },
+      formatted: {
+        js: formatHighlightCode(js, "javascript"),
+        css: formatHighlightCode(css, "css"),
+        html: formatHighlightCode(html, "html"),
+      },
+    };
+  })
+  .get();
+---
+
+<!-- prettier-ignore -->
+<div id="examples">
+  {
+    examples.map((example) => (
+      <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><Fragment set:html={example.formatted.html} /></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><Fragment set:html={example.formatted.css} /></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><Fragment set:html={example.formatted.js} /></code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <Sandbox html={example.plain.html} css={example.plain.css} js={example.plain.js} />
+        </div>
+      </div>
+    ))
+  }
+</div>

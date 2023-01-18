@@ -13,8 +13,8 @@ export default function (href, pushState = true) {
       window.history.pushState({}, "", href);
     }
 
+    enrichContent();
     $("#entry-content", $content).scrollTop(0);
-    enrichContent(false);
     $("head title").text(title);
   });
 }

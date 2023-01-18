@@ -1,5 +1,7 @@
 ---
 import Signatures from "./EntrySignatures.astro";
+import Examples from "./EntryExamples.astro";
+import "prism-themes/themes/prism-one-dark.css";
 
 const { entry } = Astro.props;
 const name = entry.find("entry").attr("name");
@@ -16,11 +18,13 @@ const content = entry.find("longdesc").html();
       <h1 class="title is-2">{title}</h1>
       <h2 class="subtitle is-5">{desc}</h2>
 
-      <Signatures entry={entry} />
+      <!-- <Signatures entry={entry} />
 
       <div class="content">
         <Fragment set:html={content} />
-      </div>
+      </div> -->
+
+      <Examples entry={entry} />
     </section>
   </div>
 </div>
@@ -60,17 +64,6 @@ const content = entry.find("longdesc").html();
 </style>
 
 <style is:global>
-  /* somehow purgecss removes these styles, even with safelist, so restore them here */
-  #entry-content pre {
-    border-radius: 3px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
-    border: 1px soild #222;
-    display: none;
-    background: hsl(220, 13%, 18%);
-    color: hsl(220, 14%, 71%);
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  }
-
   /* the following styles fix glitches caused by Bulma's .content */
   #entry-content pre .tag,
   #entry-content pre .number {
