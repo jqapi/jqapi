@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">:gt() Selector</h1>
+      <h2 class="subtitle is-5">Select all elements at an index greater than index within the matched set.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .gt(index)
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    index
+                  </code>
+                </td>
+                <td>Number</td>
+                <td>
+                  Zero-based index.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .gt(indexFromEnd)
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    indexFromEnd
+                  </code>
+                </td>
+                <td>Integer</td>
+                <td>
+                  Zero-based index, counting backwards from the last element. 
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <div class="warning">
+      <p><strong>As of jQuery 3.4</strong>, the <code>:gt</code> pseudo-class is deprecated. Remove it from your selectors and filter the results later using <a href="/slice/"><code>.slice()</code></a>. For example, <code>:gt(3)</code> can be replaced with a call to <code>.slice( 4 )</code> (the provided index needs to be increased by one).</p>
+    </div>
+    <p>
+      <strong>index-related selectors</strong>
+    </p>
+    <p>The index-related selector expressions (including this "greater than" selector) filter the set of elements that have matched the expressions that precede them. They narrow the set down based on the order of the elements within this matched set. For example, if elements are first selected with a class selector (<code>.myclass</code>) and four elements are returned, these elements are given indices 0 through 3 for the purposes of these selectors.</p>
+    <p>Note that since JavaScript arrays use <em>0-based indexing</em>, these selectors reflect that fact. This is why <code>$( ".myclass:gt(1)" )</code> selects elements after the second element in the document with the class <code>myclass</code>, rather than after the first. In contrast, <code>:nth-child(n)</code> uses <em>1-based indexing</em> to conform to the CSS specification.</p>
+    <p>Prior to jQuery 1.8, the <code>:gt(index)</code> selector did <em>not</em> accept a negative value for <code>index</code></p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">border</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>TD #8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"td:gt(4)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"backgroundColor"</span><span class="token punctuation">,</span> <span class="token string">"yellow"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"td:gt(-2)"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"color"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><table border=&#34;1&#34;><tr><td>TD #0</td><td>TD #1</td><td>TD #2</td></tr><tr><td>TD #3</td><td>TD #4</td><td>TD #5</td></tr><tr><td>TD #6</td><td>TD #7</td><td>TD #8</td></tr></table><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;td:gt(4)&#34; ).css( &#34;backgroundColor&#34;, &#34;yellow&#34; );$( &#34;td:gt(-2)&#34; ).css( &#34;color&#34;, &#34;red&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

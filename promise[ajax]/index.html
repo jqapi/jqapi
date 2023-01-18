@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.promise()</h1>
+      <h2 class="subtitle is-5"> Return a Promise object to observe when all actions of a certain type bound to the collection, queued or not, have finished. </h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .promise(type, target)<span class="return">&#129122; Promise</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    type
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                   The type of queue that needs to be observed. 
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    target
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  Object onto which the promise methods have to be attached
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>.promise()</code> method returns a dynamically generated Promise that is resolved once all actions of a certain type bound to the collection, queued or not, have ended.</p>
+    <p> By default, <code>type</code> is <code>"fx"</code>, which means the returned Promise is resolved when all animations of the selected elements have completed.</p>
+    <p> Resolve context and sole argument is the collection onto which <code>.promise()</code> has been called. </p>
+    <p> If <code>target</code> is provided, <code>.promise()</code> will attach the methods onto it and then return this object rather than create a new one. This can be useful to attach the Promise behavior to an object that already exists.</p>
+    <div class="warning">
+      <p><strong>Note: </strong>The returned Promise is linked to a Deferred object stored on the <code>.data()</code> for an element. Since the<code>.remove()</code> method removes the element's data as well as the element itself, it will prevent any of the element's unresolved Promises from resolving. If it is necessary to remove an element from the DOM before its Promise is resolved, use <code>.detach()</code> instead and follow with <code>.removeData()</code> after resolution.</p>
+    </div>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> div <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"&lt;div>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+div<span class="token punctuation">.</span><span class="token function">promise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">arg1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Will fire right away and alert "true"</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">===</span> div <span class="token operator">&amp;&amp;</span> arg1 <span class="token operator">===</span> div<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var div = $( &#34;<div>&#34; );div.promise().done(function( arg1 ) {// Will fire right away and alert &#34;true&#34;alert( this === div &#38;&#38; arg1 === div );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Go<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Ready...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #090<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"Started..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">fadeOut</span><span class="token punctuation">(</span><span class="token number">1000</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">promise</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">" Finished! "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>div {height: 50px;width: 50px;float: left;margin-right: 10px;display: none;background-color: #090;}</style></head><body><button>Go</button><p>Ready...</p><div></div><div></div><div></div><div></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;button&#34; ).on( &#34;click&#34;, function() {$( &#34;p&#34; ).append( &#34;Started...&#34; );$( &#34;div&#34; ).each(function( i ) {$( this ).fadeIn().fadeOut( 1000 * ( i + 1 ) );});$( &#34;div&#34; ).promise().done(function() {$( &#34;p&#34; ).append( &#34; Finished! &#34; );});});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Go<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Ready...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #090<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> <span class="token function-variable function">effect</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token number">800</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">" Started... "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  $<span class="token punctuation">.</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">" Finished! "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>div {height: 50px;width: 50px;float: left;margin-right: 10px;display: none;background-color: #090;}</style></head><body><button>Go</button><p>Ready...</p><div></div><div></div><div></div><div></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var effect = function() {return $( &#34;div&#34; ).fadeIn( 800 ).delay( 1200 ).fadeOut();};$( &#34;button&#34; ).on( &#34;click&#34;, function() {$( &#34;p&#34; ).append( &#34; Started... &#34; );$.when( effect() ).done(function() {$( &#34;p&#34; ).append( &#34; Finished! &#34; );});});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

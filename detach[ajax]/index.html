@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.detach()</h1>
+      <h2 class="subtitle is-5">Remove the set of matched elements from the DOM.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .detach(selector)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    selector
+                  </code>
+                </td>
+                <td>Selector</td>
+                <td>
+                  A selector expression that filters the set of matched elements to be removed.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>.detach()</code> method is the same as <code><a href="/remove/">.remove()</a></code>, except that <code>.detach()</code> keeps all jQuery data associated with the removed elements. This method is useful when removed elements are to be reinserted into the DOM at a later time.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+how are
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>you?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Attach/detach paragraphs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 6px 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">p.off</span> <span class="token punctuation">{</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggleClass</span><span class="token punctuation">(</span><span class="token string">"off"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> p<span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    p<span class="token punctuation">.</span><span class="token function">appendTo</span><span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    p <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    p <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">detach</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>p {background: yellow;margin: 6px 0;}p.off {background: black;}</style></head><body><p>Hello</p>how are<p>you?</p><button>Attach/detach paragraphs</button><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;p&#34; ).click(function() {$( this ).toggleClass( &#34;off&#34; );});var p;$( &#34;button&#34; ).click(function() {if ( p ) {p.appendTo( &#34;body&#34; );p = null;} else {p = $( &#34;p&#34; ).detach();}});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

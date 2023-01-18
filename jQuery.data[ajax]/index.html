@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.data()</h1>
+      <h2 class="subtitle is-5">Store arbitrary data associated with the specified element. Returns the value that was set.Returns value at named data store for the element, as set by jQuery.data(element, name, value), or the full data store for the element.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.data(element, key, value)<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    element
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  The DOM element to associate with the data.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    key
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  A string naming the piece of data to set.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    value
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  The new data value; this can be any Javascript type except <code>undefined</code>.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          jQuery.data(element, key)<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    element
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  The DOM element to query for the data.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    key
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  Name of the data stored.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          jQuery.data(element)<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    element
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  The DOM element to query for the data.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+      <p><strong>Note:</strong> This is a low-level method; a more convenient <code><a href="/data/">.data()</a></code> is also available.</p>
+      <p>The <code>jQuery.data()</code> method allows us to attach data of any type to DOM elements in a way that is safe from circular references and therefore free from memory leaks. jQuery ensures that the data is removed when DOM elements are removed via jQuery methods, and when the user leaves the page. We can set several distinct values for a single element and retrieve them later:</p>
+      <pre class="language-javascript"><code>jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">,</span> <span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token number">52</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">,</span> <span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  The values stored were
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+  and
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">span</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> div <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">first</span><span class="token operator">:</span> <span class="token number">16</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">last</span><span class="token operator">:</span> <span class="token string">"pizza!"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">last</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>last<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>div {color: blue;}span {color: red;}</style></head><body><div>The values stored were<span></span>and<span></span></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var div = $( &#34;div&#34; )[ 0 ];jQuery.data( div, &#34;test&#34;, {first: 16,last: &#34;pizza!&#34;});$( &#34;span&#34; ).first().text( jQuery.data( div, &#34;test&#34; ).first );$( &#34;span&#34; ).last().text( jQuery.data( div, &#34;test&#34; ).last );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>A div<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Get "blah" from the div<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Set "blah" to "hello"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Set "blah" to 86<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Remove "blah" from the div<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>The "blah" value of this div is <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">button</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">span</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> value<span class="token punctuation">,</span>
+    div <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">index</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">0</span><span class="token operator">:</span>
+      value <span class="token operator">=</span> jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"blah"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+      jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"blah"</span><span class="token punctuation">,</span> <span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      value <span class="token operator">=</span> <span class="token string">"Stored!"</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+      jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"blah"</span><span class="token punctuation">,</span> <span class="token number">86</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      value <span class="token operator">=</span> <span class="token string">"Stored!"</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+      jQuery<span class="token punctuation">.</span><span class="token function">removeData</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"blah"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      value <span class="token operator">=</span> <span class="token string">"Removed!"</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>div {margin: 5px;background: yellow;}button {margin: 5px;font-size: 14px;}p {margin: 5px;color: blue;}span {color: red;}</style></head><body><div>A div</div><button>Get &#34;blah&#34; from the div</button><button>Set &#34;blah&#34; to &#34;hello&#34;</button><button>Set &#34;blah&#34; to 86</button><button>Remove &#34;blah&#34; from the div</button><p>The &#34;blah&#34; value of this div is <span>?</span></p><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;button&#34; ).click( function() {var value,div = $( &#34;div&#34; )[ 0 ];switch ( $( &#34;button&#34; ).index( this ) ) {case 0 :value = jQuery.data( div, &#34;blah&#34; );break;case 1 :jQuery.data( div, &#34;blah&#34;, &#34;hello&#34; );value = &#34;Stored!&#34;;break;case 2 :jQuery.data( div, &#34;blah&#34;, 86 );value = &#34;Stored!&#34;;break;case 3 :jQuery.removeData( div, &#34;blah&#34; );value = &#34;Removed!&#34;;break;}$( &#34;span&#34; ).text( &#34;&#34; + value );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

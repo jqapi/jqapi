@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.isNumeric()</h1>
+      <h2 class="subtitle is-5">Determines whether its argument represents a JavaScript number.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.isNumeric(value)<span class="return">&#129122; Boolean</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    value
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  The value to be tested.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <div class="warning">
+      <p>Note: This API has been deprecated in jQuery 3.3.</p>
+    </div>
+    <p>The <code>$.isNumeric()</code> method checks whether its argument represents a numeric value. If so, it returns <code>true</code>. Otherwise it returns <code>false</code>. The argument can be of any type.</p>
+    <p>As of jQuery 3.0 <code>$.isNumeric()</code> returns <code>true</code> only if the argument is of type <a href="/Types/#Number"><code>number</code></a>, or if it's of type <code>string</code> and it can be coerced into finite numbers. In all other cases, it returns <code>false</code>.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token comment">// true (numeric)</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token string">"-10"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token number">0xff</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token string">"0xFF"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token string">"8e5"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token string">"3.1415"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token number">0144</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// false (non-numeric)</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token string">"-0x42"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token string">"7.2acdgs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token number">Infinity</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>// true (numeric)$.isNumeric( &#34;-10&#34; )$.isNumeric( &#34;0&#34; )$.isNumeric( 0xFF )$.isNumeric( &#34;0xFF&#34; )$.isNumeric( &#34;8e5&#34; )$.isNumeric( &#34;3.1415&#34; )$.isNumeric( +10 )$.isNumeric( 0144 )// false (non-numeric)$.isNumeric( &#34;-0x42&#34; )$.isNumeric( &#34;7.2acdgs&#34; )$.isNumeric( &#34;&#34; )$.isNumeric( {} )$.isNumeric( NaN )$.isNumeric( null )$.isNumeric( true )$.isNumeric( Infinity )$.isNumeric( undefined )</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

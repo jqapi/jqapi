@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">callbacks.disable()</h1>
+      <h2 class="subtitle is-5">Disable a callback list from doing anything more.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .callbacks.disable()<span class="return">&#129122; Callbacks</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>This method returns the Callbacks object onto which it is attached (<code>this</code>).</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token comment">// A sample logging function to be added to a callbacks list</span>
+<span class="token keyword">var</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add the above function to the list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Fire the items on the list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Outputs: foo</span>
+
+<span class="token comment">// Disable further calls being possible</span>
+callbacks<span class="token punctuation">.</span><span class="token function">disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Attempt to fire with "foobar" as an argument</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// foobar isn't output</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>// A sample logging function to be added to a callbacks listvar foo = function( value ) {console.log( value );};var callbacks = $.Callbacks();// Add the above function to the listcallbacks.add( foo );// Fire the items on the listcallbacks.fire( &#34;foo&#34; );// Outputs: foo// Disable further calls being possiblecallbacks.disable();// Attempt to fire with &#34;foobar&#34; as an argumentcallbacks.fire( &#34;foobar&#34; );// foobar isn't output</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

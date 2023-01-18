@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">Multiple Attribute Selector [name=&quot;value&quot;][name2=&quot;value2&quot;]</h1>
+      <h2 class="subtitle is-5">Matches elements that match all of the specified attribute filters.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .attributeMultiple(attributeFilter1, attributeFilter2, attributeFilterN)
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    attributeFilter1
+                  </code>
+                </td>
+                <td>Selector</td>
+                <td>
+                  An attribute filter.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    attributeFilter2
+                  </code>
+                </td>
+                <td>Selector</td>
+                <td>
+                  Another attribute filter, reducing the selection even more
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    attributeFilterN
+                  </code>
+                </td>
+                <td>Selector</td>
+                <td>
+                  As many more attribute filters as necessary
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>man-news<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>man-news<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>milkman<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>letterman<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>new-letterman<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>newmilk<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"input[id][name$='man']"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token string">"only this one"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><input id=&#34;man-news&#34; name=&#34;man-news&#34;><input name=&#34;milkman&#34;><input id=&#34;letterman&#34; name=&#34;new-letterman&#34;><input name=&#34;newmilk&#34;><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;input[id][name$='man']&#34; ).val( &#34;only this one&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

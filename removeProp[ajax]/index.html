@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.removeProp()</h1>
+      <h2 class="subtitle is-5">Remove a property for the set of matched elements.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .removeProp(propertyName)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    propertyName
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  The name of the property to remove.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>.removeProp()</code> method removes properties set by the <code><a href="/prop/">.prop()</a></code> method.</p>
+    <p><strong>Note:</strong>This method should not be used to remove built-in (native) properties such as "checked", "disabled", "selected", or others. This can lead to unexpected behavior.</p>
+    <p>It's almost always better to use <code><a href="/prop/">.prop()</a></code> to set native properties to <code>false</code> instead of removing them.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">img</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 24px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>para <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+para
+  <span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"luggageCode"</span><span class="token punctuation">,</span> <span class="token number">1234</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>
+    <span class="token string">"The secret luggage code is: "</span><span class="token punctuation">,</span>
+    <span class="token function">String</span><span class="token punctuation">(</span>para<span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"luggageCode"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">". "</span>
+  <span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">removeProp</span><span class="token punctuation">(</span><span class="token string">"luggageCode"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>
+    <span class="token string">"Now the secret luggage code is: "</span><span class="token punctuation">,</span>
+    <span class="token function">String</span><span class="token punctuation">(</span>para<span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"luggageCode"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">". "</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>img {padding: 10px;}div {color: red;font-size: 24px;}</style></head><body><p></p><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>para = $( &#34;p&#34; );para.prop( &#34;luggageCode&#34;, 1234 ).append( &#34;The secret luggage code is: &#34;, String( para.prop( &#34;luggageCode&#34; ) ), &#34;. &#34; ).removeProp( &#34;luggageCode&#34; ).append( &#34;Now the secret luggage code is: &#34;, String( para.prop( &#34;luggageCode&#34; ) ), &#34;. &#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

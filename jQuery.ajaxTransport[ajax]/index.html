@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.ajaxTransport()</h1>
+      <h2 class="subtitle is-5">Creates an object that handles the actual transmission of Ajax data.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.ajaxTransport(dataType, handler)<span class="return">&#129122; undefined</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    dataType
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  A string identifying the data type to use
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    handler
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A handler to return the new transport object to use with the data type provided in the first argument.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>A transport is an object that provides two methods, <code>send</code> and <code>abort</code>, that are used internally by <code>$.ajax()</code> to issue requests. A transport is the most advanced way to enhance <code>$.ajax()</code> and should be used only as a last resort when prefilters and converters are insufficient.</p>
+    <p>Since each request requires its own transport object instance, transports cannot be registered directly. Therefore, you should provide a function that returns a transport instead.</p>
+    <p>Transports factories are registered using <code>$.ajaxTransport()</code>. A typical registration looks like this:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajaxTransport</span><span class="token punctuation">(</span> dataType<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">options<span class="token punctuation">,</span> originalOptions<span class="token punctuation">,</span> jqXHR</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token comment">/* transportCanHandleRequest */</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token function-variable function">send</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">headers<span class="token punctuation">,</span> completeCallback</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Send code</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">abort</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Abort code</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    <p>where:</p>
+    <ul>
+      <li><code>options</code> are the request options</li>
+      <li><code>originalOptions</code> are the options as provided to the <code>$.ajax()</code> method, unmodified and, thus, without defaults from ajaxSettings</li>
+      <li><code>jqXHR</code> is the jqXHR object of the request</li>
+      <li><code>headers</code> is an object of (key-value) request headers that the transport can transmit if it supports it</li>
+      <li><code>completeCallback</code> is the callback used to notify Ajax of the completion of the request</li>
+    </ul>
+    <p><code>completeCallback</code> has the following signature:</p>
+    <pre class="language-css"><code><span class="token selector">function( status, statusText, responses, headers )</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <p>where:</p>
+    <ul>
+      <li><code>status</code> is the HTTP status code of the response, like  200 for a typical success, or 404 for when the resource is not found.</li>
+      <li><code>statusText</code> is the statusText of the response.</li>
+      <li><code>responses</code> (Optional) is An object containing dataType/value that contains the response in all the formats the transport could provide (for instance, a native XMLHttpRequest object would set responses to <code>{ xml: XMLData, text: textData }</code> for a response that is an XML document)</li>
+      <li><code>headers</code> (Optional) is a string containing all the response headers if the transport has access to them (akin to what <code>XMLHttpRequest.getAllResponseHeaders()</code> would provide).</li>
+    </ul>
+    <p>Just like prefilters, a transport's factory function can be attached to a specific dataType:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajaxTransport</span><span class="token punctuation">(</span><span class="token string">"script"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">options<span class="token punctuation">,</span> originalOptions<span class="token punctuation">,</span> jqXHR</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Will only be called for script requests</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>The following example shows how a minimal image transport could be implemented:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajaxTransport</span><span class="token punctuation">(</span> <span class="token string">"image"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">s</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> s<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">"GET"</span> <span class="token operator">&amp;</span>amp<span class="token punctuation">;</span><span class="token operator">&amp;</span>amp<span class="token punctuation">;</span> s<span class="token punctuation">.</span>async <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> image<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token function-variable function">send</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">_ <span class="token punctuation">,</span> callback</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        image <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">function</span> <span class="token function">done</span><span class="token punctuation">(</span> <span class="token parameter">status</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span> image <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> statusText <span class="token operator">=</span> <span class="token punctuation">(</span> status <span class="token operator">===</span> <span class="token number">200</span> <span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">"success"</span> <span class="token operator">:</span> <span class="token string">"error"</span><span class="token punctuation">,</span>
+              tmp <span class="token operator">=</span> image<span class="token punctuation">;</span>
+            image <span class="token operator">=</span> image<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> image<span class="token punctuation">.</span>onerror <span class="token operator">=</span> image<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+            <span class="token function">callback</span><span class="token punctuation">(</span> status<span class="token punctuation">,</span> statusText<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">image</span><span class="token operator">:</span> tmp <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        image<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> image<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">done</span><span class="token punctuation">(</span> <span class="token number">200</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        image<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">done</span><span class="token punctuation">(</span> <span class="token number">404</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        image<span class="token punctuation">.</span>src <span class="token operator">=</span> s<span class="token punctuation">.</span>url<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">abort</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span> image <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          image <span class="token operator">=</span> image<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> image<span class="token punctuation">.</span>onerror <span class="token operator">=</span> image<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    <h4 id="handling-custom-data-types">Handling Custom Data Types</h4>
+    <p>The jQuery Ajax implementation comes with a set of standard dataTypes, such as text, json, xml, and html.</p>
+    <p>Use the <code>converters</code> option in <code><a href="/jQuery.ajaxSetup/">$.ajaxSetup()</a></code> to augment or modify the data type conversion strategies used by <code>$.ajax()</code>.</p>
+    <p> The unminified jQuery source itself includes a list of default converters, which effectively illustrates how they can be used: </p>
+    <pre class="language-javascript"><code><span class="token comment">// List of data converters</span>
+<span class="token comment">// 1) Key format is "source_type destination_type"</span>
+<span class="token comment">//    (a single space in-between)</span>
+<span class="token comment">// 2) The catchall symbol "*" can be used for source_type</span>
+<span class="token literal-property property">converters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Convert anything to text</span>
+  <span class="token string-property property">"* text"</span><span class="token operator">:</span> window<span class="token punctuation">.</span>String<span class="token punctuation">,</span>
+  <span class="token comment">// Text to html (true = no transformation)</span>
+  <span class="token string-property property">"text html"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token comment">// Evaluate text as a json expression</span>
+  <span class="token string-property property">"text json"</span><span class="token operator">:</span> jQuery<span class="token punctuation">.</span>parseJSON<span class="token punctuation">,</span>
+  <span class="token comment">// Parse text as xml</span>
+  <span class="token string-property property">"text xml"</span><span class="token operator">:</span> jQuery<span class="token punctuation">.</span>parseXML
+<span class="token punctuation">}</span></code></pre>
+    <p>When you specify a <code>converters</code> option globally in <code>$.ajaxSetup()</code> or per call in <code>$.ajax()</code>, the object will map onto the default converters, overwriting those you specify and leaving the others intact.</p>
+    <p>For example, the jQuery source uses <code>$.ajaxSetup()</code> to  add a converter for "text script":</p>
+    <pre class="language-javascript"><code>jQuery<span class="token punctuation">.</span><span class="token function">ajaxSetup</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">accepts</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">script</span><span class="token operator">:</span> <span class="token string">"text/javascript, application/javascript"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">contents</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">script</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">javascript</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">converters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"text script"</span><span class="token operator">:</span> jQuery<span class="token punctuation">.</span>globalEval<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

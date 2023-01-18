@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.contains()</h1>
+      <h2 class="subtitle is-5">Check to see if a DOM element is a descendant of another DOM element.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.contains(container, contained)<span class="return">&#129122; Boolean</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    container
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  The DOM element that may contain the other element.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    contained
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  The DOM element that may be contained by (a descendant of) the other element.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>$.contains()</code> method returns <code>true</code> if the DOM element provided by the second argument is a descendant of the DOM element provided by the first argument, whether it is a direct child or nested more deeply. Otherwise, it returns <code>false</code>. Only <em>element</em> nodes are supported; if the second argument is a text or comment node, <code>$.contains()</code> will return <code>false</code>.</p>
+    <div class="warning">
+      <p><strong>Note:</strong> The first argument <em>must</em> be a DOM element, not a jQuery object or plain JavaScript object.</p>
+    </div>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>documentElement<span class="token punctuation">,</span> document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+$<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">,</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$.contains( document.documentElement, document.body ); // true$.contains( document.body, document.documentElement ); // false</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

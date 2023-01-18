@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">callbacks.empty()</h1>
+      <h2 class="subtitle is-5">Remove all of the callbacks from a list.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .callbacks.empty()<span class="return">&#129122; Callbacks</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>This method returns the Callbacks object onto which it is attached (<code>this</code>).</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token comment">// A sample logging function to be added to a callbacks list</span>
+<span class="token keyword">var</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value1<span class="token punctuation">,</span> value2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"foo: "</span> <span class="token operator">+</span> value1 <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> value2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Another function to also be added to the list</span>
+<span class="token keyword">var</span> <span class="token function-variable function">bar</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value1<span class="token punctuation">,</span> value2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar: "</span> <span class="token operator">+</span> value1 <span class="token operator">+</span> <span class="token string">","</span> <span class="token operator">+</span> value2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add the two functions</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Empty the callbacks list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Check to ensure all callbacks have been removed</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>callbacks<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>callbacks<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// false</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>// A sample logging function to be added to a callbacks listvar foo = function( value1, value2 ) {console.log( &#34;foo: &#34; + value1 + &#34;,&#34; + value2 );};// Another function to also be added to the listvar bar = function( value1, value2 ) {console.log( &#34;bar: &#34; + value1 + &#34;,&#34; + value2 );};var callbacks = $.Callbacks();// Add the two functionscallbacks.add( foo );callbacks.add( bar );// Empty the callbacks listcallbacks.empty();// Check to ensure all callbacks have been removedconsole.log( callbacks.has( foo ) );// falseconsole.log( callbacks.has( bar ) );// false</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

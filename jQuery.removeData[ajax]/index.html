@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.removeData()</h1>
+      <h2 class="subtitle is-5">Remove a previously-stored piece of data.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.removeData(element, name)<span class="return">&#129122; undefined</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    element
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  A DOM element from which to remove data.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    name
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  A string naming the piece of data to remove.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p><strong>Note:</strong> This is a low-level method, you should probably use <code><a href="/removeData/">.removeData()</a></code> instead.</p>
+    <p>The <code>jQuery.removeData()</code> method allows us to remove values that were previously set using <code><a href="/jQuery.data/">jQuery.data()</a></code>. When called with the name of a key, <code>jQuery.removeData()</code> deletes that particular value; when called with no arguments, all values are removed.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>value1 before creation: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>value1 after creation: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>value1 after removal: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>value2 after removal: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">span</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> div <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token string">"test1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token string">"VALUE-1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test2"</span><span class="token punctuation">,</span> <span class="token string">"VALUE-2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span><span class="token function">removeData</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> jQuery<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>div<span class="token punctuation">,</span> <span class="token string">"test2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>div {margin: 2px;color: blue;}span {color: red;}</style></head><body><div>value1 before creation: <span></span></div><div>value1 after creation: <span></span></div><div>value1 after removal: <span></span></div><div>value2 after removal: <span></span></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var div = $( &#34;div&#34; )[ 0 ];$( &#34;span&#34; ).eq( 0 ).text( &#34;&#34; + $( &#34;div&#34; ).data( &#34;test1&#34; ) );jQuery.data( div, &#34;test1&#34;, &#34;VALUE-1&#34; );jQuery.data( div, &#34;test2&#34;, &#34;VALUE-2&#34; );$( &#34;span&#34; ).eq( 1 ).text( &#34;&#34; + jQuery.data( div, &#34;test1&#34; ) );jQuery.removeData( div, &#34;test1&#34; );$( &#34;span&#34; ).eq( 2 ).text( &#34;&#34; + jQuery.data( div, &#34;test1&#34; ) );$( &#34;span&#34; ).eq( 3 ).text( &#34;&#34; + jQuery.data( div, &#34;test2&#34; ) );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

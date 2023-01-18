@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.ajaxSetup()</h1>
+      <h2 class="subtitle is-5">Set default values for future Ajax requests. Its use is not recommended.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.ajaxSetup(options)<span class="return">&#129122; PlainObject</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    options
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  A set of key/value pairs that configure the default Ajax request. All options are optional. 
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>For details on the settings available for <code>$.ajaxSetup()</code>, see <code><a href="/jQuery.ajax/">$.ajax()</a></code>. </p>
+    <p>All subsequent Ajax calls using any function will use the new settings, unless overridden by the individual calls, until the next invocation of <code>$.ajaxSetup()</code>.</p>
+    <p><strong>Note:</strong> The settings specified here will affect <em>all</em> calls to <code>$.ajax</code> or Ajax-based derivatives such as <code>$.get()</code>. This can cause undesirable behavior since other callers (for example, plugins) may be expecting the normal default settings. For that reason we <em>strongly recommend against using this API</em>. Instead, set the options explicitly in the call or define a simple plugin to do so.</p>
+    <p>For example, the following sets a default for the <code>url</code> parameter before pinging the server repeatedly:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajaxSetup</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"ping.php"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>Now each time an Ajax request is made, the "ping.php" URL will be used automatically:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment">// url not set here; uses ping.php</span>
+  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Dan"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <div class="warning">
+      <p>Note: Global callback functions should be set with their respective global Ajax event handler methods—<code><a href="/ajaxStart/">.ajaxStart()</a></code>, <code><a href="/ajaxStop/">.ajaxStop()</a></code>, <code><a href="/ajaxComplete/">.ajaxComplete()</a></code>, <code><a href="/ajaxError/">.ajaxError()</a></code>, <code><a href="/ajaxSuccess/">.ajaxSuccess()</a></code>, <code><a href="/ajaxSend/">.ajaxSend()</a></code>—rather than within the <code>options</code> object for <code>$.ajaxSetup()</code>.</p>
+    </div>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajaxSetup</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/xmlhttp/"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">global</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">data</span><span class="token operator">:</span> myData <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$.ajaxSetup({url: &#34;/xmlhttp/&#34;,global: false,type: &#34;POST&#34;});$.ajax({ data: myData });</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

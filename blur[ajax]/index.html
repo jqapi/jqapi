@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.blur()</h1>
+      <h2 class="subtitle is-5">Bind an event handler to the &quot;blur&quot; JavaScript event, or trigger that event on an element.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .blur(handler)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    handler
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A function to execute each time the event is triggered.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .blur(eventData, handler)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    eventData
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  An object containing data that will be passed to the event handler.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    handler
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A function to execute each time the event is triggered.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .blur()<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>This method is a shortcut for <code>.on( "blur", handler )</code> in the first two variations, and <code>.trigger( "blur" )</code> in the third.</p>
+    <p>The <code>blur</code> event is sent to an element when it loses focus. Originally, this event was only applicable to form elements, such as <code>&lt;input&gt;</code>. In recent browsers, the domain of the event has been extended to include all element types. An element can lose focus via keyboard commands, such as the Tab key, or by mouse clicks elsewhere on the page.</p>
+    <p>For example, consider the HTML:</p>
+    <pre class="language-javascript"><code><span class="token operator">&lt;</span>form<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>input id<span class="token operator">=</span><span class="token string">"target"</span> type<span class="token operator">=</span><span class="token string">"text"</span> value<span class="token operator">=</span><span class="token string">"Field 1"</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> value<span class="token operator">=</span><span class="token string">"Field 2"</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>form<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"other"</span><span class="token operator">&gt;</span>
+  Trigger the handler
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+The event handler can be bound to the first input field<span class="token operator">:</span>
+<span class="token function">$</span><span class="token punctuation">(</span> <span class="token string">"#target"</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">blur</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span> <span class="token string">"Handler for .blur() called."</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    <p>Now if the first field has the focus, clicking elsewhere or tabbing away from it displays the alert:</p>
+    <p>
+      <samp>Handler for .blur() called.</samp>
+    </p>
+    <p>To trigger the event programmatically, apply <code>.blur()</code> without an argument:</p>
+    <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#other"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#target"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">blur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>After this code executes, clicks on <samp>Trigger the handler</samp> will also alert the message.</p>
+    <p>The <code>blur</code> event does not bubble in Internet Explorer. Therefore, scripts that rely on event delegation with the <code>blur</code> event will not work consistently across browsers. As of version 1.4.2, however, jQuery works around this limitation by mapping <code>blur</code> to the <code>focusout</code> event in its event delegation methods, <a href="/live/"><code>.live()</code></a> and <a href="/delegate/"><code>.delegate()</code></a>.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">blur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;p&#34; ).blur();</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

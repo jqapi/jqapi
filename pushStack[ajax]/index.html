@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.pushStack()</h1>
+      <h2 class="subtitle is-5">Add a collection of DOM elements onto the jQuery stack.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .pushStack(elements)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    elements
+                  </code>
+                </td>
+                <td>Array</td>
+                <td>
+                  An array of elements to push onto the stack and make into a new jQuery object.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .pushStack(elements, name, arguments)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    elements
+                  </code>
+                </td>
+                <td>Array</td>
+                <td>
+                  An array of elements to push onto the stack and make into a new jQuery object.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    name
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  The name of a jQuery method that generated the array of elements.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    arguments
+                  </code>
+                </td>
+                <td>Array</td>
+                <td>
+                  The arguments that were passed in to the jQuery method (for serialization).
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">jQuery</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pushStack</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>jQuery([]).pushStack( document.getElementsByTagName( &#34;div&#34; ) ).remove().end();</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

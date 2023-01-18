@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.proxy()</h1>
+      <h2 class="subtitle is-5">Takes a function and returns a new one that will always have a particular context.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.proxy(function(), context)<span class="return">&#129122; Function</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    function()
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  The function whose context will be changed.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    context
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  The object to which the context (<code>this</code>) of the function should be set.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          jQuery.proxy(context, name)<span class="return">&#129122; Function</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    context
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  The object to which the context of the function should be set.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    name
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  The name of the function whose context will be changed (should be a property of the <code>context</code> object).
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          jQuery.proxy(function(), context, additionalArguments)<span class="return">&#129122; Function</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    function()
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  The function whose context will be changed.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    context
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  The object to which the context (<code>this</code>) of the function should be set.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    additionalArguments
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  Any number of arguments to be passed to the function referenced in the <code>function</code> argument.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          jQuery.proxy(context, name, additionalArguments)<span class="return">&#129122; Function</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    context
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  The object to which the context of the function should be set.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    name
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  The name of the function whose context will be changed (should be a property of the <code>context</code> object).
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    additionalArguments
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  Any number of arguments to be passed to the function named in the <code>name</code> argument.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <div class="warning">
+      <p>Note: This API has been deprecated in jQuery 3.3; please use the native <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind"><code>Function.prototype.bind</code></a> method instead.</p>
+    </div>
+    <p>This method is most useful for attaching event handlers to an element where the context is pointing back to a different object. Additionally, jQuery makes sure that even if you bind the function returned from <code>jQuery.proxy()</code> it will still unbind the correct function if passed the original.</p>
+    <p>Be aware, however, that jQuery's event binding subsystem assigns a unique id to each event handling function in order to track it when it is used to specify the function to be unbound. The function represented by <code>jQuery.proxy()</code> is seen as a single function by the event subsystem, even when it is used to bind different contexts. To avoid unbinding the wrong handler, use a unique event namespace for binding and unbinding (e.g., <code>"click.myproxy1"</code>) rather than specifying the proxied function during unbinding.</p>
+    <p><strong>As of jQuery 1.6</strong>, any number of additional arguments may be supplied to <code>$.proxy()</code>, and they will be passed to the function whose context will be changed.</p>
+    <p><strong>As of jQuery 1.9</strong>, when the <code>context</code> is <code>null</code> or <code>undefined</code> the proxied function will be called with the same <code>this</code> object as the proxy was called with. This allows <code>$.proxy()</code> to be used to partially apply the arguments of a function without changing the context.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> me <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"zombie"</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">test</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Without proxy, `this` would refer to the event target</span>
+    <span class="token comment">// use event.target to reference that element.</span>
+    <span class="token keyword">var</span> element <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background-color"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// With proxy, `this` refers to the me object encapsulating</span>
+    <span class="token comment">// this function.</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"Hello "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">+</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> you <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"person"</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">test</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Execute you.test() in the context of the `you` object</span>
+<span class="token comment">// no matter where it is called</span>
+<span class="token comment">// i.e. the `this` keyword will refer to `you`</span>
+<span class="token keyword">var</span> youClick <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>you<span class="token punctuation">.</span>test<span class="token punctuation">,</span> you<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// attach click handlers to #test</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#test"</span><span class="token punctuation">)</span>
+  <span class="token comment">// this === "zombie"; handler unbound after first click</span>
+  <span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> $<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>me<span class="token punctuation">.</span>test<span class="token punctuation">,</span> me<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// this === "person"</span>
+  <span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> youClick<span class="token punctuation">)</span>
+
+  <span class="token comment">// this === "zombie"</span>
+  <span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> $<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>you<span class="token punctuation">.</span>test<span class="token punctuation">,</span> me<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// this === "&lt;button> element"</span>
+  <span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> you<span class="token punctuation">.</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><p><button type=&#34;button&#34; id=&#34;test&#34;>Test</button></p><div id=&#34;log&#34;></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var me = {type: &#34;zombie&#34;,test: function( event ) {// Without proxy, `this` would refer to the event target// use event.target to reference that element.var element = event.target;$( element ).css( &#34;background-color&#34;, &#34;red&#34; );// With proxy, `this` refers to the me object encapsulating// this function.$( &#34;#log&#34; ).append( &#34;Hello &#34; + this.type + &#34;<br>&#34; );$( &#34;#test&#34; ).off( &#34;click&#34;, this.test );}};var you = {type: &#34;person&#34;,test: function( event ) {$( &#34;#log&#34; ).append( this.type + &#34; &#34; );}};// Execute you.test() in the context of the `you` object// no matter where it is called// i.e. the `this` keyword will refer to `you`var youClick = $.proxy( you.test, you );// attach click handlers to #test$( &#34;#test&#34; )// this === &#34;zombie&#34;; handler unbound after first click.on( &#34;click&#34;, $.proxy( me.test, me ) )// this === &#34;person&#34;.on( &#34;click&#34;, youClick )// this === &#34;zombie&#34;.on( &#34;click&#34;, $.proxy( you.test, me ) )// this === &#34;<button> element&#34;.on( &#34;click&#34;, you.test );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">test</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> obj<span class="token punctuation">.</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> jQuery<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><p><button id=&#34;test&#34;>Test</button></p><p id=&#34;log&#34;></p><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var obj = {name: &#34;John&#34;,test: function() {$( &#34;#log&#34; ).append( this.name );$( &#34;#test&#34; ).off( &#34;click&#34;, obj.test );}};$( &#34;#test&#34; ).on( &#34;click&#34;, jQuery.proxy( obj, &#34;test&#34; ) );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> me <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// I'm a dog</span>
+  <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"dog"</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// Note that event comes *after* one and two</span>
+  <span class="token function-variable function">test</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">one<span class="token punctuation">,</span> two<span class="token punctuation">,</span> event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span>
+      <span class="token comment">// `one` maps to `you`, the 1st additional</span>
+      <span class="token comment">// argument in the $.proxy function call</span>
+      <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"&lt;h3>Hello "</span> <span class="token operator">+</span> one<span class="token punctuation">.</span>type <span class="token operator">+</span> <span class="token string">":&lt;/h3>"</span><span class="token punctuation">)</span>
+
+      <span class="token comment">// The `this` keyword refers to `me`</span>
+      <span class="token comment">// (the 2nd, context, argument of $.proxy)</span>
+      <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"I am a "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">+</span> <span class="token string">", "</span><span class="token punctuation">)</span>
+
+      <span class="token comment">// `two` maps to `they`, the 2nd additional</span>
+      <span class="token comment">// argument in the $.proxy function call</span>
+      <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"and they are "</span> <span class="token operator">+</span> two<span class="token punctuation">.</span>type <span class="token operator">+</span> <span class="token string">".&lt;br>"</span><span class="token punctuation">)</span>
+
+      <span class="token comment">// The event type is "click"</span>
+      <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"Thanks for "</span> <span class="token operator">+</span> event<span class="token punctuation">.</span>type <span class="token operator">+</span> <span class="token string">"ing."</span><span class="token punctuation">)</span>
+
+      <span class="token comment">// The clicked element is `event.target`,</span>
+      <span class="token comment">// and its type is "button"</span>
+      <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"the "</span> <span class="token operator">+</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>type <span class="token operator">+</span> <span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> you <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"cat"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> they <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"fish"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Set up handler to execute me.test() in the context</span>
+<span class="token comment">// of `me`, with `you` and `they` as additional arguments</span>
+<span class="token keyword">var</span> proxy <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">proxy</span><span class="token punctuation">(</span>me<span class="token punctuation">.</span>test<span class="token punctuation">,</span> me<span class="token punctuation">,</span> you<span class="token punctuation">,</span> they<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#test"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> proxy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><p><button type=&#34;button&#34; id=&#34;test&#34;>Test</button></p><div id=&#34;log&#34;></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var me = {// I'm a dogtype: &#34;dog&#34;,// Note that event comes *after* one and twotest: function( one, two, event ) {$( &#34;#log&#34; )// `one` maps to `you`, the 1st additional// argument in the $.proxy function call.append( &#34;<h3>Hello &#34; + one.type + &#34;:</h3>&#34; )// The `this` keyword refers to `me`// (the 2nd, context, argument of $.proxy).append( &#34;I am a &#34; + this.type + &#34;, &#34; )// `two` maps to `they`, the 2nd additional// argument in the $.proxy function call.append( &#34;and they are &#34; + two.type + &#34;.<br>&#34; )// The event type is &#34;click&#34;.append( &#34;Thanks for &#34; + event.type + &#34;ing.&#34; )// The clicked element is `event.target`,// and its type is &#34;button&#34;.append( &#34;the &#34; + event.target.type + &#34;.&#34; );}};var you = { type: &#34;cat&#34; };var they = { type: &#34;fish&#34; };// Set up handler to execute me.test() in the context// of `me`, with `you` and `they` as additional argumentsvar proxy = $.proxy( me.test, me, you, they );$( &#34;#test&#34; ).on( &#34;click&#34;, proxy );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

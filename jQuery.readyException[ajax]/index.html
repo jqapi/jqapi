@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.readyException()</h1>
+      <h2 class="subtitle is-5">Handles errors thrown synchronously in functions wrapped in jQuery().</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.readyException(error)<span class="return">&#129122; Selector</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    error
+                  </code>
+                </td>
+                <td>Error</td>
+                <td>
+                  An error thrown in the function wrapped in <code>jQuery()</code>.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>This method is fired when an error is thrown synchronously in a function wrapped in <code>jQuery()</code> or <code>jQuery( document ).ready()</code>, or equivalent. By default it re-throws the error in a timeout so that it's logged in the console and passed to <code>window.onerror</code> instead of being swallowed. Overwrite this method if you want to handle such errors differently.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>jQuery<span class="token punctuation">.</span><span class="token function-variable function">readyException</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>jQuery.readyException = function( error ) {console.error( error );};</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

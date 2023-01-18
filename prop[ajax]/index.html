@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.prop()</h1>
+      <h2 class="subtitle is-5">Get the value of a property for the first element in the set of matched elements.Set one or more properties for the set of matched elements.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .prop(propertyName)
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    propertyName
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  The name of the property to get.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .prop(propertyName, value)
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    propertyName
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  The name of the property to set.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    value
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  A value to set for the property.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .prop(properties)
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    properties
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  An object of property-value pairs to set.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .prop(propertyName, function(index<span class="type">Integer</span>, oldPropertyValue<span class="type">Anything</span>))
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    propertyName
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  The name of the property to set.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    function(index<span class="type">Integer</span>, oldPropertyValue<span class="type">Anything</span>)
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A function returning the value to set. Receives the index position of the element in the set and the old property value as arguments. Within the function, the keyword <code>this</code> refers to the current element.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+      <p>The <code>.prop()</code> method gets the property value for only the <em>first</em> element in the matched set. It returns <code>undefined</code> for the value of a property that has not been set, or if the matched set has no elements. To get the value for each element individually, use a looping construct such as jQuery's <code>.each()</code> or <code>.map()</code> method.</p>
+      <div class="warning">
+        <p><strong>Note:</strong> Attempting to change the <code>type</code> property (or attribute) of an <code>input</code> element created via HTML or already in an HTML document will result in an error being thrown by Internet Explorer 6, 7, or 8.</p>
+      </div>
+      <h4>Attributes vs. Properties</h4>
+      <p>The difference between <em>attributes</em> and <em>properties</em> can be important in specific situations. <strong>Before jQuery 1.6</strong>, the <code><a href="/attr/">.attr()</a></code> method sometimes took property values into account when retrieving some attributes, which could cause inconsistent behavior. <strong>As of jQuery 1.6</strong>, the <code>.prop()</code> method provides a way to explicitly retrieve property values, while <code>.attr()</code> retrieves attributes.</p>
+      <p>For example, <code>selectedIndex</code>, <code>tagName</code>, <code>nodeName</code>, <code>nodeType</code>, <code>ownerDocument</code>, <code>defaultChecked</code>, and <code>defaultSelected</code> should be retrieved and set with the <code>.prop()</code> method. Prior to jQuery 1.6, these properties were retrievable with the <code>.attr()</code> method, but this was not within the scope of <code>attr</code>. These do not have corresponding attributes and are only properties.</p>
+      <p>Concerning boolean attributes, consider a DOM element defined by the HTML markup <code>&lt;input type="checkbox" checked="checked" /&gt;</code>, and assume it is in a JavaScript variable named <code>elem</code>:</p>
+      <table>
+        <tbody><tr>
+          <th>
+            <code>elem.checked</code>
+          </th>
+          <td><code>true</code> (Boolean) Will change with checkbox state</td>
+        </tr>
+        <tr>
+          <th>
+            <code>$( elem ).prop( "checked" )</code>
+          </th>
+          <td><code>true</code> (Boolean) Will change with checkbox state</td>
+        </tr>
+        <tr>
+          <th>
+            <code>elem.getAttribute( "checked" )</code>
+          </th>
+          <td><code>"checked"</code> (String) Initial state of the checkbox; does not change</td>
+        </tr>
+        <tr>
+          <th>
+            <code>$( elem ).attr( "checked" )</code>
+            <em>(1.6+)</em>
+          </th>
+          <td><code>"checked"</code> (String) Initial state of the checkbox; does not change</td>
+        </tr>
+        <tr>
+          <th>
+            <code>$( elem ).attr( "checked" )</code>
+            <em>(pre-1.6)</em>
+          </th>
+          <td><code>true</code> (Boolean) Changed with checkbox state</td>
+        </tr>
+      </tbody></table>
+      <br>
+      <p>According to the <a href="https://www.w3.org/TR/html401/interact/forms.html#h-17.4">W3C forms specification</a>, the <code>checked</code> attribute is a <em><a href="https://www.w3.org/TR/html4/intro/sgmltut.html#h-3.3.4.2">boolean attribute</a></em>, which means the corresponding property is <strong>true</strong> if the attribute is present at all—even if, for example, the attribute has no value or is set to empty string value or even "false". This is true of all boolean attributes.</p>
+      <p>Nevertheless, the most important concept to remember about the <code>checked</code> attribute is that it does not correspond to the <code>checked</code> property. The attribute actually corresponds to the <code>defaultChecked</code> property and should be used only to set the <em>initial</em> value of the checkbox. The <code>checked</code> attribute value does not change with the state of the checkbox, while the <code>checked</code> property does. Therefore, the cross-browser-compatible way to determine if a checkbox is checked is to use the property:</p>
+      <ul>
+        <li>
+          <code>if ( elem.checked )</code>
+        </li>
+        <li>
+          <code>if ( $( elem ).prop( "checked" ) )</code>
+        </li>
+        <li>
+          <code>if ( $( elem ).is( ":checked" ) )</code>
+        </li>
+      </ul>
+      <p>The same is true for other dynamic attributes, such as <code>selected</code> and <code>value</code>.</p>
+    
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>check1<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">checked</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checked<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>check1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Check me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 20px 0 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">b</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> $input <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>
+      <span class="token string">'.attr( "checked" ): &lt;b>'</span> <span class="token operator">+</span>
+        $input<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"checked"</span><span class="token punctuation">)</span> <span class="token operator">+</span>
+        <span class="token string">"&lt;/b>&lt;br>"</span> <span class="token operator">+</span>
+        <span class="token string">'.prop( "checked" ): &lt;b>'</span> <span class="token operator">+</span>
+        $input<span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"checked"</span><span class="token punctuation">)</span> <span class="token operator">+</span>
+        <span class="token string">"&lt;/b>&lt;br>"</span> <span class="token operator">+</span>
+        <span class="token string">'.is( ":checked" ): &lt;b>'</span> <span class="token operator">+</span>
+        $input<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span><span class="token string">":checked"</span><span class="token punctuation">)</span> <span class="token operator">+</span>
+        <span class="token string">"&lt;/b>"</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>p {margin: 20px 0 0;}b {color: blue;}</style></head><body><input id=&#34;check1&#34; type=&#34;checkbox&#34; checked=&#34;checked&#34;><label for=&#34;check1&#34;>Check me</label><p></p><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;input&#34; ).change(function() {var $input = $( this );$( &#34;p&#34; ).html(&#34;.attr( \&#34;checked\&#34; ): <b>&#34; + $input.attr( &#34;checked&#34; ) + &#34;</b><br>&#34; +&#34;.prop( \&#34;checked\&#34; ): <b>&#34; + $input.prop( &#34;checked&#34; ) + &#34;</b><br>&#34; +&#34;.is( \&#34;:checked\&#34; ): <b>&#34; + $input.is( &#34;:checked&#34; ) + &#34;</b>&#34; );}).change();</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">checked</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checked<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">checked</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checked<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">img</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 24px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"input[type='checkbox']"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">disabled</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>img {padding: 10px;}div {color: red;font-size: 24px;}</style></head><body><input type=&#34;checkbox&#34; checked=&#34;checked&#34;><input type=&#34;checkbox&#34;><input type=&#34;checkbox&#34;><input type=&#34;checkbox&#34; checked=&#34;checked&#34;><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;input[type='checkbox']&#34; ).prop({disabled: true});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

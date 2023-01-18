@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">deferred.then()</h1>
+      <h2 class="subtitle is-5">Add handlers to be called when the Deferred object is resolved, rejected, or still in progress. </h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .deferred.then(doneFilter, failFilter, progressFilter)<span class="return">&#129122; Promise</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    doneFilter
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        A function that is called when the Deferred is resolved.
+      
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    failFilter
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        An optional function that is called when the Deferred is rejected.
+      
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    progressFilter
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        An optional function that is called when progress notifications are sent to the Deferred.
+      
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .deferred.then(doneCallbacks, failCallbacks)<span class="return">&#129122; Promise</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    doneCallbacks
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        A function, or array of functions, called when the Deferred is resolved.
+      
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    failCallbacks
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        A function, or array of functions, called when the Deferred is rejected.
+      
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .deferred.then(doneCallbacks, failCallbacks, progressCallbacks)<span class="return">&#129122; Promise</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    doneCallbacks
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        A function, or array of functions, called when the Deferred is resolved.
+      
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    failCallbacks
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        A function, or array of functions, called when the Deferred is rejected.
+      
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    progressCallbacks
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        A function, or array of functions, called when the Deferred notifies progress.
+      
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p><strong>Prior to jQuery 1.8</strong>, the arguments could be a function or an array of functions.</p>
+    <p>For all signatures, the arguments can be <code>null</code> if no callback of that type is desired. Alternatively, use <code>.done()</code>, <code>.fail()</code> or <code>.progress()</code> to set only one type of callback without filtering status or values. </p>
+
+    <p><strong>As of jQuery 1.8</strong>, the <code>deferred.then()</code> method returns a new promise that can filter the status and values of a deferred through a function, replacing the now-deprecated <code>deferred.pipe()</code> method. The <code>doneFilter</code> and <code>failFilter</code> functions filter the original deferred's resolved / rejected status and values. The <code>progressFilter</code> function filters any calls to the original deferred's <code>notify</code> or <code>notifyWith</code> methods. These filter functions can return a new value to be passed along to the promise's <code>.done()</code> or <code>.fail()</code> callbacks, or they can return another observable object (Deferred, Promise, etc) which will pass its resolved / rejected status and values to the promise's callbacks. If the filter function used is <code>null</code>, or not specified, the promise will be resolved or rejected with the same values as the original.</p>
+
+    <p>Callbacks are executed in the order they were added. Since
+      <code>deferred.then</code> returns a Promise, other methods of the
+      Promise object can be chained to this one, including additional
+      <code>.then()</code> methods.
+    </p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"test.php"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"$.get succeeded"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"$.get failed!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$.get( &#34;test.php&#34; ).then(function() {alert( &#34;$.get succeeded&#34; );}, function() {alert( &#34;$.get failed!&#34; );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>Filter Resolve<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> <span class="token function-variable function">filterResolve</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> defer <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Deferred</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filtered <span class="token operator">=</span> defer<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  defer<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  filtered<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">"Value is ( 2*5 = ) 10: "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> filterResolve<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><button>Filter Resolve</button><p></p><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var filterResolve = function() {var defer = $.Deferred(),filtered = defer.then(function( value ) {return value * 2;});defer.resolve( 5 );filtered.done(function( value ) {$( &#34;p&#34; ).html( &#34;Value is ( 2*5 = ) 10: &#34; + value );});};$( &#34;button&#34; ).on( &#34;click&#34;, filterResolve );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> defer <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Deferred</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  filtered <span class="token operator">=</span> defer<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> value <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+defer<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+filtered<span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Value is ( 3*6 = ) 18: "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var defer = $.Deferred(),filtered = defer.then( null, function( value ) {return value * 3;});defer.reject( 6 );filtered.fail(function( value ) {alert( &#34;Value is ( 3*6 = ) 18: &#34; + value );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> request <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"json"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  chained <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span>url2<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> data<span class="token punctuation">.</span>userId <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+chained<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// data retrieved from url2 as provided by the first request</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var request = $.ajax( url, { dataType: &#34;json&#34; } ),chained = request.then(function( data ) {return $.ajax( url2, { data: { user: data.userId } } );});chained.done(function( data ) {// data retrieved from url2 as provided by the first request});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.getScript()</h1>
+      <h2 class="subtitle is-5">Load a JavaScript file from the server using a GET HTTP request, then execute it.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.getScript(url, success)<span class="return">&#129122; jqXHR</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    url
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  A string containing the URL to which the request is sent.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    success
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A callback function that is executed if the request succeeds.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>This is a shorthand Ajax function, which is equivalent to:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token punctuation">,</span>
+  <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"script"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">success</span><span class="token operator">:</span> success<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>The script is executed in the global context, so it can refer to other variables and use jQuery functions. Included scripts can have some impact on the current page.</p>
+    <h4 id="success-callback">
+        Success Callback
+      </h4>
+    <p>The callback is fired once the script has been loaded and executed.</p>
+    <p>Scripts are included and run by referencing the file name:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token string">"ajax/test.js"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> textStatus<span class="token punctuation">,</span> jqxhr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Data returned</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>textStatus<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Success</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jqxhr<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 200</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Load was performed."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <h4 id="handling-errors">Handling Errors</h4>
+    <p>As of jQuery 1.5, you may use <a href="/deferred.fail/"><code>.fail()</code></a> to account for errors:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token string">"ajax/test.js"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">script<span class="token punctuation">,</span> textStatus</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>textStatus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">jqxhr<span class="token punctuation">,</span> settings<span class="token punctuation">,</span> exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div.log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"Triggered ajaxError handler."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>Prior to jQuery 1.5, the global <code>.ajaxError()</code> callback event had to be used in order to handle <code>$.getScript()</code> errors:</p>
+    <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div.log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ajaxError</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">e<span class="token punctuation">,</span> jqxhr<span class="token punctuation">,</span> settings<span class="token punctuation">,</span> exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>settings<span class="token punctuation">.</span>dataType <span class="token operator">==</span> <span class="token string">"script"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"Triggered ajaxError handler."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>Prior to jQuery 3.5.0, unsuccessful HTTP responses with a script <code>Content-Type</code> were still executed.</p>
+    <h4 id="caching-requests">Caching Responses</h4>
+    <p>By default, <code>$.getScript()</code> sets the cache setting to <code>false</code>. This appends a timestamped query parameter to the request URL to ensure that the browser downloads the script each time it is requested. You can override this feature by setting the cache property globally using <a href="/jquery.ajaxsetup/"><code>$.ajaxSetup()</code></a>: </p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajaxSetup</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">cache</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>Alternatively, you could define a new method that uses the more flexible <code>$.ajax()</code> method.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>jQuery<span class="token punctuation">.</span><span class="token function-variable function">cachedScript</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Allow user to set any option except for dataType, cache, and url</span>
+  options <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span>options <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"script"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">cache</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Use $.ajax() since it is more flexible than $.getScript</span>
+  <span class="token comment">// Return the jqXHR object so we can chain callbacks</span>
+  <span class="token keyword">return</span> jQuery<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Usage</span>
+$<span class="token punctuation">.</span><span class="token function">cachedScript</span><span class="token punctuation">(</span><span class="token string">"ajax/test.js"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">script<span class="token punctuation">,</span> textStatus</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>textStatus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>jQuery.cachedScript = function( url, options ) {// Allow user to set any option except for dataType, cache, and urloptions = $.extend( options || {}, {dataType: &#34;script&#34;,cache: true,url: url});// Use $.ajax() since it is more flexible than $.getScript// Return the jqXHR object so we can chain callbacksreturn jQuery.ajax( options );};// Usage$.cachedScript( &#34;ajax/test.js&#34; ).done(function( script, textStatus ) {console.log( textStatus );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>go<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&raquo;">&amp;raquo;</span> Run<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>block<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">.block</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 70px<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">"https://code.jquery.com/color/jquery.color-2.1.2.js"</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#go"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">".block"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span>
+        <span class="token punctuation">{</span>
+          <span class="token literal-property property">backgroundColor</span><span class="token operator">:</span> <span class="token string">"rgb(255, 180, 180)"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token number">1000</span>
+      <span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span>
+        <span class="token punctuation">{</span>
+          <span class="token literal-property property">backgroundColor</span><span class="token operator">:</span> <span class="token string">"olive"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token number">1000</span>
+      <span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span>
+        <span class="token punctuation">{</span>
+          <span class="token literal-property property">backgroundColor</span><span class="token operator">:</span> <span class="token string">"#00f"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token number">1000</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>.block {background-color: blue;width: 150px;height: 70px;margin: 10px;}</style></head><body><button id=&#34;go&#34;>&#38;raquo; Run</button><div class=&#34;block&#34;></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var url = &#34;https://code.jquery.com/color/jquery.color-2.1.2.js&#34;;$.getScript( url, function() {$( &#34;#go&#34; ).click(function() {$( &#34;.block&#34; ).animate({backgroundColor: &#34;rgb(255, 180, 180)&#34;}, 1000 ).delay( 500 ).animate({backgroundColor: &#34;olive&#34;}, 1000 ).delay( 500 ).animate({backgroundColor: &#34;#00f&#34;}, 1000 );});});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

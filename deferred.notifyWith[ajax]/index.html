@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">deferred.notifyWith()</h1>
+      <h2 class="subtitle is-5"> Call the progressCallbacks on a Deferred object with the given context and args. </h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .deferred.notifyWith(context, args)<span class="return">&#129122; Deferred</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    context
+                  </code>
+                </td>
+                <td>Object</td>
+                <td>
+                  
+        Context passed to the progressCallbacks as the <code>this</code> object.
+      
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    args
+                  </code>
+                </td>
+                <td>Array</td>
+                <td>
+                  
+        An optional array of arguments that are passed to the progressCallbacks.
+      
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state or reporting status by returning a restricted Promise object through deferred.promise().</p>
+    <p>When <code>deferred.notifyWith</code> is called, any progressCallbacks added by <a href="/deferred.then/"><code>deferred.then</code></a> or <a href="/deferred.progress/"><code>deferred.progress</code></a> are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>.notifyWith()</code>. Any calls to <code>.notifyWith()</code> after a Deferred is resolved or rejected (or any progressCallbacks added after that) are ignored. For more information, see the documentation for <a href="/category/deferred-object/">Deferred object</a>.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

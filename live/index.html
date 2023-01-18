@@ -1,0 +1,5313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+
+    <title>.live() - jQAPI</title>
+  <link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script></head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div id="search">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M3.624,15a8.03,8.03,0,0,0,10.619.659l5.318,5.318a1,1,0,0,0,1.414-1.414l-5.318-5.318A8.04,8.04,0,0,0,3.624,3.624,8.042,8.042,0,0,0,3.624,15Zm1.414-9.96a6.043,6.043,0,1,1-1.77,4.274A6,6,0,0,1,5.038,5.038ZM4.622,9.311a1,1,0,0,1,2,0A2.692,2.692,0,0,0,9.311,12a1,1,0,0,1,0,2A4.7,4.7,0,0,1,4.622,9.311Z">
+    </path>
+  </svg>
+
+  <input type="text" placeholder="Search">
+
+  <div id="keyboard-wrapper">
+    <div id="keyboard">
+  <svg viewBox="0 0 512 512">
+    <g>
+      <g>
+        <path d="M489.423,211.254H261.327v-28.946c0-6.19,1.221-12.219,3.638-17.92c2.417-5.693,5.903-10.762,10.34-15.063l0.791-0.75
+			c5.471-5.299,9.766-11.548,12.739-18.557c2.98-7.025,4.485-14.456,4.485-22.075V78.989h-10.634v28.951
+			c0,6.188-1.231,12.214-3.648,17.912c-2.409,5.699-5.901,10.767-10.348,15.073l-0.771,0.742
+			c-5.484,5.304-9.774,11.548-12.751,18.57c-2.975,7.02-4.493,14.444-4.493,22.07v28.946H22.582C10.161,211.254,0,221.409,0,233.825
+			v176.609c0,12.416,10.161,22.577,22.582,22.577h466.842c12.419,0,22.577-10.163,22.577-22.577V233.825
+			C512,221.409,501.839,211.254,489.423,211.254z M200.568,255.665c0-2.906,2.368-5.279,5.271-5.279h25.316
+			c2.906,0,5.279,2.373,5.279,5.279v25.316c0,2.906-2.373,5.281-5.279,5.281h-25.316c-2.901,0-5.271-2.376-5.271-5.281V255.665z
+			 M146.744,255.665c0-2.906,2.383-5.279,5.284-5.279h25.324c2.9,0,5.271,2.373,5.271,5.279v25.316c0,2.906-2.368,5.281-5.271,5.281
+			h-25.324c-2.9,0-5.284-2.376-5.284-5.281V255.665z M146.744,309.473c0-2.903,2.383-5.276,5.284-5.276h25.324
+			c2.9,0,5.271,2.373,5.271,5.276v25.321c0,2.906-2.368,5.279-5.271,5.279h-25.324c-2.9,0-5.284-2.373-5.284-5.279V309.473z
+			 M92.941,255.665c0-2.906,2.378-5.279,5.279-5.279h25.321c2.898,0,5.276,2.373,5.276,5.279v25.316
+			c0,2.906-2.378,5.281-5.276,5.281H98.22c-2.901,0-5.279-2.376-5.279-5.281V255.665z M92.941,309.473
+			c0-2.903,2.378-5.276,5.279-5.276h25.321c2.898,0,5.276,2.373,5.276,5.276v25.321c0,2.906-2.378,5.279-5.276,5.279H98.22
+			c-2.901,0-5.279-2.373-5.279-5.279V309.473z M75.011,388.605c0,2.9-2.378,5.279-5.281,5.279H44.408
+			c-2.901,0-5.271-2.378-5.271-5.279v-25.321c0-2.906,2.368-5.276,5.271-5.276h25.321c2.906,0,5.281,2.371,5.281,5.276V388.605z
+			 M75.011,334.792c0,2.906-2.378,5.279-5.281,5.279H44.408c-2.901,0-5.271-2.373-5.271-5.279v-25.321
+			c0-2.903,2.368-5.276,5.271-5.276h25.321c2.906,0,5.281,2.373,5.281,5.276V334.792z M75.011,280.98
+			c0,2.906-2.378,5.281-5.281,5.281H44.408c-2.901,0-5.271-2.376-5.271-5.281v-25.316c0-2.906,2.368-5.279,5.271-5.279h25.321
+			c2.906,0,5.281,2.373,5.281,5.279V280.98z M236.434,388.605c0,2.9-2.373,5.279-5.279,5.279H98.22
+			c-2.901,0-5.279-2.378-5.279-5.279v-25.321c0-2.906,2.378-5.276,5.279-5.276h132.936c2.906,0,5.279,2.371,5.279,5.276V388.605z
+			 M290.243,388.605c0,2.9-2.376,5.279-5.271,5.279h-25.326c-2.901,0-5.276-2.378-5.276-5.279v-25.321
+			c0-2.906,2.373-5.276,5.276-5.276h25.326c2.895,0,5.271,2.371,5.271,5.276V388.605z M290.243,334.792
+			c0,1.352-0.509,2.701-1.549,3.73c-1.024,1.034-2.373,1.546-3.72,1.546h-79.135c-1.357,0-2.703-0.512-3.73-1.546
+			c-1.029-1.029-1.541-2.378-1.541-3.73v-25.321c0-1.347,0.512-2.701,1.541-3.73c1.027-1.029,2.373-1.546,3.73-1.546h48.532v-48.53
+			c0-1.357,0.52-2.701,1.546-3.732c1.029-1.029,2.381-1.546,3.73-1.546h25.326c1.347,0,2.696,0.515,3.72,1.546
+			c1.039,1.034,1.549,2.378,1.549,3.732V334.792z M365.256,388.605c0,2.9-2.381,5.279-5.279,5.279h-25.321
+			c-2.911,0-5.276-2.378-5.276-5.279v-25.321c0-2.906,2.365-5.276,5.276-5.276h25.321c2.898,0,5.279,2.371,5.279,5.276V388.605z
+			 M365.256,334.792c0,2.906-2.381,5.279-5.279,5.279h-25.321c-2.911,0-5.276-2.373-5.276-5.279v-25.321
+			c0-2.903,2.365-5.276,5.276-5.276h25.321c2.898,0,5.279,2.373,5.279,5.276V334.792z M365.256,280.98
+			c0,2.906-2.381,5.281-5.279,5.281h-25.321c-2.911,0-5.276-2.376-5.276-5.281v-25.316c0-2.906,2.365-5.279,5.276-5.279h25.321
+			c2.898,0,5.279,2.373,5.279,5.279V280.98z M419.064,388.605c0,2.9-2.376,5.279-5.281,5.279h-25.321
+			c-2.906,0-5.279-2.378-5.279-5.279v-25.321c0-2.906,2.373-5.276,5.279-5.276h25.321c2.906,0,5.281,2.371,5.281,5.276V388.605z
+			 M419.064,334.792c0,2.906-2.376,5.279-5.281,5.279h-25.321c-2.906,0-5.279-2.373-5.279-5.279v-25.321
+			c0-2.903,2.373-5.276,5.279-5.276h25.321c2.906,0,5.281,2.373,5.281,5.276V334.792z M419.064,280.98
+			c0,2.906-2.376,5.281-5.281,5.281h-25.321c-2.906,0-5.279-2.376-5.279-5.281v-25.316c0-2.906,2.373-5.279,5.279-5.279h25.321
+			c2.906,0,5.281,2.373,5.281,5.279V280.98z M472.868,388.605c0,2.9-2.368,5.279-5.271,5.279h-25.331
+			c-2.89,0-5.271-2.378-5.271-5.279v-25.321c0-2.906,2.381-5.276,5.271-5.276h25.331c2.903,0,5.271,2.371,5.271,5.276V388.605z
+			 M472.868,334.792c0,2.906-2.368,5.279-5.271,5.279h-25.331c-2.89,0-5.271-2.373-5.271-5.279v-25.321
+			c0-2.903,2.381-5.276,5.271-5.276h25.331c2.903,0,5.271,2.373,5.271,5.276V334.792z M472.868,280.98
+			c0,2.906-2.368,5.281-5.271,5.281h-25.331c-2.89,0-5.271-2.376-5.271-5.281v-25.316c0-2.906,2.381-5.279,5.271-5.279h25.331
+			c2.903,0,5.271,2.373,5.271,5.279V280.98z"></path>
+      </g>
+    </g>
+  </svg>
+
+  <div class="desc">
+    <h6>Keyboard Shortcuts</h6>
+
+    <ul>
+      <li>
+        <span class="text">ESC</span>
+        Focus search input if not focused <br>
+        Clear search input if focused
+      </li>
+      <li>
+        <span>&#129129;</span>
+        Select previous category <br>
+        Select previous entry
+      </li>
+      <li>
+        <span>&#129131;</span>
+        Select next category <br>
+        Select next entry
+      </li>
+      <li>
+        <span>&#8629;</span>
+        Expand category if selected <br>
+        Load entry if selected
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+
+        <nav id="categories">
+  <div class="category">Ajax</div><div class="subcategory">
+            <div class="category">Global Ajax Event Handlers</div><ul class="entries">
+  <li>
+        <a href="/ajaxComplete">
+          <span>ajaxComplete</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/ajaxError">
+          <span>ajaxError</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/ajaxSend">
+          <span>ajaxSend</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/ajaxStart">
+          <span>ajaxStart</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/ajaxStop">
+          <span>ajaxStop</span>
+          <span>Register a handler to be called when all Ajax requ...</span>
+        </a>
+      </li><li>
+        <a href="/ajaxSuccess">
+          <span>ajaxSuccess</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Helper Functions</div><ul class="entries">
+  <li>
+        <a href="/jQuery.param">
+          <span>jQuery.param</span>
+          <span>An array, a plain object, or a jQuery object to se...</span>
+        </a>
+      </li><li>
+        <a href="/serialize">
+          <span>serialize</span>
+          <span>Encode a set of form elements as a string for subm...</span>
+        </a>
+      </li><li>
+        <a href="/serializeArray">
+          <span>serializeArray</span>
+          <span>Encode a set of form elements as an array of names...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Low-Level Interface</div><ul class="entries">
+  <li>
+        <a href="/jQuery.ajax">
+          <span>jQuery.ajax</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajaxPrefilter">
+          <span>jQuery.ajaxPrefilter</span>
+          <span>Handle custom Ajax options or modify existing opti...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajaxSetup">
+          <span>jQuery.ajaxSetup</span>
+          <span>A set of key/value pairs that configure the defaul...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajaxTransport">
+          <span>jQuery.ajaxTransport</span>
+          <span>Creates an object that handles the actual transmis...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Shorthand Methods</div><ul class="entries">
+  <li>
+        <a href="/jQuery.get">
+          <span>jQuery.get</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.getJSON">
+          <span>jQuery.getJSON</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.getScript">
+          <span>jQuery.getScript</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.post">
+          <span>jQuery.post</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/load">
+          <span>load</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Attributes</div><ul class="entries">
+  <li>
+        <a href="/addClass">
+          <span>addClass</span>
+          <span>One or more space-separated classes to be added to...</span>
+        </a>
+      </li><li>
+        <a href="/attr">
+          <span>attr</span>
+          <span>Get the value of an attribute for the first elemen...</span>
+        </a>
+      </li><li>
+        <a href="/hasClass">
+          <span>hasClass</span>
+          <span>The class name to search for.</span>
+        </a>
+      </li><li>
+        <a href="/html">
+          <span>html</span>
+          <span>Get the HTML contents of the first element in the ...</span>
+        </a>
+      </li><li>
+        <a href="/prop">
+          <span>prop</span>
+          <span>Get the value of a property for the first element ...</span>
+        </a>
+      </li><li>
+        <a href="/removeAttr">
+          <span>removeAttr</span>
+          <span>An attribute to remove; as of version 1.7, it can ...</span>
+        </a>
+      </li><li>
+        <a href="/removeClass">
+          <span>removeClass</span>
+          <span>Remove a single class, multiple classes, or all cl...</span>
+        </a>
+      </li><li>
+        <a href="/removeProp">
+          <span>removeProp</span>
+          <span>The name of the property to remove.</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li><li>
+        <a href="/val">
+          <span>val</span>
+          <span>Get the current value of the first element in the ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Callbacks Object</div><ul class="entries">
+  <li>
+        <a href="/callbacks.add">
+          <span>callbacks.add</span>
+          <span>A function, or array of functions, that are to be ...</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.disable">
+          <span>callbacks.disable</span>
+          <span>Disable a callback list from doing anything more.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.disabled">
+          <span>callbacks.disabled</span>
+          <span>Determine if the callbacks list has been disabled.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.empty">
+          <span>callbacks.empty</span>
+          <span>Remove all of the callbacks from a list.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.fire">
+          <span>callbacks.fire</span>
+          <span>The argument or list of arguments to pass back to ...</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.fireWith">
+          <span>callbacks.fireWith</span>
+          <span>A reference to the context in which the callbacks ...</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.fired">
+          <span>callbacks.fired</span>
+          <span>Determine if the callbacks have already been calle...</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.has">
+          <span>callbacks.has</span>
+          <span>The callback to search for.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.lock">
+          <span>callbacks.lock</span>
+          <span>Lock a callback list in its current state.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.locked">
+          <span>callbacks.locked</span>
+          <span>Determine if the callbacks list has been locked.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.remove">
+          <span>callbacks.remove</span>
+          <span>A function, or array of functions, that are to be ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.Callbacks">
+          <span>jQuery.Callbacks</span>
+          <span>An optional list of space-separated flags that cha...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Core</div><ul class="entries">
+  <li>
+        <a href="/jQuery.holdReady">
+          <span>jQuery.holdReady</span>
+          <span>Holds or releases the execution of jQuery&#39;s ready ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.noConflict">
+          <span>jQuery.noConflict</span>
+          <span>A Boolean indicating whether to remove all jQuery ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ready">
+          <span>jQuery.ready</span>
+          <span>A Promise-like object (or &quot;thenable&quot;) that resolve...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.readyException">
+          <span>jQuery.readyException</span>
+          <span>Handles errors thrown synchronously in functions w...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.sub">
+          <span>jQuery.sub</span>
+          <span>Creates a new copy of jQuery whose properties and ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.when">
+          <span>jQuery.when</span>
+          <span>Zero or more Thenable objects.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery">
+          <span>jQuery</span>
+          <span>Return a collection of matched elements either fou...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">CSS</div><ul class="entries">
+  <li>
+        <a href="/addClass">
+          <span>addClass</span>
+          <span>One or more space-separated classes to be added to...</span>
+        </a>
+      </li><li>
+        <a href="/css">
+          <span>css</span>
+          <span>Get the value of a computed style property for the...</span>
+        </a>
+      </li><li>
+        <a href="/hasClass">
+          <span>hasClass</span>
+          <span>The class name to search for.</span>
+        </a>
+      </li><li>
+        <a href="/height">
+          <span>height</span>
+          <span>Get the current computed height for the first elem...</span>
+        </a>
+      </li><li>
+        <a href="/innerHeight">
+          <span>innerHeight</span>
+          <span>Get the current computed inner height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/innerWidth">
+          <span>innerWidth</span>
+          <span>Get the current computed inner width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.cssHooks">
+          <span>jQuery.cssHooks</span>
+          <span>Hook directly into jQuery to override how particul...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.cssNumber">
+          <span>jQuery.cssNumber</span>
+          <span>An object containing all CSS properties that may b...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.escapeSelector">
+          <span>jQuery.escapeSelector</span>
+          <span>Escapes any character that has a special meaning i...</span>
+        </a>
+      </li><li>
+        <a href="/offset">
+          <span>offset</span>
+          <span>Get the current coordinates of the first element, ...</span>
+        </a>
+      </li><li>
+        <a href="/outerHeight">
+          <span>outerHeight</span>
+          <span>Get the current computed outer height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/outerWidth">
+          <span>outerWidth</span>
+          <span>Get the current computed outer width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/position">
+          <span>position</span>
+          <span>Get the current coordinates of the first element i...</span>
+        </a>
+      </li><li>
+        <a href="/removeClass">
+          <span>removeClass</span>
+          <span>Remove a single class, multiple classes, or all cl...</span>
+        </a>
+      </li><li>
+        <a href="/scrollLeft">
+          <span>scrollLeft</span>
+          <span>Get the current horizontal position of the scroll ...</span>
+        </a>
+      </li><li>
+        <a href="/scrollTop">
+          <span>scrollTop</span>
+          <span>Get the current vertical position of the scroll ba...</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li><li>
+        <a href="/width">
+          <span>width</span>
+          <span>Get the current computed width for the first eleme...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Data</div><ul class="entries">
+  <li>
+        <a href="/clearQueue">
+          <span>clearQueue</span>
+          <span>A string containing the name of the queue. Default...</span>
+        </a>
+      </li><li>
+        <a href="/data">
+          <span>data</span>
+          <span>Store arbitrary data associated with the matched e...</span>
+        </a>
+      </li><li>
+        <a href="/dequeue">
+          <span>dequeue</span>
+          <span>A string containing the name of the queue. Default...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.data">
+          <span>jQuery.data</span>
+          <span>Store arbitrary data associated with the specified...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.dequeue">
+          <span>jQuery.dequeue</span>
+          <span>A DOM element from which to remove and execute a q...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.hasData">
+          <span>jQuery.hasData</span>
+          <span>A DOM element to be checked for data.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.queue">
+          <span>jQuery.queue</span>
+          <span>Show or manipulate the queue of functions to be ex...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.removeData">
+          <span>jQuery.removeData</span>
+          <span>A DOM element from which to remove data.</span>
+        </a>
+      </li><li>
+        <a href="/queue">
+          <span>queue</span>
+          <span>Show or manipulate the queue of functions to be ex...</span>
+        </a>
+      </li><li>
+        <a href="/removeData">
+          <span>removeData</span>
+          <span>A string naming the piece of data to delete.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deferred Object</div><ul class="entries">
+  <li>
+        <a href="/deferred.always">
+          <span>deferred.always</span>
+          <span>A function, or array of functions, that is called ...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.catch">
+          <span>deferred.catch</span>
+          <span>A function that is called when the Deferred is rej...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.done">
+          <span>deferred.done</span>
+          <span>A function, or array of functions, that are called...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.fail">
+          <span>deferred.fail</span>
+          <span>A function, or array of functions, that are called...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.isRejected">
+          <span>deferred.isRejected</span>
+          <span>Determine whether a Deferred object has been rejec...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.isResolved">
+          <span>deferred.isResolved</span>
+          <span>Determine whether a Deferred object has been resol...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.notify">
+          <span>deferred.notify</span>
+          <span>Optional arguments that are passed to the progress...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.notifyWith">
+          <span>deferred.notifyWith</span>
+          <span>Context passed to the progressCallbacks as the thi...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.pipe">
+          <span>deferred.pipe</span>
+          <span>An optional function that is called when the Defer...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.progress">
+          <span>deferred.progress</span>
+          <span>A function, or array of functions, to be called wh...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.promise">
+          <span>deferred.promise</span>
+          <span>Object onto which the promise methods have to be a...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.reject">
+          <span>deferred.reject</span>
+          <span>Optional arguments that are passed to the failCall...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.rejectWith">
+          <span>deferred.rejectWith</span>
+          <span>Context passed to the failCallbacks as the this ob...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.resolve">
+          <span>deferred.resolve</span>
+          <span>Optional arguments that are passed to the doneCall...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.resolveWith">
+          <span>deferred.resolveWith</span>
+          <span>Context passed to the doneCallbacks as the this ob...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.state">
+          <span>deferred.state</span>
+          <span>Determine the current state of a Deferred object.</span>
+        </a>
+      </li><li>
+        <a href="/deferred.then">
+          <span>deferred.then</span>
+          <span>A function that is called when the Deferred is res...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.Deferred">
+          <span>jQuery.Deferred</span>
+          <span>A function that is called just before the construc...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.when">
+          <span>jQuery.when</span>
+          <span>Zero or more Thenable objects.</span>
+        </a>
+      </li><li>
+        <a href="/promise">
+          <span>promise</span>
+          <span>The type of queue that needs to be observed.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated</div><div class="subcategory">
+            <div class="category">Deprecated 1.3</div><ul class="entries">
+  <li>
+        <a href="/jQuery.boxModel">
+          <span>jQuery.boxModel</span>
+          <span>States if the current page, in the user&#39;s browser,...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.browser">
+          <span>jQuery.browser</span>
+          <span>Contains flags for the useragent, read from naviga...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 1.7</div><ul class="entries">
+  <li>
+        <a href="/deferred.isRejected">
+          <span>deferred.isRejected</span>
+          <span>Determine whether a Deferred object has been rejec...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.isResolved">
+          <span>deferred.isResolved</span>
+          <span>Determine whether a Deferred object has been resol...</span>
+        </a>
+      </li><li>
+        <a href="/die">
+          <span>die</span>
+          <span>Remove event handlers previously attached using .l...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.sub">
+          <span>jQuery.sub</span>
+          <span>Creates a new copy of jQuery whose properties and ...</span>
+        </a>
+      </li><li>
+        <a href="/live">
+          <span>live</span>
+          <span>Attach an event handler for all elements which mat...</span>
+        </a>
+      </li><li>
+        <a href="/selector">
+          <span>selector</span>
+          <span>A selector representing selector passed to jQuery(...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 1.8</div><ul class="entries">
+  <li>
+        <a href="/andSelf">
+          <span>andSelf</span>
+          <span>Add the previous set of elements on the stack to t...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.pipe">
+          <span>deferred.pipe</span>
+          <span>An optional function that is called when the Defer...</span>
+        </a>
+      </li><li>
+        <a href="/error">
+          <span>error</span>
+          <span>Bind an event handler to the &quot;error&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/load-event">
+          <span>load</span>
+          <span>Bind an event handler to the &quot;load&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/size">
+          <span>size</span>
+          <span>Return the number of elements in the jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/toggle-event">
+          <span>toggle</span>
+          <span>Bind two or more handlers to the matched elements,...</span>
+        </a>
+      </li><li>
+        <a href="/unload">
+          <span>unload</span>
+          <span>A function to execute when the event is triggered.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 1.9</div><ul class="entries">
+  <li>
+        <a href="/jQuery.support">
+          <span>jQuery.support</span>
+          <span>A collection of properties that represent the pres...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 1.10</div><ul class="entries">
+  <li>
+        <a href="/context">
+          <span>context</span>
+          <span>The DOM node context originally passed to jQuery()...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 3.0</div><ul class="entries">
+  <li>
+        <a href="/bind">
+          <span>bind</span>
+          <span>A string containing one or more DOM event types, s...</span>
+        </a>
+      </li><li>
+        <a href="/delegate">
+          <span>delegate</span>
+          <span>Attach a handler to one or more events for all ele...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fx.interval">
+          <span>jQuery.fx.interval</span>
+          <span>The rate (in milliseconds) at which animations fir...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.parseJSON">
+          <span>jQuery.parseJSON</span>
+          <span>The JSON string to parse.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.unique">
+          <span>jQuery.unique</span>
+          <span>The Array of DOM elements.</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li><li>
+        <a href="/unbind">
+          <span>unbind</span>
+          <span>Remove a previously-attached event handler from th...</span>
+        </a>
+      </li><li>
+        <a href="/undelegate">
+          <span>undelegate</span>
+          <span>Remove a handler from the event for all elements w...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 3.2</div><ul class="entries">
+  <li>
+        <a href="/jQuery.holdReady">
+          <span>jQuery.holdReady</span>
+          <span>Holds or releases the execution of jQuery&#39;s ready ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isArray">
+          <span>jQuery.isArray</span>
+          <span>Object to test whether or not it is an array.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 3.3</div><ul class="entries">
+  <li>
+        <a href="/jQuery.isFunction">
+          <span>jQuery.isFunction</span>
+          <span>The value to be tested.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isNumeric">
+          <span>jQuery.isNumeric</span>
+          <span>Determines whether its argument represents a JavaS...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isWindow">
+          <span>jQuery.isWindow</span>
+          <span>Object to test whether or not it is a window.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.now">
+          <span>jQuery.now</span>
+          <span>Return a number representing the current time.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.proxy">
+          <span>jQuery.proxy</span>
+          <span>The function whose context will be changed.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.type">
+          <span>jQuery.type</span>
+          <span>Object to get the internal JavaScript [[Class]] of...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 3.4</div><ul class="entries">
+  <li>
+        <a href="/eq-selector">
+          <span>eq</span>
+          <span>Zero-based index of the element to match.</span>
+        </a>
+      </li><li>
+        <a href="/even-selector">
+          <span>even</span>
+          <span>Selects even elements, zero-indexed.  See also :od...</span>
+        </a>
+      </li><li>
+        <a href="/first-selector">
+          <span>first</span>
+          <span>Selects the first matched DOM element.</span>
+        </a>
+      </li><li>
+        <a href="/gt-selector">
+          <span>gt</span>
+          <span>Zero-based index.</span>
+        </a>
+      </li><li>
+        <a href="/last-selector">
+          <span>last</span>
+          <span>Selects the last matched element.</span>
+        </a>
+      </li><li>
+        <a href="/lt-selector">
+          <span>lt</span>
+          <span>Zero-based index.</span>
+        </a>
+      </li><li>
+        <a href="/odd-selector">
+          <span>odd</span>
+          <span>Selects odd elements, zero-indexed.  See also :eve...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Deprecated 3.5</div><ul class="entries">
+  <li>
+        <a href="/jQuery.trim">
+          <span>jQuery.trim</span>
+          <span>The string to trim.</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Dimensions</div><ul class="entries">
+  <li>
+        <a href="/height">
+          <span>height</span>
+          <span>Get the current computed height for the first elem...</span>
+        </a>
+      </li><li>
+        <a href="/innerHeight">
+          <span>innerHeight</span>
+          <span>Get the current computed inner height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/innerWidth">
+          <span>innerWidth</span>
+          <span>Get the current computed inner width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/outerHeight">
+          <span>outerHeight</span>
+          <span>Get the current computed outer height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/outerWidth">
+          <span>outerWidth</span>
+          <span>Get the current computed outer width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/width">
+          <span>width</span>
+          <span>Get the current computed width for the first eleme...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Effects</div><div class="subcategory">
+            <div class="category">Basics</div><ul class="entries">
+  <li>
+        <a href="/hide">
+          <span>hide</span>
+          <span>Hide the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/show">
+          <span>show</span>
+          <span>Display the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/toggle">
+          <span>toggle</span>
+          <span>Display or hide the matched elements.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Custom</div><ul class="entries">
+  <li>
+        <a href="/animate">
+          <span>animate</span>
+          <span>Perform a custom animation of a set of CSS propert...</span>
+        </a>
+      </li><li>
+        <a href="/clearQueue">
+          <span>clearQueue</span>
+          <span>A string containing the name of the queue. Default...</span>
+        </a>
+      </li><li>
+        <a href="/delay">
+          <span>delay</span>
+          <span>An integer indicating the number of milliseconds t...</span>
+        </a>
+      </li><li>
+        <a href="/dequeue">
+          <span>dequeue</span>
+          <span>A string containing the name of the queue. Default...</span>
+        </a>
+      </li><li>
+        <a href="/finish">
+          <span>finish</span>
+          <span>Stop the currently-running animation, remove all q...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fx.interval">
+          <span>jQuery.fx.interval</span>
+          <span>The rate (in milliseconds) at which animations fir...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fx.off">
+          <span>jQuery.fx.off</span>
+          <span>Globally disable all animations.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.speed">
+          <span>jQuery.speed</span>
+          <span>Creates an object containing a set of properties r...</span>
+        </a>
+      </li><li>
+        <a href="/queue">
+          <span>queue</span>
+          <span>Show or manipulate the queue of functions to be ex...</span>
+        </a>
+      </li><li>
+        <a href="/stop">
+          <span>stop</span>
+          <span>Stop the currently-running animation on the matche...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Fading</div><ul class="entries">
+  <li>
+        <a href="/fadeIn">
+          <span>fadeIn</span>
+          <span>Display the matched elements by fading them to opa...</span>
+        </a>
+      </li><li>
+        <a href="/fadeOut">
+          <span>fadeOut</span>
+          <span>Hide the matched elements by fading them to transp...</span>
+        </a>
+      </li><li>
+        <a href="/fadeTo">
+          <span>fadeTo</span>
+          <span>Adjust the opacity of the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/fadeToggle">
+          <span>fadeToggle</span>
+          <span>Display or hide the matched elements by animating ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Sliding</div><ul class="entries">
+  <li>
+        <a href="/slideDown">
+          <span>slideDown</span>
+          <span>Display the matched elements with a sliding motion...</span>
+        </a>
+      </li><li>
+        <a href="/slideToggle">
+          <span>slideToggle</span>
+          <span>Display or hide the matched elements with a slidin...</span>
+        </a>
+      </li><li>
+        <a href="/slideUp">
+          <span>slideUp</span>
+          <span>Hide the matched elements with a sliding motion.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Other</div><ul class="entries">
+  <li>
+        <a href="/fadeToggle">
+          <span>fadeToggle</span>
+          <span>Display or hide the matched elements by animating ...</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Events</div><div class="subcategory">
+            <div class="category">Browser Events</div><ul class="entries">
+  <li>
+        <a href="/error">
+          <span>error</span>
+          <span>Bind an event handler to the &quot;error&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/resize">
+          <span>resize</span>
+          <span>Bind an event handler to the &quot;resize&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/scroll">
+          <span>scroll</span>
+          <span>Bind an event handler to the &quot;scroll&quot; JavaScript e...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Document Loading</div><ul class="entries">
+  <li>
+        <a href="/jQuery.holdReady">
+          <span>jQuery.holdReady</span>
+          <span>Holds or releases the execution of jQuery&#39;s ready ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ready">
+          <span>jQuery.ready</span>
+          <span>A Promise-like object (or &quot;thenable&quot;) that resolve...</span>
+        </a>
+      </li><li>
+        <a href="/load-event">
+          <span>load</span>
+          <span>Bind an event handler to the &quot;load&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/ready">
+          <span>ready</span>
+          <span>Specify a function to execute when the DOM is full...</span>
+        </a>
+      </li><li>
+        <a href="/unload">
+          <span>unload</span>
+          <span>A function to execute when the event is triggered.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Event Handler Attachment</div><ul class="entries">
+  <li>
+        <a href="/bind">
+          <span>bind</span>
+          <span>A string containing one or more DOM event types, s...</span>
+        </a>
+      </li><li>
+        <a href="/delegate">
+          <span>delegate</span>
+          <span>Attach a handler to one or more events for all ele...</span>
+        </a>
+      </li><li>
+        <a href="/die">
+          <span>die</span>
+          <span>Remove event handlers previously attached using .l...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.proxy">
+          <span>jQuery.proxy</span>
+          <span>The function whose context will be changed.</span>
+        </a>
+      </li><li>
+        <a href="/live">
+          <span>live</span>
+          <span>Attach an event handler for all elements which mat...</span>
+        </a>
+      </li><li>
+        <a href="/off">
+          <span>off</span>
+          <span>Remove an event handler.</span>
+        </a>
+      </li><li>
+        <a href="/on">
+          <span>on</span>
+          <span>Attach an event handler function for one or more e...</span>
+        </a>
+      </li><li>
+        <a href="/one">
+          <span>one</span>
+          <span>Attach a handler to an event for the elements. The...</span>
+        </a>
+      </li><li>
+        <a href="/trigger">
+          <span>trigger</span>
+          <span>Execute all handlers and behaviors attached to the...</span>
+        </a>
+      </li><li>
+        <a href="/triggerHandler">
+          <span>triggerHandler</span>
+          <span>Execute all handlers attached to an element for an...</span>
+        </a>
+      </li><li>
+        <a href="/unbind">
+          <span>unbind</span>
+          <span>Remove a previously-attached event handler from th...</span>
+        </a>
+      </li><li>
+        <a href="/undelegate">
+          <span>undelegate</span>
+          <span>Remove a handler from the event for all elements w...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Event Object</div><ul class="entries">
+  <li>
+        <a href="/event.currentTarget">
+          <span>event.currentTarget</span>
+          <span>The current DOM element within the event bubbling ...</span>
+        </a>
+      </li><li>
+        <a href="/event.data">
+          <span>event.data</span>
+          <span>An optional object of data passed to an event meth...</span>
+        </a>
+      </li><li>
+        <a href="/event.delegateTarget">
+          <span>event.delegateTarget</span>
+          <span>The element where the currently-called jQuery even...</span>
+        </a>
+      </li><li>
+        <a href="/event.isDefaultPrevented">
+          <span>event.isDefaultPrevented</span>
+          <span>Returns whether event.preventDefault() was ever ca...</span>
+        </a>
+      </li><li>
+        <a href="/event.isImmediatePropagationStopped">
+          <span>event.isImmediatePropagationStopped</span>
+          <span>Returns whether event.stopImmediatePropagation() w...</span>
+        </a>
+      </li><li>
+        <a href="/event.isPropagationStopped">
+          <span>event.isPropagationStopped</span>
+          <span>Returns whether event.stopPropagation() was ever c...</span>
+        </a>
+      </li><li>
+        <a href="/event.metaKey">
+          <span>event.metaKey</span>
+          <span>Indicates whether the META key was pressed when th...</span>
+        </a>
+      </li><li>
+        <a href="/event.namespace">
+          <span>event.namespace</span>
+          <span>The namespace specified when the event was trigger...</span>
+        </a>
+      </li><li>
+        <a href="/event.pageX">
+          <span>event.pageX</span>
+          <span>The mouse position relative to the left edge of th...</span>
+        </a>
+      </li><li>
+        <a href="/event.pageY">
+          <span>event.pageY</span>
+          <span>The mouse position relative to the top edge of the...</span>
+        </a>
+      </li><li>
+        <a href="/event.preventDefault">
+          <span>event.preventDefault</span>
+          <span>If this method is called, the default action of th...</span>
+        </a>
+      </li><li>
+        <a href="/event.relatedTarget">
+          <span>event.relatedTarget</span>
+          <span>The other DOM element involved in the event, if an...</span>
+        </a>
+      </li><li>
+        <a href="/event.result">
+          <span>event.result</span>
+          <span>The last value returned by an event handler that w...</span>
+        </a>
+      </li><li>
+        <a href="/event.stopImmediatePropagation">
+          <span>event.stopImmediatePropagation</span>
+          <span>Keeps the rest of the handlers from being executed...</span>
+        </a>
+      </li><li>
+        <a href="/event.stopPropagation">
+          <span>event.stopPropagation</span>
+          <span>Prevents the event from bubbling up the DOM tree, ...</span>
+        </a>
+      </li><li>
+        <a href="/event.target">
+          <span>event.target</span>
+          <span>The DOM element that initiated the event.</span>
+        </a>
+      </li><li>
+        <a href="/event.timeStamp">
+          <span>event.timeStamp</span>
+          <span>The difference in milliseconds between the time th...</span>
+        </a>
+      </li><li>
+        <a href="/event.type">
+          <span>event.type</span>
+          <span>Describes the nature of the event.</span>
+        </a>
+      </li><li>
+        <a href="/event.which">
+          <span>event.which</span>
+          <span>For key or mouse events, this property indicates t...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Form Events</div><ul class="entries">
+  <li>
+        <a href="/blur">
+          <span>blur</span>
+          <span>Bind an event handler to the &quot;blur&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/change">
+          <span>change</span>
+          <span>Bind an event handler to the &quot;change&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/focus">
+          <span>focus</span>
+          <span>Bind an event handler to the &quot;focus&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/focusin">
+          <span>focusin</span>
+          <span>Bind an event handler to the &quot;focusin&quot; event.</span>
+        </a>
+      </li><li>
+        <a href="/focusout">
+          <span>focusout</span>
+          <span>Bind an event handler to the &quot;focusout&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/select">
+          <span>select</span>
+          <span>Bind an event handler to the &quot;select&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/submit">
+          <span>submit</span>
+          <span>Bind an event handler to the &quot;submit&quot; JavaScript e...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Keyboard Events</div><ul class="entries">
+  <li>
+        <a href="/keydown">
+          <span>keydown</span>
+          <span>A function to execute each time the event is trigg...</span>
+        </a>
+      </li><li>
+        <a href="/keypress">
+          <span>keypress</span>
+          <span>Bind an event handler to the &quot;keypress&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/keyup">
+          <span>keyup</span>
+          <span>Bind an event handler to the &quot;keyup&quot; JavaScript ev...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Mouse Events</div><ul class="entries">
+  <li>
+        <a href="/click">
+          <span>click</span>
+          <span>Bind an event handler to the &quot;click&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/contextmenu">
+          <span>contextmenu</span>
+          <span>Bind an event handler to the &quot;contextmenu&quot; JavaScr...</span>
+        </a>
+      </li><li>
+        <a href="/dblclick">
+          <span>dblclick</span>
+          <span>Bind an event handler to the &quot;dblclick&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/hover">
+          <span>hover</span>
+          <span>Bind one or two handlers to the matched elements, ...</span>
+        </a>
+      </li><li>
+        <a href="/mousedown">
+          <span>mousedown</span>
+          <span>Bind an event handler to the &quot;mousedown&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseenter">
+          <span>mouseenter</span>
+          <span>Bind an event handler to be fired when the mouse e...</span>
+        </a>
+      </li><li>
+        <a href="/mouseleave">
+          <span>mouseleave</span>
+          <span>Bind an event handler to be fired when the mouse l...</span>
+        </a>
+      </li><li>
+        <a href="/mousemove">
+          <span>mousemove</span>
+          <span>Bind an event handler to the &quot;mousemove&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseout">
+          <span>mouseout</span>
+          <span>Bind an event handler to the &quot;mouseout&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/mouseover">
+          <span>mouseover</span>
+          <span>Bind an event handler to the &quot;mouseover&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseup">
+          <span>mouseup</span>
+          <span>Bind an event handler to the &quot;mouseup&quot; JavaScript ...</span>
+        </a>
+      </li><li>
+        <a href="/toggle-event">
+          <span>toggle</span>
+          <span>Bind two or more handlers to the matched elements,...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Other</div><ul class="entries">
+  <li>
+        <a href="/event.delegateTarget">
+          <span>event.delegateTarget</span>
+          <span>The element where the currently-called jQuery even...</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Forms</div><ul class="entries">
+  <li>
+        <a href="/blur">
+          <span>blur</span>
+          <span>Bind an event handler to the &quot;blur&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/change">
+          <span>change</span>
+          <span>Bind an event handler to the &quot;change&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/focus">
+          <span>focus</span>
+          <span>Bind an event handler to the &quot;focus&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/focusin">
+          <span>focusin</span>
+          <span>Bind an event handler to the &quot;focusin&quot; event.</span>
+        </a>
+      </li><li>
+        <a href="/focusout">
+          <span>focusout</span>
+          <span>Bind an event handler to the &quot;focusout&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.param">
+          <span>jQuery.param</span>
+          <span>An array, a plain object, or a jQuery object to se...</span>
+        </a>
+      </li><li>
+        <a href="/select">
+          <span>select</span>
+          <span>Bind an event handler to the &quot;select&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/serialize">
+          <span>serialize</span>
+          <span>Encode a set of form elements as a string for subm...</span>
+        </a>
+      </li><li>
+        <a href="/serializeArray">
+          <span>serializeArray</span>
+          <span>Encode a set of form elements as an array of names...</span>
+        </a>
+      </li><li>
+        <a href="/submit">
+          <span>submit</span>
+          <span>Bind an event handler to the &quot;submit&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/val">
+          <span>val</span>
+          <span>Get the current value of the first element in the ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Internals</div><ul class="entries">
+  <li>
+        <a href="/context">
+          <span>context</span>
+          <span>The DOM node context originally passed to jQuery()...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.error">
+          <span>jQuery.error</span>
+          <span>The message to send out.</span>
+        </a>
+      </li><li>
+        <a href="/jquery-2">
+          <span>jquery</span>
+          <span>A string containing the jQuery version number.</span>
+        </a>
+      </li><li>
+        <a href="/pushStack">
+          <span>pushStack</span>
+          <span>An array of elements to push onto the stack and ma...</span>
+        </a>
+      </li><li>
+        <a href="/selector">
+          <span>selector</span>
+          <span>A selector representing selector passed to jQuery(...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Manipulation</div><div class="subcategory">
+            <div class="category">Class Attribute</div><ul class="entries">
+  <li>
+        <a href="/addClass">
+          <span>addClass</span>
+          <span>One or more space-separated classes to be added to...</span>
+        </a>
+      </li><li>
+        <a href="/hasClass">
+          <span>hasClass</span>
+          <span>The class name to search for.</span>
+        </a>
+      </li><li>
+        <a href="/removeClass">
+          <span>removeClass</span>
+          <span>Remove a single class, multiple classes, or all cl...</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Copying</div><ul class="entries">
+  <li>
+        <a href="/clone">
+          <span>clone</span>
+          <span>A Boolean indicating whether event handlers should...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">DOM Insertion, Around</div><ul class="entries">
+  <li>
+        <a href="/unwrap">
+          <span>unwrap</span>
+          <span>A selector to check the parent element against. If...</span>
+        </a>
+      </li><li>
+        <a href="/wrap">
+          <span>wrap</span>
+          <span>A selector, element, HTML string, or jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/wrapAll">
+          <span>wrapAll</span>
+          <span>A selector, element, HTML string, or jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/wrapInner">
+          <span>wrapInner</span>
+          <span>An HTML snippet, selector expression, jQuery objec...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">DOM Insertion, Inside</div><ul class="entries">
+  <li>
+        <a href="/append">
+          <span>append</span>
+          <span>DOM element, text node, array of elements and text...</span>
+        </a>
+      </li><li>
+        <a href="/appendTo">
+          <span>appendTo</span>
+          <span>A selector, element, HTML string, array of element...</span>
+        </a>
+      </li><li>
+        <a href="/html">
+          <span>html</span>
+          <span>Get the HTML contents of the first element in the ...</span>
+        </a>
+      </li><li>
+        <a href="/prepend">
+          <span>prepend</span>
+          <span>DOM element, text node, array of elements and text...</span>
+        </a>
+      </li><li>
+        <a href="/prependTo">
+          <span>prependTo</span>
+          <span>A selector, element, HTML string, array of element...</span>
+        </a>
+      </li><li>
+        <a href="/text">
+          <span>text</span>
+          <span>Get the combined text contents of each element in ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">DOM Insertion, Outside</div><ul class="entries">
+  <li>
+        <a href="/after">
+          <span>after</span>
+          <span>HTML string, DOM element, text node, array of elem...</span>
+        </a>
+      </li><li>
+        <a href="/before">
+          <span>before</span>
+          <span>HTML string, DOM element, text node, array of elem...</span>
+        </a>
+      </li><li>
+        <a href="/insertAfter">
+          <span>insertAfter</span>
+          <span>A selector, element, array of elements, HTML strin...</span>
+        </a>
+      </li><li>
+        <a href="/insertBefore">
+          <span>insertBefore</span>
+          <span>A selector, element, array of elements, HTML strin...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">DOM Removal</div><ul class="entries">
+  <li>
+        <a href="/detach">
+          <span>detach</span>
+          <span>A selector expression that filters the set of matc...</span>
+        </a>
+      </li><li>
+        <a href="/empty">
+          <span>empty</span>
+          <span>Remove all child nodes of the set of matched eleme...</span>
+        </a>
+      </li><li>
+        <a href="/remove">
+          <span>remove</span>
+          <span>A selector expression that filters the set of matc...</span>
+        </a>
+      </li><li>
+        <a href="/unwrap">
+          <span>unwrap</span>
+          <span>A selector to check the parent element against. If...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">DOM Replacement</div><ul class="entries">
+  <li>
+        <a href="/replaceAll">
+          <span>replaceAll</span>
+          <span>A selector string, jQuery object, DOM element, or ...</span>
+        </a>
+      </li><li>
+        <a href="/replaceWith">
+          <span>replaceWith</span>
+          <span>The content to insert. May be an HTML string, DOM ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">General Attributes</div><ul class="entries">
+  <li>
+        <a href="/attr">
+          <span>attr</span>
+          <span>Get the value of an attribute for the first elemen...</span>
+        </a>
+      </li><li>
+        <a href="/prop">
+          <span>prop</span>
+          <span>Get the value of a property for the first element ...</span>
+        </a>
+      </li><li>
+        <a href="/removeAttr">
+          <span>removeAttr</span>
+          <span>An attribute to remove; as of version 1.7, it can ...</span>
+        </a>
+      </li><li>
+        <a href="/removeProp">
+          <span>removeProp</span>
+          <span>The name of the property to remove.</span>
+        </a>
+      </li><li>
+        <a href="/val">
+          <span>val</span>
+          <span>Get the current value of the first element in the ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Style Properties</div><ul class="entries">
+  <li>
+        <a href="/css">
+          <span>css</span>
+          <span>Get the value of a computed style property for the...</span>
+        </a>
+      </li><li>
+        <a href="/height">
+          <span>height</span>
+          <span>Get the current computed height for the first elem...</span>
+        </a>
+      </li><li>
+        <a href="/innerHeight">
+          <span>innerHeight</span>
+          <span>Get the current computed inner height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/innerWidth">
+          <span>innerWidth</span>
+          <span>Get the current computed inner width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.cssNumber">
+          <span>jQuery.cssNumber</span>
+          <span>An object containing all CSS properties that may b...</span>
+        </a>
+      </li><li>
+        <a href="/offset">
+          <span>offset</span>
+          <span>Get the current coordinates of the first element, ...</span>
+        </a>
+      </li><li>
+        <a href="/outerHeight">
+          <span>outerHeight</span>
+          <span>Get the current computed outer height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/outerWidth">
+          <span>outerWidth</span>
+          <span>Get the current computed outer width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/position">
+          <span>position</span>
+          <span>Get the current coordinates of the first element i...</span>
+        </a>
+      </li><li>
+        <a href="/scrollLeft">
+          <span>scrollLeft</span>
+          <span>Get the current horizontal position of the scroll ...</span>
+        </a>
+      </li><li>
+        <a href="/scrollTop">
+          <span>scrollTop</span>
+          <span>Get the current vertical position of the scroll ba...</span>
+        </a>
+      </li><li>
+        <a href="/width">
+          <span>width</span>
+          <span>Get the current computed width for the first eleme...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Other</div><ul class="entries">
+  <li>
+        <a href="/jQuery.htmlPrefilter">
+          <span>jQuery.htmlPrefilter</span>
+          <span>Modify and filter HTML strings passed through jQue...</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Miscellaneous</div><div class="subcategory">
+            <div class="category">Collection Manipulation</div><ul class="entries">
+  <li>
+        <a href="/each">
+          <span>each</span>
+          <span>A function to execute for each matched element.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.param">
+          <span>jQuery.param</span>
+          <span>An array, a plain object, or a jQuery object to se...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Data Storage</div><ul class="entries">
+  <li>
+        <a href="/data">
+          <span>data</span>
+          <span>Store arbitrary data associated with the matched e...</span>
+        </a>
+      </li><li>
+        <a href="/removeData">
+          <span>removeData</span>
+          <span>A string naming the piece of data to delete.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">DOM Element Methods</div><ul class="entries">
+  <li>
+        <a href="/get">
+          <span>get</span>
+          <span>Retrieve the DOM elements matched by the jQuery ob...</span>
+        </a>
+      </li><li>
+        <a href="/index">
+          <span>index</span>
+          <span>A selector representing a jQuery collection in whi...</span>
+        </a>
+      </li><li>
+        <a href="/size">
+          <span>size</span>
+          <span>Return the number of elements in the jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/toArray">
+          <span>toArray</span>
+          <span>Retrieve all the elements contained in the jQuery ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Setup Methods</div><ul class="entries">
+  <li>
+        <a href="/jQuery.noConflict">
+          <span>jQuery.noConflict</span>
+          <span>A Boolean indicating whether to remove all jQuery ...</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Offset</div><ul class="entries">
+  <li>
+        <a href="/offset">
+          <span>offset</span>
+          <span>Get the current coordinates of the first element, ...</span>
+        </a>
+      </li><li>
+        <a href="/offsetParent">
+          <span>offsetParent</span>
+          <span>Get the closest ancestor element that is positione...</span>
+        </a>
+      </li><li>
+        <a href="/position">
+          <span>position</span>
+          <span>Get the current coordinates of the first element i...</span>
+        </a>
+      </li><li>
+        <a href="/scrollLeft">
+          <span>scrollLeft</span>
+          <span>Get the current horizontal position of the scroll ...</span>
+        </a>
+      </li><li>
+        <a href="/scrollTop">
+          <span>scrollTop</span>
+          <span>Get the current vertical position of the scroll ba...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Properties</div><div class="subcategory">
+            <div class="category">Properties of jQuery Object Instances</div><ul class="entries">
+  <li>
+        <a href="/context">
+          <span>context</span>
+          <span>The DOM node context originally passed to jQuery()...</span>
+        </a>
+      </li><li>
+        <a href="/jquery-2">
+          <span>jquery</span>
+          <span>A string containing the jQuery version number.</span>
+        </a>
+      </li><li>
+        <a href="/length">
+          <span>length</span>
+          <span>The number of elements in the jQuery object.</span>
+        </a>
+      </li><li>
+        <a href="/selector">
+          <span>selector</span>
+          <span>A selector representing selector passed to jQuery(...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Properties of the Global jQuery Object</div><ul class="entries">
+  <li>
+        <a href="/jQuery.browser">
+          <span>jQuery.browser</span>
+          <span>Contains flags for the useragent, read from naviga...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fx.interval">
+          <span>jQuery.fx.interval</span>
+          <span>The rate (in milliseconds) at which animations fir...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fx.off">
+          <span>jQuery.fx.off</span>
+          <span>Globally disable all animations.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.holdReady">
+          <span>jQuery.holdReady</span>
+          <span>Holds or releases the execution of jQuery&#39;s ready ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ready">
+          <span>jQuery.ready</span>
+          <span>A Promise-like object (or &quot;thenable&quot;) that resolve...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.support">
+          <span>jQuery.support</span>
+          <span>A collection of properties that represent the pres...</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Removed</div><ul class="entries">
+  <li>
+        <a href="/andSelf">
+          <span>andSelf</span>
+          <span>Add the previous set of elements on the stack to t...</span>
+        </a>
+      </li><li>
+        <a href="/context">
+          <span>context</span>
+          <span>The DOM node context originally passed to jQuery()...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.isRejected">
+          <span>deferred.isRejected</span>
+          <span>Determine whether a Deferred object has been rejec...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.isResolved">
+          <span>deferred.isResolved</span>
+          <span>Determine whether a Deferred object has been resol...</span>
+        </a>
+      </li><li>
+        <a href="/die">
+          <span>die</span>
+          <span>Remove event handlers previously attached using .l...</span>
+        </a>
+      </li><li>
+        <a href="/error">
+          <span>error</span>
+          <span>Bind an event handler to the &quot;error&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.boxModel">
+          <span>jQuery.boxModel</span>
+          <span>States if the current page, in the user&#39;s browser,...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.browser">
+          <span>jQuery.browser</span>
+          <span>Contains flags for the useragent, read from naviga...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.sub">
+          <span>jQuery.sub</span>
+          <span>Creates a new copy of jQuery whose properties and ...</span>
+        </a>
+      </li><li>
+        <a href="/live">
+          <span>live</span>
+          <span>Attach an event handler for all elements which mat...</span>
+        </a>
+      </li><li>
+        <a href="/load-event">
+          <span>load</span>
+          <span>Bind an event handler to the &quot;load&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/selector">
+          <span>selector</span>
+          <span>A selector representing selector passed to jQuery(...</span>
+        </a>
+      </li><li>
+        <a href="/size">
+          <span>size</span>
+          <span>Return the number of elements in the jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/toggle-event">
+          <span>toggle</span>
+          <span>Bind two or more handlers to the matched elements,...</span>
+        </a>
+      </li><li>
+        <a href="/unload">
+          <span>unload</span>
+          <span>A function to execute when the event is triggered.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Selectors</div><div class="subcategory">
+            <div class="category">Attribute</div><ul class="entries">
+  <li>
+        <a href="/attribute-contains-prefix-selector">
+          <span>attributeContainsPrefix</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-contains-selector">
+          <span>attributeContains</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-contains-word-selector">
+          <span>attributeContainsWord</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-ends-with-selector">
+          <span>attributeEndsWith</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-equals-selector">
+          <span>attributeEquals</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-not-equal-selector">
+          <span>attributeNotEqual</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-starts-with-selector">
+          <span>attributeStartsWith</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/has-attribute-selector">
+          <span>attributeHas</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/multiple-attribute-selector">
+          <span>attributeMultiple</span>
+          <span>An attribute filter.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Basic</div><ul class="entries">
+  <li>
+        <a href="/all-selector">
+          <span>all</span>
+          <span>Selects all elements.</span>
+        </a>
+      </li><li>
+        <a href="/class-selector">
+          <span>class</span>
+          <span>A class to search for. An element can have multipl...</span>
+        </a>
+      </li><li>
+        <a href="/element-selector">
+          <span>element</span>
+          <span>An element to search for. Refers to the tagName of...</span>
+        </a>
+      </li><li>
+        <a href="/id-selector">
+          <span>id</span>
+          <span>An ID to search for, specified via the id attribut...</span>
+        </a>
+      </li><li>
+        <a href="/multiple-selector">
+          <span>multiple</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Basic Filter</div><ul class="entries">
+  <li>
+        <a href="/animated-selector">
+          <span>animated</span>
+          <span>Select all elements that are in the progress of an...</span>
+        </a>
+      </li><li>
+        <a href="/eq-selector">
+          <span>eq</span>
+          <span>Zero-based index of the element to match.</span>
+        </a>
+      </li><li>
+        <a href="/even-selector">
+          <span>even</span>
+          <span>Selects even elements, zero-indexed.  See also :od...</span>
+        </a>
+      </li><li>
+        <a href="/first-selector">
+          <span>first</span>
+          <span>Selects the first matched DOM element.</span>
+        </a>
+      </li><li>
+        <a href="/focus-selector">
+          <span>focus</span>
+          <span>Selects element if it is currently focused.</span>
+        </a>
+      </li><li>
+        <a href="/gt-selector">
+          <span>gt</span>
+          <span>Zero-based index.</span>
+        </a>
+      </li><li>
+        <a href="/header-selector">
+          <span>header</span>
+          <span>Selects all elements that are headers, like h1, h2...</span>
+        </a>
+      </li><li>
+        <a href="/lang-selector">
+          <span>lang</span>
+          <span>A language code.</span>
+        </a>
+      </li><li>
+        <a href="/last-selector">
+          <span>last</span>
+          <span>Selects the last matched element.</span>
+        </a>
+      </li><li>
+        <a href="/lt-selector">
+          <span>lt</span>
+          <span>Zero-based index.</span>
+        </a>
+      </li><li>
+        <a href="/not-selector">
+          <span>not</span>
+          <span>A selector with which to filter by.</span>
+        </a>
+      </li><li>
+        <a href="/odd-selector">
+          <span>odd</span>
+          <span>Selects odd elements, zero-indexed.  See also :eve...</span>
+        </a>
+      </li><li>
+        <a href="/root-selector">
+          <span>root</span>
+          <span>Selects the element that is the root of the docume...</span>
+        </a>
+      </li><li>
+        <a href="/target-selector">
+          <span>target</span>
+          <span>Selects the target element indicated by the fragme...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Child Filter</div><ul class="entries">
+  <li>
+        <a href="/first-child-selector">
+          <span>first-child</span>
+          <span>Selects all elements that are the first child of t...</span>
+        </a>
+      </li><li>
+        <a href="/first-of-type-selector">
+          <span>first-of-type</span>
+          <span>Selects all elements that are the first among sibl...</span>
+        </a>
+      </li><li>
+        <a href="/last-child-selector">
+          <span>last-child</span>
+          <span>Selects all elements that are the last child of th...</span>
+        </a>
+      </li><li>
+        <a href="/last-of-type-selector">
+          <span>last-of-type</span>
+          <span>Selects all elements that are the last among sibli...</span>
+        </a>
+      </li><li>
+        <a href="/nth-child-selector">
+          <span>nth-child</span>
+          <span>The index of each child to match, starting with 1,...</span>
+        </a>
+      </li><li>
+        <a href="/nth-last-child-selector">
+          <span>nth-last-child</span>
+          <span>The index of each child to match, starting with th...</span>
+        </a>
+      </li><li>
+        <a href="/nth-last-of-type-selector">
+          <span>nth-last-of-type</span>
+          <span>The index of each child to match, starting with th...</span>
+        </a>
+      </li><li>
+        <a href="/nth-of-type-selector">
+          <span>nth-of-type</span>
+          <span>The index of each child to match, starting with 1,...</span>
+        </a>
+      </li><li>
+        <a href="/only-child-selector">
+          <span>only-child</span>
+          <span>Selects all elements that are the only child of th...</span>
+        </a>
+      </li><li>
+        <a href="/only-of-type-selector">
+          <span>only-of-type</span>
+          <span>Selects all elements that have no siblings with th...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Content Filter</div><ul class="entries">
+  <li>
+        <a href="/contains-selector">
+          <span>contains</span>
+          <span>A string of text to look for. It&#39;s case sensitive.</span>
+        </a>
+      </li><li>
+        <a href="/empty-selector">
+          <span>empty</span>
+          <span>Select all elements that have no children (includi...</span>
+        </a>
+      </li><li>
+        <a href="/has-selector">
+          <span>has</span>
+          <span>Any selector.</span>
+        </a>
+      </li><li>
+        <a href="/parent-selector">
+          <span>parent</span>
+          <span>Select all elements that have at least one child n...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Form</div><ul class="entries">
+  <li>
+        <a href="/button-selector">
+          <span>button</span>
+          <span>Selects all button elements and elements of type b...</span>
+        </a>
+      </li><li>
+        <a href="/checkbox-selector">
+          <span>checkbox</span>
+          <span>Selects all elements of type checkbox.</span>
+        </a>
+      </li><li>
+        <a href="/checked-selector">
+          <span>checked</span>
+          <span>Matches all elements that are checked or selected.</span>
+        </a>
+      </li><li>
+        <a href="/disabled-selector">
+          <span>disabled</span>
+          <span>Selects all elements that are disabled.</span>
+        </a>
+      </li><li>
+        <a href="/enabled-selector">
+          <span>enabled</span>
+          <span>Selects all elements that are enabled.</span>
+        </a>
+      </li><li>
+        <a href="/file-selector">
+          <span>file</span>
+          <span>Selects all elements of type file.</span>
+        </a>
+      </li><li>
+        <a href="/focus-selector">
+          <span>focus</span>
+          <span>Selects element if it is currently focused.</span>
+        </a>
+      </li><li>
+        <a href="/image-selector">
+          <span>image</span>
+          <span>Selects all elements of type image.</span>
+        </a>
+      </li><li>
+        <a href="/input-selector">
+          <span>input</span>
+          <span>Selects all input, textarea, select and button ele...</span>
+        </a>
+      </li><li>
+        <a href="/password-selector">
+          <span>password</span>
+          <span>Selects all elements of type password.</span>
+        </a>
+      </li><li>
+        <a href="/radio-selector">
+          <span>radio</span>
+          <span>Selects all  elements of type radio.</span>
+        </a>
+      </li><li>
+        <a href="/reset-selector">
+          <span>reset</span>
+          <span>Selects all elements of type reset.</span>
+        </a>
+      </li><li>
+        <a href="/selected-selector">
+          <span>selected</span>
+          <span>Selects all elements that are selected.</span>
+        </a>
+      </li><li>
+        <a href="/submit-selector">
+          <span>submit</span>
+          <span>Selects all elements of type submit.</span>
+        </a>
+      </li><li>
+        <a href="/text-selector">
+          <span>text</span>
+          <span>Selects all input elements of type text.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Hierarchy</div><ul class="entries">
+  <li>
+        <a href="/child-selector">
+          <span>child</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li><li>
+        <a href="/descendant-selector">
+          <span>descendant</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li><li>
+        <a href="/next-adjacent-selector">
+          <span>next adjacent</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li><li>
+        <a href="/next-siblings-selector">
+          <span>next siblings</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">jQuery Extensions</div><ul class="entries">
+  <li>
+        <a href="/animated-selector">
+          <span>animated</span>
+          <span>Select all elements that are in the progress of an...</span>
+        </a>
+      </li><li>
+        <a href="/attribute-not-equal-selector">
+          <span>attributeNotEqual</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/button-selector">
+          <span>button</span>
+          <span>Selects all button elements and elements of type b...</span>
+        </a>
+      </li><li>
+        <a href="/checkbox-selector">
+          <span>checkbox</span>
+          <span>Selects all elements of type checkbox.</span>
+        </a>
+      </li><li>
+        <a href="/eq-selector">
+          <span>eq</span>
+          <span>Zero-based index of the element to match.</span>
+        </a>
+      </li><li>
+        <a href="/even-selector">
+          <span>even</span>
+          <span>Selects even elements, zero-indexed.  See also :od...</span>
+        </a>
+      </li><li>
+        <a href="/file-selector">
+          <span>file</span>
+          <span>Selects all elements of type file.</span>
+        </a>
+      </li><li>
+        <a href="/first-selector">
+          <span>first</span>
+          <span>Selects the first matched DOM element.</span>
+        </a>
+      </li><li>
+        <a href="/gt-selector">
+          <span>gt</span>
+          <span>Zero-based index.</span>
+        </a>
+      </li><li>
+        <a href="/has-selector">
+          <span>has</span>
+          <span>Any selector.</span>
+        </a>
+      </li><li>
+        <a href="/header-selector">
+          <span>header</span>
+          <span>Selects all elements that are headers, like h1, h2...</span>
+        </a>
+      </li><li>
+        <a href="/hidden-selector">
+          <span>hidden</span>
+          <span>Selects all elements that are hidden.</span>
+        </a>
+      </li><li>
+        <a href="/image-selector">
+          <span>image</span>
+          <span>Selects all elements of type image.</span>
+        </a>
+      </li><li>
+        <a href="/input-selector">
+          <span>input</span>
+          <span>Selects all input, textarea, select and button ele...</span>
+        </a>
+      </li><li>
+        <a href="/last-selector">
+          <span>last</span>
+          <span>Selects the last matched element.</span>
+        </a>
+      </li><li>
+        <a href="/lt-selector">
+          <span>lt</span>
+          <span>Zero-based index.</span>
+        </a>
+      </li><li>
+        <a href="/odd-selector">
+          <span>odd</span>
+          <span>Selects odd elements, zero-indexed.  See also :eve...</span>
+        </a>
+      </li><li>
+        <a href="/parent-selector">
+          <span>parent</span>
+          <span>Select all elements that have at least one child n...</span>
+        </a>
+      </li><li>
+        <a href="/password-selector">
+          <span>password</span>
+          <span>Selects all elements of type password.</span>
+        </a>
+      </li><li>
+        <a href="/radio-selector">
+          <span>radio</span>
+          <span>Selects all  elements of type radio.</span>
+        </a>
+      </li><li>
+        <a href="/reset-selector">
+          <span>reset</span>
+          <span>Selects all elements of type reset.</span>
+        </a>
+      </li><li>
+        <a href="/selected-selector">
+          <span>selected</span>
+          <span>Selects all elements that are selected.</span>
+        </a>
+      </li><li>
+        <a href="/submit-selector">
+          <span>submit</span>
+          <span>Selects all elements of type submit.</span>
+        </a>
+      </li><li>
+        <a href="/text-selector">
+          <span>text</span>
+          <span>Selects all input elements of type text.</span>
+        </a>
+      </li><li>
+        <a href="/visible-selector">
+          <span>visible</span>
+          <span>Selects all elements that are visible.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Visibility Filter</div><ul class="entries">
+  <li>
+        <a href="/hidden-selector">
+          <span>hidden</span>
+          <span>Selects all elements that are hidden.</span>
+        </a>
+      </li><li>
+        <a href="/visible-selector">
+          <span>visible</span>
+          <span>Selects all elements that are visible.</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Traversing</div><div class="subcategory">
+            <div class="category">Filtering</div><ul class="entries">
+  <li>
+        <a href="/eq">
+          <span>eq</span>
+          <span>An integer indicating the 0-based position of the ...</span>
+        </a>
+      </li><li>
+        <a href="/even">
+          <span>even</span>
+          <span>Reduce the set of matched elements to the even one...</span>
+        </a>
+      </li><li>
+        <a href="/filter">
+          <span>filter</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/first">
+          <span>first</span>
+          <span>Reduce the set of matched elements to the first in...</span>
+        </a>
+      </li><li>
+        <a href="/has">
+          <span>has</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/is">
+          <span>is</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/last">
+          <span>last</span>
+          <span>Reduce the set of matched elements to the final on...</span>
+        </a>
+      </li><li>
+        <a href="/map">
+          <span>map</span>
+          <span>A function object that will be invoked for each el...</span>
+        </a>
+      </li><li>
+        <a href="/not">
+          <span>not</span>
+          <span>A string containing a selector expression, a DOM e...</span>
+        </a>
+      </li><li>
+        <a href="/odd">
+          <span>odd</span>
+          <span>Reduce the set of matched elements to the odd ones...</span>
+        </a>
+      </li><li>
+        <a href="/slice">
+          <span>slice</span>
+          <span>An integer indicating the 0-based position at whic...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Miscellaneous Traversing</div><ul class="entries">
+  <li>
+        <a href="/add">
+          <span>add</span>
+          <span>A string representing a selector expression to fin...</span>
+        </a>
+      </li><li>
+        <a href="/addBack">
+          <span>addBack</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/andSelf">
+          <span>andSelf</span>
+          <span>Add the previous set of elements on the stack to t...</span>
+        </a>
+      </li><li>
+        <a href="/contents">
+          <span>contents</span>
+          <span>Get the children of each element in the set of mat...</span>
+        </a>
+      </li><li>
+        <a href="/end">
+          <span>end</span>
+          <span>End the most recent filtering operation in the cur...</span>
+        </a>
+      </li><li>
+        <a href="/not">
+          <span>not</span>
+          <span>A string containing a selector expression, a DOM e...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Tree Traversal</div><ul class="entries">
+  <li>
+        <a href="/children">
+          <span>children</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/closest">
+          <span>closest</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/find">
+          <span>find</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/next">
+          <span>next</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/nextAll">
+          <span>nextAll</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/nextUntil">
+          <span>nextUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/offsetParent">
+          <span>offsetParent</span>
+          <span>Get the closest ancestor element that is positione...</span>
+        </a>
+      </li><li>
+        <a href="/parent">
+          <span>parent</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/parents">
+          <span>parents</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/parentsUntil">
+          <span>parentsUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/prev">
+          <span>prev</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/prevAll">
+          <span>prevAll</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/prevUntil">
+          <span>prevUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/siblings">
+          <span>siblings</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Other</div><ul class="entries">
+  <li>
+        <a href="/each">
+          <span>each</span>
+          <span>A function to execute for each matched element.</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div><div class="category">Utilities</div><ul class="entries">
+  <li>
+        <a href="/clearQueue">
+          <span>clearQueue</span>
+          <span>A string containing the name of the queue. Default...</span>
+        </a>
+      </li><li>
+        <a href="/dequeue">
+          <span>dequeue</span>
+          <span>A string containing the name of the queue. Default...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.boxModel">
+          <span>jQuery.boxModel</span>
+          <span>States if the current page, in the user&#39;s browser,...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.browser">
+          <span>jQuery.browser</span>
+          <span>Contains flags for the useragent, read from naviga...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.contains">
+          <span>jQuery.contains</span>
+          <span>The DOM element that may contain the other element...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.data">
+          <span>jQuery.data</span>
+          <span>Store arbitrary data associated with the specified...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.dequeue">
+          <span>jQuery.dequeue</span>
+          <span>A DOM element from which to remove and execute a q...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.each">
+          <span>jQuery.each</span>
+          <span>The array or array-like object to iterate over.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.extend">
+          <span>jQuery.extend</span>
+          <span>An object that will receive the new properties.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fn.extend">
+          <span>jQuery.fn.extend</span>
+          <span>An object to merge onto the jQuery prototype.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.globalEval">
+          <span>jQuery.globalEval</span>
+          <span>The JavaScript code to execute.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.grep">
+          <span>jQuery.grep</span>
+          <span>Finds the elements of an array which satisfy a fil...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.inArray">
+          <span>jQuery.inArray</span>
+          <span>The value to search for.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isArray">
+          <span>jQuery.isArray</span>
+          <span>Object to test whether or not it is an array.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isEmptyObject">
+          <span>jQuery.isEmptyObject</span>
+          <span>The object that will be checked to see if it&#39;s emp...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isFunction">
+          <span>jQuery.isFunction</span>
+          <span>The value to be tested.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isNumeric">
+          <span>jQuery.isNumeric</span>
+          <span>Determines whether its argument represents a JavaS...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isPlainObject">
+          <span>jQuery.isPlainObject</span>
+          <span>The object that will be checked to see if it&#39;s a p...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isWindow">
+          <span>jQuery.isWindow</span>
+          <span>Object to test whether or not it is a window.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isXMLDoc">
+          <span>jQuery.isXMLDoc</span>
+          <span>The DOM node that will be checked to see if it&#39;s i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.makeArray">
+          <span>jQuery.makeArray</span>
+          <span>Any object to turn into a native Array.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.map">
+          <span>jQuery.map</span>
+          <span>The Array or an Array-like object to translate.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.merge">
+          <span>jQuery.merge</span>
+          <span>Merge the contents of two arrays together into the...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.noop">
+          <span>jQuery.noop</span>
+          <span>An empty function.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.now">
+          <span>jQuery.now</span>
+          <span>Return a number representing the current time.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.parseHTML">
+          <span>jQuery.parseHTML</span>
+          <span>Parses a string into an array of DOM nodes.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.parseJSON">
+          <span>jQuery.parseJSON</span>
+          <span>The JSON string to parse.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.parseXML">
+          <span>jQuery.parseXML</span>
+          <span>Parses a string into an XML document.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.proxy">
+          <span>jQuery.proxy</span>
+          <span>The function whose context will be changed.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.queue">
+          <span>jQuery.queue</span>
+          <span>Show or manipulate the queue of functions to be ex...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.removeData">
+          <span>jQuery.removeData</span>
+          <span>A DOM element from which to remove data.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.support">
+          <span>jQuery.support</span>
+          <span>A collection of properties that represent the pres...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.trim">
+          <span>jQuery.trim</span>
+          <span>The string to trim.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.type">
+          <span>jQuery.type</span>
+          <span>Object to get the internal JavaScript [[Class]] of...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.unique">
+          <span>jQuery.unique</span>
+          <span>The Array of DOM elements.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.uniqueSort">
+          <span>jQuery.uniqueSort</span>
+          <span>The Array or an Array-like object of DOM elements.</span>
+        </a>
+      </li><li>
+        <a href="/queue">
+          <span>queue</span>
+          <span>Show or manipulate the queue of functions to be ex...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version</div><div class="subcategory">
+            <div class="category">Version 1.0</div><ul class="entries">
+  <li>
+        <a href="/add">
+          <span>add</span>
+          <span>A string representing a selector expression to fin...</span>
+        </a>
+      </li><li>
+        <a href="/addClass">
+          <span>addClass</span>
+          <span>One or more space-separated classes to be added to...</span>
+        </a>
+      </li><li>
+        <a href="/after">
+          <span>after</span>
+          <span>HTML string, DOM element, text node, array of elem...</span>
+        </a>
+      </li><li>
+        <a href="/ajaxComplete">
+          <span>ajaxComplete</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/ajaxError">
+          <span>ajaxError</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/ajaxSend">
+          <span>ajaxSend</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/ajaxStart">
+          <span>ajaxStart</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/ajaxStop">
+          <span>ajaxStop</span>
+          <span>Register a handler to be called when all Ajax requ...</span>
+        </a>
+      </li><li>
+        <a href="/ajaxSuccess">
+          <span>ajaxSuccess</span>
+          <span>The function to be invoked.</span>
+        </a>
+      </li><li>
+        <a href="/all-selector">
+          <span>all</span>
+          <span>Selects all elements.</span>
+        </a>
+      </li><li>
+        <a href="/animate">
+          <span>animate</span>
+          <span>Perform a custom animation of a set of CSS propert...</span>
+        </a>
+      </li><li>
+        <a href="/append">
+          <span>append</span>
+          <span>DOM element, text node, array of elements and text...</span>
+        </a>
+      </li><li>
+        <a href="/appendTo">
+          <span>appendTo</span>
+          <span>A selector, element, HTML string, array of element...</span>
+        </a>
+      </li><li>
+        <a href="/attr">
+          <span>attr</span>
+          <span>Get the value of an attribute for the first elemen...</span>
+        </a>
+      </li><li>
+        <a href="/attribute-contains-prefix-selector">
+          <span>attributeContainsPrefix</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-contains-selector">
+          <span>attributeContains</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-contains-word-selector">
+          <span>attributeContainsWord</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-ends-with-selector">
+          <span>attributeEndsWith</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-equals-selector">
+          <span>attributeEquals</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-not-equal-selector">
+          <span>attributeNotEqual</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/attribute-starts-with-selector">
+          <span>attributeStartsWith</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/before">
+          <span>before</span>
+          <span>HTML string, DOM element, text node, array of elem...</span>
+        </a>
+      </li><li>
+        <a href="/bind">
+          <span>bind</span>
+          <span>A string containing one or more DOM event types, s...</span>
+        </a>
+      </li><li>
+        <a href="/blur">
+          <span>blur</span>
+          <span>Bind an event handler to the &quot;blur&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/button-selector">
+          <span>button</span>
+          <span>Selects all button elements and elements of type b...</span>
+        </a>
+      </li><li>
+        <a href="/change">
+          <span>change</span>
+          <span>Bind an event handler to the &quot;change&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/checkbox-selector">
+          <span>checkbox</span>
+          <span>Selects all elements of type checkbox.</span>
+        </a>
+      </li><li>
+        <a href="/checked-selector">
+          <span>checked</span>
+          <span>Matches all elements that are checked or selected.</span>
+        </a>
+      </li><li>
+        <a href="/child-selector">
+          <span>child</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li><li>
+        <a href="/children">
+          <span>children</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/class-selector">
+          <span>class</span>
+          <span>A class to search for. An element can have multipl...</span>
+        </a>
+      </li><li>
+        <a href="/click">
+          <span>click</span>
+          <span>Bind an event handler to the &quot;click&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/clone">
+          <span>clone</span>
+          <span>A Boolean indicating whether event handlers should...</span>
+        </a>
+      </li><li>
+        <a href="/contextmenu">
+          <span>contextmenu</span>
+          <span>Bind an event handler to the &quot;contextmenu&quot; JavaScr...</span>
+        </a>
+      </li><li>
+        <a href="/css">
+          <span>css</span>
+          <span>Get the value of a computed style property for the...</span>
+        </a>
+      </li><li>
+        <a href="/dblclick">
+          <span>dblclick</span>
+          <span>Bind an event handler to the &quot;dblclick&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/descendant-selector">
+          <span>descendant</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li><li>
+        <a href="/disabled-selector">
+          <span>disabled</span>
+          <span>Selects all elements that are disabled.</span>
+        </a>
+      </li><li>
+        <a href="/each">
+          <span>each</span>
+          <span>A function to execute for each matched element.</span>
+        </a>
+      </li><li>
+        <a href="/element-selector">
+          <span>element</span>
+          <span>An element to search for. Refers to the tagName of...</span>
+        </a>
+      </li><li>
+        <a href="/empty-selector">
+          <span>empty</span>
+          <span>Select all elements that have no children (includi...</span>
+        </a>
+      </li><li>
+        <a href="/enabled-selector">
+          <span>enabled</span>
+          <span>Selects all elements that are enabled.</span>
+        </a>
+      </li><li>
+        <a href="/end">
+          <span>end</span>
+          <span>End the most recent filtering operation in the cur...</span>
+        </a>
+      </li><li>
+        <a href="/eq-selector">
+          <span>eq</span>
+          <span>Zero-based index of the element to match.</span>
+        </a>
+      </li><li>
+        <a href="/error">
+          <span>error</span>
+          <span>Bind an event handler to the &quot;error&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/even-selector">
+          <span>even</span>
+          <span>Selects even elements, zero-indexed.  See also :od...</span>
+        </a>
+      </li><li>
+        <a href="/event.preventDefault">
+          <span>event.preventDefault</span>
+          <span>If this method is called, the default action of th...</span>
+        </a>
+      </li><li>
+        <a href="/event.stopPropagation">
+          <span>event.stopPropagation</span>
+          <span>Prevents the event from bubbling up the DOM tree, ...</span>
+        </a>
+      </li><li>
+        <a href="/event.target">
+          <span>event.target</span>
+          <span>The DOM element that initiated the event.</span>
+        </a>
+      </li><li>
+        <a href="/event.type">
+          <span>event.type</span>
+          <span>Describes the nature of the event.</span>
+        </a>
+      </li><li>
+        <a href="/fadeIn">
+          <span>fadeIn</span>
+          <span>Display the matched elements by fading them to opa...</span>
+        </a>
+      </li><li>
+        <a href="/fadeOut">
+          <span>fadeOut</span>
+          <span>Hide the matched elements by fading them to transp...</span>
+        </a>
+      </li><li>
+        <a href="/fadeTo">
+          <span>fadeTo</span>
+          <span>Adjust the opacity of the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/file-selector">
+          <span>file</span>
+          <span>Selects all elements of type file.</span>
+        </a>
+      </li><li>
+        <a href="/filter">
+          <span>filter</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/find">
+          <span>find</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/first-selector">
+          <span>first</span>
+          <span>Selects the first matched DOM element.</span>
+        </a>
+      </li><li>
+        <a href="/focus">
+          <span>focus</span>
+          <span>Bind an event handler to the &quot;focus&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/get">
+          <span>get</span>
+          <span>Retrieve the DOM elements matched by the jQuery ob...</span>
+        </a>
+      </li><li>
+        <a href="/gt-selector">
+          <span>gt</span>
+          <span>Zero-based index.</span>
+        </a>
+      </li><li>
+        <a href="/has-attribute-selector">
+          <span>attributeHas</span>
+          <span>An attribute name.</span>
+        </a>
+      </li><li>
+        <a href="/height">
+          <span>height</span>
+          <span>Get the current computed height for the first elem...</span>
+        </a>
+      </li><li>
+        <a href="/hidden-selector">
+          <span>hidden</span>
+          <span>Selects all elements that are hidden.</span>
+        </a>
+      </li><li>
+        <a href="/hide">
+          <span>hide</span>
+          <span>Hide the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/hover">
+          <span>hover</span>
+          <span>Bind one or two handlers to the matched elements, ...</span>
+        </a>
+      </li><li>
+        <a href="/html">
+          <span>html</span>
+          <span>Get the HTML contents of the first element in the ...</span>
+        </a>
+      </li><li>
+        <a href="/id-selector">
+          <span>id</span>
+          <span>An ID to search for, specified via the id attribut...</span>
+        </a>
+      </li><li>
+        <a href="/image-selector">
+          <span>image</span>
+          <span>Selects all elements of type image.</span>
+        </a>
+      </li><li>
+        <a href="/index">
+          <span>index</span>
+          <span>A selector representing a jQuery collection in whi...</span>
+        </a>
+      </li><li>
+        <a href="/input-selector">
+          <span>input</span>
+          <span>Selects all input, textarea, select and button ele...</span>
+        </a>
+      </li><li>
+        <a href="/insertAfter">
+          <span>insertAfter</span>
+          <span>A selector, element, array of elements, HTML strin...</span>
+        </a>
+      </li><li>
+        <a href="/insertBefore">
+          <span>insertBefore</span>
+          <span>A selector, element, array of elements, HTML strin...</span>
+        </a>
+      </li><li>
+        <a href="/is">
+          <span>is</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajax">
+          <span>jQuery.ajax</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.boxModel">
+          <span>jQuery.boxModel</span>
+          <span>States if the current page, in the user&#39;s browser,...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.browser">
+          <span>jQuery.browser</span>
+          <span>Contains flags for the useragent, read from naviga...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.each">
+          <span>jQuery.each</span>
+          <span>The array or array-like object to iterate over.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.extend">
+          <span>jQuery.extend</span>
+          <span>An object that will receive the new properties.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fn.extend">
+          <span>jQuery.fn.extend</span>
+          <span>An object to merge onto the jQuery prototype.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.get">
+          <span>jQuery.get</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.getJSON">
+          <span>jQuery.getJSON</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.getScript">
+          <span>jQuery.getScript</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.grep">
+          <span>jQuery.grep</span>
+          <span>Finds the elements of an array which satisfy a fil...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.map">
+          <span>jQuery.map</span>
+          <span>The Array or an Array-like object to translate.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.merge">
+          <span>jQuery.merge</span>
+          <span>Merge the contents of two arrays together into the...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.noConflict">
+          <span>jQuery.noConflict</span>
+          <span>A Boolean indicating whether to remove all jQuery ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.post">
+          <span>jQuery.post</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.speed">
+          <span>jQuery.speed</span>
+          <span>Creates an object containing a set of properties r...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.trim">
+          <span>jQuery.trim</span>
+          <span>The string to trim.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery">
+          <span>jQuery</span>
+          <span>Return a collection of matched elements either fou...</span>
+        </a>
+      </li><li>
+        <a href="/keydown">
+          <span>keydown</span>
+          <span>A function to execute each time the event is trigg...</span>
+        </a>
+      </li><li>
+        <a href="/keypress">
+          <span>keypress</span>
+          <span>Bind an event handler to the &quot;keypress&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/keyup">
+          <span>keyup</span>
+          <span>Bind an event handler to the &quot;keyup&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/last-selector">
+          <span>last</span>
+          <span>Selects the last matched element.</span>
+        </a>
+      </li><li>
+        <a href="/length">
+          <span>length</span>
+          <span>The number of elements in the jQuery object.</span>
+        </a>
+      </li><li>
+        <a href="/load-event">
+          <span>load</span>
+          <span>Bind an event handler to the &quot;load&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/lt-selector">
+          <span>lt</span>
+          <span>Zero-based index.</span>
+        </a>
+      </li><li>
+        <a href="/mousedown">
+          <span>mousedown</span>
+          <span>Bind an event handler to the &quot;mousedown&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseenter">
+          <span>mouseenter</span>
+          <span>Bind an event handler to be fired when the mouse e...</span>
+        </a>
+      </li><li>
+        <a href="/mouseleave">
+          <span>mouseleave</span>
+          <span>Bind an event handler to be fired when the mouse l...</span>
+        </a>
+      </li><li>
+        <a href="/mousemove">
+          <span>mousemove</span>
+          <span>Bind an event handler to the &quot;mousemove&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseout">
+          <span>mouseout</span>
+          <span>Bind an event handler to the &quot;mouseout&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/mouseover">
+          <span>mouseover</span>
+          <span>Bind an event handler to the &quot;mouseover&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseup">
+          <span>mouseup</span>
+          <span>Bind an event handler to the &quot;mouseup&quot; JavaScript ...</span>
+        </a>
+      </li><li>
+        <a href="/multiple-attribute-selector">
+          <span>attributeMultiple</span>
+          <span>An attribute filter.</span>
+        </a>
+      </li><li>
+        <a href="/multiple-selector">
+          <span>multiple</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li><li>
+        <a href="/next-adjacent-selector">
+          <span>next adjacent</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li><li>
+        <a href="/next-siblings-selector">
+          <span>next siblings</span>
+          <span>Any valid selector.</span>
+        </a>
+      </li><li>
+        <a href="/next">
+          <span>next</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/not-selector">
+          <span>not</span>
+          <span>A selector with which to filter by.</span>
+        </a>
+      </li><li>
+        <a href="/odd-selector">
+          <span>odd</span>
+          <span>Selects odd elements, zero-indexed.  See also :eve...</span>
+        </a>
+      </li><li>
+        <a href="/parent-selector">
+          <span>parent</span>
+          <span>Select all elements that have at least one child n...</span>
+        </a>
+      </li><li>
+        <a href="/parents">
+          <span>parents</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/password-selector">
+          <span>password</span>
+          <span>Selects all elements of type password.</span>
+        </a>
+      </li><li>
+        <a href="/prepend">
+          <span>prepend</span>
+          <span>DOM element, text node, array of elements and text...</span>
+        </a>
+      </li><li>
+        <a href="/prependTo">
+          <span>prependTo</span>
+          <span>A selector, element, HTML string, array of element...</span>
+        </a>
+      </li><li>
+        <a href="/prev">
+          <span>prev</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/pushStack">
+          <span>pushStack</span>
+          <span>An array of elements to push onto the stack and ma...</span>
+        </a>
+      </li><li>
+        <a href="/radio-selector">
+          <span>radio</span>
+          <span>Selects all  elements of type radio.</span>
+        </a>
+      </li><li>
+        <a href="/ready">
+          <span>ready</span>
+          <span>Specify a function to execute when the DOM is full...</span>
+        </a>
+      </li><li>
+        <a href="/remove">
+          <span>remove</span>
+          <span>A selector expression that filters the set of matc...</span>
+        </a>
+      </li><li>
+        <a href="/removeAttr">
+          <span>removeAttr</span>
+          <span>An attribute to remove; as of version 1.7, it can ...</span>
+        </a>
+      </li><li>
+        <a href="/removeClass">
+          <span>removeClass</span>
+          <span>Remove a single class, multiple classes, or all cl...</span>
+        </a>
+      </li><li>
+        <a href="/reset-selector">
+          <span>reset</span>
+          <span>Selects all elements of type reset.</span>
+        </a>
+      </li><li>
+        <a href="/resize">
+          <span>resize</span>
+          <span>Bind an event handler to the &quot;resize&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/scroll">
+          <span>scroll</span>
+          <span>Bind an event handler to the &quot;scroll&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/select">
+          <span>select</span>
+          <span>Bind an event handler to the &quot;select&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/selected-selector">
+          <span>selected</span>
+          <span>Selects all elements that are selected.</span>
+        </a>
+      </li><li>
+        <a href="/serialize">
+          <span>serialize</span>
+          <span>Encode a set of form elements as a string for subm...</span>
+        </a>
+      </li><li>
+        <a href="/show">
+          <span>show</span>
+          <span>Display the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/siblings">
+          <span>siblings</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/size">
+          <span>size</span>
+          <span>Return the number of elements in the jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/slideDown">
+          <span>slideDown</span>
+          <span>Display the matched elements with a sliding motion...</span>
+        </a>
+      </li><li>
+        <a href="/slideToggle">
+          <span>slideToggle</span>
+          <span>Display or hide the matched elements with a slidin...</span>
+        </a>
+      </li><li>
+        <a href="/slideUp">
+          <span>slideUp</span>
+          <span>Hide the matched elements with a sliding motion.</span>
+        </a>
+      </li><li>
+        <a href="/submit-selector">
+          <span>submit</span>
+          <span>Selects all elements of type submit.</span>
+        </a>
+      </li><li>
+        <a href="/text-selector">
+          <span>text</span>
+          <span>Selects all input elements of type text.</span>
+        </a>
+      </li><li>
+        <a href="/toggle-event">
+          <span>toggle</span>
+          <span>Bind two or more handlers to the matched elements,...</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li><li>
+        <a href="/trigger">
+          <span>trigger</span>
+          <span>Execute all handlers and behaviors attached to the...</span>
+        </a>
+      </li><li>
+        <a href="/unbind">
+          <span>unbind</span>
+          <span>Remove a previously-attached event handler from th...</span>
+        </a>
+      </li><li>
+        <a href="/unload">
+          <span>unload</span>
+          <span>A function to execute when the event is triggered.</span>
+        </a>
+      </li><li>
+        <a href="/val">
+          <span>val</span>
+          <span>Get the current value of the first element in the ...</span>
+        </a>
+      </li><li>
+        <a href="/visible-selector">
+          <span>visible</span>
+          <span>Selects all elements that are visible.</span>
+        </a>
+      </li><li>
+        <a href="/width">
+          <span>width</span>
+          <span>Get the current computed width for the first eleme...</span>
+        </a>
+      </li><li>
+        <a href="/wrap">
+          <span>wrap</span>
+          <span>A selector, element, HTML string, or jQuery object...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.0.4</div><ul class="entries">
+  <li>
+        <a href="/event.metaKey">
+          <span>event.metaKey</span>
+          <span>Indicates whether the META key was pressed when th...</span>
+        </a>
+      </li><li>
+        <a href="/event.pageX">
+          <span>event.pageX</span>
+          <span>The mouse position relative to the left edge of th...</span>
+        </a>
+      </li><li>
+        <a href="/event.pageY">
+          <span>event.pageY</span>
+          <span>The mouse position relative to the top edge of the...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.globalEval">
+          <span>jQuery.globalEval</span>
+          <span>The JavaScript code to execute.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.1</div><ul class="entries">
+  <li>
+        <a href="/attr">
+          <span>attr</span>
+          <span>Get the value of an attribute for the first elemen...</span>
+        </a>
+      </li><li>
+        <a href="/event.data">
+          <span>event.data</span>
+          <span>An optional object of data passed to an event meth...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajaxSetup">
+          <span>jQuery.ajaxSetup</span>
+          <span>A set of key/value pairs that configure the defaul...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.speed">
+          <span>jQuery.speed</span>
+          <span>Creates an object containing a set of properties r...</span>
+        </a>
+      </li><li>
+        <a href="/one">
+          <span>one</span>
+          <span>Attach a handler to an event for the elements. The...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.1.2</div><ul class="entries">
+  <li>
+        <a href="/eq">
+          <span>eq</span>
+          <span>An integer indicating the 0-based position of the ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.1.3</div><ul class="entries">
+  <li>
+        <a href="/event.which">
+          <span>event.which</span>
+          <span>For key or mouse events, this property indicates t...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.browser">
+          <span>jQuery.browser</span>
+          <span>Contains flags for the useragent, read from naviga...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.unique">
+          <span>jQuery.unique</span>
+          <span>The Array of DOM elements.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.1.4</div><ul class="entries">
+  <li>
+        <a href="/contains-selector">
+          <span>contains</span>
+          <span>A string of text to look for. It&#39;s case sensitive.</span>
+        </a>
+      </li><li>
+        <a href="/event.relatedTarget">
+          <span>event.relatedTarget</span>
+          <span>The other DOM element involved in the event, if an...</span>
+        </a>
+      </li><li>
+        <a href="/first-child-selector">
+          <span>first-child</span>
+          <span>Selects all elements that are the first child of t...</span>
+        </a>
+      </li><li>
+        <a href="/has-selector">
+          <span>has</span>
+          <span>Any selector.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isXMLDoc">
+          <span>jQuery.isXMLDoc</span>
+          <span>The DOM node that will be checked to see if it&#39;s i...</span>
+        </a>
+      </li><li>
+        <a href="/last-child-selector">
+          <span>last-child</span>
+          <span>Selects all elements that are the last child of th...</span>
+        </a>
+      </li><li>
+        <a href="/nth-child-selector">
+          <span>nth-child</span>
+          <span>The index of each child to match, starting with 1,...</span>
+        </a>
+      </li><li>
+        <a href="/only-child-selector">
+          <span>only-child</span>
+          <span>Selects all elements that are the only child of th...</span>
+        </a>
+      </li><li>
+        <a href="/slice">
+          <span>slice</span>
+          <span>An integer indicating the 0-based position at whic...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.2</div><ul class="entries">
+  <li>
+        <a href="/andSelf">
+          <span>andSelf</span>
+          <span>Add the previous set of elements on the stack to t...</span>
+        </a>
+      </li><li>
+        <a href="/animated-selector">
+          <span>animated</span>
+          <span>Select all elements that are in the progress of an...</span>
+        </a>
+      </li><li>
+        <a href="/contents">
+          <span>contents</span>
+          <span>Get the children of each element in the set of mat...</span>
+        </a>
+      </li><li>
+        <a href="/dequeue">
+          <span>dequeue</span>
+          <span>A string containing the name of the queue. Default...</span>
+        </a>
+      </li><li>
+        <a href="/hasClass">
+          <span>hasClass</span>
+          <span>The class name to search for.</span>
+        </a>
+      </li><li>
+        <a href="/header-selector">
+          <span>header</span>
+          <span>Selects all elements that are headers, like h1, h2...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.inArray">
+          <span>jQuery.inArray</span>
+          <span>The value to search for.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isFunction">
+          <span>jQuery.isFunction</span>
+          <span>The value to be tested.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.makeArray">
+          <span>jQuery.makeArray</span>
+          <span>Any object to turn into a native Array.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.param">
+          <span>jQuery.param</span>
+          <span>An array, a plain object, or a jQuery object to se...</span>
+        </a>
+      </li><li>
+        <a href="/map">
+          <span>map</span>
+          <span>A function object that will be invoked for each el...</span>
+        </a>
+      </li><li>
+        <a href="/nextAll">
+          <span>nextAll</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/offset">
+          <span>offset</span>
+          <span>Get the current coordinates of the first element, ...</span>
+        </a>
+      </li><li>
+        <a href="/position">
+          <span>position</span>
+          <span>Get the current coordinates of the first element i...</span>
+        </a>
+      </li><li>
+        <a href="/prevAll">
+          <span>prevAll</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/queue">
+          <span>queue</span>
+          <span>Show or manipulate the queue of functions to be ex...</span>
+        </a>
+      </li><li>
+        <a href="/replaceAll">
+          <span>replaceAll</span>
+          <span>A selector string, jQuery object, DOM element, or ...</span>
+        </a>
+      </li><li>
+        <a href="/replaceWith">
+          <span>replaceWith</span>
+          <span>The content to insert. May be an HTML string, DOM ...</span>
+        </a>
+      </li><li>
+        <a href="/serializeArray">
+          <span>serializeArray</span>
+          <span>Encode a set of form elements as an array of names...</span>
+        </a>
+      </li><li>
+        <a href="/stop">
+          <span>stop</span>
+          <span>Stop the currently-running animation on the matche...</span>
+        </a>
+      </li><li>
+        <a href="/triggerHandler">
+          <span>triggerHandler</span>
+          <span>Execute all handlers attached to an element for an...</span>
+        </a>
+      </li><li>
+        <a href="/wrapAll">
+          <span>wrapAll</span>
+          <span>A selector, element, HTML string, or jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/wrapInner">
+          <span>wrapInner</span>
+          <span>An HTML snippet, selector expression, jQuery objec...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.2.3</div><ul class="entries">
+  <li>
+        <a href="/data">
+          <span>data</span>
+          <span>Store arbitrary data associated with the matched e...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.data">
+          <span>jQuery.data</span>
+          <span>Store arbitrary data associated with the specified...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.removeData">
+          <span>jQuery.removeData</span>
+          <span>A DOM element from which to remove data.</span>
+        </a>
+      </li><li>
+        <a href="/removeData">
+          <span>removeData</span>
+          <span>A string naming the piece of data to delete.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.2.6</div><ul class="entries">
+  <li>
+        <a href="/event.timeStamp">
+          <span>event.timeStamp</span>
+          <span>The difference in milliseconds between the time th...</span>
+        </a>
+      </li><li>
+        <a href="/innerHeight">
+          <span>innerHeight</span>
+          <span>Get the current computed inner height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/innerWidth">
+          <span>innerWidth</span>
+          <span>Get the current computed inner width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/offsetParent">
+          <span>offsetParent</span>
+          <span>Get the closest ancestor element that is positione...</span>
+        </a>
+      </li><li>
+        <a href="/outerHeight">
+          <span>outerHeight</span>
+          <span>Get the current computed outer height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/outerWidth">
+          <span>outerWidth</span>
+          <span>Get the current computed outer width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/scrollLeft">
+          <span>scrollLeft</span>
+          <span>Get the current horizontal position of the scroll ...</span>
+        </a>
+      </li><li>
+        <a href="/scrollTop">
+          <span>scrollTop</span>
+          <span>Get the current vertical position of the scroll ba...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.3</div><ul class="entries">
+  <li>
+        <a href="/closest">
+          <span>closest</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/context">
+          <span>context</span>
+          <span>The DOM node context originally passed to jQuery()...</span>
+        </a>
+      </li><li>
+        <a href="/die">
+          <span>die</span>
+          <span>Remove event handlers previously attached using .l...</span>
+        </a>
+      </li><li>
+        <a href="/event.currentTarget">
+          <span>event.currentTarget</span>
+          <span>The current DOM element within the event bubbling ...</span>
+        </a>
+      </li><li>
+        <a href="/event.isDefaultPrevented">
+          <span>event.isDefaultPrevented</span>
+          <span>Returns whether event.preventDefault() was ever ca...</span>
+        </a>
+      </li><li>
+        <a href="/event.isImmediatePropagationStopped">
+          <span>event.isImmediatePropagationStopped</span>
+          <span>Returns whether event.stopImmediatePropagation() w...</span>
+        </a>
+      </li><li>
+        <a href="/event.isPropagationStopped">
+          <span>event.isPropagationStopped</span>
+          <span>Returns whether event.stopPropagation() was ever c...</span>
+        </a>
+      </li><li>
+        <a href="/event.result">
+          <span>event.result</span>
+          <span>The last value returned by an event handler that w...</span>
+        </a>
+      </li><li>
+        <a href="/event.stopImmediatePropagation">
+          <span>event.stopImmediatePropagation</span>
+          <span>Keeps the rest of the handlers from being executed...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.dequeue">
+          <span>jQuery.dequeue</span>
+          <span>A DOM element from which to remove and execute a q...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fx.off">
+          <span>jQuery.fx.off</span>
+          <span>Globally disable all animations.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isArray">
+          <span>jQuery.isArray</span>
+          <span>Object to test whether or not it is an array.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.queue">
+          <span>jQuery.queue</span>
+          <span>Show or manipulate the queue of functions to be ex...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.support">
+          <span>jQuery.support</span>
+          <span>A collection of properties that represent the pres...</span>
+        </a>
+      </li><li>
+        <a href="/live">
+          <span>live</span>
+          <span>Attach an event handler for all elements which mat...</span>
+        </a>
+      </li><li>
+        <a href="/pushStack">
+          <span>pushStack</span>
+          <span>An array of elements to push onto the stack and ma...</span>
+        </a>
+      </li><li>
+        <a href="/selector">
+          <span>selector</span>
+          <span>A selector representing selector passed to jQuery(...</span>
+        </a>
+      </li><li>
+        <a href="/toggle">
+          <span>toggle</span>
+          <span>Display or hide the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.4</div><ul class="entries">
+  <li>
+        <a href="/add">
+          <span>add</span>
+          <span>A string representing a selector expression to fin...</span>
+        </a>
+      </li><li>
+        <a href="/addClass">
+          <span>addClass</span>
+          <span>One or more space-separated classes to be added to...</span>
+        </a>
+      </li><li>
+        <a href="/after">
+          <span>after</span>
+          <span>HTML string, DOM element, text node, array of elem...</span>
+        </a>
+      </li><li>
+        <a href="/append">
+          <span>append</span>
+          <span>DOM element, text node, array of elements and text...</span>
+        </a>
+      </li><li>
+        <a href="/before">
+          <span>before</span>
+          <span>HTML string, DOM element, text node, array of elem...</span>
+        </a>
+      </li><li>
+        <a href="/bind">
+          <span>bind</span>
+          <span>A string containing one or more DOM event types, s...</span>
+        </a>
+      </li><li>
+        <a href="/clearQueue">
+          <span>clearQueue</span>
+          <span>A string containing the name of the queue. Default...</span>
+        </a>
+      </li><li>
+        <a href="/closest">
+          <span>closest</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/css">
+          <span>css</span>
+          <span>Get the value of a computed style property for the...</span>
+        </a>
+      </li><li>
+        <a href="/data">
+          <span>data</span>
+          <span>Store arbitrary data associated with the matched e...</span>
+        </a>
+      </li><li>
+        <a href="/delay">
+          <span>delay</span>
+          <span>An integer indicating the number of milliseconds t...</span>
+        </a>
+      </li><li>
+        <a href="/detach">
+          <span>detach</span>
+          <span>A selector expression that filters the set of matc...</span>
+        </a>
+      </li><li>
+        <a href="/filter">
+          <span>filter</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/first">
+          <span>first</span>
+          <span>Reduce the set of matched elements to the first in...</span>
+        </a>
+      </li><li>
+        <a href="/focusin">
+          <span>focusin</span>
+          <span>Bind an event handler to the &quot;focusin&quot; event.</span>
+        </a>
+      </li><li>
+        <a href="/focusout">
+          <span>focusout</span>
+          <span>Bind an event handler to the &quot;focusout&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/has">
+          <span>has</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/html">
+          <span>html</span>
+          <span>Get the HTML contents of the first element in the ...</span>
+        </a>
+      </li><li>
+        <a href="/index">
+          <span>index</span>
+          <span>A selector representing a jQuery collection in whi...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.contains">
+          <span>jQuery.contains</span>
+          <span>The DOM element that may contain the other element...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.data">
+          <span>jQuery.data</span>
+          <span>Store arbitrary data associated with the specified...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isEmptyObject">
+          <span>jQuery.isEmptyObject</span>
+          <span>The object that will be checked to see if it&#39;s emp...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isPlainObject">
+          <span>jQuery.isPlainObject</span>
+          <span>The object that will be checked to see if it&#39;s a p...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.noop">
+          <span>jQuery.noop</span>
+          <span>An empty function.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.param">
+          <span>jQuery.param</span>
+          <span>An array, a plain object, or a jQuery object to se...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.proxy">
+          <span>jQuery.proxy</span>
+          <span>The function whose context will be changed.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery">
+          <span>jQuery</span>
+          <span>Return a collection of matched elements either fou...</span>
+        </a>
+      </li><li>
+        <a href="/last">
+          <span>last</span>
+          <span>Reduce the set of matched elements to the final on...</span>
+        </a>
+      </li><li>
+        <a href="/nextUntil">
+          <span>nextUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/not">
+          <span>not</span>
+          <span>A string containing a selector expression, a DOM e...</span>
+        </a>
+      </li><li>
+        <a href="/offset">
+          <span>offset</span>
+          <span>Get the current coordinates of the first element, ...</span>
+        </a>
+      </li><li>
+        <a href="/parentsUntil">
+          <span>parentsUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/prepend">
+          <span>prepend</span>
+          <span>DOM element, text node, array of elements and text...</span>
+        </a>
+      </li><li>
+        <a href="/prevUntil">
+          <span>prevUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/removeAttr">
+          <span>removeAttr</span>
+          <span>An attribute to remove; as of version 1.7, it can ...</span>
+        </a>
+      </li><li>
+        <a href="/removeClass">
+          <span>removeClass</span>
+          <span>Remove a single class, multiple classes, or all cl...</span>
+        </a>
+      </li><li>
+        <a href="/replaceWith">
+          <span>replaceWith</span>
+          <span>The content to insert. May be an HTML string, DOM ...</span>
+        </a>
+      </li><li>
+        <a href="/text">
+          <span>text</span>
+          <span>Get the combined text contents of each element in ...</span>
+        </a>
+      </li><li>
+        <a href="/toArray">
+          <span>toArray</span>
+          <span>Retrieve all the elements contained in the jQuery ...</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li><li>
+        <a href="/unwrap">
+          <span>unwrap</span>
+          <span>A selector to check the parent element against. If...</span>
+        </a>
+      </li><li>
+        <a href="/val">
+          <span>val</span>
+          <span>Get the current value of the first element in the ...</span>
+        </a>
+      </li><li>
+        <a href="/wrap">
+          <span>wrap</span>
+          <span>A selector, element, HTML string, or jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/wrapAll">
+          <span>wrapAll</span>
+          <span>A selector, element, HTML string, or jQuery object...</span>
+        </a>
+      </li><li>
+        <a href="/wrapInner">
+          <span>wrapInner</span>
+          <span>An HTML snippet, selector expression, jQuery objec...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.4.1</div><ul class="entries">
+  <li>
+        <a href="/die">
+          <span>die</span>
+          <span>Remove event handlers previously attached using .l...</span>
+        </a>
+      </li><li>
+        <a href="/height">
+          <span>height</span>
+          <span>Get the current computed height for the first elem...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.error">
+          <span>jQuery.error</span>
+          <span>The message to send out.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.parseJSON">
+          <span>jQuery.parseJSON</span>
+          <span>The JSON string to parse.</span>
+        </a>
+      </li><li>
+        <a href="/width">
+          <span>width</span>
+          <span>Get the current computed width for the first eleme...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.4.2</div><ul class="entries">
+  <li>
+        <a href="/delegate">
+          <span>delegate</span>
+          <span>Attach a handler to one or more events for all ele...</span>
+        </a>
+      </li><li>
+        <a href="/undelegate">
+          <span>undelegate</span>
+          <span>Remove a handler from the event for all elements w...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.4.3</div><ul class="entries">
+  <li>
+        <a href="/bind">
+          <span>bind</span>
+          <span>A string containing one or more DOM event types, s...</span>
+        </a>
+      </li><li>
+        <a href="/blur">
+          <span>blur</span>
+          <span>Bind an event handler to the &quot;blur&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/change">
+          <span>change</span>
+          <span>Bind an event handler to the &quot;change&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/click">
+          <span>click</span>
+          <span>Bind an event handler to the &quot;click&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/contextmenu">
+          <span>contextmenu</span>
+          <span>Bind an event handler to the &quot;contextmenu&quot; JavaScr...</span>
+        </a>
+      </li><li>
+        <a href="/data">
+          <span>data</span>
+          <span>Store arbitrary data associated with the matched e...</span>
+        </a>
+      </li><li>
+        <a href="/dblclick">
+          <span>dblclick</span>
+          <span>Bind an event handler to the &quot;dblclick&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/delegate">
+          <span>delegate</span>
+          <span>Attach a handler to one or more events for all ele...</span>
+        </a>
+      </li><li>
+        <a href="/die">
+          <span>die</span>
+          <span>Remove event handlers previously attached using .l...</span>
+        </a>
+      </li><li>
+        <a href="/error">
+          <span>error</span>
+          <span>Bind an event handler to the &quot;error&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/event.namespace">
+          <span>event.namespace</span>
+          <span>The namespace specified when the event was trigger...</span>
+        </a>
+      </li><li>
+        <a href="/fadeIn">
+          <span>fadeIn</span>
+          <span>Display the matched elements by fading them to opa...</span>
+        </a>
+      </li><li>
+        <a href="/fadeOut">
+          <span>fadeOut</span>
+          <span>Hide the matched elements by fading them to transp...</span>
+        </a>
+      </li><li>
+        <a href="/fadeTo">
+          <span>fadeTo</span>
+          <span>Adjust the opacity of the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/focus">
+          <span>focus</span>
+          <span>Bind an event handler to the &quot;focus&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/focusin">
+          <span>focusin</span>
+          <span>Bind an event handler to the &quot;focusin&quot; event.</span>
+        </a>
+      </li><li>
+        <a href="/focusout">
+          <span>focusout</span>
+          <span>Bind an event handler to the &quot;focusout&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/hide">
+          <span>hide</span>
+          <span>Hide the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.cssHooks">
+          <span>jQuery.cssHooks</span>
+          <span>Hook directly into jQuery to override how particul...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.cssNumber">
+          <span>jQuery.cssNumber</span>
+          <span>An object containing all CSS properties that may b...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.data">
+          <span>jQuery.data</span>
+          <span>Store arbitrary data associated with the specified...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.fx.interval">
+          <span>jQuery.fx.interval</span>
+          <span>The rate (in milliseconds) at which animations fir...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isWindow">
+          <span>jQuery.isWindow</span>
+          <span>Object to test whether or not it is a window.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.now">
+          <span>jQuery.now</span>
+          <span>Return a number representing the current time.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.type">
+          <span>jQuery.type</span>
+          <span>Object to get the internal JavaScript [[Class]] of...</span>
+        </a>
+      </li><li>
+        <a href="/keydown">
+          <span>keydown</span>
+          <span>A function to execute each time the event is trigg...</span>
+        </a>
+      </li><li>
+        <a href="/keypress">
+          <span>keypress</span>
+          <span>Bind an event handler to the &quot;keypress&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/keyup">
+          <span>keyup</span>
+          <span>Bind an event handler to the &quot;keyup&quot; JavaScript ev...</span>
+        </a>
+      </li><li>
+        <a href="/load-event">
+          <span>load</span>
+          <span>Bind an event handler to the &quot;load&quot; JavaScript eve...</span>
+        </a>
+      </li><li>
+        <a href="/mousedown">
+          <span>mousedown</span>
+          <span>Bind an event handler to the &quot;mousedown&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseenter">
+          <span>mouseenter</span>
+          <span>Bind an event handler to be fired when the mouse e...</span>
+        </a>
+      </li><li>
+        <a href="/mouseleave">
+          <span>mouseleave</span>
+          <span>Bind an event handler to be fired when the mouse l...</span>
+        </a>
+      </li><li>
+        <a href="/mousemove">
+          <span>mousemove</span>
+          <span>Bind an event handler to the &quot;mousemove&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseout">
+          <span>mouseout</span>
+          <span>Bind an event handler to the &quot;mouseout&quot; JavaScript...</span>
+        </a>
+      </li><li>
+        <a href="/mouseover">
+          <span>mouseover</span>
+          <span>Bind an event handler to the &quot;mouseover&quot; JavaScrip...</span>
+        </a>
+      </li><li>
+        <a href="/mouseup">
+          <span>mouseup</span>
+          <span>Bind an event handler to the &quot;mouseup&quot; JavaScript ...</span>
+        </a>
+      </li><li>
+        <a href="/resize">
+          <span>resize</span>
+          <span>Bind an event handler to the &quot;resize&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/scroll">
+          <span>scroll</span>
+          <span>Bind an event handler to the &quot;scroll&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/select">
+          <span>select</span>
+          <span>Bind an event handler to the &quot;select&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/show">
+          <span>show</span>
+          <span>Display the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/slideDown">
+          <span>slideDown</span>
+          <span>Display the matched elements with a sliding motion...</span>
+        </a>
+      </li><li>
+        <a href="/slideToggle">
+          <span>slideToggle</span>
+          <span>Display or hide the matched elements with a slidin...</span>
+        </a>
+      </li><li>
+        <a href="/slideUp">
+          <span>slideUp</span>
+          <span>Hide the matched elements with a sliding motion.</span>
+        </a>
+      </li><li>
+        <a href="/submit">
+          <span>submit</span>
+          <span>Bind an event handler to the &quot;submit&quot; JavaScript e...</span>
+        </a>
+      </li><li>
+        <a href="/toggle">
+          <span>toggle</span>
+          <span>Display or hide the matched elements.</span>
+        </a>
+      </li><li>
+        <a href="/unbind">
+          <span>unbind</span>
+          <span>Remove a previously-attached event handler from th...</span>
+        </a>
+      </li><li>
+        <a href="/undelegate">
+          <span>undelegate</span>
+          <span>Remove a handler from the event for all elements w...</span>
+        </a>
+      </li><li>
+        <a href="/unload">
+          <span>unload</span>
+          <span>A function to execute when the event is triggered.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.4.4</div><ul class="entries">
+  <li>
+        <a href="/fadeToggle">
+          <span>fadeToggle</span>
+          <span>Display or hide the matched elements by animating ...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.5</div><ul class="entries">
+  <li>
+        <a href="/clone">
+          <span>clone</span>
+          <span>A Boolean indicating whether event handlers should...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.done">
+          <span>deferred.done</span>
+          <span>A function, or array of functions, that are called...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.fail">
+          <span>deferred.fail</span>
+          <span>A function, or array of functions, that are called...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.isRejected">
+          <span>deferred.isRejected</span>
+          <span>Determine whether a Deferred object has been rejec...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.isResolved">
+          <span>deferred.isResolved</span>
+          <span>Determine whether a Deferred object has been resol...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.promise">
+          <span>deferred.promise</span>
+          <span>Object onto which the promise methods have to be a...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.reject">
+          <span>deferred.reject</span>
+          <span>Optional arguments that are passed to the failCall...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.rejectWith">
+          <span>deferred.rejectWith</span>
+          <span>Context passed to the failCallbacks as the this ob...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.resolve">
+          <span>deferred.resolve</span>
+          <span>Optional arguments that are passed to the doneCall...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.resolveWith">
+          <span>deferred.resolveWith</span>
+          <span>Context passed to the doneCallbacks as the this ob...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.then">
+          <span>deferred.then</span>
+          <span>A function that is called when the Deferred is res...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.Deferred">
+          <span>jQuery.Deferred</span>
+          <span>A function that is called just before the construc...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajax">
+          <span>jQuery.ajax</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajaxPrefilter">
+          <span>jQuery.ajaxPrefilter</span>
+          <span>Handle custom Ajax options or modify existing opti...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajaxTransport">
+          <span>jQuery.ajaxTransport</span>
+          <span>Creates an object that handles the actual transmis...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.get">
+          <span>jQuery.get</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.getJSON">
+          <span>jQuery.getJSON</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.getScript">
+          <span>jQuery.getScript</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.hasData">
+          <span>jQuery.hasData</span>
+          <span>A DOM element to be checked for data.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.parseXML">
+          <span>jQuery.parseXML</span>
+          <span>Parses a string into an XML document.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.post">
+          <span>jQuery.post</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.sub">
+          <span>jQuery.sub</span>
+          <span>Creates a new copy of jQuery whose properties and ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.when">
+          <span>jQuery.when</span>
+          <span>Zero or more Thenable objects.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.5.1</div><ul class="entries">
+  <li>
+        <a href="/jQuery.ajax">
+          <span>jQuery.ajax</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.support">
+          <span>jQuery.support</span>
+          <span>A collection of properties that represent the pres...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.6</div><ul class="entries">
+  <li>
+        <a href="/attr">
+          <span>attr</span>
+          <span>Get the value of an attribute for the first elemen...</span>
+        </a>
+      </li><li>
+        <a href="/closest">
+          <span>closest</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.always">
+          <span>deferred.always</span>
+          <span>A function, or array of functions, that is called ...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.pipe">
+          <span>deferred.pipe</span>
+          <span>An optional function that is called when the Defer...</span>
+        </a>
+      </li><li>
+        <a href="/find">
+          <span>find</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/focus-selector">
+          <span>focus</span>
+          <span>Selects element if it is currently focused.</span>
+        </a>
+      </li><li>
+        <a href="/is">
+          <span>is</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.holdReady">
+          <span>jQuery.holdReady</span>
+          <span>Holds or releases the execution of jQuery&#39;s ready ...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.map">
+          <span>jQuery.map</span>
+          <span>The Array or an Array-like object to translate.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.proxy">
+          <span>jQuery.proxy</span>
+          <span>The function whose context will be changed.</span>
+        </a>
+      </li><li>
+        <a href="/nextUntil">
+          <span>nextUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/parentsUntil">
+          <span>parentsUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/prevUntil">
+          <span>prevUntil</span>
+          <span>A string containing a selector expression to indic...</span>
+        </a>
+      </li><li>
+        <a href="/promise">
+          <span>promise</span>
+          <span>The type of queue that needs to be observed.</span>
+        </a>
+      </li><li>
+        <a href="/prop">
+          <span>prop</span>
+          <span>Get the value of a property for the first element ...</span>
+        </a>
+      </li><li>
+        <a href="/removeProp">
+          <span>removeProp</span>
+          <span>The name of the property to remove.</span>
+        </a>
+      </li><li>
+        <a href="/undelegate">
+          <span>undelegate</span>
+          <span>Remove a handler from the event for all elements w...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.7</div><ul class="entries">
+  <li>
+        <a href="/callbacks.add">
+          <span>callbacks.add</span>
+          <span>A function, or array of functions, that are to be ...</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.disable">
+          <span>callbacks.disable</span>
+          <span>Disable a callback list from doing anything more.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.disabled">
+          <span>callbacks.disabled</span>
+          <span>Determine if the callbacks list has been disabled.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.empty">
+          <span>callbacks.empty</span>
+          <span>Remove all of the callbacks from a list.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.fire">
+          <span>callbacks.fire</span>
+          <span>The argument or list of arguments to pass back to ...</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.fireWith">
+          <span>callbacks.fireWith</span>
+          <span>A reference to the context in which the callbacks ...</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.fired">
+          <span>callbacks.fired</span>
+          <span>Determine if the callbacks have already been calle...</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.has">
+          <span>callbacks.has</span>
+          <span>The callback to search for.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.lock">
+          <span>callbacks.lock</span>
+          <span>Lock a callback list in its current state.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.locked">
+          <span>callbacks.locked</span>
+          <span>Determine if the callbacks list has been locked.</span>
+        </a>
+      </li><li>
+        <a href="/callbacks.remove">
+          <span>callbacks.remove</span>
+          <span>A function, or array of functions, that are to be ...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.notify">
+          <span>deferred.notify</span>
+          <span>Optional arguments that are passed to the progress...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.notifyWith">
+          <span>deferred.notifyWith</span>
+          <span>Context passed to the progressCallbacks as the thi...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.pipe">
+          <span>deferred.pipe</span>
+          <span>An optional function that is called when the Defer...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.progress">
+          <span>deferred.progress</span>
+          <span>A function, or array of functions, to be called wh...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.state">
+          <span>deferred.state</span>
+          <span>Determine the current state of a Deferred object.</span>
+        </a>
+      </li><li>
+        <a href="/deferred.then">
+          <span>deferred.then</span>
+          <span>A function that is called when the Deferred is res...</span>
+        </a>
+      </li><li>
+        <a href="/event.delegateTarget">
+          <span>event.delegateTarget</span>
+          <span>The element where the currently-called jQuery even...</span>
+        </a>
+      </li><li>
+        <a href="/is">
+          <span>is</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.Callbacks">
+          <span>jQuery.Callbacks</span>
+          <span>An optional list of space-separated flags that cha...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.isNumeric">
+          <span>jQuery.isNumeric</span>
+          <span>Determines whether its argument represents a JavaS...</span>
+        </a>
+      </li><li>
+        <a href="/off">
+          <span>off</span>
+          <span>Remove an event handler.</span>
+        </a>
+      </li><li>
+        <a href="/on">
+          <span>on</span>
+          <span>Attach an event handler function for one or more e...</span>
+        </a>
+      </li><li>
+        <a href="/removeAttr">
+          <span>removeAttr</span>
+          <span>An attribute to remove; as of version 1.7, it can ...</span>
+        </a>
+      </li><li>
+        <a href="/removeData">
+          <span>removeData</span>
+          <span>A string naming the piece of data to delete.</span>
+        </a>
+      </li><li>
+        <a href="/stop">
+          <span>stop</span>
+          <span>Stop the currently-running animation on the matche...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.8</div><ul class="entries">
+  <li>
+        <a href="/addBack">
+          <span>addBack</span>
+          <span>A string containing a selector expression to match...</span>
+        </a>
+      </li><li>
+        <a href="/deferred.pipe">
+          <span>deferred.pipe</span>
+          <span>An optional function that is called when the Defer...</span>
+        </a>
+      </li><li>
+        <a href="/eq-selector">
+          <span>eq</span>
+          <span>Zero-based index of the element to match.</span>
+        </a>
+      </li><li>
+        <a href="/innerHeight">
+          <span>innerHeight</span>
+          <span>Get the current computed inner height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/innerWidth">
+          <span>innerWidth</span>
+          <span>Get the current computed inner width (including pa...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.parseHTML">
+          <span>jQuery.parseHTML</span>
+          <span>Parses a string into an array of DOM nodes.</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ready">
+          <span>jQuery.ready</span>
+          <span>A Promise-like object (or &quot;thenable&quot;) that resolve...</span>
+        </a>
+      </li><li>
+        <a href="/outerHeight">
+          <span>outerHeight</span>
+          <span>Get the current computed outer height (including p...</span>
+        </a>
+      </li><li>
+        <a href="/outerWidth">
+          <span>outerWidth</span>
+          <span>Get the current computed outer width (including pa...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.9</div><ul class="entries">
+  <li>
+        <a href="/css">
+          <span>css</span>
+          <span>Get the value of a computed style property for the...</span>
+        </a>
+      </li><li>
+        <a href="/finish">
+          <span>finish</span>
+          <span>Stop the currently-running animation, remove all q...</span>
+        </a>
+      </li><li>
+        <a href="/first-of-type-selector">
+          <span>first-of-type</span>
+          <span>Selects all elements that are the first among sibl...</span>
+        </a>
+      </li><li>
+        <a href="/lang-selector">
+          <span>lang</span>
+          <span>A language code.</span>
+        </a>
+      </li><li>
+        <a href="/last-of-type-selector">
+          <span>last-of-type</span>
+          <span>Selects all elements that are the last among sibli...</span>
+        </a>
+      </li><li>
+        <a href="/nth-last-child-selector">
+          <span>nth-last-child</span>
+          <span>The index of each child to match, starting with th...</span>
+        </a>
+      </li><li>
+        <a href="/nth-last-of-type-selector">
+          <span>nth-last-of-type</span>
+          <span>The index of each child to match, starting with th...</span>
+        </a>
+      </li><li>
+        <a href="/nth-of-type-selector">
+          <span>nth-of-type</span>
+          <span>The index of each child to match, starting with 1,...</span>
+        </a>
+      </li><li>
+        <a href="/only-of-type-selector">
+          <span>only-of-type</span>
+          <span>Selects all elements that have no siblings with th...</span>
+        </a>
+      </li><li>
+        <a href="/root-selector">
+          <span>root</span>
+          <span>Selects the element that is the root of the docume...</span>
+        </a>
+      </li><li>
+        <a href="/target-selector">
+          <span>target</span>
+          <span>Selects the target element indicated by the fragme...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 1.12 &amp; 2.2</div><ul class="entries">
+  <li>
+        <a href="/addClass">
+          <span>addClass</span>
+          <span>One or more space-separated classes to be added to...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.get">
+          <span>jQuery.get</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.post">
+          <span>jQuery.post</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.uniqueSort">
+          <span>jQuery.uniqueSort</span>
+          <span>The Array or an Array-like object of DOM elements.</span>
+        </a>
+      </li><li>
+        <a href="/removeClass">
+          <span>removeClass</span>
+          <span>Remove a single class, multiple classes, or all cl...</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 3.0</div><ul class="entries">
+  <li>
+        <a href="/deferred.catch">
+          <span>deferred.catch</span>
+          <span>A function that is called when the Deferred is rej...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.escapeSelector">
+          <span>jQuery.escapeSelector</span>
+          <span>Escapes any character that has a special meaning i...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 3.1</div><ul class="entries">
+  <li>
+        <a href="/jQuery.readyException">
+          <span>jQuery.readyException</span>
+          <span>Handles errors thrown synchronously in functions w...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 3.2</div><ul class="entries">
+  <li>
+        <a href="/contents">
+          <span>contents</span>
+          <span>Get the children of each element in the set of mat...</span>
+        </a>
+      </li><li>
+        <a href="/css">
+          <span>css</span>
+          <span>Get the value of a computed style property for the...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 3.3</div><ul class="entries">
+  <li>
+        <a href="/addClass">
+          <span>addClass</span>
+          <span>One or more space-separated classes to be added to...</span>
+        </a>
+      </li><li>
+        <a href="/removeClass">
+          <span>removeClass</span>
+          <span>Remove a single class, multiple classes, or all cl...</span>
+        </a>
+      </li><li>
+        <a href="/toggleClass">
+          <span>toggleClass</span>
+          <span>One or more classes (separated by spaces) to be to...</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 3.4</div><ul class="entries">
+  <li>
+        <a href="/jQuery.extend">
+          <span>jQuery.extend</span>
+          <span>An object that will receive the new properties.</span>
+        </a>
+      </li>
+</ul>
+
+<div class="category">Version 3.5</div><ul class="entries">
+  <li>
+        <a href="/even">
+          <span>even</span>
+          <span>Reduce the set of matched elements to the even one...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.ajax">
+          <span>jQuery.ajax</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.getScript">
+          <span>jQuery.getScript</span>
+          <span>A string containing the URL to which the request i...</span>
+        </a>
+      </li><li>
+        <a href="/jQuery.htmlPrefilter">
+          <span>jQuery.htmlPrefilter</span>
+          <span>Modify and filter HTML strings passed through jQue...</span>
+        </a>
+      </li><li>
+        <a href="/odd">
+          <span>odd</span>
+          <span>Reduce the set of matched elements to the odd ones...</span>
+        </a>
+      </li>
+</ul>
+
+
+          </div>
+</nav>
+
+
+      </div>
+
+      <div id="content">
+        <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.live()</h1>
+      <h2 class="subtitle is-5">Attach an event handler for all elements which match the current selector, now and in the future.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .live(events, handler)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    events
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  A string containing a JavaScript event type, such as "click" or "keydown." As of jQuery 1.4 the string can contain multiple, space-separated event types or custom event names.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    handler
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A function to execute at the time the event is triggered.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .live(events, data, handler)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    events
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  A string containing a JavaScript event type, such as "click" or "keydown." As of jQuery 1.4 the string can contain multiple, space-separated event types or custom event names.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    data
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  An object containing data that will be passed to the event handler.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    handler
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A function to execute at the time the event is triggered.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .live(events)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    events
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  A plain object of one or more JavaScript event types and functions to execute for them.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <div class="warning">
+      <p>Note: This API has been removed in jQuery 1.9; please use <a href="/on/"><code>on()</code></a> instead.</p>
+    </div>
+    <p>This method provides a means to attach delegated event handlers to the <code>document</code> element of a page, which simplifies the use of event handlers when content is dynamically added to a page. See the discussion of direct versus delegated events in the <a href="/on/"><code>.on()</code></a> method for more information. </p>
+    <p>Rewriting the <code>.live()</code> method in terms of its successors is straightforward; these are templates for equivalent calls for all three event attachment methods:</p>
+    <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span>selector<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">live</span><span class="token punctuation">(</span>events<span class="token punctuation">,</span> data<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// jQuery 1.3+</span>
+<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">delegate</span><span class="token punctuation">(</span>selector<span class="token punctuation">,</span> events<span class="token punctuation">,</span> data<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// jQuery 1.4.3+</span>
+<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span>events<span class="token punctuation">,</span> selector<span class="token punctuation">,</span> data<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// jQuery 1.7+</span>
+</code></pre>
+    <p>The <code>events</code> argument can either be a space-separated list of event type names and optional namespaces, or an object of event name strings and handlers. The <code>data</code> argument is optional and can be omitted. For example, the following three method calls are functionally equivalent (but see below for more effective and performant ways to attach delegated event handlers):</p>
+    <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"a.offsite"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">live</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Goodbye!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// jQuery 1.3+</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">delegate</span><span class="token punctuation">(</span><span class="token string">"a.offsite"</span><span class="token punctuation">,</span> <span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Goodbye!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// jQuery 1.4.3+</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token string">"a.offsite"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Goodbye!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// jQuery 1.7+</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>Use of the <code>.live()</code> method is no longer recommended since later versions of jQuery offer better methods that do not have its drawbacks. In particular, the following issues arise with the use of <code>.live()</code>:</p>
+    <ul>
+      <li>jQuery attempts to retrieve the elements specified by the selector before calling the <code>.live()</code> method, which may be time-consuming on large documents.</li>
+      <li>Chaining methods is not supported. For example, <code>$( "a" ).find( ".offsite, .external" ).live( ... ); </code> is <em>not</em> valid and does not work as expected.</li>
+      <li>Since all <code>.live()</code> events are attached at the <code>document</code> element, events take the longest and slowest possible path before they are handled.</li>
+      <li>On mobile iOS (iPhone, iPad and iPod Touch) the <code>click</code> event does not bubble to the document body for most elements and cannot be used with <code>.live()</code> without applying one of the following workarounds:
+        <ol>
+          <li>Use natively clickable elements such as <code>a</code> or <code>button</code>, as both of these do bubble to <code>document</code>.</li>
+          <li>Use <code>.on()</code> or <code>.delegate()</code> attached to an element below the level of <code>document.body</code>, since mobile iOS does bubble within the body.</li>
+          <li>Apply the CSS style <code>cursor:pointer</code> to the element that needs to bubble clicks (or a parent including <code>document.documentElement</code>). Note however, this will disable copy\paste on the element and cause it to be highlighted when touched.</li>
+        </ol>
+      </li>
+      <li>Calling <a href="/event.stopPropagation/"><code>event.stopPropagation()</code></a> in the event handler is ineffective in stopping event handlers attached lower in the document; the event has already propagated to <code>document</code>.</li>
+      <li>The <code>.live()</code> method interacts with other event methods in ways that can be surprising, e.g., <code>$( document ).off( "click" )</code> removes all click handlers attached by any call to <code>.live()</code>!</li>
+    </ul>
+    <p>For pages still using <code>.live()</code>, this list of version-specific differences may be helpful:</p>
+    <ul>
+      <li>Before jQuery 1.7, to stop further handlers from executing after one bound using <code>.live()</code>, the handler must return <code>false</code>. Calling <code>.stopPropagation()</code> will not accomplish this.</li>
+      <li>As of <b>jQuery 1.4</b> the <code>.live()</code> method supports custom events as well as <em>all JavaScript events that bubble</em>. It also supports certain events that don't bubble, including <code>change</code>, <code>submit</code>, <code>focus</code> and <code>blur</code>.</li>
+      <li>In <b>jQuery 1.3.x</b> only the following JavaScript events could be bound: <code>click</code>, <code>dblclick</code>, <code>keydown</code>, <code>keypress</code>, <code>keyup</code>, <code>mousedown</code>, <code>mousemove</code>, <code>mouseout</code>, <code>mouseover</code>, and <code>mouseup</code>.</li>
+    </ul>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">live</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;a&#34; ).live( &#34;click&#34;, function() {return false;});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">live</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;a&#34; ).live( &#34;click&#34;, function( event ) {event.preventDefault();});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">live</span><span class="token punctuation">(</span><span class="token string">"myCustomEvent"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> myName<span class="token punctuation">,</span> myValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"Hi there!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"opacity"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"myName = "</span> <span class="token operator">+</span> myName<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">fadeOut</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token string">"myCustomEvent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;p&#34; ).live( &#34;myCustomEvent&#34;, function( event, myName, myValue ) {$( this ).text( &#34;Hi there!&#34; );$( &#34;span&#34; ).stop().css( &#34;opacity&#34;, 1 ).text( &#34;myName = &#34; + myName ).fadeIn( 30 ).fadeOut( 1000 );});$( &#34;button&#34; ).click(function() {$( &#34;p&#34; ).trigger( &#34;myCustomEvent&#34; );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">live</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">click</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">after</span><span class="token punctuation">(</span><span class="token string">"&lt;p>Another paragraph!&lt;/p>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">mouseover</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"over"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">mouseout</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">"over"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;p&#34; ).live({click: function() {$( this ).after( &#34;<p>Another paragraph!</p>&#34; );},mouseover: function() {$( this ).addClass( &#34;over&#34; );},mouseout: function() {$( this ).removeClass( &#34;over&#34; );}});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    
+  </body>
+</html>

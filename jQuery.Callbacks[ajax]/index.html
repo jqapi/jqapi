@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.Callbacks()</h1>
+      <h2 class="subtitle is-5">A multi-purpose callbacks list object that provides a powerful way to manage callback lists.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.Callbacks(flags)<span class="return">&#129122; Callbacks</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    flags
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  An optional list of space-separated flags that change how the callback list behaves.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>$.Callbacks()</code> function is internally used to provide the base functionality behind the jQuery <code>$.ajax()</code> and <code>$.Deferred()</code> components. It can be used as a similar base to define functionality for new components.</p>
+    <p><code>$.Callbacks()</code> supports a number of methods including <code><a href="/callbacks.add/">callbacks.add()</a></code>,<code><a href="/callbacks.remove/">callbacks.remove()</a></code>, <code><a href="/callbacks.fire/">callbacks.fire()</a></code> and <code><a href="/callbacks.disable/">callbacks.disable()</a></code>.</p>
+    <h3 id="getting-started">Getting started</h3>
+    <p>The following are two sample methods named <code>fn1</code> and <code>fn2</code>:</p>
+    <pre class="language-css"><code><span class="token selector">function fn1( value )</span> <span class="token punctuation">{</span>
+  console.<span class="token function">log</span><span class="token punctuation">(</span> value <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">function fn2( value )</span> <span class="token punctuation">{</span>
+  console.<span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">"fn2 says: "</span> + value <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  return false<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+    <p>These can be added as callbacks to a <code>$.Callbacks</code> list and invoked as follows:</p>
+    <pre class="language-javascript"><code><span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Outputs: foo!</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foo!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Outputs: bar!, fn2 says: bar!</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"bar!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>The result of this is that it becomes simple to construct complex lists of callbacks where input values can be passed through to as many functions as needed with ease.</p>
+    <p>Two specific methods were being used above: <code>.add()</code> and <code>.fire()</code>. The <code>.add()</code> method supports adding new callbacks to the callback list, while the <code>.fire()</code> method executes the added functions and provides a way to pass arguments to be processed by the callbacks in the same list.</p>
+    <p>Another method supported by <code>$.Callbacks</code> is <code>.remove()</code>, which has the ability to remove a particular callback from the callback list. Here's a practical example of <code>.remove()</code> being used:</p>
+    <pre class="language-javascript"><code><span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Outputs: foo!</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foo!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Outputs: bar!, fn2 says: bar!</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"bar!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+callbacks<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Only outputs foobar, as fn2 has been removed.</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <h3 id="supported-flags">Supported Flags</h3>
+    <p>The <code>flags</code> argument is an optional argument to <code>$.Callbacks()</code>, structured as a list of space-separated strings that change how the callback list behaves (eg. <code>$.Callbacks( "unique stopOnFalse" )</code>).</p>
+    <h2>Possible flags:</h2>
+    <ul>
+      <li><code>once</code>: Ensures the callback list can only be fired once (like a Deferred).</li>
+      <li><code>memory</code>: Keeps track of previous values and will call any callback added after the list has been fired right away with the latest "memorized" values (like a Deferred).</li>
+      <li><code>unique</code>: Ensures a callback can only be added once (so there are no duplicates in the list).</li>
+      <li><code>stopOnFalse</code>: Interrupts callings when a callback returns false.</li>
+    </ul>
+    <p>By default a callback list will act like an event callback list and can be "fired" multiple times.</p>
+    <p>For examples of how <code>flags</code> should ideally be used, see below:</p>
+    <h2 id="once"><code>$.Callbacks( "once" )</code>:</h2>
+    <pre class="language-javascript"><code><span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token string">"once"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+output:
+foo
+*/</span>
+</code></pre>
+    <h2 id="memory"><code>$.Callbacks( "memory" )</code>:</h2>
+    <pre class="language-javascript"><code><span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token string">"memory"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+output:
+foo
+fn2 says:foo
+bar
+fn2 says:bar
+foobar
+*/</span>
+</code></pre>
+    <h2 id="unique"><code>$.Callbacks( "unique" )</code>:</h2>
+    <pre class="language-javascript"><code><span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token string">"unique"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Repeat addition</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+output:
+foo
+bar
+fn2 says:bar
+foobar
+*/</span>
+</code></pre>
+    <h2 id="stopOnFalse"><code>$.Callbacks( "stopOnFalse" )</code>:</h2>
+    <pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">fn1</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">fn2</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">fn1</span><span class="token punctuation">(</span><span class="token string">"fn2 says: "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token string">"stopOnFalse"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+output:
+foo
+bar
+foobar
+*/</span>
+</code></pre>
+    <p>Because <code>$.Callbacks()</code> supports a list of flags rather than just one, setting several flags has a cumulative effect similar to "&amp;&amp;". This means it's possible to combine flags to create callback lists that, say, both are <i>unique</i> and <i>ensure if list was already fired, adding more callbacks will have it called with the latest fired value</i> (i.e. <code>$.Callbacks("unique memory")</code>).</p>
+    <h2 id="unique-memory"><code>$.Callbacks( 'unique memory' )</code>:</h2>
+    <pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">fn1</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">fn2</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">fn1</span><span class="token punctuation">(</span><span class="token string">"fn2 says: "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token string">"unique memory"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Repeat addition</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"baz"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+output:
+foo
+fn2 says:foo
+bar
+fn2 says:bar
+baz
+fn2 says:baz
+foobar
+*/</span>
+</code></pre>
+    <p>Flag combinations with <code>$.Callbacks()</code> are internally in jQuery for the <code>.done()</code> and <code>.fail()</code> functions on a Deferred — both of which use <code>$.Callbacks('memory once')</code>.</p>
+    <p>The methods of <code>$.Callbacks</code> can also be detached, should there be a need to define short-hand versions for convenience:</p>
+    <pre class="language-javascript"><code><span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  add <span class="token operator">=</span> callbacks<span class="token punctuation">.</span>add<span class="token punctuation">,</span>
+  remove <span class="token operator">=</span> callbacks<span class="token punctuation">.</span>remove<span class="token punctuation">,</span>
+  fire <span class="token operator">=</span> callbacks<span class="token punctuation">.</span>fire<span class="token punctuation">;</span>
+
+<span class="token function">add</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">remove</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <h3 id="pubsub">$.Callbacks, $.Deferred and Pub/Sub</h3>
+    <p>The general idea behind pub/sub (Publish/Subscribe, or, the Observer pattern) is the promotion of loose coupling in applications. Rather than single objects calling on the methods of other objects, an object instead subscribes to a specific task or activity of another object and is notified when it occurs. Observers are also called Subscribers, and we refer to the object being observed as the Publisher (or the subject). Publishers notify subscribers when events occur.</p>
+    <p>To demonstrate the component-creation capabilities of <code>$.Callbacks()</code>, it's possible to implement a Pub/Sub system using only callback lists. Using <code>$.Callbacks</code> as a topics queue, a system for publishing and subscribing to topics can be implemented as follows:</p>
+    <pre class="language-javascript"><code><span class="token keyword">var</span> topics <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+jQuery<span class="token punctuation">.</span><span class="token function-variable function">Topic</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">id</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> callbacks<span class="token punctuation">,</span> method<span class="token punctuation">,</span>
+    topic <span class="token operator">=</span> id <span class="token operator">&amp;</span>amp<span class="token punctuation">;</span><span class="token operator">&amp;</span>amp<span class="token punctuation">;</span> topics<span class="token punctuation">[</span> id <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span>topic <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    callbacks <span class="token operator">=</span> jQuery<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    topic <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">publish</span><span class="token operator">:</span> callbacks<span class="token punctuation">.</span>fire<span class="token punctuation">,</span>
+      <span class="token literal-property property">subscribe</span><span class="token operator">:</span> callbacks<span class="token punctuation">.</span>add<span class="token punctuation">,</span>
+      <span class="token literal-property property">unsubscribe</span><span class="token operator">:</span> callbacks<span class="token punctuation">.</span>remove
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> id <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      topics<span class="token punctuation">[</span> id <span class="token punctuation">]</span> <span class="token operator">=</span> topic<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> topic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+    <p>This can then be used by parts of your application to publish and subscribe to events of interest quite easily:</p>
+    <pre class="language-javascript"><code><span class="token comment">// Subscribers</span>
+$<span class="token punctuation">.</span><span class="token function">Topic</span><span class="token punctuation">(</span><span class="token string">"mailArrived"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">Topic</span><span class="token punctuation">(</span><span class="token string">"mailArrived"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">Topic</span><span class="token punctuation">(</span><span class="token string">"mailSent"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Publisher</span>
+$<span class="token punctuation">.</span><span class="token function">Topic</span><span class="token punctuation">(</span><span class="token string">"mailArrived"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">Topic</span><span class="token punctuation">(</span><span class="token string">"mailSent"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span><span class="token string">"woo! mail!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Here, "hello world!" gets pushed to fn1 and fn2</span>
+<span class="token comment">// when the "mailArrived" notification is published</span>
+<span class="token comment">// with "woo! mail!" also being pushed to fn1 when</span>
+<span class="token comment">// the "mailSent" notification is published.</span>
+
+<span class="token comment">/*
+output:
+hello world!
+fn2 says: hello world!
+woo! mail!
+*/</span>
+</code></pre>
+    <p>While this is useful, the implementation can be taken further. Using <code>$.Deferreds</code>,  it's possible to ensure publishers only publish notifications for subscribers once particular tasks have been completed (resolved). See the below code sample for some further comments on how this could be used in practice:</p>
+    <pre class="language-javascript"><code><span class="token comment">// Subscribe to the mailArrived notification</span>
+$<span class="token punctuation">.</span><span class="token function">Topic</span><span class="token punctuation">(</span><span class="token string">"mailArrived"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Create a new instance of Deferreds</span>
+<span class="token keyword">var</span> dfd <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Deferred</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Define a new topic (without directly publishing)</span>
+<span class="token keyword">var</span> topic <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Topic</span><span class="token punctuation">(</span><span class="token string">"mailArrived"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// When the deferred has been resolved, publish a</span>
+<span class="token comment">// notification to subscribers</span>
+dfd<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span>topic<span class="token punctuation">.</span>publish<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Here the Deferred is being resolved with a message</span>
+<span class="token comment">// that will be passed back to subscribers. It's possible to</span>
+<span class="token comment">// easily integrate this into a more complex routine</span>
+<span class="token comment">// (eg. waiting on an Ajax call to complete) so that</span>
+<span class="token comment">// messages are only published once the task has actually</span>
+<span class="token comment">// finished.</span>
+dfd<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"it's been published!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

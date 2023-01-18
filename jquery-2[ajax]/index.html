@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.jquery</h1>
+      <h2 class="subtitle is-5">A string containing the jQuery version number.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .jquery()<span class="return">&#129122; String</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>.jquery</code> property is assigned to the jQuery prototype, commonly referred to by its alias <code>$.fn</code>. It is a string containing the version number of <code>jQuery</code>, such as "1.5.0" or "1.4.4".</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">what</span><span class="token operator">:</span> <span class="token string">"A regular JS object"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  b <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">.</span>jquery<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Falsy, since it's undefined</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"a is a jQuery object!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>b<span class="token punctuation">.</span>jquery<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Truthy, since it's a string</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"b is a jQuery object!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var a = { what: &#34;A regular JS object&#34; },b = $( &#34;body&#34; );if ( a.jquery ) { // Falsy, since it's undefinedalert( &#34;a is a jQuery object!&#34; );}if ( b.jquery ) { // Truthy, since it's a stringalert( &#34;b is a jQuery object!&#34; );}</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"You are running jQuery version: "</span> <span class="token operator">+</span> $<span class="token punctuation">.</span>fn<span class="token punctuation">.</span>jquery<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>alert( &#34;You are running jQuery version: &#34; + $.fn.jquery );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

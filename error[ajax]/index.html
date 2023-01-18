@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.error()</h1>
+      <h2 class="subtitle is-5">Bind an event handler to the &quot;error&quot; JavaScript event.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .error(handler)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    handler
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A function to execute when the event is triggered.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .error(eventData, handler)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    eventData
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  An object containing data that will be passed to the event handler.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    handler
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  A function to execute each time the event is triggered.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <div class="warning">
+      <p>Note: This API has been removed in jQuery 3.0; please use <code>.on( "error", handler )</code> instead of <code>.error( handler )</code> and <code>.trigger( "error" )</code> instead of <code>.error()</code>.</p>
+    </div>
+    <p>The <code>error</code> event is sent to elements, such as images, that are referenced by a document and loaded by the browser. It is called if the element was not loaded correctly.</p>
+    <p>For example, consider a page with a simple image element:</p>
+    <pre class="language-css"><code>&lt;img alt=<span class="token string">"Book"</span> id=<span class="token string">"book"</span>&gt;</code></pre>
+    <p>The event handler can be bound to the image:</p>
+    <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#book"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Handler for .error() called."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"src"</span><span class="token punctuation">,</span> <span class="token string">"missing.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>If the image cannot be loaded (for example, because it is not present at the supplied URL), the alert is displayed:</p>
+    <p>
+      <samp>Handler for .error() called.</samp>
+    </p>
+    <div class="warning">
+      <p>The event handler <em>must</em> be attached before the browser fires the <code>error</code> event, which is why the example sets the <code>src</code> attribute after attaching the handler. Also, the <code>error</code> event may not be correctly fired when the page is served locally; <code>error</code> relies on HTTP status codes and will generally not be triggered if the URL uses the <code>file:</code> protocol.</p>
+    </div>
+    <p>Note: A jQuery <code>error</code> event handler should not be attached to the <code>window</code> object. The browser fires the <code>window</code>'s <code>error</code> event when a script error occurs. However, the window <code>error</code> event receives different arguments and has different return value requirements than conventional event handlers. Use <code>window.onerror</code> instead.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token comment">// If missing.png is missing, it is replaced by replacement.png</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"img"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"src"</span><span class="token punctuation">,</span> <span class="token string">"replacement.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"src"</span><span class="token punctuation">,</span> <span class="token string">"missing.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>// If missing.png is missing, it is replaced by replacement.png$( &#34;img&#34; ).error(function() {$( this ).attr( &#34;src&#34;, &#34;replacement.png&#34; );}).attr( &#34;src&#34;, &#34;missing.png&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery()</h1>
+      <h2 class="subtitle is-5">Accepts a string containing a CSS selector which is then used to match a set of elements.Creates DOM elements on the fly from the provided string of raw HTML.Binds a function to be executed when the DOM has finished loading.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .jQuery(selector, context)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    selector
+                  </code>
+                </td>
+                <td>Selector</td>
+                <td>
+                  A string containing a selector expression
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    context
+                  </code>
+                </td>
+                <td></td>
+                <td>
+                  A DOM Element, Document, jQuery or selector to use as context
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .jQuery(element)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    element
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  A DOM element to wrap in a jQuery object.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .jQuery(elementArray)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    elementArray
+                  </code>
+                </td>
+                <td>Array</td>
+                <td>
+                  An array containing a set of DOM elements to wrap in a jQuery object.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .jQuery(object)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    object
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  A plain object to wrap in a jQuery object.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .jQuery(selection)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    selection
+                  </code>
+                </td>
+                <td>jQuery</td>
+                <td>
+                  An existing jQuery object to clone.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .jQuery()<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table><h4 class="title is-4">
+          .jQuery(html, ownerDocument)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    html
+                  </code>
+                </td>
+                <td>htmlString</td>
+                <td>
+                  A string of HTML to create on the fly. Note that this parses HTML, <strong>not</strong> XML.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    ownerDocument
+                  </code>
+                </td>
+                <td>Document</td>
+                <td>
+                  A document in which the new elements will be created.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .jQuery(html, attributes)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    html
+                  </code>
+                </td>
+                <td>htmlString</td>
+                <td>
+                  A string defining a single, standalone, HTML element (e.g. &lt;div/&gt; or &lt;div&gt;&lt;/div&gt;).
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    attributes
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  An object of attributes, events, and methods to call on the newly-created element.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .jQuery(callback)<span class="return">&#129122; jQuery</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    callback
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  The function to execute when the DOM is ready.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+      <p>In the first formulation listed above,  <code>jQuery()</code> — which can also be written as <code>$()</code> — searches through the DOM for any elements that match the provided selector and creates a new jQuery object that references these elements:</p>
+      <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div.foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+      <p>If no elements match the provided selector, the new jQuery object is "empty"; that is, it contains no elements and has <code><a href="/length/">.length</a></code> property of 0.</p>
+      <h4 id="selector-context">Selector Context</h4>
+      <p>By default, selectors perform their searches within the DOM starting at the document root. However, an alternate context can be given for the search by using the optional second parameter to the <code>$()</code> function. For example, to do a search within an event handler, the search can be restricted like so:</p>
+      <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div.foo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+      <p>When the search for the span selector is restricted to the context of <code>this</code>, only spans within the clicked element will get the additional class.</p>
+      <p>Internally, selector context is implemented with the <code>.find()</code> method, so  <code>$( "span", this )</code> is equivalent to  <code>$( this ).find( "span" )</code>.</p>
+
+      <h4 id="using-dom-elements">Using DOM elements</h4>
+      <p>The second and third formulations of this function create a jQuery object using one or more DOM elements that were already selected in some other way. A jQuery object is created from the array elements in the order they appeared in the array; unlike most other multi-element jQuery operations, the elements are not sorted in DOM order. Elements will be copied from the array as-is and won't be unwrapped if they're already jQuery collections.</p>
+      <p>Please note that although you can pass text nodes and comment nodes into a jQuery collection this way, most operations don't support them. The few that do will have an explicit note on their API documentation page.</p>
+      <p>A common use of single-DOM-element construction is to call jQuery methods on an element that has been passed to a callback function through the keyword <code>this</code>:</p>
+      <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div.foo"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slideUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+      <p>This example causes elements to be hidden with a sliding animation when clicked. Because the handler receives the clicked item in the <code>this</code> keyword as a bare DOM element, the element must be passed to the <code>$()</code> function before applying jQuery methods to it.</p>
+      <p>XML data returned from an Ajax call can be passed to the <code>$()</code> function so individual elements of the XML structure can be retrieved using <code>.find()</code> and other DOM traversal methods.</p>
+      <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"url.xml"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> $child <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"child"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+      <h4 id="cloning-jquery-objects">Cloning jQuery Objects</h4>
+      <p>When a jQuery object is passed to the <code>$()</code> function, a clone of the object is created. This new jQuery object references the same DOM elements as the initial one.</p>
+
+      <h4 id="returning-empty-set">Returning an Empty Set</h4>
+      <p>Calling the <code>jQuery()</code> method with <em>no arguments</em> returns an empty jQuery set (with a <code><a href="/length/">.length</a></code> property of 0). Similarly, if an argument of <code>null</code>, <code>undefined</code>, an empty array (<code>[]</code>), or an empty string (<code>""</code>) is passed, the set contains no elements.</p>
+      <h4 id="working-with-plain-objects">Working With Plain Objects</h4>
+      <p>At present, the only operations supported on plain JavaScript objects wrapped in jQuery are: <code>.data()</code>,<code>.prop()</code>,<code>.on()</code>, <code>.off()</code>, <code>.trigger()</code> and <code>.triggerHandler()</code>. The use of <code>.data()</code> (or any method requiring <code>.data()</code>) on a plain object will result in a new property on the object called jQuery{randomNumber} (eg. jQuery123456789).</p>
+      <pre class="language-javascript"><code><span class="token comment">// Define a plain object</span>
+<span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">"bar"</span><span class="token punctuation">,</span> <span class="token literal-property property">hello</span><span class="token operator">:</span> <span class="token string">"world"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Pass it to the jQuery function</span>
+<span class="token keyword">var</span> $foo <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Test accessing property values</span>
+<span class="token keyword">var</span> test1 <span class="token operator">=</span> $foo<span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// bar</span>
+
+<span class="token comment">// Test setting property values</span>
+$foo<span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"foobar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> test2 <span class="token operator">=</span> $foo<span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// foobar</span>
+
+<span class="token comment">// Test using .data() as summarized above</span>
+$foo<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token string">"keyName"</span><span class="token punctuation">,</span> <span class="token string">"someValue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>$foo<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// will now contain a jQuery{randomNumber} property</span>
+
+<span class="token comment">// Test binding an event name and triggering</span>
+$foo<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"eventName"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"eventName was called"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+$foo<span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token string">"eventName"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Logs "eventName was called"</span>
+</code></pre>
+      <p>Should <code>.trigger( "eventName" )</code> be used, it will search for an "eventName" property on the object and attempt to execute it after any attached jQuery handlers are executed. It does not check whether the property is a function or not. To avoid this behavior, <code>.triggerHandler( "eventName" )</code> should be used instead.</p>
+      <pre class="language-css"><code>$foo.<span class="token function">triggerHandler</span><span class="token punctuation">(</span> <span class="token string">"eventName"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> // Also logs <span class="token string">"eventName was called"</span></code></pre>
+    
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>one<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>two<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>three<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div > p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"border"</span><span class="token punctuation">,</span> <span class="token string">"1px solid gray"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><p>one</p><div><p>two</p></div><p>three</p><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;div > p&#34; ).css( &#34;border&#34;, &#34;1px solid gray&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"input:radio"</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span>forms<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;input:radio&#34;, document.forms[ 0 ] );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">,</span> xml<span class="token punctuation">.</span>responseXML<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;div&#34;, xml.responseXML );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background"</span><span class="token punctuation">,</span> <span class="token string">"black"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( document.body ).css( &#34;background&#34;, &#34;black&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span>myForm<span class="token punctuation">.</span>elements<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( myForm.elements ).hide();</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"&lt;div>&lt;p>Hello&lt;/p>&lt;/div>"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendTo</span><span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;<div><p>Hello</p></div>&#34; ).appendTo( &#34;body&#34; )</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"&lt;div/>"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token keyword">class</span><span class="token operator">:</span> <span class="token string">"test"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">"Click me!"</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">click</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggleClass</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendTo</span><span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;<div/>&#34;, {&#34;class&#34;: &#34;test&#34;,text: &#34;Click me!&#34;,click: function() {$( this ).toggleClass( &#34;test&#34; );}}).appendTo( &#34;body&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Document is ready</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$(function() {// Document is ready});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">jQuery</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Your code using failsafe $ alias here...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>jQuery(function( $ ) {// Your code using failsafe $ alias here...});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

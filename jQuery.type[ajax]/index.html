@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.type()</h1>
+      <h2 class="subtitle is-5">Determine the internal JavaScript [[Class]] of an object.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.type(obj)<span class="return">&#129122; String</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    obj
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  Object to get the internal JavaScript [[Class]] of.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <div class="warning">
+      <p>Note: This API has been deprecated in jQuery 3.3.</p>
+    </div>
+    <p>A number of techniques are used to determine the exact return value for an object. The [[Class]] is determined as follows:</p>
+    <ul>
+      <li>If the object is undefined or null, then "undefined" or "null" is returned accordingly.
+        <ul>
+          <li>jQuery.type( undefined ) === "undefined"</li>
+          <li>jQuery.type() === "undefined"</li>
+          <li>jQuery.type( window.notDefined ) === "undefined"</li>
+          <li>jQuery.type( null ) === "null"</li>
+        </ul>
+      </li>
+      <li>If the argument is either a primitive value or an instance of a standard built-in ECMAScript object, the [[Class]] internal property is used to determine the type. (<a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/">More details about this technique.</a>)
+        <ul>
+          <li>jQuery.type( true ) === "boolean"</li>
+          <li>jQuery.type( new Boolean() ) === "boolean"</li>
+          <li>jQuery.type( 3 ) === "number"</li>
+          <li>jQuery.type( new Number( 3 ) ) === "number"</li>
+          <li>jQuery.type( "test" ) === "string"</li>
+          <li>jQuery.type( new String( "test" ) ) === "string"</li>
+          <li>jQuery.type( function() {} ) === "function"</li>
+          <li>jQuery.type( [] ) === "array"</li>
+          <li>jQuery.type( new Array() ) === "array"</li>
+          <li>jQuery.type( new Date() ) === "date"</li>
+          <li>jQuery.type( new Error() ) === "error" // <strong>as of jQuery 1.9</strong></li>
+          <li>jQuery.type( Symbol() ) === "symbol" // <strong>as of jQuery 1.9</strong></li>
+          <li>jQuery.type( Object( Symbol() ) ) === "symbol" // <strong>as of jQuery 1.12</strong></li>
+          <li>jQuery.type( /test/ ) === "regexp"</li>
+        </ul>
+      </li>
+      <li>Everything else returns "object" as its type.</li>
+    </ul>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code>Is it a RegExp? <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"b"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">""</span> <span class="token operator">+</span> jQuery<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">test</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body>Is it a RegExp? <b></b><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;b&#34; ).append( &#34;&#34; + jQuery.type( /test/ ) );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

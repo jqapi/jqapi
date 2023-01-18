@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.ajax()</h1>
+      <h2 class="subtitle is-5">Perform an asynchronous HTTP (Ajax) request.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.ajax(url, settings)<span class="return">&#129122; jqXHR</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    url
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  A string containing the URL to which the request is sent.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    settings
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with <a href="/jQuery.ajaxSetup/">$.ajaxSetup()</a>. See <a href="#jQuery-ajax-settings">jQuery.ajax( settings )</a> below for a complete list of all settings.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          jQuery.ajax(settings)<span class="return">&#129122; jqXHR</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    settings
+                  </code>
+                </td>
+                <td>PlainObject</td>
+                <td>
+                  A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with <a href="/jQuery.ajaxSetup/">$.ajaxSetup()</a>.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>$.ajax()</code> function underlies all Ajax requests sent by jQuery.  It is often unnecessary to directly call this function, as several higher-level alternatives like <code><a href="/jQuery.get/">$.get()</a></code> and <code><a href="/load/">.load()</a></code> are available and are easier to use. If less common options are required, though, <code>$.ajax()</code> can be used more flexibly.</p>
+    <p>At its simplest, the <code>$.ajax()</code> function can be called with no arguments:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p><strong>Note:</strong> Default settings can be set globally by using the <code><a href="/jQuery.ajaxSetup/">$.ajaxSetup()</a></code> function.</p>
+    <p>This example, using no options, loads the contents of the current page, but does nothing with the result. To use the result, you can implement one of the callback functions.</p>
+    <h4 id="jqXHR">The jqXHR Object</h4>
+    <p>The jQuery XMLHttpRequest (jqXHR) object returned by <code>$.ajax()</code> <strong>as of jQuery 1.5</strong> is a superset of the browser's native XMLHttpRequest object. For example, it contains <code>responseText</code> and <code>responseXML</code> properties, as well as a <code>getResponseHeader()</code> method. When the transport mechanism is something other than XMLHttpRequest (for example, a script tag for a JSONP request) the <code>jqXHR</code> object simulates native XHR functionality where possible. </p>
+    <p><strong>As of jQuery 1.5.1</strong>, the <code>jqXHR</code> object also contains the <code>overrideMimeType()</code> method (it was available in jQuery 1.4.x, as well, but was temporarily removed in jQuery 1.5). The <code>.overrideMimeType()</code> method may be used in the <code>beforeSend()</code> callback function, for example, to modify the response content-type header:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"https://fiddle.jshell.net/favicon.png"</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">beforeSend</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">xhr</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    xhr<span class="token punctuation">.</span><span class="token function">overrideMimeType</span><span class="token punctuation">(</span> <span class="token string">"text/plain; charset=x-user-defined"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">data</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> console <span class="token operator">&amp;</span>amp<span class="token punctuation">;</span><span class="token operator">&amp;</span>amp<span class="token punctuation">;</span> console<span class="token punctuation">.</span>log <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token string">"Sample of data:"</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    <p>The jqXHR objects returned by <code>$.ajax()</code> as of jQuery 1.5 implement the Promise interface, giving them all the properties, methods, and behavior of a Promise (see <a href="/category/deferred-object/">Deferred object</a> for more information). These methods take one or more function arguments that are called when the <code>$.ajax()</code> request terminates. This allows you to assign multiple callbacks on a single request, and even to assign callbacks after the request may have completed. (If the request is already complete, the callback is fired immediately.) Available Promise methods of the jqXHR object include: </p>
+    <ul>
+      <li>
+        <strong>jqXHR.done(function( data, textStatus, jqXHR ) {});</strong>
+        <p>An alternative construct to the success callback option, refer to <code><a href="/deferred.done/">deferred.done()</a></code> for implementation details.</p>
+      </li>
+      <li>
+        <strong>jqXHR.fail(function( jqXHR, textStatus, errorThrown ) {});</strong>
+        <p>An alternative construct to the error callback option, the <code>.fail()</code> method replaces the deprecated <code>.error()</code> method. Refer to <code><a href="/deferred.fail/">deferred.fail()</a></code> for implementation details.
+        </p>
+      </li>
+      <li>
+        <strong>jqXHR.always(function( data|jqXHR, textStatus, jqXHR|errorThrown ) { });</strong> (added in jQuery 1.6)
+        <p>An alternative construct to the complete callback option, the <code>.always()</code> method replaces the deprecated <code>.complete()</code> method.</p>
+        <p>In response to a successful request, the function's arguments are the same as those of <code>.done()</code>: data, textStatus, and the jqXHR object. For failed requests the arguments are the same as those of <code>.fail()</code>: the jqXHR object, textStatus, and errorThrown. Refer to <code><a href="/deferred.always/">deferred.always()</a></code> for implementation details.</p>
+      </li>
+      <li>
+        <strong>jqXHR.then(function( data, textStatus, jqXHR ) {}, function( jqXHR, textStatus, errorThrown ) {});</strong>
+        <p>Incorporates the functionality of the <code>.done()</code> and <code>.fail()</code> methods, allowing (as of jQuery 1.8) the underlying Promise to be manipulated. Refer to <a href="/deferred.then/"><code>deferred.then()</code></a> for implementation details.
+        </p>
+      </li>
+    </ul>
+    <div class="warning">
+      <p><strong>Deprecation Notice:</strong> The <code>jqXHR.success()</code>, <code>jqXHR.error()</code>, and <code>jqXHR.complete()</code> callbacks are removed as of jQuery 3.0. You can use <code>jqXHR.done()</code>, <code>jqXHR.fail()</code>, and <code>jqXHR.always()</code> instead.</p>
+    </div>
+    <pre class="language-javascript"><code><span class="token comment">// Assign handlers immediately after making the request,</span>
+<span class="token comment">// and remember the jqXHR object for this request</span>
+<span class="token keyword">var</span> jqxhr <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token string">"example.php"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"success"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">always</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"complete"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Perform other work here ...</span>
+
+<span class="token comment">// Set another completion function for the request above</span>
+jqxhr<span class="token punctuation">.</span><span class="token function">always</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"second complete"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>The <code>this</code> reference within all callbacks is the object in the <code>context</code> option passed to <code>$.ajax</code> in the settings; if <code>context</code> is not specified, <code>this</code> is a reference to the Ajax settings themselves.</p>
+    <p>For backward compatibility with <code>XMLHttpRequest</code>, a <code>jqXHR</code> object will expose the following properties and methods:</p>
+    <ul>
+      <li>
+        <code>readyState</code>
+      </li>
+      <li>
+        <code>responseXML</code> and/or <code>responseText</code> when the underlying request responded with xml and/or text, respectively
+      </li>
+      <li>
+        <code>status</code>
+      </li>
+      <li>
+        <code>statusText</code> (may be an empty string in HTTP/2)
+      </li>
+      <li>
+        <code>abort( [ statusText ] )</code>
+      </li>
+      <li>
+        <code>getAllResponseHeaders()</code> as a string
+      </li>
+      <li>
+        <code>getResponseHeader( name )</code>
+      </li>
+      <li>
+        <code>overrideMimeType( mimeType )</code>
+      </li>
+      <li>
+        <code>setRequestHeader( name, value )</code> which departs from the standard by replacing the old value with the new one rather than concatenating the new value to the old one
+      </li>
+      <li>
+        <code>statusCode( callbacksByStatusCode )</code>
+      </li>
+    </ul>
+    <p>No <code>onreadystatechange</code> mechanism is provided, however, since <code>done</code>, <code>fail</code>, <code>always</code>, and <code>statusCode</code> cover all conceivable requirements.</p>
+    <h4 id="callback-functions">Callback Function Queues</h4>
+    <p>The <code>beforeSend</code>, <code>error</code>, <code>dataFilter</code>, <code>success</code> and <code>complete</code> options all accept callback functions that are invoked at the appropriate times.</p>
+    <p><strong>As of jQuery 1.5</strong>, the <code>fail</code> and <code>done</code>, and, as of jQuery 1.6, <code>always</code> callback hooks are first-in, first-out managed queues, allowing for more than one callback for each hook. See <a href="/category/deferred-object/">Deferred object methods</a>, which are implemented internally for these <code>$.ajax()</code> callback hooks.</p>
+    <p>The callback hooks provided by <code>$.ajax()</code> are as follows:</p>
+    <ol>
+      <li><code>beforeSend</code> callback option is invoked; it receives the <code>jqXHR</code> object and the <code>settings</code> object as parameters.</li>
+      <li><code>error</code> callback option is invoked, if the request fails. It receives the <code>jqXHR</code>, a string indicating the error type, and an exception object if applicable. Some built-in errors will provide a string as the exception object: "abort", "timeout", "No Transport".</li>
+      <li><code>dataFilter</code> callback option is invoked immediately upon successful receipt of response data. It receives the returned data and the value of <code>dataType</code>, and must return the (possibly altered) data to pass on to <code>success</code>.</li>
+      <li><code>success</code> callback option is invoked, if the request succeeds. It receives the returned data, a string containing the success code, and the <code>jqXHR</code> object.</li>
+      <li><strong>Promise callbacks</strong> — <code>.done()</code>, <code>.fail()</code>, <code>.always()</code>, and <code>.then()</code> — are invoked, in the order they are registered. </li>
+      <li><code>complete</code> callback option fires, when the request finishes, whether in failure or success. It receives the <code>jqXHR</code> object, as well as a string containing the success or error code.</li>
+    </ol>
+
+    <h4 id="data-types">Data Types</h4>
+    <p>Different types of response to <code>$.ajax()</code> call are subjected to different kinds of pre-processing before being passed to the success handler. The type of pre-processing depends by default upon the Content-Type of the response, but can be set explicitly using the <code>dataType</code> option. If the <code>dataType</code> option is provided, the Content-Type header of the response will be disregarded.</p>
+    <p>The available data types are <code>text</code>, <code>html</code>, <code>xml</code>, <code>json</code>, <code>jsonp</code>, and <code>script</code>.</p>
+    <p>If <code>text</code> or <code>html</code> is specified, no pre-processing occurs. The data is simply passed on to the success handler, and made available through the <code>responseText</code> property of the <code>jqXHR</code> object.</p>
+    <p>If <code>xml</code> is specified, the response is parsed using <a href="/jQuery.parseXML/"><code>jQuery.parseXML</code></a> before being passed, as an <a href="https://api.jquery.com/Types/#XMLDocument"><code>XMLDocument</code></a>, to the success handler. The XML document is made available through the <code>responseXML</code> property of the <code>jqXHR</code> object.</p>
+    <p>If <code>json</code> is specified, the response is parsed using <a href="/jQuery.parseJSON/"><code>jQuery.parseJSON</code></a> before being passed, as an object, to the success handler. The parsed JSON object is made available through the <code>responseJSON</code> property of the <code>jqXHR</code> object.</p>
+    <p>If <code>script</code> is specified, <code>$.ajax()</code> will execute the JavaScript that is received from the server before passing it on to the success handler as a string.</p>
+    <p>If <code>jsonp</code> is specified, <code>$.ajax()</code> will automatically append a query string parameter of (by default) <code>callback=?</code> to the URL. The <code>jsonp</code> and <code>jsonpCallback</code> properties of the settings passed to <code>$.ajax()</code> can be used to specify, respectively, the name of the query string parameter and the name of the JSONP callback function. The server should return valid JavaScript that passes the JSON response into the callback function. <code>$.ajax()</code> will execute the returned JavaScript, calling the JSONP callback function, before passing the JSON object contained in the response to the <code>$.ajax()</code> success handler.</p>
+    <p>For more information on JSONP, see the <a href="https://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/">original post detailing its use</a>.</p>
+    <h4 id="sending-data-to-server">Sending Data to the Server</h4>
+    <p>By default, Ajax requests are sent using the GET HTTP method. If the POST method is required, the method can be specified by setting a value for the <code>type</code> option. This option affects how the contents of the <code>data</code> option are sent to the server. POST data will always be transmitted to the server using UTF-8 charset, per the W3C XMLHTTPRequest standard.</p>
+    <p>The <code>data</code> option can contain either a query string of the form <code>key1=value1&amp;key2=value2</code>, or an object of the form <code>{key1: 'value1', key2: 'value2'}</code>. If the latter form is used, the data is converted into a query string using <code><a href="/jQuery.param/">jQuery.param()</a></code> before it is sent. This processing can be circumvented by setting <code>processData</code> to <code>false</code>.  The processing might be undesirable if you wish to send an XML object to the server; in this case, change the <code>contentType</code> option from <code>application/x-www-form-urlencoded</code> to a more appropriate MIME type.</p>
+    <h4 id="advanced-options">Advanced Options</h4>
+    <p>The <code>global</code> option prevents handlers registered using <code><a href="/ajaxSend/">.ajaxSend()</a></code>, <code><a href="/ajaxError/">.ajaxError()</a></code>, and similar methods from firing when this request would trigger them. This can be useful to, for example, suppress a loading indicator that was implemented with <code><a href="/ajaxSend/">.ajaxSend()</a></code> if the requests are frequent and brief. With cross-domain script and JSONP requests, the global option is automatically set to <code>false</code>. See the descriptions of these methods below for more details.</p>
+    <p>If the server performs HTTP authentication before providing a response, the user name and password pair can be sent via the <code>username</code> and <code>password</code> options.</p>
+    <p>Ajax requests are time-limited, so errors can be caught and handled to provide a better user experience. Request timeouts are usually either left at their default or set as a global default using <code><a href="/jQuery.ajaxSetup/">$.ajaxSetup()</a></code> rather than being overridden for specific requests with the <code>timeout</code> option.</p>
+    <p>By default, requests are always issued, but the browser may serve results out of its cache. To disallow use of the cached results, set <code>cache</code> to <code>false</code>. To cause the request to report failure if the asset has not been modified since the last request, set <code>ifModified</code> to <code>true</code>.</p>
+    <p>The <code>scriptCharset</code> allows the character set to be explicitly specified for requests that use a <code>&lt;script&gt;</code> tag (that is, a type of <code>script</code> or <code>jsonp</code>). This is useful if the script and host page have differing character sets.</p>
+    <p>The first letter in Ajax stands for "asynchronous," meaning that the operation occurs in parallel and the order of completion is not guaranteed. The <code>async</code> option to <code>$.ajax()</code> defaults to <code>true</code>, indicating that code execution can continue after the request is made. Setting this option to <code>false</code> (and thus making the call no longer asynchronous) is strongly discouraged, as it can cause the browser to become unresponsive.</p>
+    <p>The <code>$.ajax()</code> function returns the <code>XMLHttpRequest</code> object that it creates. Normally jQuery handles the creation of this object internally, but a custom function for manufacturing one can be specified using the <code>xhr</code> option. The returned object can generally be discarded, but does provide a lower-level interface for observing and manipulating the request. In particular, calling <code>.abort()</code> on the object will halt the request before it completes.</p>
+
+    <h4 id="extending-ajax">Extending Ajax</h4>
+    <p><strong>As of jQuery 1.5</strong>, jQuery's Ajax implementation includes <a href="/jQuery.ajaxPrefilter/">prefilters</a>, <a href="/jQuery.ajaxTransport/">transports</a>, and converters that allow you to extend Ajax with a great deal of flexibility.</p>
+
+    <h4 id="using-converters">Using Converters</h4>
+    <p><code>$.ajax()</code> converters support mapping data types to other data types. If, however, you want to map a custom data type to a known type (e.g <code>json</code>), you must add a correspondence between the response Content-Type and the actual data type using the <code>contents</code> option:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajaxSetup</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">contents</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">mycustomtype</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">mycustomtype</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">converters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"mycustomtype json"</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Do stuff</span>
+      <span class="token keyword">return</span> newresult<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>This extra object is necessary because the response Content-Types and data types never have a strict one-to-one correspondence (hence the regular expression).</p>
+    <p>To convert from a supported type (e.g <code>text</code>, <code>json</code>) to a custom data type and back again, use another pass-through converter:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajaxSetup</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">contents</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">mycustomtype</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">mycustomtype</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">converters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"text mycustomtype"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"mycustomtype json"</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Do stuff</span>
+      <span class="token keyword">return</span> newresult<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>The above now allows passing from <code>text</code> to <code>mycustomtype</code> and then <code>mycustomtype</code> to <code>json</code>.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"some.php"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">,</span> <span class="token literal-property property">location</span><span class="token operator">:</span> <span class="token string">"Boston"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Data Saved: "</span> <span class="token operator">+</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$.ajax({method: &#34;POST&#34;,url: &#34;some.php&#34;,data: { name: &#34;John&#34;, location: &#34;Boston&#34; }}).done(function( msg ) {alert( &#34;Data Saved: &#34; + msg );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"test.html"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">cache</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">html</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#results"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$.ajax({url: &#34;test.html&#34;,cache: false}).done(function( html ) {$( &#34;#results&#34; ).append( html );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> xmlDocument <span class="token operator">=</span> <span class="token punctuation">[</span>create xml document<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> xmlRequest <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"page.php"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">processData</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">data</span><span class="token operator">:</span> xmlDocument
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+xmlRequest<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span> handleResponse <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var xmlDocument = [create xml document];var xmlRequest = $.ajax({url: &#34;page.php&#34;,processData: false,data: xmlDocument});xmlRequest.done( handleResponse );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> menuId <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"ul.nav"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> request <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"script.php"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> menuId <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"html"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+request<span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+request<span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">jqXHR<span class="token punctuation">,</span> textStatus</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Request failed: "</span> <span class="token operator">+</span> textStatus<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var menuId = $( &#34;ul.nav&#34; ).first().attr( &#34;id&#34; );var request = $.ajax({url: &#34;script.php&#34;,method: &#34;POST&#34;,data: { id : menuId },dataType: &#34;html&#34;});request.done(function( msg ) {$( &#34;#log&#34; ).html( msg );});request.fail(function( jqXHR, textStatus ) {alert( &#34;Request failed: &#34; + textStatus );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"test.js"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"script"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$.ajax({method: &#34;GET&#34;,url: &#34;test.js&#34;,dataType: &#34;script&#34;});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

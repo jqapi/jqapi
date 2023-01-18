@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">callbacks.fire()</h1>
+      <h2 class="subtitle is-5">Call all of the callbacks with the given arguments.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .callbacks.fire(arguments)<span class="return">&#129122; Callbacks</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    arguments
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  The argument or list of arguments to pass back to the callback list.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>This method returns the Callbacks object onto which it is attached (<code>this</code>).</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token comment">// A sample logging function to be added to a callbacks list</span>
+<span class="token keyword">var</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"foo:"</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add the function "foo" to the list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Fire the items on the list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs: "foo: hello"</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Outputs: "foo: world"</span>
+
+<span class="token comment">// Add another function to the list</span>
+<span class="token keyword">var</span> <span class="token function-variable function">bar</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar:"</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add this function to the list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Fire the items on the list again</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"hello again"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Outputs:</span>
+<span class="token comment">// "foo: hello again"</span>
+<span class="token comment">// "bar: hello again"</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>// A sample logging function to be added to a callbacks listvar foo = function( value ) {console.log( &#34;foo:&#34; + value );};var callbacks = $.Callbacks();// Add the function &#34;foo&#34; to the listcallbacks.add( foo );// Fire the items on the listcallbacks.fire( &#34;hello&#34; ); // Outputs: &#34;foo: hello&#34;callbacks.fire( &#34;world&#34; ); // Outputs: &#34;foo: world&#34;// Add another function to the listvar bar = function( value ){console.log( &#34;bar:&#34; + value );};// Add this function to the listcallbacks.add( bar );// Fire the items on the list againcallbacks.fire( &#34;hello again&#34; );// Outputs:// &#34;foo: hello again&#34;// &#34;bar: hello again&#34;</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

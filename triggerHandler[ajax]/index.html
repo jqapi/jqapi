@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.triggerHandler()</h1>
+      <h2 class="subtitle is-5">Execute all handlers attached to an element for an event.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .triggerHandler(eventType, extraParameters)<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    eventType
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  A string containing a JavaScript event type, such as <code>click</code> or <code>submit</code>.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    extraParameters
+                  </code>
+                </td>
+                <td></td>
+                <td>
+                  Additional parameters to pass along to the event handler.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          .triggerHandler(event, extraParameters)<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    event
+                  </code>
+                </td>
+                <td>Event</td>
+                <td>
+                  A <a href="/category/events/event-object/"><code>jQuery.Event</code></a> object.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    extraParameters
+                  </code>
+                </td>
+                <td></td>
+                <td>
+                  Additional parameters to pass along to the event handler.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p><code>.triggerHandler( eventType )</code> executes all handlers bound with jQuery for the event type.  It will also execute any method called <code>on{eventType}()</code> found on the element.  The behavior of this method is similar to <a href="/trigger/"><code>.trigger()</code></a>, with the following exceptions:</p>
+    <ul>
+      <li>The <code>.triggerHandler( "event" )</code> method will not call <code>.event()</code> on the element it is triggered on.  This means <code>.triggerHandler( "submit" )</code> on a form will not call <code>.submit()</code> on the form.</li>
+      <li>While <code>.trigger()</code> will operate on all elements matched by the jQuery object, <code>.triggerHandler()</code> only affects the first matched element.</li>
+      <li>Events triggered with <code>.triggerHandler()</code> do not bubble up the DOM hierarchy; if they are not handled by the target element directly, they do nothing.</li>
+      <li>Instead of returning the jQuery object (to allow chaining), <code>.triggerHandler()</code> returns whatever value was returned by the last handler it caused to be executed. If no handlers are triggered, it returns <code>undefined</code></li>
+    </ul>
+    <p>For more information on this method, see the discussion for <code><a href="/trigger/">.trigger()</a></code>.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>old<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.trigger( "focus" )<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>new<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>.triggerHandler( "focus" )<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>To Be Focused<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#old"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trigger</span><span class="token punctuation">(</span><span class="token string">"focus"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#new"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">triggerHandler</span><span class="token punctuation">(</span><span class="token string">"focus"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"&lt;span>Focused!&lt;/span>"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendTo</span><span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeOut</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><button id=&#34;old&#34;>.trigger( &#34;focus&#34; )</button><button id=&#34;new&#34;>.triggerHandler( &#34;focus&#34; )</button><br><br><input type=&#34;text&#34; value=&#34;To Be Focused&#34;><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;#old&#34; ).click(function() {$( &#34;input&#34; ).trigger( &#34;focus&#34; );});$( &#34;#new&#34; ).click(function() {$( &#34;input&#34; ).triggerHandler( &#34;focus&#34; );});$( &#34;input&#34; ).focus(function() {$( &#34;<span>Focused!</span>&#34; ).appendTo( &#34;body&#34; ).fadeOut( 1000 );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

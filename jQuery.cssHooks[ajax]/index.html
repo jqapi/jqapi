@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.cssHooks</h1>
+      <h2 class="subtitle is-5">Hook directly into jQuery to override how particular CSS properties are retrieved or set, normalize CSS property naming, or create custom properties.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.cssHooks()<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>$.cssHooks</code> object provides a way to define functions for getting and setting particular CSS values. It can also be used to create new cssHooks for normalizing CSS3 features such as box shadows and gradients. </p>
+    <p>For example, some versions of Webkit-based browsers require <code>-webkit-border-radius</code> to set the <code>border-radius</code> on an element, while earlier Firefox versions require <code>-moz-border-radius</code>. A css hook can normalize these vendor-prefixed properties to let <code>.css()</code> accept a single, standard property name (<code>border-radius</code>, or with DOM property syntax, <code>borderRadius</code>).</p>
+    <p>In addition to providing fine-grained control over how specific style properties are handled, <code>$.cssHooks</code> also extends the set of properties available to the <code>.animate()</code> method.</p>
+    <p>Defining a new css hook is straight-forward. The skeleton template below can serve as a guide to creating your own. </p>
+    <pre class="language-javascript"><code><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// First, check to see if cssHooks are supported</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>$<span class="token punctuation">.</span>cssHooks<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// If not, output an error message</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>
+      <span class="token string">"jQuery 1.4.3 or above is required for this plugin to work"</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Wrap in a document ready call, because jQuery writes</span>
+  <span class="token comment">// cssHooks at this time and will blow away your functions</span>
+  <span class="token comment">// if they exist.</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    $<span class="token punctuation">.</span>cssHooks<span class="token punctuation">[</span><span class="token string">"someCSSProp"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">elem<span class="token punctuation">,</span> computed<span class="token punctuation">,</span> extra</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Handle getting the CSS property</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">elem<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Handle setting the CSS value</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <h4 id="feature-testing">Feature Testing</h4>
+    <p>Before normalizing a vendor-specific CSS property, first determine whether the browser supports the standard property or a vendor-prefixed variation. For example, to check for support of the <code>border-radius</code> property, see if any variation is a member of a temporary element's <code>style</code> object.</p>
+    <pre class="language-javascript"><code><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">styleSupport</span><span class="token punctuation">(</span><span class="token parameter">prop</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> vendorProp<span class="token punctuation">,</span>
+      supportedProp<span class="token punctuation">,</span>
+      <span class="token comment">// Capitalize first character of the prop to test vendor prefix</span>
+      capProp <span class="token operator">=</span> prop<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> prop<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      prefixes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"Moz"</span><span class="token punctuation">,</span> <span class="token string">"Webkit"</span><span class="token punctuation">,</span> <span class="token string">"ms"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>prop <span class="token keyword">in</span> div<span class="token punctuation">.</span>style<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Browser supports standard CSS property name</span>
+      supportedProp <span class="token operator">=</span> prop<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Otherwise test support for vendor-prefixed property names</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prefixes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        vendorProp <span class="token operator">=</span> prefixes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> capProp<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>vendorProp <span class="token keyword">in</span> div<span class="token punctuation">.</span>style<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          supportedProp <span class="token operator">=</span> vendorProp<span class="token punctuation">;</span>
+          <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Avoid memory leak in IE</span>
+    div <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Add property to $.support so it can be accessed elsewhere</span>
+    $<span class="token punctuation">.</span>support<span class="token punctuation">[</span>prop<span class="token punctuation">]</span> <span class="token operator">=</span> supportedProp<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> supportedProp<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// Call the function, e.g. testing for "border-radius" support:</span>
+  <span class="token function">styleSupport</span><span class="token punctuation">(</span><span class="token string">"borderRadius"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <h4 id="defining-complete-csshook">Defining a complete css hook</h4>
+    <p>To define a complete css hook, combine the support test with a filled-out version of the skeleton template provided in the first example:</p>
+    <pre class="language-javascript"><code><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">$</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span>$<span class="token punctuation">.</span>cssHooks <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">throw</span><span class="token punctuation">(</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span> <span class="token string">"jQuery 1.4.3+ is needed for this plugin to work"</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">styleSupport</span><span class="token punctuation">(</span> <span class="token parameter">prop</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> vendorProp<span class="token punctuation">,</span> supportedProp<span class="token punctuation">,</span>
+    capProp <span class="token operator">=</span> prop<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> prop<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span> <span class="token number">1</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    prefixes <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token string">"Moz"</span><span class="token punctuation">,</span> <span class="token string">"Webkit"</span><span class="token punctuation">,</span> <span class="token string">"ms"</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span> <span class="token string">"div"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> prop <span class="token keyword">in</span> div<span class="token punctuation">.</span>style <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    supportedProp <span class="token operator">=</span> prop<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prefixes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      vendorProp <span class="token operator">=</span> prefixes<span class="token punctuation">[</span> i <span class="token punctuation">]</span> <span class="token operator">+</span> capProp<span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span> vendorProp <span class="token keyword">in</span> div<span class="token punctuation">.</span>style <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        supportedProp <span class="token operator">=</span> vendorProp<span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  div <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+  $<span class="token punctuation">.</span>support<span class="token punctuation">[</span> prop <span class="token punctuation">]</span> <span class="token operator">=</span> supportedProp<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> supportedProp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> borderRadius <span class="token operator">=</span> <span class="token function">styleSupport</span><span class="token punctuation">(</span> <span class="token string">"borderRadius"</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Set cssHooks only for browsers that support a vendor-prefixed border radius</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span> borderRadius <span class="token operator">&amp;</span>amp<span class="token punctuation">;</span><span class="token operator">&amp;</span>amp<span class="token punctuation">;</span> borderRadius <span class="token operator">!==</span> <span class="token string">"borderRadius"</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  $<span class="token punctuation">.</span>cssHooks<span class="token punctuation">.</span>borderRadius <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">elem<span class="token punctuation">,</span> computed<span class="token punctuation">,</span> extra</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> $<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span> elem<span class="token punctuation">,</span> borderRadius <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">elem<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      elem<span class="token punctuation">.</span>style<span class="token punctuation">[</span> borderRadius <span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span> jQuery <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    <p>You can then set the border radius in a supported browser using either the DOM (camelCased) style or the CSS (hyphenated) style:</p>
+    <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#element"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"borderRadius"</span><span class="token punctuation">,</span> <span class="token string">"10px"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#another"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"border-radius"</span><span class="token punctuation">,</span> <span class="token string">"20px"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>If the browser lacks support for any form of the CSS property, vendor-prefixed or not, the style is not applied to the element. However, if the browser supports a proprietary alternative, it can be applied to the cssHooks instead. </p>
+    <pre class="language-javascript"><code><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">$</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token comment">// Feature test for support of a CSS property</span>
+<span class="token comment">// and a proprietary alternative</span>
+<span class="token comment">// ...</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span> $<span class="token punctuation">.</span>support<span class="token punctuation">.</span>someCSSProp <span class="token operator">&amp;</span>amp<span class="token punctuation">;</span><span class="token operator">&amp;</span>amp<span class="token punctuation">;</span> $<span class="token punctuation">.</span>support<span class="token punctuation">.</span>someCSSProp <span class="token operator">!==</span> <span class="token string">"someCSSProp"</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token comment">// Set cssHooks for browsers that</span>
+  <span class="token comment">// support only a vendor-prefixed someCSSProp</span>
+  $<span class="token punctuation">.</span>cssHooks<span class="token punctuation">.</span>someCSSProp <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">elem<span class="token punctuation">,</span> computed<span class="token punctuation">,</span> extra</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> $<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span> elem<span class="token punctuation">,</span> $<span class="token punctuation">.</span>support<span class="token punctuation">.</span>someCSSProp <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">elem<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      elem<span class="token punctuation">.</span>style<span class="token punctuation">[</span> $<span class="token punctuation">.</span>support<span class="token punctuation">.</span>someCSSProp <span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span> supportsProprietaryAlternative <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  $<span class="token punctuation">.</span>cssHooks<span class="token punctuation">.</span>someCSSProp <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">elem<span class="token punctuation">,</span> computed<span class="token punctuation">,</span> extra</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Handle crazy conversion from the proprietary alternative</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> <span class="token parameter">elem<span class="token punctuation">,</span> value</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Handle crazy conversion to the proprietary alternative</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span> jQuery <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    <h4 id="special-units">Special units</h4>
+    <p>By default, jQuery adds a "px" unit to the values passed to the <code>.css()</code> method. This behavior can be prevented by adding the property to the <a href="/jQuery.cssNumer/"><code>jQuery.cssNumber</code></a> object</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span>cssNumber<span class="token punctuation">.</span>someCSSProp <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</code></pre>
+    <h4 id="animating">Animating with cssHooks</h4>
+    <p>A css hook can also hook into jQuery's animation mechanism by adding a property to the <code>jQuery.fx.step</code> object:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span>fx<span class="token punctuation">.</span>step<span class="token punctuation">.</span><span class="token function-variable function">someCSSProp</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">fx</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  $<span class="token punctuation">.</span>cssHooks<span class="token punctuation">.</span>someCSSProp<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>fx<span class="token punctuation">.</span>elem<span class="token punctuation">,</span> fx<span class="token punctuation">.</span>now <span class="token operator">+</span> fx<span class="token punctuation">.</span>unit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>Note that this works best for simple numeric-value animations. More custom code may be required depending on the CSS property, the type of value it returns, and the animation's complexity.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

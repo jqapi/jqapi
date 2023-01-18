@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">deferred.reject()</h1>
+      <h2 class="subtitle is-5"> Reject a Deferred object and call any failCallbacks with the given args. </h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .deferred.reject(args)<span class="return">&#129122; Deferred</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    args
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  
+        Optional arguments that are passed to the failCallbacks.
+      
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>Normally, only the creator of a Deferred should call this method; you can prevent other code from changing the Deferred's state by returning a restricted Promise object through <a href="/deferred.promise/"><code>deferred.promise()</code></a>.</p>
+    <p>When the Deferred is rejected, any failCallbacks added by <a href="/deferred.then/"><code>deferred.then()</code></a> or <a href="/deferred.fail/"><code>deferred.fail()</code></a> are called. Callbacks are executed in the order they were added. Each callback is passed the <code>args</code> from the <code>deferred.reject()</code> call. Any failCallbacks added after the Deferred enters the rejected state are executed immediately when they are added, using the arguments that were passed to the <code>deferred.reject()</code> call. For more information, see the documentation for <a href="/jQuery.Deferred/">jQuery.Deferred()</a>.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

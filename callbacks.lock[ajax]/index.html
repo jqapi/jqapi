@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">callbacks.lock()</h1>
+      <h2 class="subtitle is-5">Lock a callback list in its current state.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .callbacks.lock()<span class="return">&#129122; Callbacks</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>This method returns the Callbacks object onto which it is attached (<code>this</code>).</p>
+    <p>If the Callbacks object is created with the <code>"memory"</code> flag as its argument, additional functions may be added and fired after the callback list is locked.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token comment">// A sample logging function to be added to a callbacks list</span>
+<span class="token keyword">var</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"foo:"</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add the logging function to the callback list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Fire the items on the list, passing an argument</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Outputs "foo: hello"</span>
+
+<span class="token comment">// Lock the callbacks list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Try firing the items again</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// As the list was locked, no items were called,</span>
+<span class="token comment">// so "world" isn't logged</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>// A sample logging function to be added to a callbacks listvar foo = function( value ) {console.log( &#34;foo:&#34; + value );};var callbacks = $.Callbacks();// Add the logging function to the callback listcallbacks.add( foo );// Fire the items on the list, passing an argumentcallbacks.fire( &#34;hello&#34; );// Outputs &#34;foo: hello&#34;// Lock the callbacks listcallbacks.lock();// Try firing the items againcallbacks.fire( &#34;world&#34; );// As the list was locked, no items were called,// so &#34;world&#34; isn't logged</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token comment">// Simple function for logging results</span>
+<span class="token keyword">var</span> <span class="token function-variable function">log</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"&lt;p>"</span> <span class="token operator">+</span> value <span class="token operator">+</span> <span class="token string">"&lt;/p>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Two sample functions to be added to a callbacks list</span>
+<span class="token keyword">var</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"foo: "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> <span class="token function-variable function">bar</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"bar: "</span> <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Create the callbacks object with the "memory" flag</span>
+<span class="token keyword">var</span> callbacks <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Callbacks</span><span class="token punctuation">(</span><span class="token string">"memory"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add the foo logging function to the callback list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Fire the items on the list, passing an argument</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Outputs "foo: hello"</span>
+
+<span class="token comment">// Lock the callbacks list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Try firing the items again</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// As the list was locked, no items were called,</span>
+<span class="token comment">// so "foo: world" isn't logged</span>
+
+<span class="token comment">// Add the foo function to the callback list again</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Try firing the items again</span>
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"silentArgument"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Outputs "foo: hello" because the argument value was stored in memory</span>
+
+<span class="token comment">// Add the bar function to the callback list</span>
+callbacks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+callbacks<span class="token punctuation">.</span><span class="token function">fire</span><span class="token punctuation">(</span><span class="token string">"youHadMeAtHello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Outputs "bar: hello" because the list is still locked,</span>
+<span class="token comment">// and the argument value is still stored in memory</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><div id=&#34;log&#34;></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>// Simple function for logging resultsvar log = function( value ) {$( &#34;#log&#34; ).append( &#34;<p>&#34; + value + &#34;</p>&#34; );};// Two sample functions to be added to a callbacks listvar foo = function( value ) {log( &#34;foo: &#34; + value );};var bar = function( value ) {log( &#34;bar: &#34; + value );};// Create the callbacks object with the &#34;memory&#34; flagvar callbacks = $.Callbacks( &#34;memory&#34; );// Add the foo logging function to the callback listcallbacks.add( foo );// Fire the items on the list, passing an argumentcallbacks.fire( &#34;hello&#34; );// Outputs &#34;foo: hello&#34;// Lock the callbacks listcallbacks.lock();// Try firing the items againcallbacks.fire( &#34;world&#34; );// As the list was locked, no items were called,// so &#34;foo: world&#34; isn't logged// Add the foo function to the callback list againcallbacks.add( foo );// Try firing the items againcallbacks.fire( &#34;silentArgument&#34; );// Outputs &#34;foo: hello&#34; because the argument value was stored in memory// Add the bar function to the callback listcallbacks.add( bar );callbacks.fire( &#34;youHadMeAtHello&#34; );// Outputs &#34;bar: hello&#34; because the list is still locked,// and the argument value is still stored in memory</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

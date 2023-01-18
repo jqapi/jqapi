@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.hasData()</h1>
+      <h2 class="subtitle is-5">Determine whether an element has any jQuery data associated with it.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.hasData(element)<span class="return">&#129122; Boolean</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    element
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  A DOM element to be checked for data.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>jQuery.hasData()</code> method provides a way to determine if an element currently has any values that were set using <code><a href="/jQuery.data/">jQuery.data()</a></code>. If there is no data object associated with an element, the method returns <code>false</code>; otherwise it returns <code>true</code>.</p>
+    <p>The primary advantage of <code>jQuery.hasData(element)</code> is that it does not create and associate a data object with the element if none currently exists. In contrast, <code>jQuery.data(element)</code> always returns a data object to the caller, creating one if no data object previously existed.
+</p>
+    <p>Note that jQuery's event system uses the jQuery data API to store event handlers. Therefore, binding an event to an element using <code>.on()</code>, <code>.bind()</code>, <code>.live()</code>, <code>.delegate()</code>, or one of the shorthand event methods also associates a data object with that element.
+</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Results:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> $p <span class="token operator">=</span> <span class="token function">jQuery</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  p <span class="token operator">=</span> $p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+$p<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">hasData</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+$<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> <span class="token string">"testing"</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$p<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">hasData</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+$<span class="token punctuation">.</span><span class="token function">removeData</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> <span class="token string">"testing"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$p<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">hasData</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+
+$p<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$p<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">hasData</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+$p<span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$p<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">hasData</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><p>Results: </p><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var $p = jQuery( &#34;p&#34; ), p = $p[ 0 ];$p.append( jQuery.hasData( p ) + &#34; &#34; ); // false$.data( p, &#34;testing&#34;, 123 );$p.append( jQuery.hasData( p ) + &#34; &#34; ); // true$.removeData( p, &#34;testing&#34; );$p.append( jQuery.hasData( p ) + &#34; &#34; ); // false$p.on( &#34;click&#34;, function() {} );$p.append( jQuery.hasData( p ) + &#34; &#34; ); // true$p.off( &#34;click&#34; );$p.append( jQuery.hasData( p ) + &#34; &#34; ); // false</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

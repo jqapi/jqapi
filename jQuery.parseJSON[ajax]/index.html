@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.parseJSON()</h1>
+      <h2 class="subtitle is-5">Takes a well-formed JSON string and returns the resulting JavaScript value.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.parseJSON(json)
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    json
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  The JSON string to parse.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>As of jQuery 3.0, <code>$.parseJSON</code> is deprecated. To parse JSON strings use the native <code>JSON.parse</code> method instead.</p>
+    <p>Passing in a malformed JSON string results in a JavaScript exception being thrown. For example, the following are all invalid JSON strings:</p>
+    <ul>
+      <li><code>"{test: 1}"</code> (test does not have double quotes around it).</li>
+      <li><code>"{'test': 1}"</code> ('test' is using single quotes instead of double quotes).</li>
+      <li><code>"'test'"</code> ('test' is using single quotes instead of double quotes).</li>
+      <li><code>".1"</code> (a number must start with a digit; <code>"0.1"</code> would be valid).</li>
+      <li><code>"undefined"</code> (<code>undefined</code> cannot be represented in a JSON string; <code>null</code>, however, can be).</li>
+      <li><code>"NaN"</code> (<code>NaN</code> cannot be represented in a JSON string; direct representation of <code>Infinity</code> is also not permitted).</li>
+    </ul>
+    <p>The JSON standard does not permit "control characters" such as a tab or newline. An example like <code>$.parseJSON( '{ "testing":"1\t2\n3" }' )</code> will throw an error in most implementations because the JavaScript parser converts the string's tab and newline escapes into literal tab and newline; doubling the backslashes like <code>"1\\t2\\n3"</code> yields expected results. This problem is often seen when injecting JSON into a JavaScript file from a server-side language such as PHP.</p>
+    <p>Where the browser provides a native implementation of <code>JSON.parse</code>, jQuery uses it to parse the string. For details on the JSON format, see <a href="https://json.org/">https://json.org/</a>.</p>
+    <p>Prior to jQuery 1.9, <code>$.parseJSON</code> returned <code>null</code> instead of throwing an error if it was passed an empty string, <code>null</code>, or <code>undefined</code>, even though those are not valid JSON.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> obj <span class="token operator">=</span> jQuery<span class="token punctuation">.</span><span class="token function">parseJSON</span><span class="token punctuation">(</span><span class="token string">'{ "name": "John" }'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">"John"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var obj = jQuery.parseJSON( '{ &#34;name&#34;: &#34;John&#34; }' );alert( obj.name === &#34;John&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

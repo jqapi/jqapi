@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.holdReady()</h1>
+      <h2 class="subtitle is-5">Holds or releases the execution of jQuery&#39;s ready event.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.holdReady(hold)<span class="return">&#129122; undefined</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    hold
+                  </code>
+                </td>
+                <td>Boolean</td>
+                <td>
+                  Indicates whether the ready hold is being requested or released
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <div class="warning">
+      <p>Note: This API has been deprecated in jQuery 3.2. Instead of relying on this global switch, it's better to put explicitly wait for required code. If you need to wait both for the ready state &amp; for a custom promise, use the following pattern:</p>
+      <code><!--[CDATA[$.when( $.ready, customPromise )
+  .then( function() {
+    // main code
+  } )
+  .catch( function( error ) {
+    // handle errors
+  } )]]--></code>
+    </div>
+    <p>The <code>$.holdReady()</code> method allows the caller to delay jQuery's ready event. This <em>advanced feature</em> would typically be used by dynamic script loaders that want to load additional JavaScript such as jQuery plugins before allowing the ready event to occur, even though the DOM may be ready. This method must be called early in the document, such as in the <code>&lt;head&gt;</code> immediately after the jQuery script tag. Calling this method after the ready event has already fired will have no effect. </p>
+    <p>To delay the ready event, first call <code>$.holdReady( true )</code>. When the ready event should be released to execute, call <code>$.holdReady( false )</code>. Note that multiple holds can be put on the ready event, one for each <code>$.holdReady( true )</code> call. The ready event will not actually fire until all holds have been released with a corresponding number of <code>$.holdReady( false )</code> calls <em>and</em> the normal document ready conditions are met. (See <a href="/ready/"><code>ready</code></a> for more information.)</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">holdReady</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token string">"myplugin.js"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  $<span class="token punctuation">.</span><span class="token function">holdReady</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$.holdReady( true );$.getScript( &#34;myplugin.js&#34;, function() {$.holdReady( false );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

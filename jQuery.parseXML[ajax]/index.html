@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.parseXML()</h1>
+      <h2 class="subtitle is-5">Parses a string into an XML document.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.parseXML(data)<span class="return">&#129122; XMLDocument</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    data
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  a well-formed XML string to be parsed
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p><code>jQuery.parseXML</code> uses the native parsing function of the browser to create a valid XML Document. This document can then be passed to <code>jQuery</code> to create a typical jQuery object that can be traversed and manipulated.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>someElement<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>anotherElement<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> xml <span class="token operator">=</span>
+    <span class="token string">"&lt;rss version='2.0'>&lt;channel>&lt;title>RSS Title&lt;/title>&lt;/channel>&lt;/rss>"</span><span class="token punctuation">,</span>
+  xmlDoc <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">parseXML</span><span class="token punctuation">(</span>xml<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  $xml <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span>xmlDoc<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  $title <span class="token operator">=</span> $xml<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"title"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Append "RSS Title" to #someElement</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#someElement"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>$title<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Change the title to "XML Title"</span>
+$title<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"XML Title"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Append "XML Title" to #anotherElement</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#anotherElement"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>$title<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><p id=&#34;someElement&#34;></p><p id=&#34;anotherElement&#34;></p><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var xml = &#34;<rss version='2.0'><channel><title>RSS Title</title></channel></rss>&#34;,xmlDoc = $.parseXML( xml ),$xml = $( xmlDoc ),$title = $xml.find( &#34;title&#34; );// Append &#34;RSS Title&#34; to #someElement$( &#34;#someElement&#34; ).append( $title.text() );// Change the title to &#34;XML Title&#34;$title.text( &#34;XML Title&#34; );// Append &#34;XML Title&#34; to #anotherElement$( &#34;#anotherElement&#34; ).append( $title.text() );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

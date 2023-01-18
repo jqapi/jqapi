@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.inArray()</h1>
+      <h2 class="subtitle is-5">Search for a specified value within an array and return its index (or -1 if not found).</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.inArray(value, array, fromIndex)<span class="return">&#129122; Number</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    value
+                  </code>
+                </td>
+                <td>Anything</td>
+                <td>
+                  The value to search for.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    array
+                  </code>
+                </td>
+                <td>Array</td>
+                <td>
+                  An array through which to search.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    fromIndex
+                  </code>
+                </td>
+                <td>Number</td>
+                <td>
+                  The index of the array at which to begin the search. The default is 0, which will search the whole array.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>$.inArray()</code> method is similar to JavaScript's native <code>.indexOf()</code> method in that it returns -1 when it doesn't find a match. If the first element within the array matches <code>value</code>, <code>$.inArray()</code> returns 0.</p>
+    <p>Because JavaScript treats 0 as loosely equal to false (i.e. 0 == false, but 0 !== false), to check for the presence of <code>value</code> within <code>array</code>, you need to check if it's not equal to (or greater than) -1.</p>
+    <p>The comparison between values is strict. The following will return <code>-1</code> (not found) because a number is being searched in an array of strings:</p>
+    <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">inArray</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"8"</span><span class="token punctuation">,</span> <span class="token string">"9"</span><span class="token punctuation">,</span> <span class="token string">"10"</span><span class="token punctuation">,</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>"John" found at <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>4 found at <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>"Karl" not found, so <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>"Pete" is in the array, but not at or after index 2, so <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">span</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">"Pete"</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token string">"John"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> $spans <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"span"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$spans<span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">inArray</span><span class="token punctuation">(</span><span class="token string">"John"</span><span class="token punctuation">,</span> arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$spans<span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">inArray</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$spans<span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">inArray</span><span class="token punctuation">(</span><span class="token string">"Karl"</span><span class="token punctuation">,</span> arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$spans<span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span>jQuery<span class="token punctuation">.</span><span class="token function">inArray</span><span class="token punctuation">(</span><span class="token string">"Pete"</span><span class="token punctuation">,</span> arr<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>div {color: blue;}span {color: red;}</style></head><body><div>&#34;John&#34; found at <span></span></div><div>4 found at <span></span></div><div>&#34;Karl&#34; not found, so <span></span></div><div>&#34;Pete&#34; is in the array, but not at or after index 2, so <span></span></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var arr = [ 4, &#34;Pete&#34;, 8, &#34;John&#34; ];var $spans = $( &#34;span&#34; );$spans.eq( 0 ).text( jQuery.inArray( &#34;John&#34;, arr ) );$spans.eq( 1 ).text( jQuery.inArray( 4, arr ) );$spans.eq( 2 ).text( jQuery.inArray( &#34;Karl&#34;, arr ) );$spans.eq( 3 ).text( jQuery.inArray( &#34;Pete&#34;, arr, 2 ) );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

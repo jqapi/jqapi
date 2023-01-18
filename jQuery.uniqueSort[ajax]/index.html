@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.uniqueSort()</h1>
+      <h2 class="subtitle is-5">Sorts an array or an array-like object of DOM elements, in place, with the duplicates removed. Note that this only works on arrays/array-likes of DOM elements, not strings or numbers.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.uniqueSort(array)<span class="return">&#129122; Array</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    array
+                  </code>
+                </td>
+                <td>ArrayLikeObject</td>
+                <td>
+                  The Array or an Array-like object of DOM elements.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The <code>$.uniqueSort()</code> function searches through an array or an array-like object of DOM elements, sorting the array/array-like, and removing any duplicate nodes. A node is considered a duplicate if it is the <em>exact same</em> node as one already in the input; two different nodes with identical attributes are not considered to be duplicates. This function only works on plain JavaScript arrays/array-like objects of DOM elements, and is chiefly used internally by jQuery. You probably will never need to use it.</p>
+    <p>Prior to jQuery 3.0, this method was called <code><a href="/jQuery.unique/">jQuery.unique()</a></code>.</p>
+    <p>As of jQuery 1.4 the results will always be returned in document order.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>There are 6 divs in this document.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dup<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dup<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dup<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token comment">// uniqueSort() must take a native array</span>
+<span class="token keyword">var</span> divs <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add 3 elements of class dup too (they are divs)</span>
+divs <span class="token operator">=</span> divs<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">".dup"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"Pre-uniqueSort there are "</span> <span class="token operator">+</span> divs<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">" elements."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+divs <span class="token operator">=</span> jQuery<span class="token punctuation">.</span><span class="token function">uniqueSort</span><span class="token punctuation">(</span>divs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"Post-uniqueSort there are "</span> <span class="token operator">+</span> divs<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token string">" elements."</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"color"</span><span class="token punctuation">,</span> <span class="token string">"red"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style>div {color: blue;}</style></head><body><div>There are 6 divs in this document.</div><div></div><div class=&#34;dup&#34;></div><div class=&#34;dup&#34;></div><div class=&#34;dup&#34;></div><div></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>// uniqueSort() must take a native arrayvar divs = $( &#34;div&#34; ).get();// Add 3 elements of class dup too (they are divs)divs = divs.concat( $( &#34;.dup&#34; ).get() );$( &#34;div&#34; ).eq( 1 ).text( &#34;Pre-uniqueSort there are &#34; + divs.length + &#34; elements.&#34; );divs = jQuery.uniqueSort( divs );$( &#34;div&#34; ).eq( 2 ).text( &#34;Post-uniqueSort there are &#34; + divs.length + &#34; elements.&#34; ).css( &#34;color&#34;, &#34;red&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

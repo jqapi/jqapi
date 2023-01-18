@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">deferred.always()</h1>
+      <h2 class="subtitle is-5"> Add handlers to be called when the Deferred object is either resolved or rejected. </h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .deferred.always(alwaysCallbacks, alwaysCallbacks)<span class="return">&#129122; Deferred</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    alwaysCallbacks
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        A function, or array of functions, that is called when the Deferred is resolved or rejected.
+      
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    alwaysCallbacks
+                  </code>
+                </td>
+                <td>Function</td>
+                <td>
+                  
+        Optional additional functions, or arrays of functions, that are called when the Deferred is resolved or rejected.
+      
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>The argument can be either a single function or an array of functions. When the Deferred is resolved or rejected, the <code>alwaysCallbacks</code> are called. Since <code>deferred.always()</code> returns the Deferred object, other methods of the Deferred object can be chained to this one, including additional <code>.always()</code> methods. When the Deferred is resolved or rejected, callbacks are executed in the order they were added, using the arguments provided to the <a href="/deferred.resolve/"><code>resolve</code></a>, <a href="/deferred.reject/"><code>reject</code></a>, <a href="/deferred.resolveWith/"><code>resolveWith</code></a> or <a href="/deferred.rejectWith/"><code>rejectWith</code></a> method calls. For more information, see the documentation for <a href="/category/deferred-object/">Deferred object</a>.</p>
+    <p><strong>Note:</strong> The <code>deferred.always()</code> method receives the arguments that were used to <code>.resolve()</code> or <code>.reject()</code> the <code>Deferred</code> object, which are often very different. For this reason, it's best to use it only for actions that do not require inspecting the arguments. In all other cases, use explicit <a href="/deferred.done/"><code>.done()</code></a> or <a href="/deferred.fail/"><code>.fail()</code></a> handlers since the arguments will have well-known orders.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code>$<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"test.php"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">always</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"$.get completed with success or error callback arguments"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$.get( &#34;test.php&#34; ).always(function() {alert( &#34;$.get completed with success or error callback arguments&#34; );});</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

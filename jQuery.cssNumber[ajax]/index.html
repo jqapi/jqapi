@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.cssNumber</h1>
+      <h2 class="subtitle is-5">An object containing all CSS properties that may be used without a unit. The .css() method uses this object to see if it may append px to unitless values.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.cssNumber()<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>You can think about <code>jQuery.cssNumber</code> as a list of all CSS properties you might use without a unit. It's used by <a href="/css/"><code>.css()</code></a> to determine if it needs to add <code>px</code> to unitless values.</p>
+    <p>The keys of the <code>jQuery.cssNumber</code> object are camel-cased and the values are all set to <code>true</code>. If you want to prevent the <a href="/css/"><code>.css()</code></a> method from automatically adding the <code>px</code> unit for a specific CSS property, you can add an extra property to the <code>jQuery.cssNumber</code> object.</p>
+    <pre class="language-javascript"><code>jQuery<span class="token punctuation">.</span>cssNumber<span class="token punctuation">.</span>someCSSProp <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>By default the object contains the following properties:</p>
+    <ul>
+      <li><code>zIndex</code></li>
+      <li><code>fontWeight</code></li>
+      <li><code>opacity</code></li>
+      <li><code>zoom</code></li>
+      <li><code>lineHeight</code></li>
+      <li><code>widows</code> (added in jQuery 1.6)</li>
+      <li><code>orphans</code> (added in jQuery 1.6)</li>
+      <li><code>fillOpacity</code> (added in jQuery 1.6.2)</li>
+      <li><code>columnCount</code> (added in jQuery 1.9)</li>
+      <li><code>order</code> (added in jQuery 1.10.2)</li>
+      <li><code>flexGrow</code> (added in jQuery 1.11.1)</li>
+      <li><code>flexShrink</code> (added in jQuery 1.11.1)</li>
+    </ul>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

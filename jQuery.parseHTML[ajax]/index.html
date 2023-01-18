@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.parseHTML()</h1>
+      <h2 class="subtitle is-5">Parses a string into an array of DOM nodes.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.parseHTML(data, context, keepScripts)<span class="return">&#129122; Array</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    data
+                  </code>
+                </td>
+                <td>String</td>
+                <td>
+                  HTML string to be parsed
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    context
+                  </code>
+                </td>
+                <td>Element</td>
+                <td>
+                  Document element to serve as the context in which the HTML fragment will be created
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    keepScripts
+                  </code>
+                </td>
+                <td>Boolean</td>
+                <td>
+                  A Boolean indicating whether to include scripts passed in the HTML string
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p><code>jQuery.parseHTML</code> uses native methods to convert the string to a set of DOM nodes, which can then be inserted into the document. These methods do render all trailing or leading text (even if that's just whitespace). To prevent trailing/leading whitespace from being converted to text nodes you can pass the HTML string through <a href="/jQuery.trim/"><code>jQuery.trim</code></a>.</p>
+    <p>By default, the <code>context</code> is the current <code>document</code> if not specified or given as <code>null</code> or <code>undefined</code>. If the HTML was to be used in another document such as an iframe, that frame's document could be used.</p>
+    <p>As of 3.0 the default behavior is changed. If the <code>context</code> is not specified or given as <code>null</code> or <code>undefined</code>, a new <code>document</code> is used. This can potentially improve security because inline events will not execute when the HTML is parsed. Once the parsed HTML is injected into a document it does execute, but this gives tools a chance to traverse the created DOM and remove anything deemed unsafe. This improvement does not apply to internal uses of <code>jQuery.parseHTML</code> as they usually pass in the current <code>document</code>. Therefore, a statement like <code>$( "#log" ).append( $( htmlString ) )</code> is still subject to the injection of malicious code.</p>
+	<h2>Security Considerations</h2>
+	<p>Most jQuery APIs that accept HTML strings will run scripts that are included in the HTML. <code>jQuery.parseHTML</code> does not run scripts in the parsed HTML unless <code>keepScripts</code> is explicitly <code>true</code>. However, it is still possible in most environments to execute scripts indirectly, for example via the <code>&lt;img onerror&gt;</code> attribute. The caller should be aware of this and guard against it by cleaning or escaping any untrusted inputs from sources such as the URL or cookies. For future compatibility, callers should not depend on the ability to run <em>any</em> script content when <code>keepScripts</code> is unspecified or <code>false</code>.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span><span class="token punctuation">></span></span>Content:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> $log <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  str <span class="token operator">=</span> <span class="token string">"hello, &lt;b>my name is&lt;/b> jQuery."</span><span class="token punctuation">,</span>
+  html <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">parseHTML</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  nodeNames <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Append the parsed HTML</span>
+$log<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Gather the parsed HTML's node names</span>
+$<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span>html<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">i<span class="token punctuation">,</span> el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  nodeNames<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"&lt;li>"</span> <span class="token operator">+</span> el<span class="token punctuation">.</span>nodeName <span class="token operator">+</span> <span class="token string">"&lt;/li>"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Insert the node names</span>
+$log<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"&lt;h3>Node Names:&lt;/h3>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"&lt;ol>&lt;/ol>"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>nodeNames<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendTo</span><span class="token punctuation">(</span>$log<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><div id=&#34;log&#34;><h3>Content:</h3></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var $log = $( &#34;#log&#34; ),str = &#34;hello, <b>my name is</b> jQuery.&#34;,html = $.parseHTML( str ),nodeNames = [];// Append the parsed HTML$log.append( html );// Gather the parsed HTML's node names$.each( html, function( i, el ) {nodeNames[ i ] = &#34;<li>&#34; + el.nodeName + &#34;</li>&#34;;});// Insert the node names$log.append( &#34;<h3>Node Names:</h3>&#34; );$( &#34;<ol></ol>&#34; ).append( nodeNames.join( &#34;&#34; ) ).appendTo( $log );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

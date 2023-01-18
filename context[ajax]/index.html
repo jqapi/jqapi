@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">.context</h1>
+      <h2 class="subtitle is-5">The DOM node context originally passed to jQuery(); if none was passed then context will likely be the document.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          .context()<span class="return">&#129122; Element</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <div class="warning">
+      <p>Note: This API has been removed in jQuery 3.0.</p>
+    </div>
+    <p>The <code>.live()</code> method for binding event handlers uses this property to determine the root element to use for its event delegation needs.</p>
+    <p>The value of this property is typically equal to <code>document</code>, as this is the default context for jQuery objects if none is supplied. The context may differ if, for example, the object was created by searching within an <code>&lt;iframe&gt;</code> or XML document.</p>
+    <p>Note that the context property may only apply to the elements originally selected by <code>jQuery()</code>, as it is possible for the user to add elements to the collection via methods such as <code>.add()</code> and these may have a different context.</p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"ul"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"&lt;li>"</span> <span class="token operator">+</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"ul"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>context <span class="token operator">+</span> <span class="token string">"&lt;/li>"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"&lt;li>"</span> <span class="token operator">+</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"ul"</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">.</span>context<span class="token punctuation">.</span>nodeName <span class="token operator">+</span> <span class="token string">"&lt;/li>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>$( &#34;ul&#34; ).append( &#34;<li>&#34; + $( &#34;ul&#34; ).context + &#34;</li>&#34; ).append( &#34;<li>&#34; + $( &#34;ul&#34;, document.body ).context.nodeName + &#34;</li>&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/assets/_entryName_.6792fa87.css" /><script type="module" src="/hoisted.e7f359dc.js"></script><div id="content">
+      <div id="entry">
+  <ul id="entry-nav"></ul>
+
+  <div id="entry-content">
+    <section class="section">
+      <h1 class="title is-2">jQuery.extend()</h1>
+      <h2 class="subtitle is-5">Merge the contents of two or more objects together into the first object.</h2>
+
+      <div id="signatures">
+  <h4 class="title is-4">
+          jQuery.extend(target, object1, objectN)<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    target
+                  </code>
+                </td>
+                <td>Object</td>
+                <td>
+                   An object that will receive the new properties.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    object1
+                  </code>
+                </td>
+                <td>Object</td>
+                <td>
+                  An object containing additional properties to merge in.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    objectN
+                  </code>
+                </td>
+                <td>Object</td>
+                <td>
+                  Additional objects containing properties to merge in.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          jQuery.extend(deep, target, object1, objectN)<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    deep
+                  </code>
+                </td>
+                <td>Boolean</td>
+                <td>
+                  If true, the merge becomes recursive (aka. deep copy).  Passing <code>false</code> for this argument is not supported.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    target
+                  </code>
+                </td>
+                <td>Object</td>
+                <td>
+                  The object to extend. It will receive the new properties.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    object1
+                  </code>
+                </td>
+                <td>Object</td>
+                <td>
+                  An object containing additional properties to merge in.
+                </td>
+              </tr><tr>
+                <td>
+                  <code>
+                    objectN
+                  </code>
+                </td>
+                <td>Object</td>
+                <td>
+                  Additional objects containing properties to merge in.
+                </td>
+              </tr>
+          </tbody>
+        </table><h4 class="title is-4">
+          jQuery.extend(object)<span class="return">&#129122; Object</span>
+        </h4><table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            <tr>
+                <td>
+                  <code>
+                    object
+                  </code>
+                </td>
+                <td>Object</td>
+                <td>
+                   An object to merge onto the jQuery namespace.
+                </td>
+              </tr>
+          </tbody>
+        </table>
+</div>
+      <div class="content">
+  
+    <p>When two or more object arguments are supplied to <code>$.extend()</code>, properties from all of the objects are added to the target object. Arguments that are <code>null</code> or <code>undefined</code> are ignored.</p>
+    <p>If only one argument is supplied to <code>$.extend()</code>, this means the target argument was omitted. In this case, the jQuery object itself is assumed to be the target. By doing this, you can add new functions to the jQuery namespace. This can be useful for plugin authors wishing to add new methods to JQuery.</p>
+    <p>Keep in mind that the target object (first argument) will be modified, and will also be returned from <code>$.extend()</code>. If, however, you want to preserve both of the original objects, you can do so by passing an empty object as the target:</p>
+    <pre class="language-javascript"><code><span class="token keyword">var</span> object <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> object1<span class="token punctuation">,</span> object2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>The merge performed by <code>$.extend()</code> is not recursive by default; if a property of the first object is itself an object or array, it will be completely overwritten by a property with the same key in the second or subsequent object. The values are not merged. This can be seen in the example below by examining the value of banana. However, by passing <code>true</code> for the first function argument, objects will be recursively merged.</p>
+    <p><strong>Warning</strong>: Versions prior to 3.4 had a security issue where calling <code>jQuery.extend(true, {}, object)</code> on an unsanitized object containing a <code>__proto__</code> property would extend <code>Object.prototype</code>.</p>
+    <p><strong>Warning</strong>: Passing <code>false</code> for the first argument is not supported.</p>
+    <p>Undefined properties are not copied. However, properties inherited from the object's prototype <em>will</em> be copied over. Properties that are an object constructed via <code>new MyCustomObject(args)</code>, or built-in JavaScript types such as Date or RegExp, are not re-constructed and will appear as plain Objects in the resulting object or array.</p>
+    <p>On a <code>deep</code> extend, Object and Array are extended, but object wrappers on primitive types such as String, Boolean, and Number are not. Deep-extending a cyclical data structure will result in an error.</p>
+    <p>For needs that fall outside of this behavior, write a custom extend method instead, or use a library like <a href="https://lodash.com">lodash</a>. </p>
+  
+</div>
+      <!-- prettier-ignore --><div id="examples">
+  <div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> object1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">apple</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">banana</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">weight</span><span class="token operator">:</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">cherry</span><span class="token operator">:</span> <span class="token number">97</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> object2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">banana</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">200</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">durian</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Merge object2 into object1</span>
+$<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span>object1<span class="token punctuation">,</span> object2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Assuming JSON.stringify - not available in IE&lt;8</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>object1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><div id=&#34;log&#34;></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var object1 = {apple: 0,banana: { weight: 52, price: 100 },cherry: 97};var object2 = {banana: { price: 200 },durian: 100};// Merge object2 into object1$.extend( object1, object2 );// Assuming JSON.stringify - not available in IE<8$( &#34;#log&#34; ).append( JSON.stringify( object1 ) );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> object1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">apple</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">banana</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">weight</span><span class="token operator">:</span> <span class="token number">52</span><span class="token punctuation">,</span> <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">cherry</span><span class="token operator">:</span> <span class="token number">97</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> object2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">banana</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">200</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">durian</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Merge object2 into object1, recursively</span>
+$<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">,</span> object1<span class="token punctuation">,</span> object2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Assuming JSON.stringify - not available in IE&lt;8</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>object1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><div id=&#34;log&#34;></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var object1 = {apple: 0,banana: { weight: 52, price: 100 },cherry: 97};var object2 = {banana: { price: 200 },durian: 100};// Merge object2 into object1, recursively$.extend( true, object1, object2 );// Assuming JSON.stringify - not available in IE<8$( &#34;#log&#34; ).append( JSON.stringify( object1 ) );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div><div class="columns is-multiline is-gapless example">
+        <div class="column is-6">
+          <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>log<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-css"><code></code></pre>
+        </div>
+
+        <div class="column is-6">
+          <pre class="language-javascript"><code><span class="token keyword">var</span> defaults <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">validate</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"foo"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> options <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">validate</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"bar"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Merge defaults and options, without modifying defaults</span>
+<span class="token keyword">var</span> settings <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> defaults<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Assuming JSON.stringify - not available in IE&lt;8</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>
+  <span class="token string">"&lt;div>&lt;b>defaults -- &lt;/b>"</span> <span class="token operator">+</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>defaults<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;/div>"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>
+  <span class="token string">"&lt;div>&lt;b>options -- &lt;/b>"</span> <span class="token operator">+</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;/div>"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#log"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>
+  <span class="token string">"&lt;div>&lt;b>settings -- &lt;/b>"</span> <span class="token operator">+</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>settings<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"&lt;/div>"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        </div>
+
+        <div class="column is-6 demo">
+          <iframe src="javascript:document.write(`<!DOCTYPE html><html><head><style></style></head><body><div id=&#34;log&#34;></div><script src=&#34;/jquery-3.6.3.min.js&#34;></script><script>var defaults = { validate: false, limit: 5, name: &#34;foo&#34; };var options = { validate: true, name: &#34;bar&#34; };// Merge defaults and options, without modifying defaultsvar settings = $.extend( {}, defaults, options );// Assuming JSON.stringify - not available in IE<8$( &#34;#log&#34; ).append( &#34;<div><b>defaults -- </b>&#34; + JSON.stringify( defaults ) + &#34;</div>&#34; );$( &#34;#log&#34; ).append( &#34;<div><b>options -- </b>&#34; + JSON.stringify( options ) + &#34;</div>&#34; );$( &#34;#log&#34; ).append( &#34;<div><b>settings -- </b>&#34; + JSON.stringify( settings ) + &#34;</div>&#34; );</script></body></html>`);document.close();" width="100%" height="100%"></iframe>
+        </div>
+      </div>
+</div>
+    </section>
+  </div>
+</div>
+
+
+    </div>
