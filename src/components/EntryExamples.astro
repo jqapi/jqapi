@@ -14,6 +14,7 @@ const examples = entry
     const html = $example.find("> html").html();
 
     return {
+      desc: $example.find("> desc").html(),
       plain: {
         js: stripCdata(js),
         css: stripCdata(css),
@@ -33,21 +34,47 @@ const examples = entry
 <div id="examples">
   {
     examples.map((example) => (
-      <div class="columns is-multiline is-gapless example">
-        <div class="column is-6">
-          <pre class="language-html"><code><Fragment set:html={example.formatted.html} /></code></pre>
-        </div>
+      <div class="example">
+        <div class="columns is-multiline is-gapless">
+          <div class="column is-12">
+            <h4 class="title is-4 is-family-monospace">
+              <Fragment set:html={example.desc} />
+            </h4>
+          </div>
 
-        <div class="column is-6">
-          <pre class="language-css"><code><Fragment set:html={example.formatted.css} /></code></pre>
-        </div>
+          { example.plain.html.length !== 0 && (
+            <div class="column is-6">
+              <div class="code">
+                <span class="is-family-monospace">JS</span>
+                <pre class="language-html"><code><Fragment set:html={example.formatted.html} /></code></pre>
+              </div>
+            </div>
+          )}
+          
+          { example.plain.css.length !== 0 && (
+            <div class="column is-6">
+              <div class="code">
+                <span class="is-family-monospace">CSS</span>
+                <pre class="language-css"><code><Fragment set:html={example.formatted.css} /></code></pre>
+              </div>
+            </div>
+          )}
 
-        <div class="column is-6">
-          <pre class="language-javascript"><code><Fragment set:html={example.formatted.js} /></code></pre>
-        </div>
+          { example.plain.js.length !== 0 && (
+            <div class="column is-6">
+              <div class="code">
+                <span class="is-family-monospace">HTML</span>
+                <pre class="language-javascript"><code><Fragment set:html={example.formatted.js} /></code></pre>
+              </div>
+            </div>
+          )}
 
-        <div class="column is-6 demo">
-          <Sandbox html={example.plain.html} css={example.plain.css} js={example.plain.js} />
+          <div class="column is-6">
+            <div class="demo">
+              <span class="is-family-monospace">DEMO</span>
+              <Sandbox html={example.plain.html} css={example.plain.css} js={example.plain.js} />
+            </div>
+          </div>
         </div>
       </div>
     ))
