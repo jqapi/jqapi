@@ -1,5 +1,6 @@
 ---
 import LayoutMain from "../layouts/Main.astro";
+import { version } from "../../package.json";
 
 const title = "jQAPI - Alternative jQuery Documentation Browser";
 const originalUrl = "api.jquery.com";
@@ -29,5 +30,43 @@ const originalUrl = "api.jquery.com";
         </a>
       </li>
     </ul>
+
+    <div id="entry-content">
+      <section class="section">
+        <h1 class="title is-2">jQAPI <span>{version}</span></h1>
+        <h2 class="subtitle is-5">Alternative jQuery Documentation Browser</h2>
+
+        <div id="description">
+          <h4 class="title is-4">What is this?</h4>
+
+          <div class="columns">
+            <div class="column is-8">
+              <p>
+                This is a alternative interface to browse the
+                <a href="https://api.jquery.com"
+                  >Official jQuery Documentation</a
+                >.
+              </p>
+            </div>
+
+            <div class="column">
+              <h6 class="title is-6 has-text-centered">Sponsored by</h6>
+
+              <p class="has-text-centered">
+                <a href="http://hashrocket.com">
+                  <img src="/hashrocket.png" alt="Sponsored by Hashrocket" />
+                </a>
+              </p>
+
+              <p class="has-text-centered">
+                <a href="http://mdtm.pl/LWGfWR">
+                  <img src="/mt.gif" alt="Sponsored by MediaTemple" />
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 </LayoutMain>

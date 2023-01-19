@@ -388,6 +388,15 @@ body,
   .language-css .token.property {
     color: #d19a66 !important;
   }
+
+  .title.is-2 span {
+    color: #888;
+    font-size: 0.4em;
+  }
+
+  .title.is-6 {
+    color: #888;
+  }
 }
 
 #description {
