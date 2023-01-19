@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import purgecss from "astro-purgecss";
+import minifyHtml from "astro-html-minifier";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,5 +16,6 @@ export default defineConfig({
         "return",
       ],
     }),
+    minifyHtml(),
   ],
 });

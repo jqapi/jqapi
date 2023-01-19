@@ -3,7 +3,6 @@ import LayoutMain from "../layouts/Main.astro";
 import { version } from "../../package.json";
 
 const title = "jQAPI - Alternative jQuery Documentation Browser";
-const originalUrl = "api.jquery.com";
 ---
 
 <LayoutMain title={title}>
@@ -25,8 +24,13 @@ const originalUrl = "api.jquery.com";
         </a>
       </li>
       <li class="right original">
-        <a href={`https://${originalUrl}`}>
-          <span>&#129133; {originalUrl}</span>
+        <a href="https://api.jquery.com">
+          <span>&#129133; api.jquery.com</span>
+        </a>
+      </li>
+      <li class="right original">
+        <a href="https://github.com/jqapi/jqapi">
+          <span>&#129133; github.com/jqapi/jqapi</span>
         </a>
       </li>
     </ul>
@@ -70,3 +74,11 @@ const originalUrl = "api.jquery.com";
     </div>
   </div>
 </LayoutMain>
+
+<script>
+  import $ from "jquery";
+
+  $(() => {
+    $("#search input").focus();
+  });
+</script>
