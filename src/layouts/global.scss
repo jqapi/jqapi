@@ -313,9 +313,51 @@ body,
 }
 
 #entry-nav {
-  min-height: 36px;
+  height: 36px;
   background: #edf3fe;
   border-bottom: 1px solid #d4e4fc;
+
+  li {
+    float: left;
+    height: 100%;
+
+    a {
+      display: inline-block;
+      height: 100%;
+      padding: 0 12px;
+      border-right: 1px solid #d4e4fc;
+      color: #333;
+
+      span {
+        vertical-align: middle;
+        padding-top: 5px;
+        font-size: 0.9em;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+      }
+
+      &:hover {
+        background: #d4e4fc;
+        color: #222;
+      }
+    }
+
+    &.right {
+      float: right;
+
+      a {
+        border-left: 1px solid #d4e4fc;
+        border-right: 0;
+      }
+    }
+
+    &.original a {
+      color: #777;
+
+      span {
+        font-size: 0.7em;
+      }
+    }
+  }
 }
 
 #entry-content {
@@ -348,8 +390,12 @@ body,
   }
 }
 
+#description {
+  padding-top: 18px;
+}
+
 #signatures {
-  margin-bottom: 48px;
+  padding-top: 18px;
 
   .title {
     .type {
@@ -374,7 +420,7 @@ body,
 }
 
 #examples {
-  margin-top: 36px;
+  padding-top: 28px;
 
   .example {
     border: 5px solid #e0c962;

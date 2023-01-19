@@ -6,10 +6,38 @@ import Examples from "./EntryExamples.astro";
 const { entry } = Astro.props;
 const title = entry.find("entry > title").text();
 const desc = entry.find("entry > desc").text();
+const name = entry.find("entry").attr("name");
+const originalUrl = `api.jquery.com/${name}`;
 ---
 
 <div id="entry">
-  <ul id="entry-nav"></ul>
+  <ul id="entry-nav">
+    <li>
+      <a href="#signatures">
+        <span>Signatures</span>
+      </a>
+    </li>
+    <li>
+      <a href="#description">
+        <span>Description</span>
+      </a>
+    </li>
+    <li>
+      <a href="#examples">
+        <span>Examples</span>
+      </a>
+    </li>
+    <li class="right original">
+      <a href={`https://${originalUrl}`}>
+        <span>&#129133; {originalUrl}</span>
+      </a>
+    </li>
+    <li class="right">
+      <a href="/">
+        <span>Home</span>
+      </a>
+    </li>
+  </ul>
 
   <div id="entry-content">
     <section class="section">

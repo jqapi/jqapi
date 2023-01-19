@@ -38,6 +38,11 @@ function cleanDesc(desc) {
     const $sidebar = $("#sidebar");
 
     window.onpopstate = (event) => {
+      if (location.hash.length !== 0) {
+        // its a hash navigation, let the browser handle it
+        return;
+      }
+
       let $toScroll = $categories;
       const href = cleanHref(location.pathname);
 

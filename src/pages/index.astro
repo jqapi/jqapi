@@ -2,8 +2,32 @@
 import LayoutMain from "../layouts/Main.astro";
 
 const title = "jQAPI - Alternative jQuery Documentation Browser";
+const originalUrl = "api.jquery.com";
 ---
 
 <LayoutMain title={title}>
-  <b>Hello!</b>
+  <div id="entry">
+    <ul id="entry-nav">
+      <li>
+        <a href="#signatures">
+          <span>What</span>
+        </a>
+      </li>
+      <li>
+        <a href="#description">
+          <span>How</span>
+        </a>
+      </li>
+      <li>
+        <a href="#examples">
+          <span>Why</span>
+        </a>
+      </li>
+      <li class="right original">
+        <a href={`https://${originalUrl}`}>
+          <span>&#129133; {originalUrl}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </LayoutMain>
