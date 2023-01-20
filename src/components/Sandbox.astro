@@ -9,7 +9,15 @@ const code = `
     <body>
       ${html}
       <script src="/jquery-3.6.3.min.js"></script>
-      <script>${js}</script>
+      <script>
+        window.alert = function(msg) {
+          $("body").append("<p>Alert: " + msg + "</p>");
+        };
+        console.log = function(msg) {
+          $("body").append("<p>Log: " + msg + "</p>");
+        };
+        ${js}
+      </script>
     </body>
   </html>
 `
