@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQAPI - Alternative jQuery Documentation Browser</title>
+    <meta content='text/html; charset=utf-8' name='content-type'>
+    <meta content='Alternative jQuery Documentation Browser' name='description'>
+    <link href='assets/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='/favicon.ico' rel='icon' type='image/x-icon'>
+    <link href='assets/bundle.css' rel='stylesheet' type='text/css'>
+    <script src='assets/bundle.js' type='text/javascript'></script>
+  </head>
+  <body>
+    <div id='sidebar'>
+      <div id='search'>
+        <input autocomplete='off' autofocus='autofocus' autosave='searchdoc' id='search-field' placeholder='Search' results='0' type='search'>
+      </div>
+      <div id='sidebar-content'>
+        <ul id='categories'>
+          <li class='loader'>Loading...</li>
+        </ul>
+        <ul class='entries' id='results'>
+          <li class='not-found'>Nothing found.</li>
+        </ul>
+      </div>
+    </div>
+    <div id='content'>
+      <div id='header'>
+        <ul id='signatures-nav'>
+          <li>
+            <a href='#about'>
+              <span>What is this about?</span>
+            </a>
+          </li>
+          <li>
+            <a href='#usage'>
+              <span>Usage</span>
+            </a>
+          </li>
+          <li>
+            <a href='#download'>
+              <span>Download</span>
+            </a>
+          </li>
+          <li>
+            <a href='#credits'>
+              <span>Credits</span>
+            </a>
+          </li>
+          <li>
+            <a href='#license'>
+              <span>License</span>
+            </a>
+          </li>
+          <li>
+            <a href='#changelog'>
+              <span>Changelog</span>
+            </a>
+          </li>
+        </ul>
+        <ul id='navigation'>
+          <li>
+            <a href='/'>
+              <span>Home</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id='entry'>
+        <div id='entry-wrapper'>
+          <div id='entry-header'>
+            <h1>jQAPI - Alternative jQuery Documentation Browser</h1>
+            <p>The faster way to browse the jQuery documentation.</p>
+          </div>
+          <ul id='entries'>
+            <li class='entry'>
+              <ul class='signatures'>
+                <li class='signature'>
+                  <h2 class='title'>What is this about?</h2>
+                  <div class='row clearfix'>
+                    <div class='left' id='intro'>
+                      <p>
+                        This is a alternative interface to browse the
+                        <a href='http://api.jquery.com'>Official jQuery Documentation</a>
+                        that can be found on
+                        <a href='https://github.com/jquery/api.jquery.com'>GitHub</a>
+                        .
+                      </p>
+                      <p>
+                        The aim of this project is to get out of the way of your development work.
+                        Quickly switch to this docs and find what you are looking for.
+                      </p>
+                      <p>
+                        Furthermore you can download this documentation and browse it offline.
+                        In the future you don't even need to download it to have it available
+                        offline.
+                      </p>
+                      <p>
+                        This
+                        <a href='https://github.com/jqapi/jqapi'>Open-Source</a>
+                        project is still under development. If you are having trouble with it
+                        you can still use the
+                        <a href='http://old.jqapi.com'>old jQAPI</a>
+                        .
+                      </p>
+                      <p>
+                        This project was made possible through crowdfunding.
+                        A special thanks to our sponsor and these great folks:
+                      </p>
+                      <div id='donors'>
+                        <ul>
+                          <li>
+                            <a href='http://cubixcloud.com'>Joseph Huckaby</a>
+                          </li>
+                          <li>
+                            <a href='http://glasspear.ca'>Rory Craig-Barnes</a>
+                          </li>
+                          <li>
+                            <a href='http://maxmo.net'>Nathan Perkins</a>
+                          </li>
+                          <li>
+                            <a href='http://tobias-otte.de'>Tobias Otte</a>
+                          </li>
+                          <li>
+                            <a href='http://www.tl-dr.org'>Alan Faubert</a>
+                          </li>
+                          <li>
+                            <a href='http://alexkulikov.com'>Alex Kulikov</a>
+                          </li>
+                          <li>
+                            <a href='http://danawoodman.com'>Dana Woodman</a>
+                          </li>
+                          <li>
+                            <a href='http://corbacho.info'>David Corbacho Roman</a>
+                          </li>
+                          <li>
+                            <a href='http://edibleexperiences.com'>Amir Shamsuddin</a>
+                          </li>
+                          <li>
+                            <a href='http://joshpangell.com'>Josh Pangell</a>
+                          </li>
+                          <li>Andrew Hahn</li>
+                          <li>Yoren Chang</li>
+                          <li>codeworxx</li>
+                          <li class='donor'>Steven Olsen</li>
+                          <li class='donor'>Brock Adams</li>
+                          <li class='donor'>Simen Svale Skogsrud</li>
+                          <li class='donor'>Mironov Mikhail</li>
+                          <li class='donor'>Geoffrey Doret</li>
+                          <li class='donor'>Johan Hermansson</li>
+                          <li class='donor'>Tim Osborn</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class='right'>
+                      <div id='sponsor'>
+                        <span>Sponsored by</span>
+                        <a href='http://hashrocket.com'>
+                          <img src='assets/hashrocket.png'>
+                        </a>
+                        <a href='http://mdtm.pl/LWGfWR'>
+                          <img src='assets/mt.gif'>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class='entry'>
+              <ul class='signatures'>
+                <li class='signature'>
+                  <h2 class='title'>Usage</h2>
+                  <div class='row clearfix'>
+                    <div class='left'>
+                      <p>
+                        Keyboard shortcuts are available when the search box has focus. ESC key is global.
+                      </p>
+                      <ul id='keys'>
+                        <li>
+                          <span>ESC</span>
+                          Set search box focus / Clear search box
+                        </li>
+                        <li>
+                          <span>UP</span>
+                          Previous category / Previous entry
+                        </li>
+                        <li>
+                          <span>DOWN</span>
+                          Next category / Next entry
+                        </li>
+                        <li>
+                          <span>ENTER</span>
+                          Open category / Load selected entry
+                        </li>
+                      </ul>
+                    </div>
+                    <div class='right'>
+                      <p>
+                        Please note that the keyboard navigation is
+                        still buggy when in category mode.
+                        But you should have no problem
+                        to search for entries and navigate to them
+                        in a fast manner.
+                      </p>
+                      <p>
+                        I am working on it.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class='entry'>
+              <ul class='signatures'>
+                <li class='signature' id='download'>
+                  <h2 class='title'>Download</h2>
+                  <div class='row clearfix'>
+                    <div class='third' id='zip'>
+                      <a href='/jqapi.zip'>Download as Zip Archive</a>
+                    </div>
+                    <div class='third' id='air'>
+                      <a href='/jqapi.air'>Download as AIR App</a>
+                    </div>
+                    <div class='third' id='git'>
+                      <a href='https://github.com/jqapi/jqapi#generate-the-documentation'>Git Clone &amp; generate it yourself</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class='entry'>
+              <ul class='signatures'>
+                <li class='signature'>
+                  <h2 class='title'>Credits</h2>
+                  <ul id='credits'>
+                    <li>
+                      <a href='http://jquery.com'>jQuery</a>
+                    </li>
+                    <li>
+                      <a href='http://api.jquery.com/'>Official Documentation</a>
+                    </li>
+                    <li>
+                      <a href='http://railsapi.com'>Rails API</a>
+                    </li>
+                    <li>
+                      <a href='http://benalman.com/projects/jquery-bbq-plugin/'>BBQ Plugin</a>
+                    </li>
+                    <li>
+                      <a href='http://benalman.com/projects/jquery-dotimeout-plugin/'>doTimeout Plugin</a>
+                    </li>
+                    <li>
+                      <a href='http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html'>Highlight Plugin</a>
+                    </li>
+                    <li>
+                      <a href='http://www.steamdev.com/snippet/'>Snippet Plugin</a>
+                    </li>
+                    <li>
+                      <a href='https://github.com/versal/sandbox-js'>Sandbox Plugin</a>
+                    </li>
+                    <li>
+                      <a href='http://coffeescript.org/'>CoffeeScript</a>
+                    </li>
+                    <li>
+                      <a href='http://www.sinatrarb.com/'>Sinatra</a>
+                    </li>
+                    <li>
+                      <a href='https://github.com/wycats/thor'>Thor</a>
+                    </li>
+                    <li>
+                      <a href='http://sass-lang.com/'>Sass</a>
+                    </li>
+                    <li>
+                      <a href='http://haml.info/'>Haml</a>
+                    </li>
+                    <li>
+                      <a href='https://github.com/sstephenson/sprockets'>Sprockets</a>
+                    </li>
+                    <li>
+                      <a href='http://adamwhitcroft.com/batch/'>Batch Icons</a>
+                    </li>
+                    <li>
+                      <a href='http://benalman.com/'>Ben Alman</a>
+                    </li>
+                    <li>
+                      <a href='http://www.erikzaadi.com/'>Erik Zaadi</a>
+                    </li>
+                    <li>
+                      <a href='https://twitter.com/egukin'>Arnold Sakhnov</a>
+                    </li>
+                    <li>
+                      <a href='https://github.com/Klortho'>Chris Maloney</a>
+                    </li>
+                    <li>
+                      <a href='https://github.com/IlanFrumer'>Ilan Frumer</a>
+                    </li>
+                    <li>
+                      <a href='https://github.com/jfoley'>John Foley</a>
+                    </li>
+                    <li>
+                      <a href='http://yayquery.com/'>yayQuery</a>
+                    </li>
+                    <li>
+                      <a href='http://technikwuerze.de/podcast/technikwuerze163/'>Technikw&uuml;rze</a>
+                    </li>
+                    <li>
+                      <a href='http://mediatemple.net/'>Media Temple</a>
+                    </li>
+                    <li>to be continued...</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class='entry'>
+              <ul class='signatures'>
+                <li class='signature'>
+                  <h2 class='title'>License</h2>
+                  <div id='license'>
+                    <div>
+                      <a href='http://jquery.com'>jQuery</a>
+                      and its documentation is licensed under the
+                      <a href='http://jquery.org/license/'>MIT &amp; GPL licenses</a>
+                      . jQAPI is
+                      <a href='https://github.com/jqapi/jqapi'>Open-Source</a>
+                      and running under the same
+                      <a href='LICENSE'>licenses</a>
+                      .
+                    </div>
+                    <div>
+                      jQAPI is coded by
+                      <a href='http://mustardamus.com'>Sebastian Senf</a>
+                      . Follow me
+                      <a href='http://twitter.com/mustardamus'>@mustardamus</a>
+                      .
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li class='entry'>
+              <ul class='signatures'>
+                <li class='signature' id='changelog'>
+                  <h2 class='title'>Changelog</h2>
+                  <ul>
+                    <li>
+                      <span>[2014-02-11]</span>
+                      Updated documentation.
+                      <a href='https://thedaywefightback.org/international/'>TODAY IS THE DAY WE FIGHT BACK AGAINST MASS SURVEILLANCE</a>
+                    </li>
+                    <li>
+                      <span>[2013-07-09]</span>
+                      Docs generation fixed. (By
+                      <a href='https://github.com/jqapi/jqapi/pull/15'>John Foley</a>
+                      ) - Updated documentation.
+                    </li>
+                    <li>
+                      <span>[2013-03-19]</span>
+                      XML parsing fixed. (By
+                      <a href='https://github.com/jqapi/jqapi/pull/9'>IlanFrumer</a>
+                      ) - Updated documentation.
+                    </li>
+                    <li>
+                      <span>[2013-01-21]</span>
+                      jQAPI is again available as stand alone AIR app.
+                    </li>
+                    <li>
+                      <span>[2013-01-21]</span>
+                      Don't set focus on search field on mobile devices if pointer is over the sidebar.
+                    </li>
+                    <li>
+                      <span>[2013-01-18]</span>
+                      Find best matching entry on search, and put it on first position.
+                    </li>
+                    <li>
+                      <span>[2013-01-15]</span>
+                      Relative paths so you can store the offline jQAPI in a subfolder. (By
+                      <a href='https://github.com/jqapi/jqapi/commit/dadfba870fb9f165862ca3afbc682d4b4721c2a4'>Klortho</a>
+                      )
+                    </li>
+                    <li>
+                      <span>[2013-01-10]</span>
+                      Released the revamped and better jQAPI.
+                    </li>
+                    <li>
+                      <span>[2011-xx-xx]</span>
+                      Documentation updating and some bug fixing.
+                    </li>
+                    <li>
+                      <span>[2010-03-10]</span>
+                      Major code refactoring.
+                    </li>
+                    <li>
+                      <span>[2010-01-31]</span>
+                      Complete rewrite for the masses.
+                    </li>
+                    <li>
+                      <span>[2010-01-29]</span>
+                      Released very first version.
+                    </li>
+                  </ul>
+                  <a href='http://twitter.com/jqapi' id='follow'>Follow @jqapi for updates</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    if(window.location.hostname === 'jqapi.com') {
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-12732447-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    }
+  </script>
+</html>
