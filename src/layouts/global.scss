@@ -513,3 +513,41 @@ body,
     }
   }
 }
+
+#job {
+  position: fixed;
+  top: 50px;
+  right: 16px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: none;
+
+  span,
+  p {
+    cursor: default;
+  }
+
+  .message-header {
+    background-color: #3385f7;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .message-body {
+    padding: 16px;
+
+    p {
+      font-size: 0.9em;
+      line-height: 1.2em;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .icon {
+    font-size: 46px;
+    padding-top: 26px;
+  }
+}

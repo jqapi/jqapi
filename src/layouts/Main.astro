@@ -1,6 +1,7 @@
 ---
 import Search from "../components/Search.astro";
 import Categories from "../components/Categories.astro";
+import Job from "../components/Job.astro";
 import categories from "../../categories-generated.json";
 import "./global.scss";
 
@@ -29,6 +30,8 @@ const { title } = Astro.props;
         <slot />
       </div>
     </div>
+
+    <Job />
 
     <script>
       // redirect old jQAPI links to the page

@@ -1,0 +1,46 @@
+<article id="job" class="message">
+  <div class="message-header">
+    <p>Looking for a Web Developer?</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+
+  <div class="message-body">
+    <div class="columns is-mobile">
+      <div class="column is-2 has-text-centered">
+        <span class="icon">👋</span>
+      </div>
+
+      <div class="column">
+        <p>
+          <strong>Hi!</strong> I'm Basti, author of this site. If you are looking
+          for a web developer with 15+ years of experience, holla at me!
+        </p>
+        <p>
+          Be it the good 'ol jQuery, vanilla JS or modern frameworks like Vue
+          and Svelte, front- or backend, I can help you.
+        </p>
+        <p>
+          Just write me at <a href="mailto:jobs@jqapi.com">jobs@jqapi.com</a> :)
+        </p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<script>
+  import $ from "jquery";
+
+  $(() => {
+    const $job = $("#job");
+    const hideJob = window.localStorage.getItem("hideJob");
+
+    if (!hideJob) {
+      $job.slideDown(200);
+    }
+
+    $(".delete", $job).click(() => {
+      $job.fadeOut(100);
+      window.localStorage.setItem("hideJob", "true");
+    });
+  });
+</script>
