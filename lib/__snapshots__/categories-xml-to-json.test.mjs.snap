@@ -10162,3 +10162,2887 @@ exports[`Categories XML to JSON convertion > should find and expand all entries 
   },
 }
 `;
+
+exports[`Categories XML to JSON convertion > should fix various categories 1`] = `
+[
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "The function to be invoked.",
+            "name": "ajaxComplete",
+            "path": "ajaxComplete",
+          },
+          {
+            "desc": "The function to be invoked.",
+            "name": "ajaxError",
+            "path": "ajaxError",
+          },
+          {
+            "desc": "The function to be invoked.",
+            "name": "ajaxSend",
+            "path": "ajaxSend",
+          },
+          {
+            "desc": "The function to be invoked.",
+            "name": "ajaxStart",
+            "path": "ajaxStart",
+          },
+          {
+            "desc": "Register a handler to be called when all Ajax requests have completed. This is an <a href=\\"/Ajax_Events/\\">Ajax Event</a>.",
+            "name": "ajaxStop",
+            "path": "ajaxStop",
+          },
+          {
+            "desc": "The function to be invoked.",
+            "name": "ajaxSuccess",
+            "path": "ajaxSuccess",
+          },
+        ],
+        "name": "Global Ajax Event Handlers",
+        "slug": "global-ajax-event-handlers",
+      },
+      {
+        "entries": [
+          {
+            "desc": "An array, a plain object, or a jQuery object to serialize.",
+            "name": "jQuery.param",
+            "path": "jQuery.param",
+          },
+          {
+            "desc": "Encode a set of form elements as a string for submission.",
+            "name": "serialize",
+            "path": "serialize",
+          },
+          {
+            "desc": "Encode a set of form elements as an array of names and values.",
+            "name": "serializeArray",
+            "path": "serializeArray",
+          },
+        ],
+        "name": "Helper Functions",
+        "slug": "helper-functions",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A string containing the URL to which the request is sent.",
+            "name": "jQuery.ajax",
+            "path": "jQuery.ajax",
+          },
+          {
+            "desc": "Handle custom Ajax options or modify existing options before each request is sent and before they are processed by <code>$.ajax()</code>.",
+            "name": "jQuery.ajaxPrefilter",
+            "path": "jQuery.ajaxPrefilter",
+          },
+          {
+            "desc": "A set of key/value pairs that configure the default Ajax request. All options are optional.",
+            "name": "jQuery.ajaxSetup",
+            "path": "jQuery.ajaxSetup",
+          },
+          {
+            "desc": "Creates an object that handles the actual transmission of Ajax data.",
+            "name": "jQuery.ajaxTransport",
+            "path": "jQuery.ajaxTransport",
+          },
+        ],
+        "name": "Low-Level Interface",
+        "slug": "low-level-interface",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A string containing the URL to which the request is sent.",
+            "name": "jQuery.get",
+            "path": "jQuery.get",
+          },
+          {
+            "desc": "A string containing the URL to which the request is sent.",
+            "name": "jQuery.getJSON",
+            "path": "jQuery.getJSON",
+          },
+          {
+            "desc": "A string containing the URL to which the request is sent.",
+            "name": "jQuery.getScript",
+            "path": "jQuery.getScript",
+          },
+          {
+            "desc": "A string containing the URL to which the request is sent.",
+            "name": "jQuery.post",
+            "path": "jQuery.post",
+          },
+          {
+            "desc": "A string containing the URL to which the request is sent.",
+            "name": "load",
+            "path": "load",
+          },
+        ],
+        "name": "Shorthand Methods",
+        "slug": "shorthand-methods",
+      },
+    ],
+    "entries": undefined,
+    "name": "Ajax",
+    "slug": "ajax",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "One or more space-separated classes to be added to the class attribute of each matched element.",
+        "name": "addClass",
+        "path": "addClass",
+      },
+      {
+        "desc": "Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.",
+        "name": "attr",
+        "path": "attr",
+      },
+      {
+        "desc": "The class name to search for.",
+        "name": "hasClass",
+        "path": "hasClass",
+      },
+      {
+        "desc": "Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.",
+        "name": "html",
+        "path": "html",
+      },
+      {
+        "desc": "Get the value of a property for the first element in the set of matched elements or set one or more properties for every matched element.",
+        "name": "prop",
+        "path": "prop",
+      },
+      {
+        "desc": "An attribute to remove; as of version 1.7, it can be a space-separated list of attributes.",
+        "name": "removeAttr",
+        "path": "removeAttr",
+      },
+      {
+        "desc": "Remove a single class, multiple classes, or all classes from each element in the set of matched elements.",
+        "name": "removeClass",
+        "path": "removeClass",
+      },
+      {
+        "desc": "The name of the property to remove.",
+        "name": "removeProp",
+        "path": "removeProp",
+      },
+      {
+        "desc": "One or more classes (separated by spaces) to be toggled for each element in the matched set.",
+        "name": "toggleClass",
+        "path": "toggleClass",
+      },
+      {
+        "desc": "Get the current value of the first element in the set of matched elements or set the value of every matched element.",
+        "name": "val",
+        "path": "val",
+      },
+    ],
+    "name": "Attributes",
+    "slug": "attributes",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "A function, or array of functions, that are to be added to the callback list.",
+        "name": "callbacks.add",
+        "path": "callbacks.add",
+      },
+      {
+        "desc": "Disable a callback list from doing anything more.",
+        "name": "callbacks.disable",
+        "path": "callbacks.disable",
+      },
+      {
+        "desc": "Determine if the callbacks list has been disabled.",
+        "name": "callbacks.disabled",
+        "path": "callbacks.disabled",
+      },
+      {
+        "desc": "Remove all of the callbacks from a list.",
+        "name": "callbacks.empty",
+        "path": "callbacks.empty",
+      },
+      {
+        "desc": "The argument or list of arguments to pass back to the callback list.",
+        "name": "callbacks.fire",
+        "path": "callbacks.fire",
+      },
+      {
+        "desc": "A reference to the context in which the callbacks in the list should be fired.",
+        "name": "callbacks.fireWith",
+        "path": "callbacks.fireWith",
+      },
+      {
+        "desc": "Determine if the callbacks have already been called at least once.",
+        "name": "callbacks.fired",
+        "path": "callbacks.fired",
+      },
+      {
+        "desc": "The callback to search for.",
+        "name": "callbacks.has",
+        "path": "callbacks.has",
+      },
+      {
+        "desc": "Lock a callback list in its current state.",
+        "name": "callbacks.lock",
+        "path": "callbacks.lock",
+      },
+      {
+        "desc": "Determine if the callbacks list has been locked.",
+        "name": "callbacks.locked",
+        "path": "callbacks.locked",
+      },
+      {
+        "desc": "A function, or array of functions, that are to be removed from the callback list.",
+        "name": "callbacks.remove",
+        "path": "callbacks.remove",
+      },
+      {
+        "desc": "An optional list of space-separated flags that change how the callback list behaves.",
+        "name": "jQuery.Callbacks",
+        "path": "jQuery.Callbacks",
+      },
+    ],
+    "name": "Callbacks Object",
+    "slug": "callbacks-object",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "Holds or releases the execution of jQuery's ready event.",
+        "name": "jQuery.holdReady",
+        "path": "jQuery.holdReady",
+      },
+      {
+        "desc": "A Boolean indicating whether to remove all jQuery variables from the global scope (including jQuery itself).",
+        "name": "jQuery.noConflict",
+        "path": "jQuery.noConflict",
+      },
+      {
+        "desc": "A Promise-like object (or \\"thenable\\") that resolves when the document is ready.",
+        "name": "jQuery.ready",
+        "path": "jQuery.ready",
+      },
+      {
+        "desc": "Handles errors thrown synchronously in functions wrapped in <code>jQuery()</code>.",
+        "name": "jQuery.readyException",
+        "path": "jQuery.readyException",
+      },
+      {
+        "desc": "Creates a new copy of jQuery whose properties and methods can be modified without affecting the original jQuery object.",
+        "name": "jQuery.sub",
+        "path": "jQuery.sub",
+      },
+      {
+        "desc": "Zero or more Thenable objects.",
+        "name": "jQuery.when",
+        "path": "jQuery.when",
+      },
+      {
+        "desc": "Return a collection of matched elements either found in the DOM based on passed argument(s) or created by passing an HTML string.",
+        "name": "jQuery",
+        "path": "jQuery",
+      },
+    ],
+    "name": "Core",
+    "slug": "core",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "One or more space-separated classes to be added to the class attribute of each matched element.",
+        "name": "addClass",
+        "path": "addClass",
+      },
+      {
+        "desc": "Get the value of a computed style property for the first element in the set of matched elements or set one or more CSS properties for every matched element.",
+        "name": "css",
+        "path": "css",
+      },
+      {
+        "desc": "The class name to search for.",
+        "name": "hasClass",
+        "path": "hasClass",
+      },
+      {
+        "desc": "Get the current computed height for the first element in the set of matched elements or set the height of every matched element.",
+        "name": "height",
+        "path": "height",
+      },
+      {
+        "desc": "Get the current computed inner height (including padding but not border) for the first element in the set of matched elements or set the inner height of every matched element.",
+        "name": "innerHeight",
+        "path": "innerHeight",
+      },
+      {
+        "desc": "Get the current computed inner width (including padding but not border) for the first element in the set of matched elements or set the inner width of every matched element.",
+        "name": "innerWidth",
+        "path": "innerWidth",
+      },
+      {
+        "desc": "Hook directly into jQuery to override how particular CSS properties are retrieved or set, normalize CSS property naming, or create custom properties.",
+        "name": "jQuery.cssHooks",
+        "path": "jQuery.cssHooks",
+      },
+      {
+        "desc": "An object containing all CSS properties that may be used without a unit. The <a href=\\"/css/\\"><code>.css()</code></a> method uses this object to see if it may append <code>px</code> to unitless values.",
+        "name": "jQuery.cssNumber",
+        "path": "jQuery.cssNumber",
+      },
+      {
+        "desc": "Escapes any character that has a special meaning in a CSS selector.",
+        "name": "jQuery.escapeSelector",
+        "path": "jQuery.escapeSelector",
+      },
+      {
+        "desc": "Get the current coordinates of the first element, or set the coordinates of every element, in the set of matched elements, relative to the document.",
+        "name": "offset",
+        "path": "offset",
+      },
+      {
+        "desc": "Get the current computed outer height (including padding, border, and optionally margin) for the first element in the set of matched elements or set the outer height of every matched element.",
+        "name": "outerHeight",
+        "path": "outerHeight",
+      },
+      {
+        "desc": "Get the current computed outer width (including padding, border, and optionally margin) for the first element in the set of matched elements or set the outer width of every matched element.",
+        "name": "outerWidth",
+        "path": "outerWidth",
+      },
+      {
+        "desc": "Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.",
+        "name": "position",
+        "path": "position",
+      },
+      {
+        "desc": "Remove a single class, multiple classes, or all classes from each element in the set of matched elements.",
+        "name": "removeClass",
+        "path": "removeClass",
+      },
+      {
+        "desc": "Get the current horizontal position of the scroll bar for the first element in the set of matched elements or set the horizontal position of the scroll bar for every matched element.",
+        "name": "scrollLeft",
+        "path": "scrollLeft",
+      },
+      {
+        "desc": "Get the current vertical position of the scroll bar for the first element in the set of matched elements or set the vertical position of the scroll bar for every matched element.",
+        "name": "scrollTop",
+        "path": "scrollTop",
+      },
+      {
+        "desc": "One or more classes (separated by spaces) to be toggled for each element in the matched set.",
+        "name": "toggleClass",
+        "path": "toggleClass",
+      },
+      {
+        "desc": "Get the current computed width for the first element in the set of matched elements or set the width of every matched element.",
+        "name": "width",
+        "path": "width",
+      },
+    ],
+    "name": "CSS",
+    "slug": "css",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "A string containing the name of the queue. Defaults to <code>fx</code>, the standard effects queue.",
+        "name": "clearQueue",
+        "path": "clearQueue",
+      },
+      {
+        "desc": "Store arbitrary data associated with the matched elements or return the value at the named data store for the first element in the set of matched elements.",
+        "name": "data",
+        "path": "data",
+      },
+      {
+        "desc": "A string containing the name of the queue. Defaults to <code>fx</code>, the standard effects queue.",
+        "name": "dequeue",
+        "path": "dequeue",
+      },
+      {
+        "desc": "Store arbitrary data associated with the specified element and/or return the value that was set.",
+        "name": "jQuery.data",
+        "path": "jQuery.data",
+      },
+      {
+        "desc": "A DOM element from which to remove and execute a queued function.",
+        "name": "jQuery.dequeue",
+        "path": "jQuery.dequeue",
+      },
+      {
+        "desc": "A DOM element to be checked for data.",
+        "name": "jQuery.hasData",
+        "path": "jQuery.hasData",
+      },
+      {
+        "desc": "Show or manipulate the queue of functions to be executed on the matched element.",
+        "name": "jQuery.queue",
+        "path": "jQuery.queue",
+      },
+      {
+        "desc": "A DOM element from which to remove data.",
+        "name": "jQuery.removeData",
+        "path": "jQuery.removeData",
+      },
+      {
+        "desc": "Show or manipulate the queue of functions to be executed on the matched elements.",
+        "name": "queue",
+        "path": "queue",
+      },
+      {
+        "desc": "A string naming the piece of data to delete.",
+        "name": "removeData",
+        "path": "removeData",
+      },
+    ],
+    "name": "Data",
+    "slug": "data",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "A function, or array of functions, that is called when the Deferred is resolved or rejected.",
+        "name": "deferred.always",
+        "path": "deferred.always",
+      },
+      {
+        "desc": "A function that is called when the Deferred is rejected.",
+        "name": "deferred.catch",
+        "path": "deferred.catch",
+      },
+      {
+        "desc": "A function, or array of functions, that are called when the Deferred is resolved.",
+        "name": "deferred.done",
+        "path": "deferred.done",
+      },
+      {
+        "desc": "A function, or array of functions, that are called when the Deferred is rejected.",
+        "name": "deferred.fail",
+        "path": "deferred.fail",
+      },
+      {
+        "desc": "Determine whether a Deferred object has been rejected.",
+        "name": "deferred.isRejected",
+        "path": "deferred.isRejected",
+      },
+      {
+        "desc": "Determine whether a Deferred object has been resolved.",
+        "name": "deferred.isResolved",
+        "path": "deferred.isResolved",
+      },
+      {
+        "desc": "Optional arguments that are passed to the progressCallbacks.",
+        "name": "deferred.notify",
+        "path": "deferred.notify",
+      },
+      {
+        "desc": "Context passed to the progressCallbacks as the <code>this</code> object.",
+        "name": "deferred.notifyWith",
+        "path": "deferred.notifyWith",
+      },
+      {
+        "desc": "An optional function that is called when the Deferred is resolved.",
+        "name": "deferred.pipe",
+        "path": "deferred.pipe",
+      },
+      {
+        "desc": "A function, or array of functions, to be called when the Deferred generates progress notifications.",
+        "name": "deferred.progress",
+        "path": "deferred.progress",
+      },
+      {
+        "desc": "Object onto which the promise methods have to be attached",
+        "name": "deferred.promise",
+        "path": "deferred.promise",
+      },
+      {
+        "desc": "Optional arguments that are passed to the failCallbacks.",
+        "name": "deferred.reject",
+        "path": "deferred.reject",
+      },
+      {
+        "desc": "Context passed to the failCallbacks as the <code>this</code> object.",
+        "name": "deferred.rejectWith",
+        "path": "deferred.rejectWith",
+      },
+      {
+        "desc": "Optional arguments that are passed to the doneCallbacks.",
+        "name": "deferred.resolve",
+        "path": "deferred.resolve",
+      },
+      {
+        "desc": "Context passed to the doneCallbacks as the <code>this</code> object.",
+        "name": "deferred.resolveWith",
+        "path": "deferred.resolveWith",
+      },
+      {
+        "desc": "Determine the current state of a Deferred object.",
+        "name": "deferred.state",
+        "path": "deferred.state",
+      },
+      {
+        "desc": "A function that is called when the Deferred is resolved.",
+        "name": "deferred.then",
+        "path": "deferred.then",
+      },
+      {
+        "desc": "A function that is called just before the constructor returns.",
+        "name": "jQuery.Deferred",
+        "path": "jQuery.Deferred",
+      },
+      {
+        "desc": "Zero or more Thenable objects.",
+        "name": "jQuery.when",
+        "path": "jQuery.when",
+      },
+      {
+        "desc": "The type of queue that needs to be observed.",
+        "name": "promise",
+        "path": "promise",
+      },
+    ],
+    "name": "Deferred Object",
+    "slug": "deferred-object",
+  },
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "States if the current page, in the user's browser, is being rendered using the <a href=\\"https://www.w3.org/TR/REC-CSS2/box.html\\">W3C CSS Box Model</a>.",
+            "name": "jQuery.boxModel",
+            "path": "jQuery.boxModel",
+          },
+          {
+            "desc": "Contains flags for the useragent, read from navigator.userAgent. <strong>This property was removed in jQuery 1.9</strong> and is available only through the jQuery.migrate plugin. Please try to use feature detection instead.",
+            "name": "jQuery.browser",
+            "path": "jQuery.browser",
+          },
+        ],
+        "name": "Deprecated 1.3",
+        "slug": "deprecated-1.3",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Determine whether a Deferred object has been rejected.",
+            "name": "deferred.isRejected",
+            "path": "deferred.isRejected",
+          },
+          {
+            "desc": "Determine whether a Deferred object has been resolved.",
+            "name": "deferred.isResolved",
+            "path": "deferred.isResolved",
+          },
+          {
+            "desc": "Remove event handlers previously attached using <code>.live()</code> from the elements.",
+            "name": "die",
+            "path": "die",
+          },
+          {
+            "desc": "Creates a new copy of jQuery whose properties and methods can be modified without affecting the original jQuery object.",
+            "name": "jQuery.sub",
+            "path": "jQuery.sub",
+          },
+          {
+            "desc": "Attach an event handler for all elements which match the current selector, now and in the future.",
+            "name": "live",
+            "path": "live",
+          },
+          {
+            "desc": "A selector representing selector passed to jQuery(), if any, when creating the original set.",
+            "name": "selector",
+            "path": "selector",
+          },
+        ],
+        "name": "Deprecated 1.7",
+        "slug": "deprecated-1.7",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Add the previous set of elements on the stack to the current set.",
+            "name": "andSelf",
+            "path": "andSelf",
+          },
+          {
+            "desc": "An optional function that is called when the Deferred is resolved.",
+            "name": "deferred.pipe",
+            "path": "deferred.pipe",
+          },
+          {
+            "desc": "Bind an event handler to the \\"error\\" JavaScript event.",
+            "name": "error",
+            "path": "error",
+          },
+          {
+            "desc": "Bind an event handler to the \\"load\\" JavaScript event.",
+            "name": "load",
+            "path": "load-event",
+          },
+          {
+            "desc": "Return the number of elements in the jQuery object.",
+            "name": "size",
+            "path": "size",
+          },
+          {
+            "desc": "Bind two or more handlers to the matched elements, to be executed on alternate clicks.",
+            "name": "toggle",
+            "path": "toggle-event",
+          },
+          {
+            "desc": "A function to execute when the event is triggered.",
+            "name": "unload",
+            "path": "unload",
+          },
+        ],
+        "name": "Deprecated 1.8",
+        "slug": "deprecated-1.8",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. For your own project's feature-detection needs, we strongly recommend the use of an external library such as <a href=\\"https://modernizr.com\\">Modernizr</a> instead of dependency on properties in <code>jQuery.support</code>.",
+            "name": "jQuery.support",
+            "path": "jQuery.support",
+          },
+        ],
+        "name": "Deprecated 1.9",
+        "slug": "deprecated-1.9",
+      },
+      {
+        "entries": [
+          {
+            "desc": "The DOM node context originally passed to <code>jQuery()</code>; if none was passed then context will likely be the document.",
+            "name": "context",
+            "path": "context",
+          },
+        ],
+        "name": "Deprecated 1.10",
+        "slug": "deprecated-1.10",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A string containing one or more DOM event types, such as \\"click\\" or \\"submit,\\" or custom event names.",
+            "name": "bind",
+            "path": "bind",
+          },
+          {
+            "desc": "Attach a handler to one or more events for all elements that match the selector, now or in the future, based on a specific set of root elements.",
+            "name": "delegate",
+            "path": "delegate",
+          },
+          {
+            "desc": "The rate (in milliseconds) at which animations fire.",
+            "name": "jQuery.fx.interval",
+            "path": "jQuery.fx.interval",
+          },
+          {
+            "desc": "The JSON string to parse.",
+            "name": "jQuery.parseJSON",
+            "path": "jQuery.parseJSON",
+          },
+          {
+            "desc": "The Array of DOM elements.",
+            "name": "jQuery.unique",
+            "path": "jQuery.unique",
+          },
+          {
+            "desc": "One or more classes (separated by spaces) to be toggled for each element in the matched set.",
+            "name": "toggleClass",
+            "path": "toggleClass",
+          },
+          {
+            "desc": "Remove a previously-attached event handler from the elements.",
+            "name": "unbind",
+            "path": "unbind",
+          },
+          {
+            "desc": "Remove a handler from the event for all elements which match the current selector, based upon a specific set of root elements.",
+            "name": "undelegate",
+            "path": "undelegate",
+          },
+        ],
+        "name": "Deprecated 3.0",
+        "slug": "deprecated-3.0",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Holds or releases the execution of jQuery's ready event.",
+            "name": "jQuery.holdReady",
+            "path": "jQuery.holdReady",
+          },
+          {
+            "desc": "Object to test whether or not it is an array.",
+            "name": "jQuery.isArray",
+            "path": "jQuery.isArray",
+          },
+        ],
+        "name": "Deprecated 3.2",
+        "slug": "deprecated-3.2",
+      },
+      {
+        "entries": [
+          {
+            "desc": "The value to be tested.",
+            "name": "jQuery.isFunction",
+            "path": "jQuery.isFunction",
+          },
+          {
+            "desc": "Determines whether its argument represents a JavaScript number.",
+            "name": "jQuery.isNumeric",
+            "path": "jQuery.isNumeric",
+          },
+          {
+            "desc": "Object to test whether or not it is a window.",
+            "name": "jQuery.isWindow",
+            "path": "jQuery.isWindow",
+          },
+          {
+            "desc": "Return a number representing the current time.",
+            "name": "jQuery.now",
+            "path": "jQuery.now",
+          },
+          {
+            "desc": "The function whose context will be changed.",
+            "name": "jQuery.proxy",
+            "path": "jQuery.proxy",
+          },
+          {
+            "desc": "Object to get the internal JavaScript [[Class]] of.",
+            "name": "jQuery.type",
+            "path": "jQuery.type",
+          },
+        ],
+        "name": "Deprecated 3.3",
+        "slug": "deprecated-3.3",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Zero-based index of the element to match.",
+            "name": "eq",
+            "path": "eq-selector",
+          },
+          {
+            "desc": "Selects even elements, zero-indexed.  See also <a href=\\"/odd-selector/\\"><code>:odd</code></a>.",
+            "name": "even",
+            "path": "even-selector",
+          },
+          {
+            "desc": "Selects the first matched DOM element.",
+            "name": "first",
+            "path": "first-selector",
+          },
+          {
+            "desc": "Zero-based index.",
+            "name": "gt",
+            "path": "gt-selector",
+          },
+          {
+            "desc": "Selects the last matched element.",
+            "name": "last",
+            "path": "last-selector",
+          },
+          {
+            "desc": "Zero-based index.",
+            "name": "lt",
+            "path": "lt-selector",
+          },
+          {
+            "desc": "Selects odd elements, zero-indexed.  See also <a href=\\"/even-selector/\\"><code>:even</code></a>.",
+            "name": "odd",
+            "path": "odd-selector",
+          },
+        ],
+        "name": "Deprecated 3.4",
+        "slug": "deprecated-3.4",
+      },
+      {
+        "entries": [
+          {
+            "desc": "The string to trim.",
+            "name": "jQuery.trim",
+            "path": "jQuery.trim",
+          },
+        ],
+        "name": "Deprecated 3.5",
+        "slug": "deprecated-3.5",
+      },
+    ],
+    "entries": undefined,
+    "name": "Deprecated",
+    "slug": "deprecated",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "Get the current computed height for the first element in the set of matched elements or set the height of every matched element.",
+        "name": "height",
+        "path": "height",
+      },
+      {
+        "desc": "Get the current computed inner height (including padding but not border) for the first element in the set of matched elements or set the inner height of every matched element.",
+        "name": "innerHeight",
+        "path": "innerHeight",
+      },
+      {
+        "desc": "Get the current computed inner width (including padding but not border) for the first element in the set of matched elements or set the inner width of every matched element.",
+        "name": "innerWidth",
+        "path": "innerWidth",
+      },
+      {
+        "desc": "Get the current computed outer height (including padding, border, and optionally margin) for the first element in the set of matched elements or set the outer height of every matched element.",
+        "name": "outerHeight",
+        "path": "outerHeight",
+      },
+      {
+        "desc": "Get the current computed outer width (including padding, border, and optionally margin) for the first element in the set of matched elements or set the outer width of every matched element.",
+        "name": "outerWidth",
+        "path": "outerWidth",
+      },
+      {
+        "desc": "Get the current computed width for the first element in the set of matched elements or set the width of every matched element.",
+        "name": "width",
+        "path": "width",
+      },
+    ],
+    "name": "Dimensions",
+    "slug": "dimensions",
+  },
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "Hide the matched elements.",
+            "name": "hide",
+            "path": "hide",
+          },
+          {
+            "desc": "Display the matched elements.",
+            "name": "show",
+            "path": "show",
+          },
+          {
+            "desc": "Display or hide the matched elements.",
+            "name": "toggle",
+            "path": "toggle",
+          },
+        ],
+        "name": "Basics",
+        "slug": "basics",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Perform a custom animation of a set of CSS properties.",
+            "name": "animate",
+            "path": "animate",
+          },
+          {
+            "desc": "A string containing the name of the queue. Defaults to <code>fx</code>, the standard effects queue.",
+            "name": "clearQueue",
+            "path": "clearQueue",
+          },
+          {
+            "desc": "An integer indicating the number of milliseconds to delay execution of the next item in the queue.",
+            "name": "delay",
+            "path": "delay",
+          },
+          {
+            "desc": "A string containing the name of the queue. Defaults to <code>fx</code>, the standard effects queue.",
+            "name": "dequeue",
+            "path": "dequeue",
+          },
+          {
+            "desc": "Stop the currently-running animation, remove all queued animations, and complete all animations for the matched elements.",
+            "name": "finish",
+            "path": "finish",
+          },
+          {
+            "desc": "The rate (in milliseconds) at which animations fire.",
+            "name": "jQuery.fx.interval",
+            "path": "jQuery.fx.interval",
+          },
+          {
+            "desc": "Globally disable all animations.",
+            "name": "jQuery.fx.off",
+            "path": "jQuery.fx.off",
+          },
+          {
+            "desc": "Creates an object containing a set of properties ready to be used in the definition of custom animations.",
+            "name": "jQuery.speed",
+            "path": "jQuery.speed",
+          },
+          {
+            "desc": "Show or manipulate the queue of functions to be executed on the matched elements.",
+            "name": "queue",
+            "path": "queue",
+          },
+          {
+            "desc": "Stop the currently-running animation on the matched elements.",
+            "name": "stop",
+            "path": "stop",
+          },
+        ],
+        "name": "Custom",
+        "slug": "custom-effects",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Display the matched elements by fading them to opaque.",
+            "name": "fadeIn",
+            "path": "fadeIn",
+          },
+          {
+            "desc": "Hide the matched elements by fading them to transparent.",
+            "name": "fadeOut",
+            "path": "fadeOut",
+          },
+          {
+            "desc": "Adjust the opacity of the matched elements.",
+            "name": "fadeTo",
+            "path": "fadeTo",
+          },
+          {
+            "desc": "Display or hide the matched elements by animating their opacity.",
+            "name": "fadeToggle",
+            "path": "fadeToggle",
+          },
+        ],
+        "name": "Fading",
+        "slug": "fading",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Display the matched elements with a sliding motion.",
+            "name": "slideDown",
+            "path": "slideDown",
+          },
+          {
+            "desc": "Display or hide the matched elements with a sliding motion.",
+            "name": "slideToggle",
+            "path": "slideToggle",
+          },
+          {
+            "desc": "Hide the matched elements with a sliding motion.",
+            "name": "slideUp",
+            "path": "slideUp",
+          },
+        ],
+        "name": "Sliding",
+        "slug": "sliding",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Display or hide the matched elements by animating their opacity.",
+            "name": "fadeToggle",
+            "path": "fadeToggle",
+          },
+        ],
+        "name": "Other",
+        "slug": "other",
+      },
+    ],
+    "name": "Effects",
+    "slug": "effects",
+  },
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "Bind an event handler to the \\"error\\" JavaScript event.",
+            "name": "error",
+            "path": "error",
+          },
+          {
+            "desc": "Bind an event handler to the \\"resize\\" JavaScript event, or trigger that event on an element.",
+            "name": "resize",
+            "path": "resize",
+          },
+          {
+            "desc": "Bind an event handler to the \\"scroll\\" JavaScript event, or trigger that event on an element.",
+            "name": "scroll",
+            "path": "scroll",
+          },
+        ],
+        "name": "Browser Events",
+        "slug": "browser-events",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Holds or releases the execution of jQuery's ready event.",
+            "name": "jQuery.holdReady",
+            "path": "jQuery.holdReady",
+          },
+          {
+            "desc": "A Promise-like object (or \\"thenable\\") that resolves when the document is ready.",
+            "name": "jQuery.ready",
+            "path": "jQuery.ready",
+          },
+          {
+            "desc": "Bind an event handler to the \\"load\\" JavaScript event.",
+            "name": "load",
+            "path": "load-event",
+          },
+          {
+            "desc": "Specify a function to execute when the DOM is fully loaded.",
+            "name": "ready",
+            "path": "ready",
+          },
+          {
+            "desc": "A function to execute when the event is triggered.",
+            "name": "unload",
+            "path": "unload",
+          },
+        ],
+        "name": "Document Loading",
+        "slug": "document-loading",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A string containing one or more DOM event types, such as \\"click\\" or \\"submit,\\" or custom event names.",
+            "name": "bind",
+            "path": "bind",
+          },
+          {
+            "desc": "Attach a handler to one or more events for all elements that match the selector, now or in the future, based on a specific set of root elements.",
+            "name": "delegate",
+            "path": "delegate",
+          },
+          {
+            "desc": "Remove event handlers previously attached using <code>.live()</code> from the elements.",
+            "name": "die",
+            "path": "die",
+          },
+          {
+            "desc": "The function whose context will be changed.",
+            "name": "jQuery.proxy",
+            "path": "jQuery.proxy",
+          },
+          {
+            "desc": "Attach an event handler for all elements which match the current selector, now and in the future.",
+            "name": "live",
+            "path": "live",
+          },
+          {
+            "desc": "Remove an event handler.",
+            "name": "off",
+            "path": "off",
+          },
+          {
+            "desc": "Attach an event handler function for one or more events to the selected elements.",
+            "name": "on",
+            "path": "on",
+          },
+          {
+            "desc": "Attach a handler to an event for the elements. The handler is executed at most once per element per event type.",
+            "name": "one",
+            "path": "one",
+          },
+          {
+            "desc": "Execute all handlers and behaviors attached to the matched elements for the given event type.",
+            "name": "trigger",
+            "path": "trigger",
+          },
+          {
+            "desc": "Execute all handlers attached to an element for an event.",
+            "name": "triggerHandler",
+            "path": "triggerHandler",
+          },
+          {
+            "desc": "Remove a previously-attached event handler from the elements.",
+            "name": "unbind",
+            "path": "unbind",
+          },
+          {
+            "desc": "Remove a handler from the event for all elements which match the current selector, based upon a specific set of root elements.",
+            "name": "undelegate",
+            "path": "undelegate",
+          },
+        ],
+        "name": "Event Handler Attachment",
+        "slug": "event-handler-attachment",
+      },
+      {
+        "entries": [
+          {
+            "desc": "The current DOM element within the event bubbling phase.",
+            "name": "event.currentTarget",
+            "path": "event.currentTarget",
+          },
+          {
+            "desc": "An optional object of data passed to an event method when the current executing handler is bound.",
+            "name": "event.data",
+            "path": "event.data",
+          },
+          {
+            "desc": "The element where the currently-called jQuery event handler was attached.",
+            "name": "event.delegateTarget",
+            "path": "event.delegateTarget",
+          },
+          {
+            "desc": "Returns whether <a href=\\"/event.preventDefault/\\">event.preventDefault()</a> was ever called on this event object.",
+            "name": "event.isDefaultPrevented",
+            "path": "event.isDefaultPrevented",
+          },
+          {
+            "desc": "Returns whether event.stopImmediatePropagation() was ever called on this event object.",
+            "name": "event.isImmediatePropagationStopped",
+            "path": "event.isImmediatePropagationStopped",
+          },
+          {
+            "desc": "Returns whether <a href=\\"/event.stopPropagation/\\">event.stopPropagation()</a> was ever called on this event object.",
+            "name": "event.isPropagationStopped",
+            "path": "event.isPropagationStopped",
+          },
+          {
+            "desc": "Indicates whether the META key was pressed when the event fired.",
+            "name": "event.metaKey",
+            "path": "event.metaKey",
+          },
+          {
+            "desc": "The namespace specified when the event was triggered.",
+            "name": "event.namespace",
+            "path": "event.namespace",
+          },
+          {
+            "desc": "The mouse position relative to the left edge of the document.",
+            "name": "event.pageX",
+            "path": "event.pageX",
+          },
+          {
+            "desc": "The mouse position relative to the top edge of the document.",
+            "name": "event.pageY",
+            "path": "event.pageY",
+          },
+          {
+            "desc": "If this method is called, the default action of the event will not be triggered.",
+            "name": "event.preventDefault",
+            "path": "event.preventDefault",
+          },
+          {
+            "desc": "The other DOM element involved in the event, if any.",
+            "name": "event.relatedTarget",
+            "path": "event.relatedTarget",
+          },
+          {
+            "desc": "The last value returned by an event handler that was triggered by this event, unless the value was <code>undefined</code>.",
+            "name": "event.result",
+            "path": "event.result",
+          },
+          {
+            "desc": "Keeps the rest of the handlers from being executed and prevents the event from bubbling up the DOM tree.",
+            "name": "event.stopImmediatePropagation",
+            "path": "event.stopImmediatePropagation",
+          },
+          {
+            "desc": "Prevents the event from bubbling up the DOM tree, preventing any parent handlers from being notified of the event.",
+            "name": "event.stopPropagation",
+            "path": "event.stopPropagation",
+          },
+          {
+            "desc": "The DOM element that initiated the event.",
+            "name": "event.target",
+            "path": "event.target",
+          },
+          {
+            "desc": "The difference in milliseconds between the time the browser created the event and January 1, 1970.",
+            "name": "event.timeStamp",
+            "path": "event.timeStamp",
+          },
+          {
+            "desc": "Describes the nature of the event.",
+            "name": "event.type",
+            "path": "event.type",
+          },
+          {
+            "desc": "For key or mouse events, this property indicates the specific key or button that was pressed.",
+            "name": "event.which",
+            "path": "event.which",
+          },
+        ],
+        "name": "Event Object",
+        "slug": "event-object",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Bind an event handler to the \\"blur\\" JavaScript event, or trigger that event on an element.",
+            "name": "blur",
+            "path": "blur",
+          },
+          {
+            "desc": "Bind an event handler to the \\"change\\" JavaScript event, or trigger that event on an element.",
+            "name": "change",
+            "path": "change",
+          },
+          {
+            "desc": "Bind an event handler to the \\"focus\\" JavaScript event, or trigger that event on an element.",
+            "name": "focus",
+            "path": "focus",
+          },
+          {
+            "desc": "Bind an event handler to the \\"focusin\\" event.",
+            "name": "focusin",
+            "path": "focusin",
+          },
+          {
+            "desc": "Bind an event handler to the \\"focusout\\" JavaScript event.",
+            "name": "focusout",
+            "path": "focusout",
+          },
+          {
+            "desc": "Bind an event handler to the \\"select\\" JavaScript event, or trigger that event on an element.",
+            "name": "select",
+            "path": "select",
+          },
+          {
+            "desc": "Bind an event handler to the \\"submit\\" JavaScript event, or trigger that event on an element.",
+            "name": "submit",
+            "path": "submit",
+          },
+        ],
+        "name": "Form Events",
+        "slug": "form-events",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A function to execute each time the event is triggered.",
+            "name": "keydown",
+            "path": "keydown",
+          },
+          {
+            "desc": "Bind an event handler to the \\"keypress\\" JavaScript event, or trigger that event on an element.",
+            "name": "keypress",
+            "path": "keypress",
+          },
+          {
+            "desc": "Bind an event handler to the \\"keyup\\" JavaScript event, or trigger that event on an element.",
+            "name": "keyup",
+            "path": "keyup",
+          },
+        ],
+        "name": "Keyboard Events",
+        "slug": "keyboard-events",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Bind an event handler to the \\"click\\" JavaScript event, or trigger that event on an element.",
+            "name": "click",
+            "path": "click",
+          },
+          {
+            "desc": "Bind an event handler to the \\"contextmenu\\" JavaScript event, or trigger that event on an element.",
+            "name": "contextmenu",
+            "path": "contextmenu",
+          },
+          {
+            "desc": "Bind an event handler to the \\"dblclick\\" JavaScript event, or trigger that event on an element.",
+            "name": "dblclick",
+            "path": "dblclick",
+          },
+          {
+            "desc": "Bind one or two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements.",
+            "name": "hover",
+            "path": "hover",
+          },
+          {
+            "desc": "Bind an event handler to the \\"mousedown\\" JavaScript event, or trigger that event on an element.",
+            "name": "mousedown",
+            "path": "mousedown",
+          },
+          {
+            "desc": "Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element.",
+            "name": "mouseenter",
+            "path": "mouseenter",
+          },
+          {
+            "desc": "Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element.",
+            "name": "mouseleave",
+            "path": "mouseleave",
+          },
+          {
+            "desc": "Bind an event handler to the \\"mousemove\\" JavaScript event, or trigger that event on an element.",
+            "name": "mousemove",
+            "path": "mousemove",
+          },
+          {
+            "desc": "Bind an event handler to the \\"mouseout\\" JavaScript event, or trigger that event on an element.",
+            "name": "mouseout",
+            "path": "mouseout",
+          },
+          {
+            "desc": "Bind an event handler to the \\"mouseover\\" JavaScript event, or trigger that event on an element.",
+            "name": "mouseover",
+            "path": "mouseover",
+          },
+          {
+            "desc": "Bind an event handler to the \\"mouseup\\" JavaScript event, or trigger that event on an element.",
+            "name": "mouseup",
+            "path": "mouseup",
+          },
+          {
+            "desc": "Bind two or more handlers to the matched elements, to be executed on alternate clicks.",
+            "name": "toggle",
+            "path": "toggle-event",
+          },
+        ],
+        "name": "Mouse Events",
+        "slug": "mouse-events",
+      },
+      {
+        "entries": [
+          {
+            "desc": "The element where the currently-called jQuery event handler was attached.",
+            "name": "event.delegateTarget",
+            "path": "event.delegateTarget",
+          },
+        ],
+        "name": "Other",
+        "slug": "other",
+      },
+    ],
+    "name": "Events",
+    "slug": "events",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "Bind an event handler to the \\"blur\\" JavaScript event, or trigger that event on an element.",
+        "name": "blur",
+        "path": "blur",
+      },
+      {
+        "desc": "Bind an event handler to the \\"change\\" JavaScript event, or trigger that event on an element.",
+        "name": "change",
+        "path": "change",
+      },
+      {
+        "desc": "Bind an event handler to the \\"focus\\" JavaScript event, or trigger that event on an element.",
+        "name": "focus",
+        "path": "focus",
+      },
+      {
+        "desc": "Bind an event handler to the \\"focusin\\" event.",
+        "name": "focusin",
+        "path": "focusin",
+      },
+      {
+        "desc": "Bind an event handler to the \\"focusout\\" JavaScript event.",
+        "name": "focusout",
+        "path": "focusout",
+      },
+      {
+        "desc": "An array, a plain object, or a jQuery object to serialize.",
+        "name": "jQuery.param",
+        "path": "jQuery.param",
+      },
+      {
+        "desc": "Bind an event handler to the \\"select\\" JavaScript event, or trigger that event on an element.",
+        "name": "select",
+        "path": "select",
+      },
+      {
+        "desc": "Encode a set of form elements as a string for submission.",
+        "name": "serialize",
+        "path": "serialize",
+      },
+      {
+        "desc": "Encode a set of form elements as an array of names and values.",
+        "name": "serializeArray",
+        "path": "serializeArray",
+      },
+      {
+        "desc": "Bind an event handler to the \\"submit\\" JavaScript event, or trigger that event on an element.",
+        "name": "submit",
+        "path": "submit",
+      },
+      {
+        "desc": "Get the current value of the first element in the set of matched elements or set the value of every matched element.",
+        "name": "val",
+        "path": "val",
+      },
+    ],
+    "name": "Forms",
+    "slug": "forms",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "The DOM node context originally passed to <code>jQuery()</code>; if none was passed then context will likely be the document.",
+        "name": "context",
+        "path": "context",
+      },
+      {
+        "desc": "The message to send out.",
+        "name": "jQuery.error",
+        "path": "jQuery.error",
+      },
+      {
+        "desc": "A string containing the jQuery version number.",
+        "name": "jquery",
+        "path": "jquery-2",
+      },
+      {
+        "desc": "An array of elements to push onto the stack and make into a new jQuery object.",
+        "name": "pushStack",
+        "path": "pushStack",
+      },
+      {
+        "desc": "A selector representing selector passed to jQuery(), if any, when creating the original set.",
+        "name": "selector",
+        "path": "selector",
+      },
+    ],
+    "name": "Internals",
+    "slug": "internals",
+  },
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "One or more space-separated classes to be added to the class attribute of each matched element.",
+            "name": "addClass",
+            "path": "addClass",
+          },
+          {
+            "desc": "The class name to search for.",
+            "name": "hasClass",
+            "path": "hasClass",
+          },
+          {
+            "desc": "Remove a single class, multiple classes, or all classes from each element in the set of matched elements.",
+            "name": "removeClass",
+            "path": "removeClass",
+          },
+          {
+            "desc": "One or more classes (separated by spaces) to be toggled for each element in the matched set.",
+            "name": "toggleClass",
+            "path": "toggleClass",
+          },
+        ],
+        "name": "Class Attribute",
+        "slug": "class-attribute",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A Boolean indicating whether event handlers should be copied along with the elements. As of jQuery 1.4, element data will be copied as well.",
+            "name": "clone",
+            "path": "clone",
+          },
+        ],
+        "name": "Copying",
+        "slug": "copying",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A selector to check the parent element against. If an element's parent does not match the selector, the element won't be unwrapped.",
+            "name": "unwrap",
+            "path": "unwrap",
+          },
+          {
+            "desc": "A selector, element, HTML string, or jQuery object specifying the structure to wrap around the matched elements. When you pass a jQuery collection containing more than one element, or a selector matching more than one element, the first element will be used.",
+            "name": "wrap",
+            "path": "wrap",
+          },
+          {
+            "desc": "A selector, element, HTML string, or jQuery object specifying the structure to wrap around the matched elements.",
+            "name": "wrapAll",
+            "path": "wrapAll",
+          },
+          {
+            "desc": "An HTML snippet, selector expression, jQuery object, or DOM element specifying the structure to wrap around the content of the matched elements.",
+            "name": "wrapInner",
+            "path": "wrapInner",
+          },
+        ],
+        "name": "DOM Insertion, Around",
+        "slug": "dom-insertion-around",
+      },
+      {
+        "entries": [
+          {
+            "desc": "DOM element, text node, array of elements and text nodes, HTML string, or jQuery object to insert at the end of each element in the set of matched elements.",
+            "name": "append",
+            "path": "append",
+          },
+          {
+            "desc": "A selector, element, HTML string, array of elements, or jQuery object; the matched set of elements will be inserted at the end of the element(s) specified by this parameter.",
+            "name": "appendTo",
+            "path": "appendTo",
+          },
+          {
+            "desc": "Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.",
+            "name": "html",
+            "path": "html",
+          },
+          {
+            "desc": "DOM element, text node, array of elements and text nodes, HTML string, or jQuery object to insert at the beginning of each element in the set of matched elements.",
+            "name": "prepend",
+            "path": "prepend",
+          },
+          {
+            "desc": "A selector, element, HTML string, array of elements, or jQuery object; the matched set of elements will be inserted at the beginning of the element(s) specified by this parameter.",
+            "name": "prependTo",
+            "path": "prependTo",
+          },
+          {
+            "desc": "Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements.",
+            "name": "text",
+            "path": "text",
+          },
+        ],
+        "name": "DOM Insertion, Inside",
+        "slug": "dom-insertion-inside",
+      },
+      {
+        "entries": [
+          {
+            "desc": "HTML string, DOM element, text node, array of elements and text nodes, or jQuery object to insert after each element in the set of matched elements.",
+            "name": "after",
+            "path": "after",
+          },
+          {
+            "desc": "HTML string, DOM element, text node, array of elements and text nodes, or jQuery object to insert before each element in the set of matched elements.",
+            "name": "before",
+            "path": "before",
+          },
+          {
+            "desc": "A selector, element, array of elements, HTML string, or jQuery object; the matched set of elements will be inserted after the element(s) specified by this parameter.",
+            "name": "insertAfter",
+            "path": "insertAfter",
+          },
+          {
+            "desc": "A selector, element, array of elements, HTML string, or jQuery object; the matched set of elements will be inserted before the element(s) specified by this parameter.",
+            "name": "insertBefore",
+            "path": "insertBefore",
+          },
+        ],
+        "name": "DOM Insertion, Outside",
+        "slug": "dom-insertion-outside",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A selector expression that filters the set of matched elements to be removed.",
+            "name": "detach",
+            "path": "detach",
+          },
+          {
+            "desc": "Remove all child nodes of the set of matched elements from the DOM.",
+            "name": "empty",
+            "path": "empty",
+          },
+          {
+            "desc": "A selector expression that filters the set of matched elements to be removed.",
+            "name": "remove",
+            "path": "remove",
+          },
+          {
+            "desc": "A selector to check the parent element against. If an element's parent does not match the selector, the element won't be unwrapped.",
+            "name": "unwrap",
+            "path": "unwrap",
+          },
+        ],
+        "name": "DOM Removal",
+        "slug": "dom-removal",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A selector string, jQuery object, DOM element, or array of elements indicating which element(s) to replace.",
+            "name": "replaceAll",
+            "path": "replaceAll",
+          },
+          {
+            "desc": "The content to insert. May be an HTML string, DOM element, array of DOM elements, or jQuery object.",
+            "name": "replaceWith",
+            "path": "replaceWith",
+          },
+        ],
+        "name": "DOM Replacement",
+        "slug": "dom-replacement",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.",
+            "name": "attr",
+            "path": "attr",
+          },
+          {
+            "desc": "Get the value of a property for the first element in the set of matched elements or set one or more properties for every matched element.",
+            "name": "prop",
+            "path": "prop",
+          },
+          {
+            "desc": "An attribute to remove; as of version 1.7, it can be a space-separated list of attributes.",
+            "name": "removeAttr",
+            "path": "removeAttr",
+          },
+          {
+            "desc": "The name of the property to remove.",
+            "name": "removeProp",
+            "path": "removeProp",
+          },
+          {
+            "desc": "Get the current value of the first element in the set of matched elements or set the value of every matched element.",
+            "name": "val",
+            "path": "val",
+          },
+        ],
+        "name": "General Attributes",
+        "slug": "general-attributes",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Get the value of a computed style property for the first element in the set of matched elements or set one or more CSS properties for every matched element.",
+            "name": "css",
+            "path": "css",
+          },
+          {
+            "desc": "Get the current computed height for the first element in the set of matched elements or set the height of every matched element.",
+            "name": "height",
+            "path": "height",
+          },
+          {
+            "desc": "Get the current computed inner height (including padding but not border) for the first element in the set of matched elements or set the inner height of every matched element.",
+            "name": "innerHeight",
+            "path": "innerHeight",
+          },
+          {
+            "desc": "Get the current computed inner width (including padding but not border) for the first element in the set of matched elements or set the inner width of every matched element.",
+            "name": "innerWidth",
+            "path": "innerWidth",
+          },
+          {
+            "desc": "An object containing all CSS properties that may be used without a unit. The <a href=\\"/css/\\"><code>.css()</code></a> method uses this object to see if it may append <code>px</code> to unitless values.",
+            "name": "jQuery.cssNumber",
+            "path": "jQuery.cssNumber",
+          },
+          {
+            "desc": "Get the current coordinates of the first element, or set the coordinates of every element, in the set of matched elements, relative to the document.",
+            "name": "offset",
+            "path": "offset",
+          },
+          {
+            "desc": "Get the current computed outer height (including padding, border, and optionally margin) for the first element in the set of matched elements or set the outer height of every matched element.",
+            "name": "outerHeight",
+            "path": "outerHeight",
+          },
+          {
+            "desc": "Get the current computed outer width (including padding, border, and optionally margin) for the first element in the set of matched elements or set the outer width of every matched element.",
+            "name": "outerWidth",
+            "path": "outerWidth",
+          },
+          {
+            "desc": "Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.",
+            "name": "position",
+            "path": "position",
+          },
+          {
+            "desc": "Get the current horizontal position of the scroll bar for the first element in the set of matched elements or set the horizontal position of the scroll bar for every matched element.",
+            "name": "scrollLeft",
+            "path": "scrollLeft",
+          },
+          {
+            "desc": "Get the current vertical position of the scroll bar for the first element in the set of matched elements or set the vertical position of the scroll bar for every matched element.",
+            "name": "scrollTop",
+            "path": "scrollTop",
+          },
+          {
+            "desc": "Get the current computed width for the first element in the set of matched elements or set the width of every matched element.",
+            "name": "width",
+            "path": "width",
+          },
+        ],
+        "name": "Style Properties",
+        "slug": "style-properties",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Modify and filter HTML strings passed through <a href=\\"/category/manipulation/\\">jQuery manipulation methods</a>.",
+            "name": "jQuery.htmlPrefilter",
+            "path": "jQuery.htmlPrefilter",
+          },
+        ],
+        "name": "Other",
+        "slug": "other",
+      },
+    ],
+    "name": "Manipulation",
+    "slug": "manipulation",
+  },
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "A function to execute for each matched element.",
+            "name": "each",
+            "path": "each",
+          },
+          {
+            "desc": "An array, a plain object, or a jQuery object to serialize.",
+            "name": "jQuery.param",
+            "path": "jQuery.param",
+          },
+        ],
+        "name": "Collection Manipulation",
+        "slug": "collection-manipulation",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Store arbitrary data associated with the matched elements or return the value at the named data store for the first element in the set of matched elements.",
+            "name": "data",
+            "path": "data",
+          },
+          {
+            "desc": "A string naming the piece of data to delete.",
+            "name": "removeData",
+            "path": "removeData",
+          },
+        ],
+        "name": "Data Storage",
+        "slug": "data-storage",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Retrieve the DOM elements matched by the jQuery object.",
+            "name": "get",
+            "path": "get",
+          },
+          {
+            "desc": "A selector representing a jQuery collection in which to look for an element.",
+            "name": "index",
+            "path": "index",
+          },
+          {
+            "desc": "Return the number of elements in the jQuery object.",
+            "name": "size",
+            "path": "size",
+          },
+          {
+            "desc": "Retrieve all the elements contained in the jQuery set, as an array.",
+            "name": "toArray",
+            "path": "toArray",
+          },
+        ],
+        "name": "DOM Element Methods",
+        "slug": "dom-element-methods",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A Boolean indicating whether to remove all jQuery variables from the global scope (including jQuery itself).",
+            "name": "jQuery.noConflict",
+            "path": "jQuery.noConflict",
+          },
+        ],
+        "name": "Setup Methods",
+        "slug": "setup-methods",
+      },
+    ],
+    "entries": undefined,
+    "name": "Miscellaneous",
+    "slug": "miscellaneous",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "Get the current coordinates of the first element, or set the coordinates of every element, in the set of matched elements, relative to the document.",
+        "name": "offset",
+        "path": "offset",
+      },
+      {
+        "desc": "Get the closest ancestor element that is positioned.",
+        "name": "offsetParent",
+        "path": "offsetParent",
+      },
+      {
+        "desc": "Get the current coordinates of the first element in the set of matched elements, relative to the offset parent.",
+        "name": "position",
+        "path": "position",
+      },
+      {
+        "desc": "Get the current horizontal position of the scroll bar for the first element in the set of matched elements or set the horizontal position of the scroll bar for every matched element.",
+        "name": "scrollLeft",
+        "path": "scrollLeft",
+      },
+      {
+        "desc": "Get the current vertical position of the scroll bar for the first element in the set of matched elements or set the vertical position of the scroll bar for every matched element.",
+        "name": "scrollTop",
+        "path": "scrollTop",
+      },
+    ],
+    "name": "Offset",
+    "slug": "offset",
+  },
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "The DOM node context originally passed to <code>jQuery()</code>; if none was passed then context will likely be the document.",
+            "name": "context",
+            "path": "context",
+          },
+          {
+            "desc": "A string containing the jQuery version number.",
+            "name": "jquery",
+            "path": "jquery-2",
+          },
+          {
+            "desc": "The number of elements in the jQuery object.",
+            "name": "length",
+            "path": "length",
+          },
+          {
+            "desc": "A selector representing selector passed to jQuery(), if any, when creating the original set.",
+            "name": "selector",
+            "path": "selector",
+          },
+        ],
+        "name": "Properties of jQuery Object Instances",
+        "slug": "jquery-object-instance-properties",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Contains flags for the useragent, read from navigator.userAgent. <strong>This property was removed in jQuery 1.9</strong> and is available only through the jQuery.migrate plugin. Please try to use feature detection instead.",
+            "name": "jQuery.browser",
+            "path": "jQuery.browser",
+          },
+          {
+            "desc": "The rate (in milliseconds) at which animations fire.",
+            "name": "jQuery.fx.interval",
+            "path": "jQuery.fx.interval",
+          },
+          {
+            "desc": "Globally disable all animations.",
+            "name": "jQuery.fx.off",
+            "path": "jQuery.fx.off",
+          },
+          {
+            "desc": "Holds or releases the execution of jQuery's ready event.",
+            "name": "jQuery.holdReady",
+            "path": "jQuery.holdReady",
+          },
+          {
+            "desc": "A Promise-like object (or \\"thenable\\") that resolves when the document is ready.",
+            "name": "jQuery.ready",
+            "path": "jQuery.ready",
+          },
+          {
+            "desc": "A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. For your own project's feature-detection needs, we strongly recommend the use of an external library such as <a href=\\"https://modernizr.com\\">Modernizr</a> instead of dependency on properties in <code>jQuery.support</code>.",
+            "name": "jQuery.support",
+            "path": "jQuery.support",
+          },
+        ],
+        "name": "Properties of the Global jQuery Object",
+        "slug": "global-jquery-object-properties",
+      },
+    ],
+    "entries": undefined,
+    "name": "Properties",
+    "slug": "properties",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "Add the previous set of elements on the stack to the current set.",
+        "name": "andSelf",
+        "path": "andSelf",
+      },
+      {
+        "desc": "The DOM node context originally passed to <code>jQuery()</code>; if none was passed then context will likely be the document.",
+        "name": "context",
+        "path": "context",
+      },
+      {
+        "desc": "Determine whether a Deferred object has been rejected.",
+        "name": "deferred.isRejected",
+        "path": "deferred.isRejected",
+      },
+      {
+        "desc": "Determine whether a Deferred object has been resolved.",
+        "name": "deferred.isResolved",
+        "path": "deferred.isResolved",
+      },
+      {
+        "desc": "Remove event handlers previously attached using <code>.live()</code> from the elements.",
+        "name": "die",
+        "path": "die",
+      },
+      {
+        "desc": "Bind an event handler to the \\"error\\" JavaScript event.",
+        "name": "error",
+        "path": "error",
+      },
+      {
+        "desc": "States if the current page, in the user's browser, is being rendered using the <a href=\\"https://www.w3.org/TR/REC-CSS2/box.html\\">W3C CSS Box Model</a>.",
+        "name": "jQuery.boxModel",
+        "path": "jQuery.boxModel",
+      },
+      {
+        "desc": "Contains flags for the useragent, read from navigator.userAgent. <strong>This property was removed in jQuery 1.9</strong> and is available only through the jQuery.migrate plugin. Please try to use feature detection instead.",
+        "name": "jQuery.browser",
+        "path": "jQuery.browser",
+      },
+      {
+        "desc": "Creates a new copy of jQuery whose properties and methods can be modified without affecting the original jQuery object.",
+        "name": "jQuery.sub",
+        "path": "jQuery.sub",
+      },
+      {
+        "desc": "Attach an event handler for all elements which match the current selector, now and in the future.",
+        "name": "live",
+        "path": "live",
+      },
+      {
+        "desc": "Bind an event handler to the \\"load\\" JavaScript event.",
+        "name": "load",
+        "path": "load-event",
+      },
+      {
+        "desc": "A selector representing selector passed to jQuery(), if any, when creating the original set.",
+        "name": "selector",
+        "path": "selector",
+      },
+      {
+        "desc": "Return the number of elements in the jQuery object.",
+        "name": "size",
+        "path": "size",
+      },
+      {
+        "desc": "Bind two or more handlers to the matched elements, to be executed on alternate clicks.",
+        "name": "toggle",
+        "path": "toggle-event",
+      },
+      {
+        "desc": "A function to execute when the event is triggered.",
+        "name": "unload",
+        "path": "unload",
+      },
+    ],
+    "name": "Removed",
+    "slug": "removed",
+  },
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "An attribute name.",
+            "name": "attributeContainsPrefix",
+            "path": "attribute-contains-prefix-selector",
+          },
+          {
+            "desc": "An attribute name.",
+            "name": "attributeContains",
+            "path": "attribute-contains-selector",
+          },
+          {
+            "desc": "An attribute name.",
+            "name": "attributeContainsWord",
+            "path": "attribute-contains-word-selector",
+          },
+          {
+            "desc": "An attribute name.",
+            "name": "attributeEndsWith",
+            "path": "attribute-ends-with-selector",
+          },
+          {
+            "desc": "An attribute name.",
+            "name": "attributeEquals",
+            "path": "attribute-equals-selector",
+          },
+          {
+            "desc": "An attribute name.",
+            "name": "attributeNotEqual",
+            "path": "attribute-not-equal-selector",
+          },
+          {
+            "desc": "An attribute name.",
+            "name": "attributeStartsWith",
+            "path": "attribute-starts-with-selector",
+          },
+          {
+            "desc": "An attribute name.",
+            "name": "attributeHas",
+            "path": "has-attribute-selector",
+          },
+          {
+            "desc": "An attribute filter.",
+            "name": "attributeMultiple",
+            "path": "multiple-attribute-selector",
+          },
+        ],
+        "name": "Attribute",
+        "slug": "attribute-selectors",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Selects all elements.",
+            "name": "all",
+            "path": "all-selector",
+          },
+          {
+            "desc": "A class to search for. An element can have multiple classes; only one of them must match.",
+            "name": "class",
+            "path": "class-selector",
+          },
+          {
+            "desc": "An element to search for. Refers to the tagName of DOM nodes.",
+            "name": "element",
+            "path": "element-selector",
+          },
+          {
+            "desc": "An ID to search for, specified via the id attribute of an element.",
+            "name": "id",
+            "path": "id-selector",
+          },
+          {
+            "desc": "Any valid selector.",
+            "name": "multiple",
+            "path": "multiple-selector",
+          },
+        ],
+        "name": "Basic",
+        "slug": "basic-css-selectors",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Select all elements that are in the progress of an animation at the time the selector is run.",
+            "name": "animated",
+            "path": "animated-selector",
+          },
+          {
+            "desc": "Zero-based index of the element to match.",
+            "name": "eq",
+            "path": "eq-selector",
+          },
+          {
+            "desc": "Selects even elements, zero-indexed.  See also <a href=\\"/odd-selector/\\"><code>:odd</code></a>.",
+            "name": "even",
+            "path": "even-selector",
+          },
+          {
+            "desc": "Selects the first matched DOM element.",
+            "name": "first",
+            "path": "first-selector",
+          },
+          {
+            "desc": "Selects element if it is currently focused.",
+            "name": "focus",
+            "path": "focus-selector",
+          },
+          {
+            "desc": "Zero-based index.",
+            "name": "gt",
+            "path": "gt-selector",
+          },
+          {
+            "desc": "Selects all elements that are headers, like h1, h2, h3 and so on.",
+            "name": "header",
+            "path": "header-selector",
+          },
+          {
+            "desc": "A language code.",
+            "name": "lang",
+            "path": "lang-selector",
+          },
+          {
+            "desc": "Selects the last matched element.",
+            "name": "last",
+            "path": "last-selector",
+          },
+          {
+            "desc": "Zero-based index.",
+            "name": "lt",
+            "path": "lt-selector",
+          },
+          {
+            "desc": "A selector with which to filter by.",
+            "name": "not",
+            "path": "not-selector",
+          },
+          {
+            "desc": "Selects odd elements, zero-indexed.  See also <a href=\\"/even-selector/\\"><code>:even</code></a>.",
+            "name": "odd",
+            "path": "odd-selector",
+          },
+          {
+            "desc": "Selects the element that is the root of the document.",
+            "name": "root",
+            "path": "root-selector",
+          },
+          {
+            "desc": "Selects the target element indicated by the fragment identifier of the document's URI.",
+            "name": "target",
+            "path": "target-selector",
+          },
+        ],
+        "name": "Basic Filter",
+        "slug": "basic-filter-selectors",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Selects all elements that are the first child of their parent.",
+            "name": "first-child",
+            "path": "first-child-selector",
+          },
+          {
+            "desc": "Selects all elements that are the first among siblings of the same element name.",
+            "name": "first-of-type",
+            "path": "first-of-type-selector",
+          },
+          {
+            "desc": "Selects all elements that are the last child of their parent.",
+            "name": "last-child",
+            "path": "last-child-selector",
+          },
+          {
+            "desc": "Selects all elements that are the last among siblings of the same element name.",
+            "name": "last-of-type",
+            "path": "last-of-type-selector",
+          },
+          {
+            "desc": "The index of each child to match, starting with <code>1</code>, the string <code>even</code> or <code>odd</code>, or an equation ( eg. <code>:nth-child(even)</code>, <code>:nth-child(4n)</code> )",
+            "name": "nth-child",
+            "path": "nth-child-selector",
+          },
+          {
+            "desc": "The index of each child to match, starting with the last one (<code>1</code>), the string <code>even</code> or <code>odd</code>, or an equation ( eg. <code>:nth-last-child(even)</code>, <code>:nth-last-child(4n)</code> )",
+            "name": "nth-last-child",
+            "path": "nth-last-child-selector",
+          },
+          {
+            "desc": "The index of each child to match, starting with the last one (<code>1</code>), the string <code>even</code> or <code>odd</code>, or an equation ( eg. <code>:nth-last-of-type(even)</code>, <code>:nth-last-of-type(4n)</code> )",
+            "name": "nth-last-of-type",
+            "path": "nth-last-of-type-selector",
+          },
+          {
+            "desc": "The index of each child to match, starting with <code>1</code>, the string <code>even</code> or <code>odd</code>, or an equation ( eg. <code>:nth-of-type(even)</code>, <code>:nth-of-type(4n)</code> )",
+            "name": "nth-of-type",
+            "path": "nth-of-type-selector",
+          },
+          {
+            "desc": "Selects all elements that are the only child of their parent.",
+            "name": "only-child",
+            "path": "only-child-selector",
+          },
+          {
+            "desc": "Selects all elements that have no siblings with the same element name.",
+            "name": "only-of-type",
+            "path": "only-of-type-selector",
+          },
+        ],
+        "name": "Child Filter",
+        "slug": "child-filter-selectors",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A string of text to look for. It's case sensitive.",
+            "name": "contains",
+            "path": "contains-selector",
+          },
+          {
+            "desc": "Select all elements that have no children (including text nodes).",
+            "name": "empty",
+            "path": "empty-selector",
+          },
+          {
+            "desc": "Any selector.",
+            "name": "has",
+            "path": "has-selector",
+          },
+          {
+            "desc": "Select all elements that have at least one child node (either an element or text).",
+            "name": "parent",
+            "path": "parent-selector",
+          },
+        ],
+        "name": "Content Filter",
+        "slug": "content-filter-selector",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Selects all button elements and elements of type button.",
+            "name": "button",
+            "path": "button-selector",
+          },
+          {
+            "desc": "Selects all elements of type checkbox.",
+            "name": "checkbox",
+            "path": "checkbox-selector",
+          },
+          {
+            "desc": "Matches all elements that are checked or selected.",
+            "name": "checked",
+            "path": "checked-selector",
+          },
+          {
+            "desc": "Selects all elements that are disabled.",
+            "name": "disabled",
+            "path": "disabled-selector",
+          },
+          {
+            "desc": "Selects all elements that are enabled.",
+            "name": "enabled",
+            "path": "enabled-selector",
+          },
+          {
+            "desc": "Selects all elements of type file.",
+            "name": "file",
+            "path": "file-selector",
+          },
+          {
+            "desc": "Selects element if it is currently focused.",
+            "name": "focus",
+            "path": "focus-selector",
+          },
+          {
+            "desc": "Selects all elements of type image.",
+            "name": "image",
+            "path": "image-selector",
+          },
+          {
+            "desc": "Selects all input, textarea, select and button elements.",
+            "name": "input",
+            "path": "input-selector",
+          },
+          {
+            "desc": "Selects all elements of type password.",
+            "name": "password",
+            "path": "password-selector",
+          },
+          {
+            "desc": "Selects all  elements of type radio.",
+            "name": "radio",
+            "path": "radio-selector",
+          },
+          {
+            "desc": "Selects all elements of type reset.",
+            "name": "reset",
+            "path": "reset-selector",
+          },
+          {
+            "desc": "Selects all elements that are selected.",
+            "name": "selected",
+            "path": "selected-selector",
+          },
+          {
+            "desc": "Selects all elements of type submit.",
+            "name": "submit",
+            "path": "submit-selector",
+          },
+          {
+            "desc": "Selects all input elements of type text.",
+            "name": "text",
+            "path": "text-selector",
+          },
+        ],
+        "name": "Form",
+        "slug": "form-selectors",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Any valid selector.",
+            "name": "child",
+            "path": "child-selector",
+          },
+          {
+            "desc": "Any valid selector.",
+            "name": "descendant",
+            "path": "descendant-selector",
+          },
+          {
+            "desc": "Any valid selector.",
+            "name": "next adjacent",
+            "path": "next-adjacent-selector",
+          },
+          {
+            "desc": "Any valid selector.",
+            "name": "next siblings",
+            "path": "next-siblings-selector",
+          },
+        ],
+        "name": "Hierarchy",
+        "slug": "hierarchy-selectors",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Select all elements that are in the progress of an animation at the time the selector is run.",
+            "name": "animated",
+            "path": "animated-selector",
+          },
+          {
+            "desc": "An attribute name.",
+            "name": "attributeNotEqual",
+            "path": "attribute-not-equal-selector",
+          },
+          {
+            "desc": "Selects all button elements and elements of type button.",
+            "name": "button",
+            "path": "button-selector",
+          },
+          {
+            "desc": "Selects all elements of type checkbox.",
+            "name": "checkbox",
+            "path": "checkbox-selector",
+          },
+          {
+            "desc": "Zero-based index of the element to match.",
+            "name": "eq",
+            "path": "eq-selector",
+          },
+          {
+            "desc": "Selects even elements, zero-indexed.  See also <a href=\\"/odd-selector/\\"><code>:odd</code></a>.",
+            "name": "even",
+            "path": "even-selector",
+          },
+          {
+            "desc": "Selects all elements of type file.",
+            "name": "file",
+            "path": "file-selector",
+          },
+          {
+            "desc": "Selects the first matched DOM element.",
+            "name": "first",
+            "path": "first-selector",
+          },
+          {
+            "desc": "Zero-based index.",
+            "name": "gt",
+            "path": "gt-selector",
+          },
+          {
+            "desc": "Any selector.",
+            "name": "has",
+            "path": "has-selector",
+          },
+          {
+            "desc": "Selects all elements that are headers, like h1, h2, h3 and so on.",
+            "name": "header",
+            "path": "header-selector",
+          },
+          {
+            "desc": "Selects all elements that are hidden.",
+            "name": "hidden",
+            "path": "hidden-selector",
+          },
+          {
+            "desc": "Selects all elements of type image.",
+            "name": "image",
+            "path": "image-selector",
+          },
+          {
+            "desc": "Selects all input, textarea, select and button elements.",
+            "name": "input",
+            "path": "input-selector",
+          },
+          {
+            "desc": "Selects the last matched element.",
+            "name": "last",
+            "path": "last-selector",
+          },
+          {
+            "desc": "Zero-based index.",
+            "name": "lt",
+            "path": "lt-selector",
+          },
+          {
+            "desc": "Selects odd elements, zero-indexed.  See also <a href=\\"/even-selector/\\"><code>:even</code></a>.",
+            "name": "odd",
+            "path": "odd-selector",
+          },
+          {
+            "desc": "Select all elements that have at least one child node (either an element or text).",
+            "name": "parent",
+            "path": "parent-selector",
+          },
+          {
+            "desc": "Selects all elements of type password.",
+            "name": "password",
+            "path": "password-selector",
+          },
+          {
+            "desc": "Selects all  elements of type radio.",
+            "name": "radio",
+            "path": "radio-selector",
+          },
+          {
+            "desc": "Selects all elements of type reset.",
+            "name": "reset",
+            "path": "reset-selector",
+          },
+          {
+            "desc": "Selects all elements that are selected.",
+            "name": "selected",
+            "path": "selected-selector",
+          },
+          {
+            "desc": "Selects all elements of type submit.",
+            "name": "submit",
+            "path": "submit-selector",
+          },
+          {
+            "desc": "Selects all input elements of type text.",
+            "name": "text",
+            "path": "text-selector",
+          },
+          {
+            "desc": "Selects all elements that are visible.",
+            "name": "visible",
+            "path": "visible-selector",
+          },
+        ],
+        "name": "jQuery Extensions",
+        "slug": "jquery-selector-extensions",
+      },
+      {
+        "entries": [
+          {
+            "desc": "Selects all elements that are hidden.",
+            "name": "hidden",
+            "path": "hidden-selector",
+          },
+          {
+            "desc": "Selects all elements that are visible.",
+            "name": "visible",
+            "path": "visible-selector",
+          },
+        ],
+        "name": "Visibility Filter",
+        "slug": "visibility-filter-selectors",
+      },
+    ],
+    "entries": undefined,
+    "name": "Selectors",
+    "slug": "selectors",
+  },
+  {
+    "categories": [
+      {
+        "entries": [
+          {
+            "desc": "An integer indicating the 0-based position of the element.",
+            "name": "eq",
+            "path": "eq",
+          },
+          {
+            "desc": "Reduce the set of matched elements to the even ones in the set, numbered from zero.",
+            "name": "even",
+            "path": "even",
+          },
+          {
+            "desc": "A string containing a selector expression to match the current set of elements against.",
+            "name": "filter",
+            "path": "filter",
+          },
+          {
+            "desc": "Reduce the set of matched elements to the first in the set.",
+            "name": "first",
+            "path": "first",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "has",
+            "path": "has",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "is",
+            "path": "is",
+          },
+          {
+            "desc": "Reduce the set of matched elements to the final one in the set.",
+            "name": "last",
+            "path": "last",
+          },
+          {
+            "desc": "A function object that will be invoked for each element in the current set.",
+            "name": "map",
+            "path": "map",
+          },
+          {
+            "desc": "A string containing a selector expression, a DOM element, or an array of elements to match against the set.",
+            "name": "not",
+            "path": "not",
+          },
+          {
+            "desc": "Reduce the set of matched elements to the odd ones in the set, numbered from zero.",
+            "name": "odd",
+            "path": "odd",
+          },
+          {
+            "desc": "An integer indicating the 0-based position at which the elements begin to be selected. If negative, it indicates an offset from the end of the set.",
+            "name": "slice",
+            "path": "slice",
+          },
+        ],
+        "name": "Filtering",
+        "slug": "filtering",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A string representing a selector expression to find additional elements to add to the set of matched elements.",
+            "name": "add",
+            "path": "add",
+          },
+          {
+            "desc": "A string containing a selector expression to match the current set of elements against.",
+            "name": "addBack",
+            "path": "addBack",
+          },
+          {
+            "desc": "Add the previous set of elements on the stack to the current set.",
+            "name": "andSelf",
+            "path": "andSelf",
+          },
+          {
+            "desc": "Get the children of each element in the set of matched elements, including text and comment nodes.",
+            "name": "contents",
+            "path": "contents",
+          },
+          {
+            "desc": "End the most recent filtering operation in the current chain and return the set of matched elements to its previous state.",
+            "name": "end",
+            "path": "end",
+          },
+          {
+            "desc": "A string containing a selector expression, a DOM element, or an array of elements to match against the set.",
+            "name": "not",
+            "path": "not",
+          },
+        ],
+        "name": "Miscellaneous Traversing",
+        "slug": "miscellaneous-traversal",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "children",
+            "path": "children",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "closest",
+            "path": "closest",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "find",
+            "path": "find",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "next",
+            "path": "next",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "nextAll",
+            "path": "nextAll",
+          },
+          {
+            "desc": "A string containing a selector expression to indicate where to stop matching following sibling elements.",
+            "name": "nextUntil",
+            "path": "nextUntil",
+          },
+          {
+            "desc": "Get the closest ancestor element that is positioned.",
+            "name": "offsetParent",
+            "path": "offsetParent",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "parent",
+            "path": "parent",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "parents",
+            "path": "parents",
+          },
+          {
+            "desc": "A string containing a selector expression to indicate where to stop matching ancestor elements.",
+            "name": "parentsUntil",
+            "path": "parentsUntil",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "prev",
+            "path": "prev",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "prevAll",
+            "path": "prevAll",
+          },
+          {
+            "desc": "A string containing a selector expression to indicate where to stop matching preceding sibling elements.",
+            "name": "prevUntil",
+            "path": "prevUntil",
+          },
+          {
+            "desc": "A string containing a selector expression to match elements against.",
+            "name": "siblings",
+            "path": "siblings",
+          },
+        ],
+        "name": "Tree Traversal",
+        "slug": "tree-traversal",
+      },
+      {
+        "entries": [
+          {
+            "desc": "A function to execute for each matched element.",
+            "name": "each",
+            "path": "each",
+          },
+        ],
+        "name": "Other",
+        "slug": "other",
+      },
+    ],
+    "name": "Traversing",
+    "slug": "traversing",
+  },
+  {
+    "categories": undefined,
+    "entries": [
+      {
+        "desc": "A string containing the name of the queue. Defaults to <code>fx</code>, the standard effects queue.",
+        "name": "clearQueue",
+        "path": "clearQueue",
+      },
+      {
+        "desc": "A string containing the name of the queue. Defaults to <code>fx</code>, the standard effects queue.",
+        "name": "dequeue",
+        "path": "dequeue",
+      },
+      {
+        "desc": "States if the current page, in the user's browser, is being rendered using the <a href=\\"https://www.w3.org/TR/REC-CSS2/box.html\\">W3C CSS Box Model</a>.",
+        "name": "jQuery.boxModel",
+        "path": "jQuery.boxModel",
+      },
+      {
+        "desc": "Contains flags for the useragent, read from navigator.userAgent. <strong>This property was removed in jQuery 1.9</strong> and is available only through the jQuery.migrate plugin. Please try to use feature detection instead.",
+        "name": "jQuery.browser",
+        "path": "jQuery.browser",
+      },
+      {
+        "desc": "The DOM element that may contain the other element.",
+        "name": "jQuery.contains",
+        "path": "jQuery.contains",
+      },
+      {
+        "desc": "Store arbitrary data associated with the specified element and/or return the value that was set.",
+        "name": "jQuery.data",
+        "path": "jQuery.data",
+      },
+      {
+        "desc": "A DOM element from which to remove and execute a queued function.",
+        "name": "jQuery.dequeue",
+        "path": "jQuery.dequeue",
+      },
+      {
+        "desc": "The array or array-like object to iterate over.",
+        "name": "jQuery.each",
+        "path": "jQuery.each",
+      },
+      {
+        "desc": "An object that will receive the new properties.",
+        "name": "jQuery.extend",
+        "path": "jQuery.extend",
+      },
+      {
+        "desc": "An object to merge onto the jQuery prototype.",
+        "name": "jQuery.fn.extend",
+        "path": "jQuery.fn.extend",
+      },
+      {
+        "desc": "The JavaScript code to execute.",
+        "name": "jQuery.globalEval",
+        "path": "jQuery.globalEval",
+      },
+      {
+        "desc": "Finds the elements of an array which satisfy a filter function. The original array is not affected.",
+        "name": "jQuery.grep",
+        "path": "jQuery.grep",
+      },
+      {
+        "desc": "The value to search for.",
+        "name": "jQuery.inArray",
+        "path": "jQuery.inArray",
+      },
+      {
+        "desc": "Object to test whether or not it is an array.",
+        "name": "jQuery.isArray",
+        "path": "jQuery.isArray",
+      },
+      {
+        "desc": "The object that will be checked to see if it's empty.",
+        "name": "jQuery.isEmptyObject",
+        "path": "jQuery.isEmptyObject",
+      },
+      {
+        "desc": "The value to be tested.",
+        "name": "jQuery.isFunction",
+        "path": "jQuery.isFunction",
+      },
+      {
+        "desc": "Determines whether its argument represents a JavaScript number.",
+        "name": "jQuery.isNumeric",
+        "path": "jQuery.isNumeric",
+      },
+      {
+        "desc": "The object that will be checked to see if it's a plain object.",
+        "name": "jQuery.isPlainObject",
+        "path": "jQuery.isPlainObject",
+      },
+      {
+        "desc": "Object to test whether or not it is a window.",
+        "name": "jQuery.isWindow",
+        "path": "jQuery.isWindow",
+      },
+      {
+        "desc": "The DOM node that will be checked to see if it's in an XML document.",
+        "name": "jQuery.isXMLDoc",
+        "path": "jQuery.isXMLDoc",
+      },
+      {
+        "desc": "Any object to turn into a native Array.",
+        "name": "jQuery.makeArray",
+        "path": "jQuery.makeArray",
+      },
+      {
+        "desc": "The Array or an Array-like object to translate.",
+        "name": "jQuery.map",
+        "path": "jQuery.map",
+      },
+      {
+        "desc": "Merge the contents of two arrays together into the first array.",
+        "name": "jQuery.merge",
+        "path": "jQuery.merge",
+      },
+      {
+        "desc": "An empty function.",
+        "name": "jQuery.noop",
+        "path": "jQuery.noop",
+      },
+      {
+        "desc": "Return a number representing the current time.",
+        "name": "jQuery.now",
+        "path": "jQuery.now",
+      },
+      {
+        "desc": "Parses a string into an array of DOM nodes.",
+        "name": "jQuery.parseHTML",
+        "path": "jQuery.parseHTML",
+      },
+      {
+        "desc": "The JSON string to parse.",
+        "name": "jQuery.parseJSON",
+        "path": "jQuery.parseJSON",
+      },
+      {
+        "desc": "Parses a string into an XML document.",
+        "name": "jQuery.parseXML",
+        "path": "jQuery.parseXML",
+      },
+      {
+        "desc": "The function whose context will be changed.",
+        "name": "jQuery.proxy",
+        "path": "jQuery.proxy",
+      },
+      {
+        "desc": "Show or manipulate the queue of functions to be executed on the matched element.",
+        "name": "jQuery.queue",
+        "path": "jQuery.queue",
+      },
+      {
+        "desc": "A DOM element from which to remove data.",
+        "name": "jQuery.removeData",
+        "path": "jQuery.removeData",
+      },
+      {
+        "desc": "A collection of properties that represent the presence of different browser features or bugs. Intended for jQuery's internal use; specific properties may be removed when they are no longer needed internally to improve page startup performance. For your own project's feature-detection needs, we strongly recommend the use of an external library such as <a href=\\"https://modernizr.com\\">Modernizr</a> instead of dependency on properties in <code>jQuery.support</code>.",
+        "name": "jQuery.support",
+        "path": "jQuery.support",
+      },
+      {
+        "desc": "The string to trim.",
+        "name": "jQuery.trim",
+        "path": "jQuery.trim",
+      },
+      {
+        "desc": "Object to get the internal JavaScript [[Class]] of.",
+        "name": "jQuery.type",
+        "path": "jQuery.type",
+      },
+      {
+        "desc": "The Array of DOM elements.",
+        "name": "jQuery.unique",
+        "path": "jQuery.unique",
+      },
+      {
+        "desc": "The Array or an Array-like object of DOM elements.",
+        "name": "jQuery.uniqueSort",
+        "path": "jQuery.uniqueSort",
+      },
+      {
+        "desc": "Show or manipulate the queue of functions to be executed on the matched elements.",
+        "name": "queue",
+        "path": "queue",
+      },
+    ],
+    "name": "Utilities",
+    "slug": "utilities",
+  },
+]
+`;
