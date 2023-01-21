@@ -42,7 +42,7 @@ const signatures = entry
               .join(", ");
           }
 
-          if (name === "function") {
+          if (name === "function" || name === "handler") {
             const funcArgs = $arg
               .find("> argument")
               .map(function () {
@@ -55,7 +55,7 @@ const signatures = entry
               .get()
               .join(", ");
 
-            name = `${name}(${funcArgs})`;
+            name = `function(${funcArgs})`;
           }
 
           return {
