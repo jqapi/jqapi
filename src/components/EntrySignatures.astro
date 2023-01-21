@@ -9,10 +9,9 @@ const signatures = entry
   .map(function () {
     const $sig = $(this);
     let ret = returns;
-    const $callback = $sig.find("> argument").first();
-    const $cbReturns = $callback.find("return");
+    const $cbReturns = $sig.find("> argument").first().find("return");
 
-    if ($callback.attr("type") === "Function" && $cbReturns.length !== 0) {
+    if ($cbReturns.length !== 0) {
       ret = $cbReturns
         .map(function () {
           return $(this).attr("type");
@@ -29,6 +28,17 @@ const signatures = entry
         .map(function () {
           const $arg = $(this);
           let name = $arg.attr("name");
+          let type = $arg.attr("type");
+
+          if (!type) {
+            type = $arg
+              .find("type")
+              .map(function () {
+                return $(this).attr("name");
+              })
+              .get()
+              .join(", ");
+          }
 
           if (name === "function") {
             const funcArgs = $arg
@@ -48,7 +58,7 @@ const signatures = entry
 
           return {
             name,
-            type: $arg.attr("type"),
+            type,
             desc: $arg.find("desc").html(),
           };
         })
