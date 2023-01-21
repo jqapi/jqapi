@@ -387,8 +387,15 @@ body,
     padding-top: 24px;
   }
 
-  table tr td:first-child {
-    width: 200px;
+  table {
+    tr td:first-child {
+      // width: 200px;
+    }
+
+    table {
+      font-size: 0.9em;
+      margin-top: 12px;
+    }
   }
 
   /* the following styles fix glitches in code highlighting, caused by Bulma's .content */
@@ -511,6 +518,12 @@ body,
       font-size: 0.9em;
       text-shadow: 0 2px 0 #e0c962;
       font-weight: normal;
+
+      code {
+        background: none;
+        padding: 0;
+        font-size: 1em;
+      }
     }
 
     .column.is-6 {

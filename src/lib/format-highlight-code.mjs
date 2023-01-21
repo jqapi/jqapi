@@ -5,6 +5,13 @@ import stripCdata from "./strip-cdata.mjs";
 export default function (code, lang) {
   const parser = lang === "javascript" ? "babel" : lang;
   code = stripCdata(code);
+  code = code
+    .split("&lt;")
+    .join("<")
+    .split("&gt;")
+    .join(">")
+    .split("&amp;")
+    .join("&");
 
   try {
     code = format(code, { parser });

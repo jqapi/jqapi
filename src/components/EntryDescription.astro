@@ -8,7 +8,7 @@ const $content = $(`<div>${content}</div>`);
 
 $content.find("pre code").each(function () {
   const $code = $(this);
-  const code = $code.html().split("&lt;").join("<").split("&gt;").join(">");
+  const code = $code.html();
   let lang = "css";
 
   if (
