@@ -9,23 +9,10 @@ const $content = $(`<div>${content}</div>`);
 $content.find("pre code").each(function () {
   const $code = $(this);
   const code = $code.html();
-  let lang = "css";
-
-  if (
-    code.includes("$(") ||
-    code.includes("$.") ||
-    code.includes("jQuery") ||
-    code.includes("[")
-  ) {
-    lang = "javascript";
-  } else if (code.includes("</")) {
-    lang = "html";
-  }
-
-  const formatted = formatHighlightCode(code, lang);
+  const formatted = formatHighlightCode(code);
 
   $code.html(formatted);
-  $code.parent().addClass(`language-${lang}`);
+  $code.parent().addClass(`language-custom`);
 });
 ---
 

@@ -3,7 +3,6 @@ import Prism from "prismjs";
 import stripCdata from "./strip-cdata.mjs";
 
 export default function (code, lang) {
-  const parser = lang === "javascript" ? "babel" : lang;
   code = stripCdata(code);
   code = code
     .split("&lt;")
@@ -12,6 +11,23 @@ export default function (code, lang) {
     .join(">")
     .split("&amp;")
     .join("&");
+
+  if (!lang) {
+    lang = "css";
+
+    if (
+      code.includes("$(") ||
+      code.includes("$.") ||
+      code.includes("jQuery") ||
+      code.includes("[")
+    ) {
+      lang = "javascript";
+    } else if (code.includes("</")) {
+      lang = "html";
+    }
+  }
+
+  const parser = lang === "javascript" ? "babel" : lang;
 
   try {
     code = format(code, { parser });
