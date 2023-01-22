@@ -19,18 +19,14 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "test:watch": "vitest watch",
     "test:update": "vitest --update",
     "test": "vitest",
     "docs:update": "git submodule update --remote",
     "docs:generate": "node lib/categories-xml-to-json.mjs",
     "docs:copy": "cp -RT api.jquery.com/resources public/resources",
-    "docs": "run-s docs:*",
-    "deploy": "gh-pages --dist 'dist'"
+    "docs": "run-s docs:*"
   },
   "dependencies": {
     "astro": "^1.9.2",
@@ -44,7 +40,6 @@
     "prismjs": "^1.29.0"
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0",
     "node-sass": "^8.0.0",
     "npm-run-all": "^4.1.5",
     "sass": "^1.57.1",
