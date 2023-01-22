@@ -1,21 +1,11 @@
 ---
-import $ from "../lib/jquery.mjs";
-import formatHighlightCode from "../lib/format-highlight-code.mjs";
+import formatHighlightContent from "../lib/format-highlight-content.mjs";
 
 const { entry } = Astro.props;
 const content = entry.find("longdesc").html();
-const $content = $(`<div>${content}</div>`);
-
-$content.find("pre code").each(function () {
-  const $code = $(this);
-  const code = $code.html();
-  const formatted = formatHighlightCode(code);
-
-  $code.html(formatted);
-  $code.parent().addClass(`language-custom`);
-});
+const contentFormatted = formatHighlightContent(content);
 ---
 
 <div id="description" class="content">
-  <Fragment set:html={$content.html()} />
+  <Fragment set:html={contentFormatted} />
 </div>

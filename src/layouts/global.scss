@@ -391,13 +391,18 @@ body,
 
   .warning {
     background-color: #ffe08a;
-    padding: 5px 10px;
+    padding: 7px 10px;
     display: inline-block;
     border-radius: 2px;
     margin-bottom: 32px;
     font-size: 0.9em;
     color: #333;
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+
+    code {
+      background: none;
+      padding: 0;
+    }
   }
 
   table {

@@ -1,5 +1,6 @@
 ---
 import $ from "../lib/jquery.mjs";
+import formatHighlightContent from "../lib/format-highlight-content.mjs";
 
 const { entry } = Astro.props;
 const name = entry.find("entry").attr("name");
@@ -31,6 +32,7 @@ const signatures = entry
           const $arg = $(this);
           let name = $arg.attr("name");
           let type = $arg.attr("type");
+          const desc = $arg.find("> desc").html();
 
           if (!type) {
             type = $arg
@@ -62,12 +64,13 @@ const signatures = entry
             name,
             type,
             default: $arg.attr("default") || "",
-            desc: $arg.find("> desc").html(),
+            desc: formatHighlightContent(desc),
             properties: $arg
               .find("> property")
               .map(function () {
                 const $prop = $(this);
                 let propType = $prop.attr("type");
+                const desc = $prop.find("> desc").html();
 
                 if (!propType) {
                   propType = $arg
@@ -83,7 +86,7 @@ const signatures = entry
                   name: $prop.attr("name"),
                   type: propType,
                   default: $prop.attr("default") || "",
-                  desc: $prop.find("> desc").html(),
+                  desc: formatHighlightContent(desc),
                   arguments: $prop
                     .find("> argument")
                     .map(function () {
