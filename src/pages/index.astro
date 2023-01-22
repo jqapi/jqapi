@@ -51,7 +51,7 @@ const title = "jQAPI - Alternative jQuery Documentation Browser";
     </ul>
 
     <div id="entry-content">
-      <section class="section">
+      <section class="section content">
         <h1 class="title is-2">jQAPI <span>{version}</span></h1>
         <h2 class="subtitle is-5">Alternative jQuery Documentation Browser</h2>
 
@@ -59,7 +59,7 @@ const title = "jQAPI - Alternative jQuery Documentation Browser";
           <h4 class="title is-4" id="what">What is this?</h4>
 
           <div class="columns">
-            <div class="column is-8 content">
+            <div class="column is-8">
               <p>
                 This is a alternative interface to browse the
                 <a href="https://api.jquery.com"
@@ -74,8 +74,51 @@ const title = "jQAPI - Alternative jQuery Documentation Browser";
               <h4 class="title is-4" id="features">Features</h4>
 
               <ul class="features">
-                <li>It's nice :)</li>
+                <li>
+                  Content is the same as in the <a href="https://api.jquery.com"
+                    >Official jQuery Documentation</a
+                  >
+                </li>
+                <li>
+                  Statically rendered pages powered by <a
+                    href="https://astro.build">Astro</a
+                  >, so the initial loading time is super fast
+                </li>
+                <li>
+                  Subsequent page loads are done via Ajax, so it's even faster
+                </li>
+                <li>
+                  Navigation structure with (sub)categories and entries is the
+                  same as in the official docs
+                </li>
+                <li>Search to quickly filter for methods and selectors</li>
+                <li>
+                  Keyboard navigation, hover the keyboard icon in the search bar
+                  for a reference
+                </li>
+                <li>
+                  Code examples (JS, HTML, CSS) are formatted with <a
+                    href="https://prettier.io/">Prettier</a
+                  >
+                  and highlighted with <a href="https://prismjs.com/">Prism</a>
+                </li>
+                <li>Live examples right in the browser</li>
+                <li>
+                  Page content is prettily styled by <a href="https://bulma.io/"
+                    >Bulma</a
+                  >
+                </li>
+                <li><span>Coming soon</span> Mobile friendly navigation</li>
+                <li><span>Coming soon</span> Offline browsing</li>
+                <li><span>Coming soon</span> Dark theme</li>
               </ul>
+
+              <p>
+                If you find any bugs or want to make feature suggestions, head
+                over to the <a href="https://github.com/jqapi/jqapi/issues"
+                  >GitHub Issues</a
+                >. Pull requests are welcome as well. Thanks!
+              </p>
             </div>
 
             <div class="column">
@@ -101,50 +144,41 @@ const title = "jQAPI - Alternative jQuery Documentation Browser";
             </div>
           </div>
 
-          <div class="content">
-            <h4 class="title is-4" id="history">History</h4>
-            <p>
-              The first jQAPI came to be in 2010, heavily inspired by the
-              similar RailsAPI (now defunct), a alternative interface to browse
-              the Ruby on Rails Documentation. The very first version was hacked
-              together in a weekend, and since people were really digging it, a
-              more stable version followed quickly.
-            </p>
-            <p>
-              In 2013 I revamped jQAPI once again, and it has been online ever
-              since. These fine folks supported the development back then via
-              crowdfunding:
-            </p>
-            <p class="crowd">
-              <a href="http://cubixcloud.com/">Joseph Huckaby</a>, <a
-                href="http://glasspear.ca/">Rory Craig-Barnes</a
-              >, <a href="https://www.nathanntg.com/">Nathan Perkins</a>,
-              <a href="http://tobias-otte.de/">Tobias Otte</a>, <a
-                href="https://acf.ws/">Alan Faubert</a
-              >, <a href="https://alexkulikov.com/">Alex Kulikov</a>, <a
-                href="https://danawoodman.com/">Dana Woodman</a
-              >, <a href="http://edibleexperiences.com/"
-                >Roman Amir Shamsuddin</a
-              >, David Corbacho, Josh Pangell, Andrew Hahn, Yoren Chang,
-              codeworxx, Steven Olsen, Brock Adams, Simen Svale, Skogsrud
-              Mironov, Mikhail Geoffrey, Doret Johan Hermansson, and Tim Osborn
-            </p>
-            <p>
-              Starting 2023, the site went down for a period of time, due to
-              hosting migration. People started messaging me what's up, and how
-              they could help to bring it back online. Inspired by the fact that
-              people still use a project that I started 13 years ago, I coded
-              the next version of jQAPI, the one you see here.
-            </p>
-            <p>
-              I hope you like it! If you find any bugs or want to make feature
-              suggestions, head over to the <a
-                href="https://github.com/jqapi/jqapi/issues">GitHub Issues</a
-              >. Pull requests are welcome as well. Cheers!
-            </p>
-          </div>
+          <h4 class="title is-4" id="history">History</h4>
+          <p>
+            The first jQAPI came to be in 2010, heavily inspired by the similar
+            RailsAPI (now defunct), a alternative interface to browse the Ruby
+            on Rails Documentation. The very first version was hacked together
+            in a weekend, and since people were really digging it, a more stable
+            version followed quickly.
+          </p>
+          <p>
+            In 2013 I revamped jQAPI once again, and it has been online ever
+            since. These fine folks supported the development back then via
+            crowdfunding:
+          </p>
+          <p class="crowd">
+            <a href="http://cubixcloud.com/">Joseph Huckaby</a>, <a
+              href="http://glasspear.ca/">Rory Craig-Barnes</a
+            >, <a href="https://www.nathanntg.com/">Nathan Perkins</a>,
+            <a href="http://tobias-otte.de/">Tobias Otte</a>, <a
+              href="https://acf.ws/">Alan Faubert</a
+            >, <a href="https://alexkulikov.com/">Alex Kulikov</a>, <a
+              href="https://danawoodman.com/">Dana Woodman</a
+            >, <a href="http://edibleexperiences.com/">Roman Amir Shamsuddin</a
+            >, David Corbacho, Josh Pangell, Andrew Hahn, Yoren Chang,
+            codeworxx, Steven Olsen, Brock Adams, Simen Svale, Skogsrud Mironov,
+            Mikhail Geoffrey, Doret Johan Hermansson, and Tim Osborn
+          </p>
+          <p>
+            Starting 2023, the site went down for a period of time, due to
+            hosting migration. People started messaging me what's up, and how
+            they could help to bring it back online. Inspired by the fact that
+            people still use a project that I started 13 years ago, I coded the
+            next version of jQAPI, the one you see here. I hope you like it!
+          </p>
 
-          <div class="columns content">
+          <div class="columns">
             <div class="column">
               <h4 class="title is-4" id="built">Built with</h4>
 
@@ -188,64 +222,62 @@ const title = "jQAPI - Alternative jQuery Documentation Browser";
 
           <h4 class="title is-4" id="changelog">Changelog</h4>
 
-          <div class="content">
-            <p>
-              Follow <a href="https://twitter.com/jqapi">@jQAPI</a> for updates.
-            </p>
+          <p>
+            Follow <a href="https://twitter.com/jqapi">@jQAPI</a> for updates.
+          </p>
 
-            <ul class="changelog is-family-monospace">
-              <li>
-                <span>2023-01-23</span> Released jQAPI V3, complete rewrite based
-                on Astro.
-              </li>
-              <li>
-                <span>2014-02-11</span> Updated documentation. <a
-                  href="https://thedaywefightback.org/international/"
-                  >TODAY IS THE DAY WE FIGHT BACK AGAINST MASS SURVEILLANCE</a
-                >.
-              </li>
-              <li>
-                <span>2013-07-09</span> Docs generation fixed. (By <a
-                  href="https://github.com/jqapi/jqapi/pull/15">John Foley</a
-                >) - Updated documentation.
-              </li>
-              <li>
-                <span>2013-03-19</span> XML parsing fixed. (By <a
-                  href="https://github.com/jqapi/jqapi/pull/9">Ilan Frumer</a
-                >) - Updated documentation.
-              </li>
-              <li>
-                <span>2013-01-21</span> jQAPI is again available as stand alone AIR
-                app.
-              </li>
-              <li>
-                <span>2013-01-21</span> Don't set focus on search field on mobile
-                devices if pointer is over the sidebar.
-              </li>
-              <li>
-                <span>2013-01-18</span> Find best matching entry on search, and put
-                it on first position.
-              </li>
-              <li>
-                <span>2013-01-15</span> Relative paths so you can store the offline
-                jQAPI in a subfolder. (By <a
-                  href="https://github.com/jqapi/jqapi/commit/dadfba870fb9f165862ca3afbc682d4b4721c2a4"
-                  >Klortho</a
-                >)
-              </li>
-              <li>
-                <span>2013-01-10</span> Released the revamped and better jQAPI.
-              </li>
-              <li>
-                <span>2011-xx-xx</span> Documentation updating and some bug fixing.
-              </li>
-              <li><span>2010-03-10</span> Major code refactoring.</li>
-              <li>
-                <span>2010-01-31</span> Complete rewrite for the masses.
-              </li>
-              <li><span>2010-01-29</span> Released very first version.</li>
-            </ul>
-          </div>
+          <ul class="changelog is-family-monospace">
+            <li>
+              <span>2023-01-23</span> Released jQAPI V3, complete rewrite based on
+              Astro.
+            </li>
+            <li>
+              <span>2014-02-11</span> Updated documentation. <a
+                href="https://thedaywefightback.org/international/"
+                >TODAY IS THE DAY WE FIGHT BACK AGAINST MASS SURVEILLANCE</a
+              >.
+            </li>
+            <li>
+              <span>2013-07-09</span> Docs generation fixed. (By <a
+                href="https://github.com/jqapi/jqapi/pull/15">John Foley</a
+              >) - Updated documentation.
+            </li>
+            <li>
+              <span>2013-03-19</span> XML parsing fixed. (By <a
+                href="https://github.com/jqapi/jqapi/pull/9">Ilan Frumer</a
+              >) - Updated documentation.
+            </li>
+            <li>
+              <span>2013-01-21</span> jQAPI is again available as stand alone AIR
+              app.
+            </li>
+            <li>
+              <span>2013-01-21</span> Don't set focus on search field on mobile devices
+              if pointer is over the sidebar.
+            </li>
+            <li>
+              <span>2013-01-18</span> Find best matching entry on search, and put
+              it on first position.
+            </li>
+            <li>
+              <span>2013-01-15</span> Relative paths so you can store the offline
+              jQAPI in a subfolder. (By <a
+                href="https://github.com/jqapi/jqapi/commit/dadfba870fb9f165862ca3afbc682d4b4721c2a4"
+                >Klortho</a
+              >)
+            </li>
+            <li>
+              <span>2013-01-10</span> Released the revamped and better jQAPI.
+            </li>
+            <li>
+              <span>2011-xx-xx</span> Documentation updating and some bug fixing.
+            </li>
+            <li><span>2010-03-10</span> Major code refactoring.</li>
+            <li>
+              <span>2010-01-31</span> Complete rewrite for the masses.
+            </li>
+            <li><span>2010-01-29</span> Released very first version.</li>
+          </ul>
         </div>
       </section>
     </div>
