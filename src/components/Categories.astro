@@ -1,0 +1,41 @@
+---
+import Entries from "./Entries.astro";
+
+const { categories } = await Astro.props;
+---
+
+<nav id="categories">
+  {
+    categories.map((category) => (
+      <>
+        <div class="category">{category.name}</div>
+
+        {category.categories && (
+          <div class="subcategory">
+            {category.categories?.map((subCategory) => (
+              <>
+                <div class="category">{subCategory.name}</div>
+
+                {subCategory.entries && (
+                  <Entries entries={subCategory.entries} />
+                )}
+              </>
+            ))}
+          </div>
+        )}
+
+        {category.entries && <Entries entries={category.entries} />}
+      </>
+    ))
+  }
+</nav>
+
+<script>
+  import $ from "jquery";
+
+  $(() => {
+    $(".category").click(function () {
+      $(this).toggleClass("active").next().toggle();
+    });
+  });
+</script>

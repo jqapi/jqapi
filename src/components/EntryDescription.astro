@@ -1,0 +1,11 @@
+---
+import formatHighlightContent from "../lib/format-highlight-content.mjs";
+
+const { entry } = Astro.props;
+const content = entry.find("longdesc").html();
+const contentFormatted = formatHighlightContent(content);
+---
+
+<div id="description" class="content">
+  <Fragment set:html={contentFormatted} />
+</div>

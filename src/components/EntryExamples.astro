@@ -1,0 +1,82 @@
+---
+import Sandbox from "./Sandbox.astro";
+import $ from "../lib/jquery.mjs";
+import formatHighlightCode from "../lib/format-highlight-code.mjs";
+import stripCdata from "../lib/strip-cdata.mjs";
+
+const { entry } = Astro.props;
+const examples = entry
+  .find("example")
+  .map(function () {
+    const $example = $(this);
+    const js = $example.find("> code").html();
+    const css = $example.find("> css").html();
+    const html = $example.find("> html").html();
+
+    return {
+      desc: $example.find("> desc").html(),
+      plain: {
+        js: stripCdata(js),
+        css: stripCdata(css),
+        html: stripCdata(html),
+      },
+      formatted: {
+        js: formatHighlightCode(js, "javascript"),
+        css: formatHighlightCode(css, "css"),
+        html: formatHighlightCode(html, "html"),
+      },
+    };
+  })
+  .get();
+---
+
+<!-- prettier-ignore -->
+<div id="examples">
+  {
+    examples.map((example) => (
+      <div class="example">
+        <div class="columns is-multiline is-gapless">
+          <div class="column is-12">
+            <h4 class="title is-4 is-family-monospace">
+              <Fragment set:html={example.desc} />
+            </h4>
+          </div>
+
+          { example.plain.html.length !== 0 && (
+            <div class="column is-6">
+              <div class="code">
+                <span class="is-family-monospace">JS</span>
+                <pre class="language-html"><code><Fragment set:html={example.formatted.html} /></code></pre>
+              </div>
+            </div>
+          )}
+          
+          { example.plain.css.length !== 0 && (
+            <div class="column is-6">
+              <div class="code">
+                <span class="is-family-monospace">CSS</span>
+                <pre class="language-css"><code><Fragment set:html={example.formatted.css} /></code></pre>
+              </div>
+            </div>
+          )}
+
+          { example.plain.js.length !== 0 && (
+            <div class="column is-6">
+              <div class="code">
+                <span class="is-family-monospace">HTML</span>
+                <pre class="language-javascript"><code><Fragment set:html={example.formatted.js} /></code></pre>
+              </div>
+            </div>
+          )}
+
+          <div class="column is-6">
+            <div class="demo">
+              <span class="is-family-monospace">DEMO</span>
+              <Sandbox html={example.plain.html} css={example.plain.css} js={example.plain.js} />
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>

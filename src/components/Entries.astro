@@ -1,0 +1,70 @@
+---
+const { entries } = await Astro.props;
+
+function cleanDesc(desc) {
+  const length = 50;
+  let text = desc.replace(/<\/?[^>]+(>|$)/g, "");
+
+  if (text.length > length) {
+    text = `${text.substr(0, length)}...`;
+  }
+
+  return text;
+}
+---
+
+<ul class="entries">
+  {
+    entries.map((entry) => (
+      <li>
+        <a href={`/${entry.path}`}>
+          <span>{entry.name}</span>
+          <span>{cleanDesc(entry.desc)}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<script>
+  import $ from "jquery";
+  import bindEntryLinks from "../lib/bind-entry-links.mjs";
+  import loadContent from "../lib/load-content.mjs";
+  import scrollToSelectedEntry from "../lib/scroll-to-selected-entry.mjs";
+  import cleanHref from "../lib/clean-href.mjs";
+
+  $(() => {
+    const $categories = $("#categories");
+    const $sidebar = $("#sidebar");
+
+    window.onpopstate = (event) => {
+      if (location.hash.length !== 0) {
+        // its a hash navigation, let the browser handle it
+        return;
+      }
+
+      let $toScroll = $categories;
+      const href = cleanHref(location.pathname);
+
+      loadContent(href, false);
+      $(".active", $sidebar).removeClass("active");
+      $(".selected", $sidebar).removeClass("selected");
+
+      const $next = $(`a[href="${href}"]`, $sidebar)
+        .filter(function () {
+          return $(this).parent().parent().is(":visible");
+        })
+        .first()
+        .parent();
+
+      if (!$categories.is(":visible")) {
+        $toScroll = $("#results");
+      }
+
+      $next.addClass("active selected");
+      scrollToSelectedEntry($toScroll, $next);
+    };
+
+    bindEntryLinks($categories);
+  });
+</script>

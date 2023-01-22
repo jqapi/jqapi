@@ -1,0 +1,49 @@
+---
+import Search from "../components/Search.astro";
+import Categories from "../components/Categories.astro";
+import Job from "../components/Job.astro";
+import categories from "../../categories-generated.json";
+import "./global.scss";
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content={description} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <Search />
+        <Categories {categories} />
+      </div>
+
+      <div id="content">
+        <slot />
+      </div>
+    </div>
+
+    <Job />
+
+    <script>
+      // redirect old jQAPI links to the page
+      const hash = location.hash;
+
+      if (hash.includes("#p=")) {
+        const page = hash.substr(3, hash.length);
+        location.href = `/${page}`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+---
+import Keyboard from "./Keyboard.astro";
+---
+
+<div id="search">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path
+      d="M3.624,15a8.03,8.03,0,0,0,10.619.659l5.318,5.318a1,1,0,0,0,1.414-1.414l-5.318-5.318A8.04,8.04,0,0,0,3.624,3.624,8.042,8.042,0,0,0,3.624,15Zm1.414-9.96a6.043,6.043,0,1,1-1.77,4.274A6,6,0,0,1,5.038,5.038ZM4.622,9.311a1,1,0,0,1,2,0A2.692,2.692,0,0,0,9.311,12a1,1,0,0,1,0,2A4.7,4.7,0,0,1,4.622,9.311Z"
+    >
+    </path>
+  </svg>
+
+  <input type="text" placeholder="Search" />
+
+  <div class="keyboard-wrapper">
+    <Keyboard />
+  </div>
+
+  <div class="spinner"></div>
+</div>
+
+<script>
+  import $ from "jquery";
+  import bindEntryLinks from "../lib/bind-entry-links.mjs";
+
+  function doSearch(searchTerm, $categories, $search) {
+    const foundTitles = [];
+    const $entries = $(".entries li", $categories)
+      .filter(function () {
+        const $entry = $(this);
+        const title = $entry.find("span:first-child").text().toLowerCase();
+
+        if (foundTitles.includes(title)) {
+          return false;
+        }
+
+        if (title.indexOf(searchTerm) !== -1) {
+          foundTitles.push(title);
+          return true;
+        }
+
+        return false;
+      })
+      .clone();
+
+    const sorted = $entries.sort((a, b) => {
+      const titleA = $(a).find("span:first-child").text().toLowerCase();
+      const titleB = $(b).find("span:first-child").text().toLowerCase();
+
+      return titleA.indexOf(searchTerm) - titleB.indexOf(searchTerm);
+    });
+
+    const highlighted = $(sorted).map(function () {
+      const $title = $(this).find("span:first-child");
+      const title = $title.text();
+      const index = title.toLowerCase().indexOf(searchTerm);
+      const newTitle = `${title.substr(0, index)}<strong>${title.substr(
+        index,
+        searchTerm.length
+      )}</strong>${title.substr(index + searchTerm.length, title.length)}`;
+
+      $title.html(newTitle);
+
+      return this;
+    });
+
+    const $list = $(`<ul id="results" class="entries"></ul>`);
+    const $notFound = $(`<li class="notfound">Nothing found</li>`);
+
+    if (highlighted.length !== 0) {
+      $list.prepend(highlighted);
+      $("li:first-child", $list).addClass("selected");
+    } else {
+      $list.prepend($notFound);
+    }
+
+    $search.after($list);
+    $list.show();
+  }
+
+  $(() => {
+    const $search = $("#search");
+    const $input = $("input", $search);
+    const $categories = $("#categories");
+    let lastSearchTerm = "";
+
+    $input.on("keyup", (event) => {
+      // local ESC key
+      if (event.keyCode === 27) {
+        $input.val("");
+        $("#results").remove();
+        $categories.show();
+        return;
+      }
+
+      const searchTerm = $input.val();
+
+      if (searchTerm === lastSearchTerm) {
+        return;
+      }
+
+      lastSearchTerm = searchTerm;
+
+      if (searchTerm.length === 0) {
+        $("#results").remove();
+        $categories.show();
+      } else {
+        $("#results").remove();
+
+        $categories.hide();
+        doSearch(searchTerm, $categories, $search);
+
+        const $results = $("#results");
+
+        bindEntryLinks($results);
+      }
+    });
+
+    $(window).on("keyup", (event) => {
+      // global ESC key
+      if (event.keyCode === 27) {
+        $input.focus();
+      }
+    });
+  });
+</script>

@@ -1,0 +1,181 @@
+---
+import $ from "../lib/jquery.mjs";
+import formatHighlightContent from "../lib/format-highlight-content.mjs";
+
+const { entry } = Astro.props;
+const name = entry.find("entry").attr("name");
+const returns = entry.find("entry").attr("return");
+
+// TODO yep, this definitely needs refactoring :)
+const signatures = entry
+  .find("signature")
+  .map(function () {
+    const $sig = $(this);
+    let ret = returns;
+    const $cbReturns = $sig.find("> argument").first().find("return");
+
+    if ($cbReturns.length !== 0) {
+      ret = $cbReturns
+        .map(function () {
+          return $(this).attr("type");
+        })
+        .get()
+        .join(", ");
+    }
+
+    return {
+      added: $sig.find("added").text(),
+      return: ret,
+      arguments: $sig
+        .find("> argument")
+        .map(function () {
+          const $arg = $(this);
+          let name = $arg.attr("name");
+          let type = $arg.attr("type");
+          const desc = $arg.find("> desc").html();
+
+          if (!type) {
+            type = $arg
+              .find("type")
+              .map(function () {
+                return $(this).attr("name");
+              })
+              .get()
+              .join(", ");
+          }
+
+          if (name === "function" || name === "handler") {
+            const funcArgs = $arg
+              .find("> argument")
+              .map(function () {
+                const $cbArg = $(this);
+
+                return `${$cbArg.attr(
+                  "name"
+                )}<span class="type">${$cbArg.attr("type")}</span>`;
+              })
+              .get()
+              .join(", ");
+
+            name = `function(${funcArgs})`;
+          }
+
+          return {
+            name,
+            type,
+            default: $arg.attr("default") || "",
+            desc: formatHighlightContent(desc),
+            properties: $arg
+              .find("> property")
+              .map(function () {
+                const $prop = $(this);
+                let propType = $prop.attr("type");
+                const desc = $prop.find("> desc").html();
+
+                if (!propType) {
+                  propType = $arg
+                    .find("type")
+                    .map(function () {
+                      return $(this).attr("name");
+                    })
+                    .get()
+                    .join(", ");
+                }
+
+                return {
+                  name: $prop.attr("name"),
+                  type: propType,
+                  default: $prop.attr("default") || "",
+                  desc: formatHighlightContent(desc),
+                  arguments: $prop
+                    .find("> argument")
+                    .map(function () {
+                      const $arg = $(this);
+
+                      return `${$arg.attr(
+                        "name"
+                      )}<span class="type">${$arg.attr("type")}</span>`;
+                    })
+                    .get(),
+                };
+              })
+              .get(),
+          };
+        })
+        .get(),
+    };
+  })
+  .get();
+
+function getSignatureTitle(signature) {
+  const fullName = name.includes("jQuery.") ? name : `.${name}`;
+  const args = signature.arguments.map((arg) => arg.name).join(", ");
+  const fullReturns = signature.return?.length
+    ? `<span class="return">&#129122; ${signature.return}</span>`
+    : "";
+
+  return `${fullName}(${args})${fullReturns}`;
+}
+---
+
+<div id="signatures">
+  {
+    signatures.map((signature) => (
+      <>
+        <h4 class="title is-4">
+          <Fragment set:html={getSignatureTitle(signature)} />
+        </h4>
+
+        <table class="table is-striped is-bordered is-fullwidth">
+          <tbody>
+            {signature.arguments.map((argument) => (
+              <tr>
+                <td>
+                  <code>
+                    <Fragment set:html={argument.name} />
+                  </code>
+                </td>
+                <td>{argument.type}</td>
+                <td class="content">
+                  {argument.default.length !== 0 && (
+                    <p>
+                      Default: <code>{argument.default}</code>
+                    </p>
+                  )}
+
+                  <Fragment set:html={argument.desc} />
+
+                  {argument.properties.length !== 0 && (
+                    <table class="table is-striped is-fullwidth">
+                      <tbody>
+                        {argument.properties.map((property) => (
+                          <tr>
+                            <td>
+                              <code>
+                                <Fragment set:html={property.name} />
+                              </code>
+                            </td>
+                            <td>{property.type}</td>
+                            <td class="content">
+                              {property.default.length !== 0 && (
+                                <p>
+                                  Default: <code>{property.default}</code>
+                                </p>
+                              )}
+
+                              <Fragment set:html={property.desc} />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    ))
+  }
+</div>

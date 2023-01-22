@@ -1,53 +1,52 @@
-## jQAPI - Alternative jQuery Documentation Browser
+# jQAPI - Alternative jQuery Documentation Browser
 
-This is a revamp of https://github.com/mustardamus/jqapi and still under development.
+## What is this?
 
-## Development Environment
+This is a alternative interface to browse the [Official jQuery Documentation](https://api.jquery.com). It was created to get out of your way of your development work - quickly find what you are looking for, easy on the eyes, and lightning fast.
 
-The development environment consists of a Sinatra server and a Thor
-tool belt.
+## Commands
 
-Served with Sprockets we can use CoffeeScript and SASS. Views will
-be written in HAML.
+Run with `npm run [command]`
 
-### Requirements
+### `docs:update`
 
-You need to have Ruby and RubyGems installed.
+Clone the latest [official docs](https://github.com/jquery/api.jquery.com) in a git submodule.
 
-If you don't have already, install Bundler:
+### `docs:generate`
 
-    gem install bundler
+Generate the JSON navigation from the official docs' XML.
 
-Then install all the other Gems:
+### `docs:copy`
 
-    bundle install
+Copy the resources, e.g. images
 
-## Generate the documentation
+### `docs`
 
-### Download it
+Run the above commands in series.
 
-    thor docs:download
+### `build`
 
-The GitHub repo of the official docs site will be cloned/updated.
+Build the production site. Note that the `docs` command must be run before.
 
-### Generate it
+### `dev`
 
-    thor docs:generate
+Start the development server. Note that the `docs` command must be run before.
 
-### Start it
+### `preview`
 
-    thor dev:start
+Preview the production site.
 
-Point your browser to localhost:9292 and there you have the latest jQuery documentation with jQAPI
-wrapped around.
+### `test:update`
 
-### Generate static files
+Run the tests and update the snapshots.
 
-    thor deploy:generate
+### `test`
 
-Generates index.html, bundle.js, bundle.css, etc., so that the documentation can be
-viewed from a set of static files.
+Run the tests.
 
-## License
+## Credits
 
-Released under MIT & GPL. Coded by Sebastian Senf. http://twitter.com/mustardamus
+- [Keyboard Icon](https://icon-icons.com/icon/keyboard/78941)
+- [Magnifying Glass](https://icon-icons.com/pack/Neu-Interface/2469)
+- All packages in [package.json](./package.json)
+- All [contributors](https://github.com/jqapi/jqapi/graphs/contributors)
