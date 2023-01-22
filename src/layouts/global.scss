@@ -385,8 +385,16 @@ body,
 #entry-content {
   clear: both;
 
-  .section {
-    padding-top: 24px;
+  .entry {
+    margin-bottom: 30px;
+    padding-bottom: 50px;
+    border-bottom: 3px solid #eee;
+
+    &:last-child {
+      margin: 0;
+      padding: 0;
+      border-bottom: none;
+    }
   }
 
   .warning {

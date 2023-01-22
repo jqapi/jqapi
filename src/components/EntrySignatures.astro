@@ -3,8 +3,8 @@ import $ from "../lib/jquery.mjs";
 import formatHighlightContent from "../lib/format-highlight-content.mjs";
 
 const { entry } = Astro.props;
-const name = entry.find("entry").attr("name");
-const returns = entry.find("entry").attr("return");
+const name = entry.attr("name");
+const returns = entry.attr("return");
 
 // TODO yep, this definitely needs refactoring :)
 const signatures = entry

@@ -1,5 +1,6 @@
 ---
 import { readdir } from "node:fs/promises";
+import $ from "../lib/jquery.mjs";
 import LayoutMain from "../layouts/Main.astro";
 import getFullPath from "../lib/get-full-path.mjs";
 import parseXML from "../lib/parse-xml.mjs";
@@ -7,9 +8,15 @@ import Entry from "../components/Entry.astro";
 
 const entryName = Astro.params.entryName.replace("[ajax]", "");
 const xmlPath = getFullPath(`api.jquery.com/entries/${entryName}.xml`);
-const $entry = await parseXML(xmlPath);
-const entryTitle = $entry.find("entry > title").text();
-const entryDesc = $entry.find("entry > desc").text();
+const $entries = await parseXML(xmlPath);
+const entryTitle = $entries.find("entry > title").first().text();
+const entryDesc = $entries
+  .find("entry > desc")
+  .map(function () {
+    return $(this).text();
+  })
+  .get()
+  .join(" ");
 const title = `${entryTitle} - jQAPI`;
 const description = `${entryTitle} - ${entryDesc}`;
 const isAjaxPage = Astro.url.pathname.includes("[ajax]");
@@ -36,11 +43,11 @@ export async function getStaticPaths() {
 {
   isAjaxPage ? (
     <div id="content">
-      <Entry entry={$entry} />
+      <Entry entries={$entries} title={entryTitle} description={entryDesc} />
     </div>
   ) : (
     <LayoutMain title={title} description={description}>
-      <Entry entry={$entry} />
+      <Entry entries={$entries} title={entryTitle} description={entryDesc} />
     </LayoutMain>
   )
 }

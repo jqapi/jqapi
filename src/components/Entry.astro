@@ -1,12 +1,11 @@
 ---
+import $ from "../lib/jquery.mjs";
 import Signatures from "./EntrySignatures.astro";
 import Description from "./EntryDescription.astro";
 import Examples from "./EntryExamples.astro";
 
-const { entry } = Astro.props;
-const title = entry.find("entry > title").text();
-const desc = entry.find("entry > desc").text();
-const name = entry.find("entry").attr("name");
+const { entries, title, description } = Astro.props;
+const name = entries.find("entry").first().attr("name");
 const originalUrl = `api.jquery.com/${name}`;
 ---
 
@@ -42,11 +41,20 @@ const originalUrl = `api.jquery.com/${name}`;
   <div id="entry-content">
     <section class="section">
       <h1 class="title is-2">{title}</h1>
-      <h2 class="subtitle is-5">{desc}</h2>
+      <h2 class="subtitle is-5">{description}</h2>
 
-      <Signatures entry={entry} />
-      <Description entry={entry} />
-      <Examples entry={entry} />
+      {
+        entries
+          .find("entry")
+          .toArray()
+          .map((entry) => (
+            <div class="entry">
+              <Signatures entry={$(entry)} />
+              <Description entry={$(entry)} />
+              <Examples entry={$(entry)} />
+            </div>
+          ))
+      }
     </section>
   </div>
 </div>
