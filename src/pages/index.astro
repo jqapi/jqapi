@@ -3,9 +3,11 @@ import LayoutMain from "../layouts/Main.astro";
 import { version } from "../../package.json";
 
 const title = "jQAPI - Alternative jQuery Documentation Browser";
+const description =
+  "jQAPI is a alternative interface to browse the Official jQuery Documentation. It was created to get out of your way of your development work - quickly find what you are looking for, easy on the eyes, and lightning fast.";
 ---
 
-<LayoutMain title={title}>
+<LayoutMain title={title} description={description}>
   <div id="entry">
     <ul id="entry-nav">
       <li>
