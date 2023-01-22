@@ -10,7 +10,9 @@ export default function (code, lang) {
     .split("&gt;")
     .join(">")
     .split("&amp;")
-    .join("&");
+    .join("&")
+    .split("&nbsp;")
+    .join(" ");
 
   if (!lang) {
     lang = "css";
