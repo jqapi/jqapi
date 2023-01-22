@@ -8,10 +8,13 @@ export default async function parseXML(xmlPath) {
   const $xml = $(xmlDoc);
   const $includes = $xml.find("xi\\:include");
 
+  // building the categories navigation and dev have a different root path than building the production pages
+  const rootPath = process.env.NODE_ENV === "production" ? "" : "../";
+
   for (let i = 0; i < $includes.length; i++) {
     const $include = $($includes[i]);
     const href = $include.attr("href");
-    const incPath = getFullPath(`api.jquery.com/includes/${href}`);
+    const incPath = getFullPath(`${rootPath}api.jquery.com/includes/${href}`);
     const incXML = await readFile(incPath, "utf-8");
     const incDoc = $.parseXML(incXML);
     const $argument = $(incDoc).find("> argument");
