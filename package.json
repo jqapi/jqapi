@@ -1,6 +1,6 @@
 {
   "name": "jqapi",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Sebastian Senf <contact@mustardamus.com>",
   "description": "Alternative jQuery Documentation Browser",
   "keywords": [
