@@ -4,7 +4,7 @@ import $ from "../lib/jquery.mjs";
 import LayoutMain from "../layouts/Main.astro";
 import getFullPath from "../lib/get-full-path.mjs";
 import parseXML from "../lib/parse-xml.mjs";
-import Entry from "../components/Entry.astro";
+import Entry from "../components/Entry/Entry.astro";
 
 const entryName = Astro.params.entryName.replace("[ajax]", "");
 const xmlPath = getFullPath(`api.jquery.com/entries/${entryName}.xml`);

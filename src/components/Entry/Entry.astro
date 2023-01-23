@@ -1,8 +1,8 @@
 ---
-import $ from "../lib/jquery.mjs";
-import Signatures from "./EntrySignatures.astro";
-import Description from "./EntryDescription.astro";
-import Examples from "./EntryExamples.astro";
+import $ from "../../lib/jquery.mjs";
+import Signatures from "./Signatures.astro";
+import Description from "./Description.astro";
+import Examples from "./Examples.astro";
 
 const { entries, title, description } = Astro.props;
 const name = entries.find("entry").first().attr("name");
@@ -61,7 +61,7 @@ const originalUrl = `api.jquery.com/${name}`;
 
 <script>
   import $ from "jquery";
-  import enrichContent from "../lib/enrich-content.mjs";
+  import enrichContent from "../../lib/enrich-content.mjs";
 
   $(() => {
     enrichContent();
