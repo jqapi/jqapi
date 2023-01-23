@@ -8,6 +8,9 @@ export default async function parseXML(xmlPath) {
   const $xml = $(xmlDoc);
   const $includes = $xml.find("xi\\:include");
 
+  // building the categories navigation and dev have a different root path than building the production pages
+  const rootPath = process.env.NODE_ENV === "generate" ? "../" : "";
+
   for (let i = 0; i < $includes.length; i++) {
     const $include = $($includes[i]);
     const href = $include.attr("href");
