@@ -24,7 +24,7 @@ export default function (code, lang) {
       code.includes("[")
     ) {
       lang = "javascript";
-    } else if (code.includes("</")) {
+    } else if (code.includes("</") || code.includes("<img")) {
       lang = "html";
     }
   }

@@ -38,7 +38,7 @@ const { title, description } = Astro.props;
       const hash = location.hash;
 
       if (hash.includes("#p=")) {
-        const page = hash.substr(3, hash.length);
+        const page = hash.substring(3, hash.length);
         location.href = `/${page}`;
       }
     </script>

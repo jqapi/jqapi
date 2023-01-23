@@ -1,0 +1,45 @@
+---
+import $ from "../../lib/jquery.mjs";
+import { getReturnTypeHtml, getReturnType } from "../../lib/signatures.mjs";
+
+const { entries, title } = Astro.props;
+const name = entries.find("entry").first().attr("name");
+const originalUrl = `api.jquery.com/${name}`;
+const entriesReturns = entries
+  .find("entry")
+  .toArray()
+  .map((entry) => {
+    const $entry = $(entry);
+
+    return {
+      html: getReturnTypeHtml($entry, false),
+      id: getReturnType($entry),
+    };
+  });
+---
+
+<ul id="entry-nav">
+  {
+    entriesReturns.map((entryReturn) => (
+      <li>
+        <a href={`#${entryReturn.id}`}>
+          <span>
+            <Fragment set:html={entryReturn.html} />
+          </span>
+        </a>
+      </li>
+    ))
+  }
+
+  <li class="right original">
+    <a href={`https://${originalUrl}`}>
+      <span>&#129133; {originalUrl}</span>
+    </a>
+  </li>
+
+  <li class="right">
+    <a href="/">
+      <span>Home</span>
+    </a>
+  </li>
+</ul>

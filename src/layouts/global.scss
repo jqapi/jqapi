@@ -350,11 +350,15 @@ body,
       border-right: 1px solid #d4e4fc;
       color: #333;
 
-      span {
+      > span {
         vertical-align: middle;
         padding-top: 5px;
         font-size: 0.9em;
         text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+
+        .return {
+          color: #888;
+        }
       }
 
       &:hover {
