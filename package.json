@@ -29,9 +29,9 @@
     "docs": "run-s docs:*"
   },
   "dependencies": {
-    "astro": "^1.9.2",
+    "astro": "^5.7.10",
     "astro-html-minifier": "^0.4.0",
-    "astro-purgecss": "^1.3.2",
+    "astro-purgecss": "^5.2.2",
     "bulma": "^0.9.4",
     "jquery": "^3.6.3",
     "jsdom": "^20.0.3",
